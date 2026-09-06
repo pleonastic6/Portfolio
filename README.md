@@ -63,10 +63,10 @@ gestalteten Platzhalter.
 Die visuelle Handschrift steckt fast vollständig in `src/styles/tokens.css`:
 Fast-Schwarz `#080807`, Text `#F4EFE4`, gedämpftes Grau `#918B80`, Linien mit
 6–11 % Offwhite, ein warmer Akzent (`--c-accent`, sparsam für Status, Fokus und Hover).
-Schrift: **Space Grotesk** für Headlines und prägnante UI-Typografie,
-**Archivo** für längere Texte, **Space Mono** für Labels, Zahlen und Metadaten.
-Punktraster-Akzente laufen über **Silkscreen**. Diese Kombination zitiert den
-Nothing-Vibe, bleibt aber frei nutzbar und wirkt weniger nach Font-Rip.
+Schrift: **Instrument Serif** für Headlines, **Newsreader** für längere Texte,
+**Space Mono** für Labels, Zahlen und Metadaten. Punktraster-Akzente laufen über
+**Silkscreen**. Die Mischung ist bewusster: Claude-artige Editorial-Serife für
+Charakter, Nothing-artige Mono/Dot-Details für Technik — ohne proprietären Font-Rip.
 
 Alle Schriften liegen als npm-Paket im Projekt und werden mitgebaut — keine
 Anfragen an Google Fonts, damit auch datenschutzrechtlich unkritisch.

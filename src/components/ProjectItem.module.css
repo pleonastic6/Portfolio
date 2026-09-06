@@ -33,9 +33,9 @@
   margin-top: var(--space-4);
   font-family: var(--font-sans);
   font-size: var(--fs-h2);
-  font-weight: var(--fw-medium);
+  font-weight: 400;
   letter-spacing: var(--ls-display);
-  text-transform: uppercase;
+  text-transform: none;
   line-height: 1;
 }
 

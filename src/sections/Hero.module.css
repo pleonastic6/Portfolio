@@ -51,10 +51,10 @@
   margin-block: auto;
   font-family: var(--font-sans);
   font-size: var(--fs-display);
-  font-weight: var(--fw-medium);
+  font-weight: 400;
   line-height: var(--lh-display);
   letter-spacing: var(--ls-display);
-  text-transform: uppercase;
+  text-transform: none;
   text-wrap: nowrap;
 }
 

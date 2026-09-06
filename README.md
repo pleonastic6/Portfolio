@@ -61,26 +61,26 @@ gestalteten Platzhalter.
 ## Gestaltung
 
 Die visuelle Handschrift steckt fast vollständig in `src/styles/tokens.css`:
-Fast-Schwarz `#080808`, Text `#F5F5F5`, gedämpftes Grau `#8A8A8A`, Linien mit
-6–10 % Weiß, ein einziger Akzent (`--c-accent`, nur Statuspunkt und Fokus).
-Schrift: **Archivo** (Grotesk, variabel) für Fließtext und Schlagzeilen,
-**IBM Plex Mono** für Labels, Zahlen und Metadaten.
+Fast-Schwarz `#080807`, Text `#F4EFE4`, gedämpftes Grau `#918B80`, Linien mit
+6–11 % Offwhite, ein warmer Akzent (`--c-accent`, sparsam für Status, Fokus und Hover).
+Schrift: **Space Grotesk** für Headlines und prägnante UI-Typografie,
+**Archivo** für längere Texte, **Space Mono** für Labels, Zahlen und Metadaten.
+Punktraster-Akzente laufen über **Silkscreen**. Diese Kombination zitiert den
+Nothing-Vibe, bleibt aber frei nutzbar und wirkt weniger nach Font-Rip.
 
-Beide Schriften liegen als npm-Paket im Projekt und werden mitgebaut — keine
+Alle Schriften liegen als npm-Paket im Projekt und werden mitgebaut — keine
 Anfragen an Google Fonts, damit auch datenschutzrechtlich unkritisch.
 
-### Optional: Nothing-Schriften
+### Optionale echte Nothing-Schriften
 
-Für NType82 Mono und Ndot ist ein Platz vorbereitet. WOFF2-Dateien nach
-`src/assets/fonts/` legen und in `src/main.tsx` die Zeile `import './styles/fonts.css'`
-einkommentieren — dann übernehmen sie Labels, Metadaten und die Punktraster-Akzente
-(Hero-Kicker, Sektionsnummern, Projektzähler). Details: `src/assets/fonts/README.md`.
+Für NType82 Mono und Ndot ist weiterhin ein Platz vorbereitet. WOFF2-Dateien nach
+`src/assets/fonts/` legen und die Font-Familien in `src/styles/tokens.css` nach vorne
+ziehen. Details: `src/assets/fonts/README.md`.
 
-Ohne die Dateien ändert sich nichts, die Fallback-Kette endet bei IBM Plex Mono.
 Zur Lizenz: NType82 und Ndot sind Markenschriften von Nothing, für die kursierenden
 Kopien gibt es keine veröffentlichte Nutzungslizenz — auf einer öffentlichen Seite
-also ungeklärt. Freie Alternative für den Punktraster-Akzent: Silkscreen, Micro 5
-oder Pixelify Sans (SIL OFL).
+also ungeklärt. Deshalb nutzt die Seite standardmäßig freie Alternativen statt die
+Dateien aus Dritt-Repos direkt einzubinden.
 
 Bewegung: Einstieg blendet auf, Hero-Zeilen laufen gestaffelt hinter einer Maske
 hoch, Abschnitte erscheinen beim Scrollen (`Reveal`), Hover bleibt zurückhaltend.

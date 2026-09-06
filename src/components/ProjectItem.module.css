@@ -31,6 +31,7 @@
 
 .title {
   margin-top: var(--space-4);
+  font-family: var(--font-sans);
   font-size: var(--fs-h2);
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-display);
@@ -153,6 +154,7 @@
 
 .description {
   max-width: 56ch;
+  font-family: var(--font-body);
   color: var(--c-text-muted);
   transition: color var(--dur-base) var(--ease);
 }

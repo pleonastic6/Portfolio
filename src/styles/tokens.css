@@ -25,17 +25,18 @@
   --c-accent-dim: rgb(201 170 106 / 0.18);
 
   /* ---- Typografie --------------------------------------------------- */
-  --font-sans: 'Archivo Variable', 'Archivo', Helvetica, Arial, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-sans: 'Space Grotesk Variable', 'Space Grotesk', 'Archivo Variable', 'Archivo', Helvetica, Arial, sans-serif;
+  --font-body: 'Archivo Variable', 'Archivo', Helvetica, Arial, sans-serif;
+  --font-mono: 'Space Mono', 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
   /*
     Technische Auszeichnung (Labels, Metadaten, Navigation, Zahlen).
     NType82 Mono greift automatisch, sobald die Datei in public/fonts/ liegt und
     src/styles/fonts.css in main.tsx importiert wird — sonst IBM Plex Mono.
   */
-  --font-tech: 'NType82 Mono', 'NType82', var(--font-mono);
+  --font-tech: 'Space Mono', 'NType82 Mono', 'NType82', var(--font-mono);
   /* Punktraster — nur für wenige Akzente, als Fließtext unlesbar. */
-  --font-dot: 'Ndot 55', var(--font-tech);
+  --font-dot: 'Silkscreen', 'Ndot 55', var(--font-tech);
 
   /* auf die längste Hero-Zeile abgestimmt — bleibt einzeilig bis 1512px */
   --fs-display: clamp(2.25rem, 6.4vw, 6.5rem);
@@ -52,10 +53,10 @@
   --lh-snug: 1.28;
   --lh-body: 1.62;
 
-  --ls-display: -0.045em;
+  --ls-display: -0.055em;
   --ls-tight: -0.025em;
-  --ls-label: 0.16em;
-  --ls-meta: 0.1em;
+  --ls-label: 0.12em;
+  --ls-meta: 0.06em;
 
   --fw-regular: 400;
   --fw-medium: 500;

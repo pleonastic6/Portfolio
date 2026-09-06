@@ -49,6 +49,7 @@
 
 .headline {
   margin-block: auto;
+  font-family: var(--font-sans);
   font-size: var(--fs-display);
   font-weight: var(--fw-medium);
   line-height: var(--lh-display);
@@ -96,6 +97,7 @@
 
 .lead {
   max-width: 42ch;
+  font-family: var(--font-body);
   font-size: var(--fs-lead);
   line-height: var(--lh-snug);
   color: var(--c-text-muted);

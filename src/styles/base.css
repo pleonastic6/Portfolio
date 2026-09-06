@@ -24,7 +24,7 @@ body {
     radial-gradient(circle at 88% 54%, rgb(154 167 122 / 0.055), transparent 34rem),
     var(--c-bg);
   color: var(--c-text);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   font-size: var(--fs-body);
   font-weight: var(--fw-regular);
   line-height: var(--lh-body);
@@ -94,6 +94,7 @@ h1,
 h2,
 h3,
 h4 {
+  font-family: var(--font-sans);
   font-weight: var(--fw-medium);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-tight);

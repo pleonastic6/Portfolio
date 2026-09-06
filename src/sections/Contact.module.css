@@ -1,0 +1,149 @@
+.section {
+  padding-block: var(--section-space);
+}
+
+.statement {
+  margin-top: clamp(3rem, 7vw, 5.5rem);
+  font-size: var(--fs-statement);
+  font-weight: var(--fw-medium);
+  line-height: 1.02;
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+}
+
+.statementLine {
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  margin-top: clamp(3rem, 7vw, 5.5rem);
+}
+
+/* ---- E-Mail ---------------------------------------------------------- */
+
+.mailBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+  border-top: var(--hairline) solid var(--c-line);
+}
+
+.mail {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3em;
+  width: fit-content;
+  max-width: 100%;
+  font-size: clamp(1.35rem, 3.4vw, 2.4rem);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-tight);
+  line-height: 1.1;
+  word-break: break-word;
+}
+
+.mailText {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% var(--hairline);
+  transition: background-size var(--dur-base) var(--ease);
+}
+
+.mail:hover .mailText {
+  background-size: 100% var(--hairline);
+}
+
+.mailArrow {
+  align-self: flex-start;
+  font-size: 0.45em;
+  color: var(--c-text-faint);
+  transition:
+    transform var(--dur-base) var(--ease),
+    color var(--dur-base) var(--ease);
+}
+
+.mail:hover .mailArrow {
+  transform: translate(0.25em, -0.25em);
+  color: var(--c-text);
+}
+
+.mailFoot {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-5);
+  margin-top: var(--space-2);
+}
+
+.copy {
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.copy:hover {
+  color: var(--c-text);
+}
+
+.response {
+  color: var(--c-text-faint);
+}
+
+/* ---- Rechte Spalte ---------------------------------------------------- */
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: var(--hairline) solid var(--c-line-soft);
+}
+
+.lead {
+  max-width: 42ch;
+  color: var(--c-text-muted);
+}
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.social {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: baseline;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+  border-top: var(--hairline) solid var(--c-line-soft);
+  color: var(--c-text-muted);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.social:hover {
+  color: var(--c-text);
+}
+
+.handle {
+  color: var(--c-text-faint);
+}
+
+.socialArrow {
+  font-size: 0.8em;
+  color: var(--c-text-faint);
+  transition: transform var(--dur-base) var(--ease);
+}
+
+.social:hover .socialArrow {
+  transform: translate(0.2em, -0.2em);
+}
+
+@media (max-width: 62rem) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

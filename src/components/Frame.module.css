@@ -1,0 +1,25 @@
+.frame {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-frame);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  pointer-events: none;
+}
+
+.line {
+  width: var(--hairline);
+  height: 100%;
+  background: var(--c-line-soft);
+}
+
+/* auf schmalen Viewports zu eng am Text — dort weglassen */
+@media (max-width: 64rem) {
+  .frame {
+    display: none;
+  }
+}

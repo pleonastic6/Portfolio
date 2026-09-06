@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Nach dem Domainkauf eintragen:
+# Sitemap: https://deine-domain.de/sitemap.xml

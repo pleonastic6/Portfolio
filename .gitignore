@@ -1,0 +1,19 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+*.log
+
+# Nothing-Schriften bleiben aus dem Repository heraus (ungeklärte Lizenz).
+# Beim FTP-Upload sind sie trotzdem dabei, weil sie über dist/ gehen.
+# ACHTUNG: bei einem Deploy aus dem Repository heraus (GitHub Pages, CI) fehlen
+# sie dadurch im Build — dann bewusst freigeben oder eine freie Schrift nehmen.
+src/assets/fonts/*.woff2
+src/assets/fonts/*.otf
+src/assets/fonts/*.ttf
+.env
+.env.*
+!.env.example

@@ -1,0 +1,214 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: stretch;
+  padding-top: calc(var(--nav-height) + var(--space-6));
+  padding-bottom: var(--space-8);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-8);
+  width: 100%;
+}
+
+/* ---- Kopfzeile ------------------------------------------------------ */
+
+.top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+.kicker,
+.coords {
+  animation: fadeIn var(--dur-slow) var(--ease) both;
+  animation-delay: var(--d, 0ms);
+}
+
+.coords {
+  color: var(--c-text-faint);
+}
+
+/* Punktraster-Akzent, sobald Ndot vorliegt */
+.kicker {
+  font-family: var(--font-dot);
+}
+
+/* ---- Schlagzeile ---------------------------------------------------- */
+
+.headline {
+  margin-block: auto;
+  font-size: var(--fs-display);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  text-wrap: nowrap;
+}
+
+.line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+
+.lineInner {
+  display: block;
+  transform: translateY(105%);
+  animation: rise var(--dur-reveal) var(--ease) both;
+  animation-delay: var(--d, 0ms);
+}
+
+/* ---- Fußbereich ----------------------------------------------------- */
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.rule {
+  height: var(--hairline);
+  background: var(--c-line);
+  transform-origin: left;
+  animation: scaleX var(--dur-reveal) var(--ease) both;
+  animation-delay: var(--d, 0ms);
+}
+
+.bottomRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-7);
+}
+
+.lead {
+  max-width: 42ch;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-snug);
+  color: var(--c-text-muted);
+  animation: fadeUp var(--dur-reveal) var(--ease) both;
+  animation-delay: var(--d, 0ms);
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-4);
+  text-align: right;
+  animation: fadeUp var(--dur-reveal) var(--ease) both;
+  animation-delay: var(--d, 0ms);
+}
+
+.role {
+  text-transform: uppercase;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  font-family: var(--font-tech);
+  font-size: var(--fs-meta);
+  letter-spacing: var(--ls-meta);
+  text-transform: uppercase;
+  color: var(--c-text);
+  padding-bottom: 0.35em;
+  border-bottom: var(--hairline) solid var(--c-line-strong);
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.cta:hover {
+  border-bottom-color: var(--c-text);
+}
+
+.ctaArrow {
+  transition: transform var(--dur-base) var(--ease);
+}
+
+.cta:hover .ctaArrow {
+  transform: translateY(3px);
+}
+
+/* ---- Scroll-Hinweis -------------------------------------------------- */
+
+.scroll {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--space-6);
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  color: var(--c-text-faint);
+}
+
+/* ---- Umbrüche -------------------------------------------------------- */
+
+@media (max-width: 64rem) {
+  .scroll {
+    display: none;
+  }
+}
+
+@media (max-width: 56rem) {
+  .headline {
+    text-wrap: pretty;
+    font-size: clamp(2.1rem, 9.2vw, 4rem);
+  }
+
+  .bottomRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-5);
+  }
+
+  .aside {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* ---- Keyframes -------------------------------------------------------- */
+
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes scaleX {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

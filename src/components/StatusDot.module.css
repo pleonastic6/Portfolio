@@ -1,0 +1,36 @@
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+  color: var(--c-text-muted);
+  white-space: nowrap;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-text-faint);
+}
+
+.status[data-available='true'] .dot {
+  background: var(--c-accent);
+  box-shadow: 0 0 0 0 var(--c-accent-dim);
+  animation: pulse 3.4s var(--ease-inout) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--c-accent-dim);
+  }
+  50% {
+    box-shadow: 0 0 0 5px transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status[data-available='true'] .dot {
+    animation: none;
+  }
+}

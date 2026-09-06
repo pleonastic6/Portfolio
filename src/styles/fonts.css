@@ -1,0 +1,59 @@
+/*
+  NOTHING-SCHRIFTEN (optional)
+  ============================
+  Nicht aktiv, bis die Dateien vorliegen. Aktivieren in zwei Schritten:
+
+    1. WOFF2-Dateien nach src/assets/fonts/ legen — Namen siehe unten,
+       Anleitung in src/assets/fonts/README.md
+    2. In src/main.tsx die Zeile   import './styles/fonts.css'   einkommentieren
+
+  Danach greifen --font-tech und --font-dot (tokens.css) automatisch auf sie zu;
+  ohne die Dateien bleibt IBM Plex Mono die Grundlage.
+
+  Warum src/assets/ und nicht public/: Vite hasht die Dateien und schreibt
+  relative Pfade in den Build. Dadurch läuft die Seite auch in einem Unterordner
+  (GitHub Pages, Testverzeichnis) — mit /fonts/... wäre der Pfad an das Web-Root
+  gebunden. Solange die Datei ../assets/fonts/… fehlt, bricht der Build; dann den
+  betreffenden @font-face-Block auskommentieren.
+
+  Aktiv sind nur die beiden Familien, die in tokens.css hinterlegt sind.
+  Wer NType82 (proportional) oder Lettera Mono ergänzt, kommentiert den Block ein
+  und trägt die Familie dort nach.
+
+  Rechtlicher Hinweis: NType82 und Ndot sind Markenschriften von Nothing,
+  LetteraMono ist eine kommerzielle Schrift von Lineto. Für keine der vier ist
+  eine Weitergabe- oder Nutzungslizenz veröffentlicht. Lokal zum Ausprobieren ist
+  das unkritisch; auf einer öffentlichen Seite sind es ungeklärte Rechte.
+*/
+
+@font-face {
+  font-family: 'NType82 Mono';
+  src: url('../assets/fonts/NType82Mono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ndot 55';
+  src: url('../assets/fonts/Ndot-55.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* @font-face {
+  font-family: 'NType82';
+  src: url('../assets/fonts/NType82-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+} */
+
+/* @font-face {
+  font-family: 'Lettera Mono';
+  src: url('../assets/fonts/LetteraMonoLLCondLight-Regular.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+} */

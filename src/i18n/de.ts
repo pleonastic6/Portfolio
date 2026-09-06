@@ -1,0 +1,86 @@
+import type { Translation } from './types'
+
+export const de: Translation = {
+  meta: {
+    label: 'Deutsch',
+    code: 'DE',
+    htmlLang: 'de',
+    documentTitle: 'Artur Renner — Designer & Developer',
+  },
+  nav: {
+    work: 'Projekte',
+    about: 'Über mich',
+    skills: 'Skills',
+    contact: 'Kontakt',
+    menu: 'Menü',
+    close: 'Schließen',
+    available: 'Offen für Projekte',
+    unavailable: 'Aktuell ausgebucht',
+    language: 'Sprache wechseln',
+    skip: 'Zum Inhalt springen',
+    home: 'Nach oben',
+  },
+  hero: {
+    label: 'Portfolio',
+    headline: ['Digitale Erlebnisse', 'mit Klarheit', 'und Charakter.'],
+    lead: 'Designer und Developer für durchdachte digitale Erlebnisse, Interfaces und Produkte.',
+    cta: 'Ausgewählte Projekte entdecken',
+    scroll: 'Scrollen',
+    role: 'Design & Entwicklung',
+  },
+  work: {
+    index: '01',
+    title: 'Projekte',
+    counter: 'Projekte',
+    viewProject: 'Projekt ansehen',
+    viewCode: 'Code ansehen',
+    role: 'Rolle',
+    stack: 'Stack',
+    year: 'Jahr',
+    placeholderNote: 'Visual folgt',
+  },
+  about: {
+    index: '02',
+    title: 'Über mich',
+    statement:
+      'Ich entwickle digitale Erlebnisse, in denen Klarheit, Technologie und Persönlichkeit zusammenkommen.',
+    bio: [
+      'Ich studiere an der OTH Amberg-Weiden und arbeite dort, wo Daten auf Gestaltung treffen: Informationsvisualisierung, Frontend-Entwicklung und die leisen Entscheidungen dazwischen, die darüber bestimmen, ob etwas durchdacht wirkt oder nur fertig.',
+      'Mich interessiert das Handwerk hinter dem sichtbaren Ergebnis — saubere Datenpipelines, konsistente Design-Systeme, Werkzeuge, die den nächsten Schritt schneller machen. Typografie, Abstände und Timing bekommen meine Aufmerksamkeit, weil Qualität genau dort auffällt.',
+    ],
+    facts: {
+      location: 'Standort',
+      focus: 'Schwerpunkt',
+      studies: 'Studium',
+      status: 'Status',
+    },
+    values: {
+      focus: 'Design / Entwicklung',
+      studies: 'OTH Amberg-Weiden',
+      status: 'Offen für ausgewählte Projekte',
+    },
+  },
+  skills: {
+    index: '03',
+    title: 'Skills & Technologien',
+    lead: 'Womit ich arbeite — ausgewählt danach, was sich damit bauen lässt, nicht nach dem Logo.',
+  },
+  contact: {
+    index: '04',
+    title: 'Kontakt',
+    statement: ['Lass uns etwas', 'Besonderes bauen.'],
+    lead: 'Offen für Freelance-Projekte, Werkstudentenstellen und Zusammenarbeit. Am schnellsten geht es per E-Mail.',
+    emailLabel: 'E-Mail',
+    socialLabel: 'Sonst noch hier',
+    copy: 'Kopieren',
+    copied: 'Kopiert',
+    responseTime: 'Antwort meist innerhalb eines Tages',
+  },
+  footer: {
+    built: 'Mit Sorgfalt gebaut',
+    rights: 'Alle Rechte vorbehalten',
+    colophon: 'Vite / React / TypeScript',
+    imprint: 'Impressum',
+    privacy: 'Datenschutz',
+  },
+}

@@ -1,0 +1,27 @@
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-cursor);
+  width: 28px;
+  height: 28px;
+  border: var(--hairline) solid var(--c-line-strong);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--dur-fast) var(--ease),
+    width var(--dur-fast) var(--ease),
+    height var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.ring[data-visible='true'] {
+  opacity: 1;
+}
+
+.ring[data-hover='true'] {
+  width: 46px;
+  height: 46px;
+  border-color: var(--c-text);
+}

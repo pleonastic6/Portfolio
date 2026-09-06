@@ -1,0 +1,36 @@
+.switcher {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-tech);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  line-height: 1;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.divider {
+  padding-inline: 0.45em;
+  color: var(--c-text-faint);
+}
+
+.option {
+  color: var(--c-text-faint);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.option:hover {
+  color: var(--c-text-muted);
+}
+
+.option[aria-pressed='true'] {
+  color: var(--c-text);
+}
+
+.lg {
+  font-size: 0.875rem;
+  letter-spacing: 0.14em;
+}

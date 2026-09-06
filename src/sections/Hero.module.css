@@ -32,11 +32,17 @@
 
 .coords {
   color: var(--c-text-faint);
+  padding: 0.45rem 0.65rem;
+  border: var(--hairline) solid rgb(244 239 228 / 0.09);
+  border-radius: 999px 999px 999px 0.45rem;
+  transform: rotate(0.45deg);
 }
 
 /* Punktraster-Akzent, sobald Ndot vorliegt */
 .kicker {
   font-family: var(--font-dot);
+  color: var(--c-accent);
+  transform: rotate(-0.35deg);
 }
 
 /* ---- Schlagzeile ---------------------------------------------------- */
@@ -74,7 +80,8 @@
 
 .rule {
   height: var(--hairline);
-  background: var(--c-line);
+  background:
+    linear-gradient(90deg, transparent 0 3%, var(--c-line-strong) 3% 7%, var(--c-line) 7% 61%, transparent 61% 63%, var(--c-line) 63% 100%);
   transform-origin: left;
   animation: scaleX var(--dur-reveal) var(--ease) both;
   animation-delay: var(--d, 0ms);
@@ -125,7 +132,8 @@
 }
 
 .cta:hover {
-  border-bottom-color: var(--c-text);
+  border-bottom-color: var(--c-accent);
+  color: var(--c-accent);
 }
 
 .ctaArrow {

@@ -3,6 +3,14 @@
   border-top: var(--hairline) solid var(--c-line-soft);
 }
 
+.item:nth-child(odd) {
+  transform: rotate(-0.08deg);
+}
+
+.item:nth-child(even) {
+  transform: rotate(0.08deg);
+}
+
 .counter {
   font-family: var(--font-dot);
 }
@@ -67,6 +75,20 @@
   border: var(--hairline) solid var(--c-line-soft);
   border-radius: var(--radius-media);
   background: var(--c-bg-inset);
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 0.18);
+}
+
+.media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.55;
+  background:
+    radial-gradient(circle at 22% 18%, rgb(201 170 106 / 0.12), transparent 28%),
+    linear-gradient(120deg, transparent 0 62%, rgb(244 239 228 / 0.045) 63%, transparent 72%);
+  mix-blend-mode: screen;
 }
 
 .mediaLink .media {
@@ -88,6 +110,8 @@
   width: 100%;
   height: 100%;
   background-image:
+    radial-gradient(circle at 32% 28%, rgb(201 170 106 / 0.16), transparent 24%),
+    radial-gradient(circle at 72% 68%, rgb(154 167 122 / 0.12), transparent 28%),
     linear-gradient(to right, var(--c-line-soft) var(--hairline), transparent var(--hairline)),
     linear-gradient(to bottom, var(--c-line-soft) var(--hairline), transparent var(--hairline));
   background-size: 64px 64px;
@@ -196,12 +220,17 @@
 /* ---- Hover über die ganze Zeile --------------------------------------- */
 
 @media (hover: hover) {
+  .item:hover .media {
+    border-color: rgb(201 170 106 / 0.28);
+    box-shadow: 0 2rem 5rem rgb(0 0 0 / 0.28);
+  }
+
   .item:hover .image {
-    transform: scale(1.03);
+    transform: scale(1.025) rotate(0.25deg);
   }
 
   .item:hover .placeholder {
-    transform: scale(1.02);
+    transform: scale(1.018) rotate(-0.2deg);
   }
 
   .item:hover .titleLink {

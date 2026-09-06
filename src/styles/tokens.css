@@ -7,22 +7,22 @@
 
 :root {
   /* ---- Farbe -------------------------------------------------------- */
-  --c-bg: #080808;
-  --c-bg-raised: #0a0a0a;
-  --c-bg-inset: #0d0d0d;
+  --c-bg: #080807;
+  --c-bg-raised: #0b0a09;
+  --c-bg-inset: #0f0e0c;
 
-  --c-text: #f5f5f5;
-  --c-text-muted: #8a8a8a;
-  --c-text-faint: #5a5a5a;
+  --c-text: #f4efe4;
+  --c-text-muted: #918b80;
+  --c-text-faint: #625d54;
   --c-text-invert: #080808;
 
-  --c-line: rgb(255 255 255 / 0.1);
-  --c-line-soft: rgb(255 255 255 / 0.06);
-  --c-line-strong: rgb(255 255 255 / 0.22);
+  --c-line: rgb(244 239 228 / 0.11);
+  --c-line-soft: rgb(244 239 228 / 0.065);
+  --c-line-strong: rgb(244 239 228 / 0.24);
 
   /* einziger Akzent - sparsam einsetzen (Status, Fokus) */
-  --c-accent: #d8ff3e;
-  --c-accent-dim: rgb(216 255 62 / 0.16);
+  --c-accent: #c9aa6a;
+  --c-accent-dim: rgb(201 170 106 / 0.18);
 
   /* ---- Typografie --------------------------------------------------- */
   --font-sans: 'Archivo Variable', 'Archivo', Helvetica, Arial, sans-serif;

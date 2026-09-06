@@ -259,13 +259,57 @@
 }
 
 @media (max-width: 40rem) {
+  .item:nth-child(odd),
+  .item:nth-child(even) {
+    transform: none;
+  }
+
+  .item {
+    padding-top: var(--space-4);
+  }
+
+  .head {
+    gap: var(--space-3);
+  }
+
+  .title {
+    margin-top: var(--space-3);
+    font-size: var(--fs-h2);
+    line-height: 0.96;
+  }
+
+  .discipline,
+  .mediaLink,
+  .media,
+  .footer {
+    margin-top: var(--space-4);
+  }
+
   .media {
     aspect-ratio: 4 / 3;
     border-radius: 12px;
   }
 
+  .footer {
+    gap: var(--space-5);
+  }
+
+  .placeholderLabel {
+    left: var(--space-4);
+    bottom: var(--space-4);
+  }
+
+  .specs {
+    gap: var(--space-3);
+  }
+
   .spec {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-2);
+    padding-bottom: var(--space-3);
+  }
+
+  .links {
+    gap: var(--space-4);
   }
 }

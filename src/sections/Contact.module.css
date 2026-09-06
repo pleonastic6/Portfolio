@@ -147,3 +147,24 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+@media (max-width: 40rem) {
+  .statement {
+    margin-top: var(--space-7);
+    line-height: 0.98;
+  }
+
+  .grid {
+    gap: var(--space-6);
+    margin-top: var(--space-7);
+  }
+
+  .mail {
+    font-size: clamp(1.18rem, 7vw, 1.75rem);
+  }
+
+  .mailFoot,
+  .social {
+    gap: var(--space-3);
+  }
+}

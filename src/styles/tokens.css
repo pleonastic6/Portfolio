@@ -100,6 +100,25 @@
 
 @media (max-width: 48rem) {
   :root {
+    --fs-display: clamp(2.6rem, 12.5vw, 4.4rem);
+    --fs-statement: clamp(2rem, 10vw, 3.6rem);
+    --fs-h2: clamp(2rem, 10vw, 3.15rem);
+    --fs-h3: clamp(1.45rem, 7vw, 2rem);
+    --section-space: clamp(4.25rem, 18vw, 7rem);
+    --gutter: clamp(1rem, 5.25vw, 2rem);
     --nav-height: 3.75rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  :root {
+    --fs-display: clamp(2.2rem, 10vw, 2.8rem);
+    --fs-statement: clamp(1.75rem, 9.5vw, 2.8rem);
+    --fs-h2: clamp(1.7rem, 9vw, 2.55rem);
+    --fs-lead: 1rem;
+    --fs-body: 0.98rem;
+    --space-6: 1.5rem;
+    --space-7: 2.25rem;
+    --space-8: 3.25rem;
   }
 }

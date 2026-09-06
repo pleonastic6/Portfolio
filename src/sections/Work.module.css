@@ -8,3 +8,10 @@
   gap: clamp(4.5rem, 11vw, 9rem);
   margin-top: clamp(3.5rem, 8vw, 6rem);
 }
+
+@media (max-width: 40rem) {
+  .list {
+    gap: clamp(3.25rem, 14vw, 5rem);
+    margin-top: var(--space-7);
+  }
+}

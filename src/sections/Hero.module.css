@@ -66,6 +66,7 @@
 
 .lineInner {
   display: block;
+  white-space: nowrap;
   transform: translateY(105%);
   animation: rise var(--dur-reveal) var(--ease) both;
   animation-delay: var(--d, 0ms);
@@ -166,9 +167,23 @@
 }
 
 @media (max-width: 56rem) {
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-height) + var(--space-7));
+    padding-bottom: var(--space-7);
+  }
+
+  .inner {
+    gap: var(--space-7);
+  }
+
+  .top {
+    align-items: flex-start;
+  }
+
   .headline {
+    max-width: none;
     text-wrap: pretty;
-    font-size: clamp(2.1rem, 9.2vw, 4rem);
   }
 
   .bottomRow {
@@ -180,6 +195,26 @@
   .aside {
     align-items: flex-start;
     text-align: left;
+  }
+}
+
+@media (max-width: 30rem) {
+  .top {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .coords {
+    align-self: flex-start;
+    padding: 0.38rem 0.55rem;
+  }
+
+  .headline {
+    line-height: 0.92;
+  }
+
+  .rule {
+    margin-inline: 0.15rem;
   }
 }
 

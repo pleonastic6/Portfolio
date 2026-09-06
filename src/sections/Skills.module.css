@@ -70,3 +70,21 @@
     gap: var(--space-5);
   }
 }
+
+@media (max-width: 40rem) {
+  .row {
+    padding-block: var(--space-5);
+  }
+
+  .rowHead {
+    gap: var(--space-3);
+  }
+
+  .items {
+    gap: 0.45em 1em;
+  }
+
+  .item {
+    font-size: clamp(1rem, 5.4vw, 1.35rem);
+  }
+}

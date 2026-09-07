@@ -5,6 +5,7 @@ import { useScrolled } from '../hooks/useScrolled'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { StatusDot } from './StatusDot'
+import { Wordmark } from './Wordmark'
 import styles from './Navigation.module.css'
 
 const SECTION_IDS = navItems.map((item) => item.id)
@@ -38,7 +39,7 @@ export function Navigation() {
       <header className={styles.nav} data-scrolled={scrolled} data-open={menuOpen}>
         <div className={`shell ${styles.inner}`}>
           <a className={styles.brand} href="#top" aria-label={site.name}>
-            <img className={styles.logo} src="./logo-addd-mark.svg" alt="" aria-hidden="true" />
+            <Wordmark className={styles.logo} />
             <span className={styles.brandName}>{site.name}</span>
             <span className={styles.brandMark} aria-hidden="true">
               {site.initials}

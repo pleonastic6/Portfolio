@@ -57,8 +57,12 @@
   display: block;
   width: 4.6rem;
   height: auto;
-  opacity: 0.94;
-  image-rendering: auto;
+  color: var(--c-text);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.brand:hover .logo {
+  color: var(--c-accent);
 }
 
 .brandMark {

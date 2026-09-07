@@ -275,7 +275,7 @@
   .title {
     margin-top: var(--space-3);
     font-size: var(--fs-h2);
-    line-height: 0.96;
+    line-height: 1.05;
   }
 
   .discipline,

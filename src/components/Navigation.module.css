@@ -55,8 +55,8 @@
 
 .logo {
   display: block;
-  width: 4.6rem;
-  height: auto;
+  width: 2.35rem;
+  height: 2.35rem;
   color: var(--c-text);
   transition: color var(--dur-fast) var(--ease);
 }

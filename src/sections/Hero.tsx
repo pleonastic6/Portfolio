@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { site } from '../data/site'
 import { useI18n } from '../i18n'
+import { ParticleMark } from '../components/ParticleMark'
 import styles from './Hero.module.css'
 
 /**
@@ -13,6 +14,7 @@ export function Hero() {
   return (
     // data-intro: der Aufbau startet erst auf das Signal aus main.tsx.
     <section id="top" className={styles.hero} aria-labelledby="hero-title" data-intro>
+      <ParticleMark />
       <div className={`shell ${styles.inner}`}>
         <div className={styles.top}>
           <p className={`label ${styles.kicker}`} style={{ '--d': '80ms' } as CSSProperties}>

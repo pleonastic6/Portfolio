@@ -51,6 +51,8 @@ void Promise.race([schriften, notbremse]).then(() => {
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       document.documentElement.classList.add('is-ready')
+      // Fuer alles, was nicht ueber CSS gesteuert wird — etwa die Punktmarke.
+      window.dispatchEvent(new Event('addd:ready'))
     })
   })
 })

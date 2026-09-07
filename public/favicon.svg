@@ -1,18 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
   <title id="title">ADDD</title>
-  <desc id="desc">Square line mark for ADDD.</desc>
+  <desc id="desc">Compact square mark for ADDD.</desc>
   <rect width="64" height="64" fill="#080807"/>
   <rect x="0.5" y="0.5" width="63" height="63" fill="none" stroke="#F4EFE4" stroke-opacity="0.14"/>
-  <g fill="none" stroke="#F4EFE4" stroke-width="3.4" stroke-linecap="square" stroke-linejoin="miter">
-    <path d="M8 49 15 16 22 49"/>
-    <path d="M11 38h8"/>
-    <path d="M28 49V16h6.5c7.5 0 12.5 6.2 12.5 16.5S42 49 34.5 49H28Z"/>
-    <path d="M42 49V16h5.5C53.8 16 58 22 58 32.5S53.8 49 47.5 49H42Z" opacity="0.72"/>
+  <g fill="none" stroke="#F4EFE4" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M10 48 18 16 26 48"/>
+    <path d="M13.6 37.5h8.8"/>
+    <path d="M34 48V16h8c8 0 13 6.2 13 16s-5 16-13 16H34Z"/>
   </g>
   <g fill="#C9AA6A">
-    <rect x="7" y="10" width="3" height="3"/>
-    <rect x="27" y="10" width="3" height="3"/>
-    <rect x="41" y="10" width="3" height="3"/>
-    <rect x="55" y="10" width="3" height="3"/>
+    <rect x="10" y="10" width="3" height="3"/>
+    <rect x="26" y="10" width="3" height="3"/>
+    <rect x="39" y="10" width="3" height="3"/>
+    <rect x="52" y="10" width="3" height="3"/>
   </g>
 </svg>

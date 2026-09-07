@@ -1,19 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 32" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 64" role="img" aria-labelledby="title desc">
   <title id="title">ADDD mark</title>
   <desc id="desc">A restrained technical wordmark for the ADDD developer collective.</desc>
-  <rect width="96" height="32" rx="0" fill="#080807"/>
-  <g fill="none" stroke="#F4EFE4" stroke-width="2.15" stroke-linecap="square" stroke-linejoin="miter">
-    <path d="M8 25 15 7 22 25"/>
-    <path d="M11.6 18.5h6.8"/>
-    <path d="M31 25V7h7.5c5 0 8.5 3.55 8.5 9s-3.5 9-8.5 9H31Z"/>
-    <path d="M54 25V7h7.5c5 0 8.5 3.55 8.5 9s-3.5 9-8.5 9H54Z"/>
-    <path d="M77 25V7h7.5c5 0 8.5 3.55 8.5 9s-3.5 9-8.5 9H77Z"/>
+  <rect width="128" height="64" fill="#080807"/>
+  <rect x="0.5" y="0.5" width="127" height="63" fill="none" stroke="#F4EFE4" stroke-opacity="0.11"/>
+  <g fill="none" stroke="#F4EFE4" stroke-width="3.2" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M14 46 23 18 32 46"/>
+    <path d="M18.2 36.5h9.6"/>
+    <path d="M43 46V18h10.5c8 0 13.5 5.5 13.5 14s-5.5 14-13.5 14H43Z"/>
+    <path d="M72 46V18h10.5c8 0 13.5 5.5 13.5 14s-5.5 14-13.5 14H72Z"/>
+    <path d="M101 46V18h10.5c8 0 13.5 5.5 13.5 14s-5.5 14-13.5 14H101Z"/>
   </g>
   <g fill="#C9AA6A">
-    <rect x="7" y="5" width="2" height="2"/>
-    <rect x="30" y="5" width="2" height="2"/>
-    <rect x="53" y="5" width="2" height="2"/>
-    <rect x="76" y="5" width="2" height="2"/>
+    <rect x="14" y="13" width="2.4" height="2.4"/>
+    <rect x="43" y="13" width="2.4" height="2.4"/>
+    <rect x="72" y="13" width="2.4" height="2.4"/>
+    <rect x="101" y="13" width="2.4" height="2.4"/>
   </g>
-  <rect x="0.5" y="0.5" width="95" height="31" fill="none" stroke="#F4EFE4" stroke-opacity="0.11"/>
 </svg>

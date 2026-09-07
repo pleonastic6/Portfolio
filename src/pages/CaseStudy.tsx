@@ -4,6 +4,7 @@ import { projects } from '../data/projects'
 import { site } from '../data/site'
 import { useI18n } from '../i18n'
 import { LanguageSwitcher } from '../components/LanguageSwitcher'
+import { Picture } from '../components/Picture'
 import { Reveal } from '../components/Reveal'
 import styles from './CaseStudy.module.css'
 
@@ -88,10 +89,12 @@ export function CaseStudy({ slug }: { slug: string }) {
 
         {project.image && (
           <Reveal className={`shell ${styles.coverWrap}`}>
-            <img
+            <Picture
               className={styles.cover}
-              src={project.image}
+              picture={project.image}
               alt={project.imageAlt ? pick(project.imageAlt) : project.title}
+              sizes="(max-width: 62rem) 100vw, 88vw"
+              loading="eager"
             />
           </Reveal>
         )}
@@ -108,11 +111,11 @@ export function CaseStudy({ slug }: { slug: string }) {
 
               {block.image && (
                 <figure className={styles.figure}>
-                  <img
+                  <Picture
                     className={styles.image}
-                    src={block.image}
+                    picture={block.image}
                     alt={block.imageAlt ? pick(block.imageAlt) : ''}
-                    loading="lazy"
+                    sizes="(max-width: 62rem) 100vw, 55vw"
                   />
                   {block.caption && (
                     <figcaption className={`meta ${styles.caption}`}>{pick(block.caption)}</figcaption>

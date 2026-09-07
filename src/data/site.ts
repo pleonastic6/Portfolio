@@ -5,6 +5,19 @@
 
 export type Localized = { de: string; en: string }
 
+/**
+ * Ein Bild in mehreren Breiten.
+ * `sources` sind WebP-Varianten fuer srcset, `fallback` ist das JPEG fuer
+ * Browser ohne WebP. width/height beschreiben das Seitenverhaeltnis und
+ * reservieren den Platz, damit beim Laden nichts springt.
+ */
+export type Picture = {
+  fallback: string
+  sources: { src: string; width: number }[]
+  width: number
+  height: number
+}
+
 export const site = {
   name: 'ADDD',
   initials: 'ADDD',

@@ -1,5 +1,6 @@
 import type { Project } from '../data/projects'
 import { useI18n } from '../i18n'
+import { Picture } from './Picture'
 import { Reveal } from './Reveal'
 import styles from './ProjectItem.module.css'
 
@@ -22,12 +23,11 @@ export function ProjectItem({ project, index, total }: ProjectItemProps) {
   const media = (
     <div className={styles.media}>
       {project.image ? (
-        <img
+        <Picture
           className={styles.image}
-          src={project.image}
+          picture={project.image}
           alt={project.imageAlt ? pick(project.imageAlt) : project.title}
-          loading="lazy"
-          decoding="async"
+          sizes="(max-width: 62rem) 100vw, 62vw"
         />
       ) : (
         <div className={styles.placeholder} role="img" aria-label={project.title}>

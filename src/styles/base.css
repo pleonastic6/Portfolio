@@ -60,6 +60,10 @@ body::after {
     radial-gradient(ellipse at 82% 78%, rgb(201 170 106 / 0.045), transparent 32%);
 }
 
+picture {
+  display: contents;
+}
+
 img,
 picture,
 svg,

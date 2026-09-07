@@ -1,6 +1,30 @@
-import type { Localized } from './site'
-import nycEra from '../assets/projects/nyc-era.jpg'
-import nycStreet from '../assets/projects/nyc-street.jpg'
+import type { Localized, Picture } from './site'
+import eraFallback from '../assets/projects/nyc-era-fallback.jpg'
+import era800 from '../assets/projects/nyc-era-800.webp'
+import era1600 from '../assets/projects/nyc-era-1600.webp'
+import streetFallback from '../assets/projects/nyc-street-fallback.jpg'
+import street800 from '../assets/projects/nyc-street-800.webp'
+import street1600 from '../assets/projects/nyc-street-1600.webp'
+
+const nycEra: Picture = {
+  fallback: eraFallback,
+  sources: [
+    { src: era800, width: 800 },
+    { src: era1600, width: 1600 },
+  ],
+  width: 1600,
+  height: 900,
+}
+
+const nycStreet: Picture = {
+  fallback: streetFallback,
+  sources: [
+    { src: street800, width: 800 },
+    { src: street1600, width: 1600 },
+  ],
+  width: 1600,
+  height: 900,
+}
 
 /**
  * Ausfuehrliche Projektbeschreibungen.
@@ -10,7 +34,7 @@ import nycStreet from '../assets/projects/nyc-street.jpg'
 export type CaseBlock = {
   heading: Localized
   body: Localized[]
-  image?: string
+  image?: Picture
   imageAlt?: Localized
   caption?: Localized
 }

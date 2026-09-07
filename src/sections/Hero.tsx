@@ -5,7 +5,7 @@ import styles from './Hero.module.css'
 
 /**
  * Volle Bildschirmhöhe, Typografie als Hauptmotiv.
- * Die Zeilen laufen gestaffelt hinter einer Maske hoch (siehe Hero.module.css).
+ * Die Wörter laufen gestaffelt hinter je einer Maske hoch (Hero.module.css).
  */
 export function Hero() {
   const { t, pick } = useI18n()
@@ -23,14 +23,23 @@ export function Hero() {
         </div>
 
         <h1 id="hero-title" className={styles.headline}>
-          {t.hero.headline.map((line, index) => (
+          {t.hero.headline.map((line, lineIndex) => (
             <span key={line} className={styles.line}>
-              <span
-                className={styles.lineInner}
-                style={{ '--d': `${240 + index * 110}ms` } as CSSProperties}
-              >
-                {line}
-              </span>
+              {/* Wortweise gestaffelt: jedes Wort steigt hinter seiner eigenen
+                  Maske hoch. Der Satz baut sich damit auf, statt zeilenweise
+                  aufzuklappen — bei identischen Kosten deutlich lebendiger. */}
+              {line.split(' ').map((word, wordIndex) => (
+                <span key={`${lineIndex}-${wordIndex}`} className={styles.word}>
+                  <span
+                    className={styles.wordInner}
+                    style={
+                      { '--d': `${240 + lineIndex * 130 + wordIndex * 75}ms` } as CSSProperties
+                    }
+                  >
+                    {word}
+                  </span>
+                </span>
+              ))}
             </span>
           ))}
         </h1>

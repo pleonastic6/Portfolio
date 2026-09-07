@@ -2,18 +2,106 @@
   position: fixed;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
   pointer-events: none;
-  background-image: url('../assets/pattern-baroque.svg');
-  background-size: var(--pattern-size) var(--pattern-size);
-  background-position: center top;
   opacity: var(--pattern-opacity);
   /* Zu den Raendern hin etwas praesenter, hinter dem Text zurueckhaltender */
   mask-image: radial-gradient(120% 80% at 50% 38%, rgb(0 0 0 / 0.26) 0%, rgb(0 0 0 / 1) 78%);
   -webkit-mask-image: radial-gradient(120% 80% at 50% 38%, rgb(0 0 0 / 0.26) 0%, rgb(0 0 0 / 1) 78%);
+
+  --tile: var(--pattern-size);
+}
+
+/*
+ * Die Musterflaeche ist an allen Seiten um eine Kachel groesser als das Bild.
+ * Dadurch kann sie sich um genau eine Kachel verschieben und faengt danach
+ * wieder von vorn an — die Bewegung laeuft endlos, ohne dass eine Kante
+ * sichtbar wird. Verschoben wird per transform, das uebernimmt die Grafikkarte;
+ * background-position waere ein Neuzeichnen der ganzen Flaeche pro Bild.
+ */
+.pattern {
+  position: absolute;
+  inset: calc(var(--tile) * -1);
+  background-image: url('../assets/pattern-baroque.svg');
+  background-size: var(--tile) var(--tile);
+  background-position: center top;
+  will-change: transform, opacity;
+  animation:
+    patternIn 2600ms var(--ease) both,
+    drift 150s linear infinite;
+}
+
+/*
+ * Warmer Lichtschein, der sehr langsam atmet. Er liegt ueber dem Muster und
+ * hebt die Goldpunkte mal an, mal nicht — die Flaeche wirkt dadurch lebendig,
+ * ohne dass erkennbar etwas "laeuft".
+ */
+.glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(
+    38% 34% at 62% 28%,
+    rgb(201 170 106 / 0.5) 0%,
+    rgb(201 170 106 / 0.16) 42%,
+    transparent 72%
+  );
+  mix-blend-mode: soft-light;
+  will-change: transform, opacity;
+  animation: breathe 26s var(--ease-inout) infinite alternate;
+}
+
+@keyframes patternIn {
+  from {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes drift {
+  from {
+    /* translate3d statt translate: erzwingt eine eigene Ebene auf der GPU */
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(var(--tile) * -1), calc(var(--tile) * -1), 0);
+  }
+}
+
+@keyframes breathe {
+  from {
+    opacity: 0.35;
+    transform: translate3d(-3%, 2%, 0) scale(1);
+  }
+  to {
+    opacity: 0.9;
+    transform: translate3d(3%, -2%, 0) scale(1.12);
+  }
 }
 
 @media (max-width: 48rem) {
   .backdrop {
-    background-size: calc(var(--pattern-size) * 0.7) calc(var(--pattern-size) * 0.7);
+    --tile: calc(var(--pattern-size) * 0.7);
+  }
+}
+
+/*
+ * Ohne Bewegung steht die Flaeche einfach still. Die globale Regel in base.css
+ * kuerzt Animationen auf 0.01ms — eine Endlosschleife wuerde dadurch auf ihrem
+ * Endzustand einrasten, deshalb hier ausdruecklich abschalten.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .pattern,
+  .glow {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .glow {
+    opacity: 0.5;
   }
 }

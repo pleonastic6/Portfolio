@@ -4,6 +4,7 @@ import { I18nProvider, useI18n } from './i18n'
 import { Cursor } from './components/Cursor'
 import { Footer } from './components/Footer'
 import { Frame } from './components/Frame'
+import { Backdrop } from './components/Backdrop'
 import { Navigation } from './components/Navigation'
 import { Hero } from './sections/Hero'
 import { Work } from './sections/Work'
@@ -41,6 +42,7 @@ function Page() {
     return (
       <div className="page" data-ready={ready}>
         {site.customCursor && <Cursor />}
+        <Backdrop />
         <Frame />
         {route.name === 'case' ? <CaseStudy slug={route.slug} /> : <Legal kind={route.name} />}
         <Footer />
@@ -55,6 +57,7 @@ function Page() {
       </a>
 
       {site.customCursor && <Cursor />}
+      <Backdrop />
       <Frame />
       <Navigation />
 

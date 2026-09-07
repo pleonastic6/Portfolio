@@ -1,0 +1,19 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('../assets/pattern-baroque.svg');
+  background-size: var(--pattern-size) var(--pattern-size);
+  background-position: center top;
+  opacity: var(--pattern-opacity);
+  /* Zu den Raendern hin etwas praesenter, hinter dem Text zurueckhaltender */
+  mask-image: radial-gradient(120% 80% at 50% 38%, rgb(0 0 0 / 0.35) 0%, rgb(0 0 0 / 1) 78%);
+  -webkit-mask-image: radial-gradient(120% 80% at 50% 38%, rgb(0 0 0 / 0.35) 0%, rgb(0 0 0 / 1) 78%);
+}
+
+@media (max-width: 48rem) {
+  .backdrop {
+    background-size: calc(var(--pattern-size) * 0.7) calc(var(--pattern-size) * 0.7);
+  }
+}

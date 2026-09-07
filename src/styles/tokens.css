@@ -92,6 +92,10 @@
   --dur-slow: 900ms;
   --dur-reveal: 1100ms;
 
+  /* Hintergrundornament — 0 blendet es komplett aus */
+  --pattern-opacity: 0.075;
+  --pattern-size: 340px;
+
   --z-cursor: 900;
   --z-nav: 700;
   --z-menu: 600;

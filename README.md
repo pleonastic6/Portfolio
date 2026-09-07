@@ -4,6 +4,8 @@ Persönliche Website. **Vite + React + TypeScript**, zweisprachig (DE/EN), dunke
 typografiegetrieben. Keine UI-Bibliothek, kein Router, kein Backend — der Build ist
 eine statische Seite, die auf jeden Webspace passt.
 
+**Live:** https://pleonastic6.github.io/Portfolio/
+
 ## Loslegen
 
 ```bash

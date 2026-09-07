@@ -202,6 +202,19 @@ ol {
   transform: translateY(0);
 }
 
+/* ---- Startsperre fuer den Aufbau ------------------------------------- */
+
+/*
+ * Alles mit data-intro steht still, bis main.tsx die Klasse is-ready setzt —
+ * also bis die Anwendung steht, die Schriften da sind und der Browser ein
+ * erstes Bild gezeichnet hat. Sonst laeuft der Aufbau waehrend der Ladezeit
+ * los und man sieht nur noch sein Ende.
+ */
+html:not(.is-ready) [data-intro],
+html:not(.is-ready) [data-intro] * {
+  animation-play-state: paused;
+}
+
 /* ---- Scroll-Reveal --------------------------------------------------- */
 
 [data-reveal] {
@@ -273,6 +286,10 @@ ol {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    /* Die Startsperre darf hier nicht greifen: mit 0.01ms Dauer wuerde eine
+       pausierte Animation auf ihrem Anfangsbild stehen bleiben — der Hero
+       waere unsichtbar, bis das Startsignal kommt. */
+    animation-play-state: running !important;
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
   }

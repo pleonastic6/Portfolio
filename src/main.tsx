@@ -26,3 +26,31 @@ createRoot(container).render(
     <App />
   </StrictMode>,
 )
+
+/*
+ * Startsignal fuer den Aufbau des Hero.
+ *
+ * Ohne dieses Signal beginnt die Animation in dem Moment, in dem React die
+ * Elemente einsetzt. Der Browser ist dann aber noch mit dem Auswerten des
+ * Skripts und dem Bereitstellen der Schriften beschaeftigt und zeichnet das
+ * erste Bild deutlich spaeter. Zu sehen bekommt man deshalb nicht den Aufbau,
+ * sondern seine zweite Haelfte: der Text steht ploetzlich halb da.
+ *
+ * Die Sperre in base.css haelt die Animationen bis hierher an. Freigegeben
+ * wird, sobald die Schriften stehen und der Browser tatsaechlich ein Bild
+ * gezeichnet hat — dafuer die zwei ineinander verschachtelten
+ * Bildanforderungen. Die 1200 ms sind die Notbremse, falls document.fonts
+ * nie fertig meldet.
+ */
+const notbremse = new Promise<void>((resolve) => {
+  window.setTimeout(resolve, 1200)
+})
+const schriften = document.fonts ? document.fonts.ready.then(() => undefined) : Promise.resolve()
+
+void Promise.race([schriften, notbremse]).then(() => {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.documentElement.classList.add('is-ready')
+    })
+  })
+})

@@ -11,7 +11,8 @@ export function Hero() {
   const { t, pick } = useI18n()
 
   return (
-    <section id="top" className={styles.hero} aria-labelledby="hero-title">
+    // data-intro: der Aufbau startet erst auf das Signal aus main.tsx.
+    <section id="top" className={styles.hero} aria-labelledby="hero-title" data-intro>
       <div className={`shell ${styles.inner}`}>
         <div className={styles.top}>
           <p className={`label ${styles.kicker}`} style={{ '--d': '80ms' } as CSSProperties}>

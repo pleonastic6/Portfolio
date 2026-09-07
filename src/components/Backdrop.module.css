@@ -1,31 +1,42 @@
+/*
+ * Der Rahmen ist bewusst vollstaendig durchsichtig: keine Deckkraft, keine
+ * Maske, kein Mischmodus. Beides zwingt den Browser dazu, alles darin bei
+ * jedem Bild in einen Zwischenspeicher zu zeichnen und erst danach anzuzeigen —
+ * bei einer bildschirmfuellenden Flaeche mit laufender Bewegung ist das der
+ * teuerste Posten ueberhaupt und war der Grund fuer das Ruckeln.
+ * So bekommt jede Ebene darin ihre eigene Flaeche auf der Grafikkarte und wird
+ * nur noch verschoben.
+ */
 .backdrop {
   position: fixed;
   inset: 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  opacity: var(--pattern-opacity);
-  /* Zu den Raendern hin etwas praesenter, hinter dem Text zurueckhaltender */
-  mask-image: radial-gradient(120% 80% at 50% 38%, rgb(0 0 0 / 0.26) 0%, rgb(0 0 0 / 1) 78%);
-  -webkit-mask-image: radial-gradient(120% 80% at 50% 38%, rgb(0 0 0 / 0.26) 0%, rgb(0 0 0 / 1) 78%);
 
   --tile: var(--pattern-size);
 }
 
 /*
- * Die Musterflaeche ist an allen Seiten um eine Kachel groesser als das Bild.
- * Dadurch kann sie sich um genau eine Kachel verschieben und faengt danach
- * wieder von vorn an — die Bewegung laeuft endlos, ohne dass eine Kante
+ * Die Musterflaeche ragt nach rechts und unten um eine Kachel ueber das Bild
+ * hinaus. Genau um diese eine Kachel verschiebt sie sich und faengt danach
+ * wieder von vorn an — die Bewegung laeuft endlos, ohne dass je eine Kante
  * sichtbar wird. Verschoben wird per transform, das uebernimmt die Grafikkarte;
  * background-position waere ein Neuzeichnen der ganzen Flaeche pro Bild.
+ *
+ * Die Grunddeckkraft sitzt hier statt am Rahmen — siehe oben.
  */
 .pattern {
   position: absolute;
-  inset: calc(var(--tile) * -1);
+  top: 0;
+  left: 0;
+  right: calc(var(--tile) * -1);
+  bottom: calc(var(--tile) * -1);
   background-image: url('../assets/pattern-baroque.svg');
   background-size: var(--tile) var(--tile);
   background-position: center top;
-  will-change: transform, opacity;
+  opacity: var(--pattern-opacity);
+  will-change: transform;
   animation:
     patternIn 2600ms var(--ease) both,
     drift 150s linear infinite;
@@ -34,30 +45,41 @@
 /*
  * Warmer Lichtschein, der sehr langsam atmet. Er liegt ueber dem Muster und
  * hebt die Goldpunkte mal an, mal nicht — die Flaeche wirkt dadurch lebendig,
- * ohne dass erkennbar etwas "laeuft".
+ * ohne dass erkennbar etwas "laeuft". Ebenfalls ohne mix-blend-mode: die
+ * Farbwerte sind so gewaehlt, dass das Ergebnis dem weichen Licht entspricht.
  */
 .glow {
   position: absolute;
   inset: -20%;
   background: radial-gradient(
     38% 34% at 62% 28%,
-    rgb(201 170 106 / 0.5) 0%,
-    rgb(201 170 106 / 0.16) 42%,
+    rgb(214 184 122 / 0.07) 0%,
+    rgb(201 170 106 / 0.025) 42%,
     transparent 72%
   );
-  mix-blend-mode: soft-light;
   will-change: transform, opacity;
   animation: breathe 26s var(--ease-inout) infinite alternate;
+}
+
+/*
+ * Zu den Raendern hin ist das Muster praesenter, hinter dem Text nimmt es sich
+ * zurueck. Frueher war das eine Maske am Rahmen. Derselbe Eindruck entsteht mit
+ * einem Schleier in der Hintergrundfarbe — nur wird der einmal gezeichnet und
+ * danach bloss noch angezeigt. Die Deckkraft ist die Gegenzahl der alten
+ * Maskenwerte (0.74 = 1 − 0.26).
+ */
+.veil {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 80% at 50% 38%, rgb(8 8 7 / 0.74) 0%, rgb(8 8 7 / 0) 78%);
 }
 
 @keyframes patternIn {
   from {
     opacity: 0;
-    transform: scale(1.06);
   }
   to {
-    opacity: 1;
-    transform: scale(1);
+    opacity: var(--pattern-opacity);
   }
 }
 
@@ -73,11 +95,11 @@
 
 @keyframes breathe {
   from {
-    opacity: 0.35;
+    opacity: 0.4;
     transform: translate3d(-3%, 2%, 0) scale(1);
   }
   to {
-    opacity: 0.9;
+    opacity: 1;
     transform: translate3d(3%, -2%, 0) scale(1.12);
   }
 }
@@ -98,10 +120,13 @@
   .glow {
     animation: none;
     transform: none;
-    opacity: 1;
+  }
+
+  .pattern {
+    opacity: var(--pattern-opacity);
   }
 
   .glow {
-    opacity: 0.5;
+    opacity: 0.7;
   }
 }

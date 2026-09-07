@@ -217,6 +217,13 @@ html:not(.is-ready) [data-intro] * {
 
 /* ---- Scroll-Reveal --------------------------------------------------- */
 
+/*
+ * Kein will-change: die Angabe haette jedes dieser Elemente dauerhaft auf eine
+ * eigene Flaeche der Grafikkarte gelegt — bei siebzehn Stueck, darunter
+ * bildschirmgrosse Projektzeilen, geht das in hunderte Megabyte Texturspeicher.
+ * Der Browser legt die Flaeche fuer die Dauer des Uebergangs von selbst an und
+ * raeumt sie danach wieder ab; genau das ist hier richtig.
+ */
 [data-reveal] {
   opacity: 0;
   transform: translateY(1.5rem);
@@ -224,7 +231,6 @@ html:not(.is-ready) [data-intro] * {
     opacity var(--dur-reveal) var(--ease),
     transform var(--dur-reveal) var(--ease);
   transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
 }
 
 [data-reveal='visible'] {

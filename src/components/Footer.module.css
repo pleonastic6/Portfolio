@@ -57,3 +57,18 @@
     justify-content: flex-start;
   }
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-5);
+}
+
+.legalLink {
+  color: var(--c-text-faint);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.legalLink:hover {
+  color: var(--c-text);
+}

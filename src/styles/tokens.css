@@ -12,8 +12,8 @@
   --c-bg-inset: #0f0e0c;
 
   --c-text: #f4efe4;
-  --c-text-muted: #918b80;
-  --c-text-faint: #625d54;
+  --c-text-muted: #9b9488;
+  --c-text-faint: #807a70;
   --c-text-invert: #080808;
 
   --c-line: rgb(244 239 228 / 0.11);
@@ -31,12 +31,12 @@
 
   /*
     Technische Auszeichnung (Labels, Metadaten, Navigation, Zahlen).
-    NType82 Mono greift automatisch, sobald die Datei in public/fonts/ liegt und
+    NType82 Mono greift automatisch, sobald die Datei in src/assets/fonts/ liegt und
     src/styles/fonts.css in main.tsx importiert wird — sonst IBM Plex Mono.
   */
   --font-tech: 'Space Mono', 'NType82 Mono', 'NType82', var(--font-mono);
   /* Punktraster — nur für wenige Akzente, als Fließtext unlesbar. */
-  --font-dot: 'Silkscreen', 'Ndot 55', var(--font-tech);
+  --font-dot: 'Ndot 55', 'Silkscreen', var(--font-tech);
 
   /* auf die längste Hero-Zeile abgestimmt — bleibt einzeilig bis 1512px */
   --fs-display: clamp(2.75rem, 7.2vw, 7.35rem);

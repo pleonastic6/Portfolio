@@ -52,3 +52,18 @@ export const navItems: { id: NavId; href: string }[] = [
   { id: 'skills', href: '#skills' },
   { id: 'contact', href: '#contact' },
 ]
+
+/**
+ * Angaben fuer Impressum und Datenschutzerklaerung.
+ *
+ * WICHTIG: Ohne ladungsfaehige Anschrift ist ein Impressum unvollstaendig.
+ * Vor der Veroeffentlichung unter eigener Domain ausfuellen.
+ */
+export const legal = {
+  addressLines: ['Strasse Hausnummer', 'PLZ Amberg', 'Deutschland'],
+  /** Wer die Seite ausliefert - beim Wechsel auf eigenen Webspace anpassen. */
+  host: {
+    name: 'GitHub, Inc.',
+    address: '88 Colin P Kelly Jr St, San Francisco, CA 94107, USA',
+  },
+} as const

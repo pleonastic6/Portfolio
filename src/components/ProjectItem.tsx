@@ -84,7 +84,7 @@ export function ProjectItem({ project, index, total }: ProjectItemProps) {
               <dt className="label">{t.work.stack}</dt>
               <dd className={styles.specValue}>{project.technologies.join(' · ')}</dd>
             </div>
-            {href && (
+            {(href || project.caseStudy) && (
               <div className={styles.spec}>
                 <dt className="sr-only">{t.work.viewProject}</dt>
                 <dd className={styles.links}>
@@ -106,6 +106,14 @@ export function ProjectItem({ project, index, total }: ProjectItemProps) {
                       {t.work.viewCode}
                       <span className={styles.arrow} aria-hidden="true">
                         ↗
+                      </span>
+                    </a>
+                  )}
+                  {project.caseStudy && (
+                    <a className={styles.link} href={`#/projekt/${project.caseStudy}`}>
+                      {t.work.readCase}
+                      <span className={styles.arrow} aria-hidden="true">
+                        →
                       </span>
                     </a>
                   )}

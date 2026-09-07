@@ -12,7 +12,14 @@ export function Footer() {
           © {site.year} {site.name.toUpperCase()} — {pick(site.location).toUpperCase()}
         </p>
 
-        <p className={`meta ${styles.cell} ${styles.center}`}>{t.footer.built.toUpperCase()}</p>
+        <nav className={`meta ${styles.cell} ${styles.center}`} aria-label={t.footer.imprint}>
+          <a className={styles.legalLink} href="#/impressum">
+            {t.footer.imprint.toUpperCase()}
+          </a>
+          <a className={styles.legalLink} href="#/datenschutz">
+            {t.footer.privacy.toUpperCase()}
+          </a>
+        </nav>
 
         <div className={`meta ${styles.cell} ${styles.end}`}>
           <span>{t.footer.colophon}</span>

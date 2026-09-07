@@ -1,7 +1,5 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App'
-
 // Schriften liegen im Projekt (npm), nicht auf einem fremden CDN:
 // keine externen Requests, DSGVO-unkritisch, offline-fest.
 import '@fontsource/instrument-serif/latin-400.css'
@@ -14,6 +12,11 @@ import '@fontsource/silkscreen/latin-400.css'
 
 import './styles/tokens.css'
 import './styles/base.css'
+
+// App bewusst ZULETZT importieren: ES-Module werden in Quellreihenfolge
+// ausgewertet, dadurch landen die CSS-Module der Komponenten im Stylesheet
+// hinter den globalen Styles und koennen .label / .meta ueberschreiben.
+import App from './App'
 
 const container = document.getElementById('root')
 if (!container) throw new Error('#root nicht gefunden — index.html prüfen.')

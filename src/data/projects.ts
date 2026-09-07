@@ -1,4 +1,6 @@
 import type { Localized } from './site'
+import nycBuildings from '../assets/projects/nyc-buildings.jpg'
+import portfolioShot from '../assets/projects/portfolio-2026.jpg'
 
 /**
  * Projektinhalte.
@@ -22,6 +24,8 @@ export type Project = {
   imageAlt?: Localized
   url?: string
   github?: string
+  /** Slug einer ausfuehrlichen Beschreibung in caseStudies.ts */
+  caseStudy?: string
 }
 
 export const projects: Project[] = [
@@ -38,8 +42,15 @@ export const projects: Project[] = [
       en: "New York's building stock as a navigable 3D scene in the browser. Raw geodata is cleaned, extruded and rendered so that hundreds of thousands of volumes stay fluid to move through.",
     },
     year: '2026',
-    technologies: ['Three.js', 'TypeScript', 'GeoJSON', 'Vite'],
+    technologies: ['Three.js', 'JavaScript', 'GeoJSON', 'NYC Open Data'],
+    image: nycBuildings,
+    imageAlt: {
+      de: 'Manhattan als 3D-Szene: 45.125 Gebäude, nach Dachhöhe von Violett bis Magenta eingefärbt, darunter das Straßennetz als feines Liniengeflecht.',
+      en: 'Manhattan as a 3D scene: 45,125 buildings coloured from violet to magenta by roof height, with the street network drawn as fine lines below.',
+    },
+    url: 'https://pleonastic6.github.io/Informationsvisualisierung_NYC_buildings/',
     github: 'https://github.com/pleonastic6/Informationsvisualisierung_NYC_buildings',
+    caseStudy: 'nyc-buildings-3d',
   },
   {
     slug: 'presentation-system',
@@ -54,15 +65,21 @@ export const projects: Project[] = [
     technologies: ['LaTeX', 'Beamer', 'Type Design', 'Design Tokens'],
   },
   {
-    slug: 'project-three',
-    title: 'Project Three',
-    discipline: { de: 'Disziplin · Disziplin', en: 'Discipline · Discipline' },
-    role: { de: 'Deine Rolle', en: 'Your role' },
+    slug: 'portfolio-2026',
+    title: 'Portfolio 2026',
+    discipline: { de: 'Design-System · Frontend', en: 'Design System · Frontend' },
+    role: { de: 'Design, Umsetzung, Inhalte', en: 'Design, build, content' },
     description: {
-      de: 'Platzhalter. Zwei bis drei Sätze reichen: welches Problem, welcher Ansatz, welches Ergebnis. Konkret schlägt vollständig.',
-      en: 'Placeholder. Two or three sentences are enough: the problem, the approach, the result. Specific beats complete.',
+      de: 'Diese Seite. Dunkles, typografiegetriebenes Layout, zweisprachig, ohne UI-Bibliothek und ohne Backend. Farben, Typografie, Raster und Motion liegen als Design-Tokens an einer Stelle, jede Komponente bringt ihr eigenes CSS-Modul mit. Der Build ist statisch und läuft auf GitHub Pages wie auf klassischem Webspace.',
+      en: 'This site. A dark, typography-led layout, bilingual, without a UI library and without a backend. Colour, type, grid and motion live as design tokens in one place, every component brings its own CSS module. The build is static and runs on GitHub Pages as well as classic web hosting.',
     },
-    year: '2025',
-    technologies: ['Tech', 'Tech', 'Tech'],
+    year: '2026',
+    technologies: ['React', 'TypeScript', 'Vite', 'CSS Modules'],
+    image: portfolioShot,
+    imageAlt: {
+      de: 'Die Startseite dieses Portfolios: dunkler Grund, große Serifenschlagzeile, technische Beschriftungen in Monospace.',
+      en: 'The homepage of this portfolio: dark ground, large serif headline, technical labels set in monospace.',
+    },
+    github: 'https://github.com/pleonastic6/Portfolio',
   },
 ]

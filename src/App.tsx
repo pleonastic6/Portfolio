@@ -10,16 +10,43 @@ import { Work } from './sections/Work'
 import { About } from './sections/About'
 import { Skills } from './sections/Skills'
 import { Contact } from './sections/Contact'
+import { Legal } from './pages/Legal'
+import { CaseStudy } from './pages/CaseStudy'
+import { useHashRoute } from './hooks/useHashRoute'
 
 function Page() {
   const { t } = useI18n()
   const [ready, setReady] = useState(false)
+  const route = useHashRoute()
 
   // ruhiges Aufblenden nach dem ersten Frame statt harter Sprung
   useEffect(() => {
     const frame = requestAnimationFrame(() => setReady(true))
     return () => cancelAnimationFrame(frame)
   }, [])
+
+  // Rueckkehr von einer Rechtsseite: zur Sprungmarke, sonst nach oben
+  useEffect(() => {
+    if (route.name !== 'home') return
+    const id = window.location.hash.slice(1)
+    const target = id ? document.getElementById(id) : null
+    const frame = requestAnimationFrame(() => {
+      if (target) target.scrollIntoView()
+      else window.scrollTo(0, 0)
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [route])
+
+  if (route.name !== 'home') {
+    return (
+      <div className="page" data-ready={ready}>
+        {site.customCursor && <Cursor />}
+        <Frame />
+        {route.name === 'case' ? <CaseStudy slug={route.slug} /> : <Legal kind={route.name} />}
+        <Footer />
+      </div>
+    )
+  }
 
   return (
     <div className="page" data-ready={ready}>

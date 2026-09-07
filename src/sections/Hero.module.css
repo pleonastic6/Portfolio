@@ -38,9 +38,9 @@
   transform: rotate(0.45deg);
 }
 
-/* Punktraster-Akzent, sobald Ndot vorliegt */
+/* Der Punktraster bleibt den Ziffern vorbehalten (Sektionsnummern,
+   Projektzaehler) - als Wortmarke neben der Serifenschrift wird er unruhig. */
 .kicker {
-  font-family: var(--font-dot);
   color: var(--c-accent);
   transform: rotate(-0.35deg);
 }

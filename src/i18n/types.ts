@@ -1,3 +1,10 @@
+
+/** Ein Abschnitt auf den Rechtsseiten. */
+export type LegalBlock = {
+  heading: string
+  body: string[]
+}
+
 /**
  * Struktur aller Oberflaechentexte.
  * en.ts und de.ts werden gegen diesen Typ geprueft — fehlende oder
@@ -37,6 +44,7 @@ export type Translation = {
     counter: string
     viewProject: string
     viewCode: string
+    readCase: string
     role: string
     stack: string
     year: string
@@ -74,6 +82,18 @@ export type Translation = {
     copy: string
     copied: string
     responseTime: string
+  }
+  legal: {
+    back: string
+    updated: string
+    imprintTitle: string
+    privacyTitle: string
+    responsible: string
+    contact: string
+    address: string
+    hosting: string
+    imprint: LegalBlock[]
+    privacy: LegalBlock[]
   }
   footer: {
     built: string

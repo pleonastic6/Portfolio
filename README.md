@@ -1,8 +1,6 @@
-# Portfolio — Artur Renner
+# ADDD — Developer Collective
 
-Persönliche Website. **Vite + React + TypeScript**, zweisprachig (DE/EN), dunkel,
-typografiegetrieben. Keine UI-Bibliothek, kein Router, kein Backend — der Build ist
-eine statische Seite, die auf jeden Webspace passt.
+Kollektiv-Website für **ADDD** — Artur, David, David und Dominik. **Vite + React + TypeScript**, zweisprachig (DE/EN), dunkel, typografiegetrieben. Keine UI-Bibliothek, kein Router, kein Backend — der Build ist eine statische Seite, die auf jeden Webspace passt.
 
 **Live:** https://pleonastic6.github.io/Portfolio/
 
@@ -51,7 +49,7 @@ Global sind nur `tokens.css` und `base.css`.
 | Alle Oberflächentexte | `src/i18n/de.ts` + `src/i18n/en.ts` |
 | Projekte (inkl. DE/EN-Beschreibung) | `src/data/projects.ts` |
 | Skills und Gruppen | `src/data/skills.ts` |
-| Name, E-Mail, Domain, Social-Links, Status | `src/data/site.ts` |
+| Name, Kontakt, Domain, Social-Links, Status | `src/data/site.ts` |
 
 Neue Textfelder zuerst in `src/i18n/types.ts` ergänzen — danach meldet TypeScript,
 welche Sprache noch fehlt. Es gibt keine hartcodierten Texte in den Komponenten.
@@ -65,7 +63,7 @@ gestalteten Platzhalter.
 Die visuelle Handschrift steckt fast vollständig in `src/styles/tokens.css`:
 Fast-Schwarz `#080807`, Text `#F4EFE4`, gedämpftes Grau `#918B80`, Linien mit
 6–11 % Offwhite, ein warmer Akzent (`--c-accent`, sparsam für Status, Fokus und Hover).
-Schrift: **Instrument Serif** für Headlines, **Newsreader** für längere Texte,
+Schrift: **Newsreader** für Headlines und längere Texte,
 **Space Mono** für Labels, Zahlen und Metadaten. Punktraster-Akzente laufen über
 **Silkscreen**. Die Mischung ist bewusster: Claude-artige Editorial-Serife für
 Charakter, Nothing-artige Mono/Dot-Details für Technik — ohne proprietären Font-Rip.
@@ -130,7 +128,7 @@ Am schnellsten geht es über eine Action (`actions/deploy-pages`) mit
 ### Vor dem ersten Deployment anpassen
 
 - `index.html`: `canonical`, `og:url`, `og:image` auf die echte Domain
-- `src/data/site.ts`: `url`, LinkedIn-URL in `socials`
+- `src/data/site.ts`: `url`, gemeinsame Kontaktadresse, Social-Links
 - `public/og-image.png` (1200×630) für die Social-Vorschau anlegen
 - **Impressum und Datenschutzerklärung** — bei einer persönlichen Seite mit
   beruflichem Bezug in Deutschland in der Regel Pflicht. Die Texte dafür liegen

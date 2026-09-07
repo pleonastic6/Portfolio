@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 32" role="img" aria-labelledby="title desc">
+  <title id="title">ADDD mark</title>
+  <desc id="desc">A restrained technical wordmark for the ADDD developer collective.</desc>
+  <rect width="96" height="32" rx="0" fill="#080807"/>
+  <g fill="none" stroke="#F4EFE4" stroke-width="2.15" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M8 25 15 7 22 25"/>
+    <path d="M11.6 18.5h6.8"/>
+    <path d="M31 25V7h7.5c5 0 8.5 3.55 8.5 9s-3.5 9-8.5 9H31Z"/>
+    <path d="M54 25V7h7.5c5 0 8.5 3.55 8.5 9s-3.5 9-8.5 9H54Z"/>
+    <path d="M77 25V7h7.5c5 0 8.5 3.55 8.5 9s-3.5 9-8.5 9H77Z"/>
+  </g>
+  <g fill="#C9AA6A">
+    <rect x="7" y="5" width="2" height="2"/>
+    <rect x="30" y="5" width="2" height="2"/>
+    <rect x="53" y="5" width="2" height="2"/>
+    <rect x="76" y="5" width="2" height="2"/>
+  </g>
+  <rect x="0.5" y="0.5" width="95" height="31" fill="none" stroke="#F4EFE4" stroke-opacity="0.11"/>
+</svg>

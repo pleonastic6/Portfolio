@@ -25,7 +25,7 @@
   --c-accent-dim: rgb(201 170 106 / 0.18);
 
   /* ---- Typografie --------------------------------------------------- */
-  --font-sans: 'Instrument Serif', 'Newsreader Variable', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
   --font-body: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
   --font-mono: 'Space Mono', 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 

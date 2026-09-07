@@ -38,6 +38,7 @@ export function Navigation() {
       <header className={styles.nav} data-scrolled={scrolled} data-open={menuOpen}>
         <div className={`shell ${styles.inner}`}>
           <a className={styles.brand} href="#top" aria-label={site.name}>
+            <img className={styles.logo} src="./logo-addd-mark.svg" alt="" aria-hidden="true" />
             <span className={styles.brandName}>{site.name}</span>
             <span className={styles.brandMark} aria-hidden="true">
               {site.initials}

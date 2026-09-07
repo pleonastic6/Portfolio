@@ -4,7 +4,7 @@ Context for AI coding agents working in this repository, especially Hermes and C
 
 ## Project
 
-Personal portfolio website for Artur Renner.
+Collective portfolio/site for ADDD — Artur, David, David and Dominik.
 
 - Stack: Vite + React 18 + TypeScript
 - Styling: CSS Modules plus global `src/styles/tokens.css` and `src/styles/base.css`
@@ -12,6 +12,7 @@ Personal portfolio website for Artur Renner.
 - Backend: none; static build only
 - Deployment: GitHub Pages via `.github/workflows/deploy.yml`
 - Live URL: https://pleonastic6.github.io/Portfolio/
+- Current positioning: young developer collective; focus still open, but centered on careful software work.
 
 ## Commands
 
@@ -53,11 +54,11 @@ npm run build
 - If adding a new translated field, update `src/i18n/types.ts` first, then satisfy TypeScript in both languages.
 - Avoid hardcoded UI copy inside components unless it is genuinely non-user-facing.
 - Project images should live in `src/assets/` when imported by components, or `public/` when referenced by URL.
-- Do not invent personal/legal data. Leave placeholders or ask Artur.
+- Do not invent collective contact/legal data. Leave placeholders or ask Artur / the collective.
 
 ## Design direction
 
-The site should feel editorial, dark, technical, and slightly organic:
+The ADDD site should feel editorial, dark, technical, and slightly organic:
 
 - Serif/editorial feel: Instrument Serif / Newsreader
 - Technical mono/dot accents: Space Mono / Silkscreen / optional Nothing-like fonts

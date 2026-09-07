@@ -42,6 +42,9 @@
 /* ---- Marke -------------------------------------------------------- */
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   font-family: var(--font-tech);
   font-size: var(--fs-label);
   letter-spacing: var(--ls-label);
@@ -50,7 +53,19 @@
   white-space: nowrap;
 }
 
+.logo {
+  display: block;
+  width: 4.6rem;
+  height: auto;
+  opacity: 0.94;
+  image-rendering: auto;
+}
+
 .brandMark {
+  display: none;
+}
+
+.brandName {
   display: none;
 }
 
@@ -141,8 +156,12 @@
     display: none;
   }
 
+  .logo {
+    width: 4.2rem;
+  }
+
   .brandMark {
-    display: inline;
+    display: none;
   }
 }
 

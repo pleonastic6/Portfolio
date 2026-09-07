@@ -9,7 +9,7 @@ export const site = {
   name: 'Artur Renner',
   initials: 'AR',
   /** Vor dem Deployment eintragen (auch in index.html: canonical + og:url). */
-  url: 'https://example.com',
+  url: 'https://pleonastic6.github.io/Portfolio/',
   email: 'artur.renner6@gmail.com',
   location: { de: 'Deutschland', en: 'Germany' } satisfies Localized,
   /** technisches Detail im Hero — Koordinaten von Amberg */

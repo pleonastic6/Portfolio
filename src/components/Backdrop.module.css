@@ -8,8 +8,8 @@
   background-position: center top;
   opacity: var(--pattern-opacity);
   /* Zu den Raendern hin etwas praesenter, hinter dem Text zurueckhaltender */
-  mask-image: radial-gradient(120% 80% at 50% 38%, rgb(0 0 0 / 0.35) 0%, rgb(0 0 0 / 1) 78%);
-  -webkit-mask-image: radial-gradient(120% 80% at 50% 38%, rgb(0 0 0 / 0.35) 0%, rgb(0 0 0 / 1) 78%);
+  mask-image: radial-gradient(120% 80% at 50% 38%, rgb(0 0 0 / 0.26) 0%, rgb(0 0 0 / 1) 78%);
+  -webkit-mask-image: radial-gradient(120% 80% at 50% 38%, rgb(0 0 0 / 0.26) 0%, rgb(0 0 0 / 1) 78%);
 }
 
 @media (max-width: 48rem) {

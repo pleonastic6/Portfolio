@@ -38,6 +38,12 @@ const ANKUNFT = 1500
 const STREUUNG = 900
 /** Unterhalb dieser Breite blendet das Stylesheet die Flaeche aus. */
 const AB_BREITE = '(min-width: 64.0625rem)'
+/** Wirkradius des Zeigers, im Koordinatenraum der Marke (Breite 141). */
+const RADIUS = 24
+/** Wie weit ein Punkt direkt unter dem Zeiger hoechstens ausweicht. */
+const KRAFT = 13
+/** Je kleiner, desto traeger weichen die Punkte aus und kehren zurueck. */
+const TRAEGHEIT = 0.14
 
 type Punkt = {
   /** Zielposition, im Koordinatenraum der Marke */
@@ -52,6 +58,9 @@ type Punkt = {
   takt: number
   weite: number
   gold: boolean
+  /** Aktuelles Ausweichen vor dem Zeiger; laeuft weich auf null zurueck. */
+  ox: number
+  oy: number
 }
 
 function punkteSammeln(): Punkt[] {
@@ -87,6 +96,8 @@ function punkteSammeln(): Punkt[] {
           takt: Math.random() * Math.PI * 2,
           weite: 0.25 + Math.random() * 0.5,
           gold: imA,
+          ox: 0,
+          oy: 0,
         })
       }
     }
@@ -143,9 +154,16 @@ export function ParticleMark({ className }: { className?: string }) {
         versatzY = (hoehe - HOEHE * skala) / 2
       }
 
+      /** Zeigerposition im Koordinatenraum der Marke; ausserhalb = weit weg. */
+      let zeigerX = -9999
+      let zeigerY = -9999
+      /** Bleibt wahr, solange noch ein Punkt aus seiner Ruhelage verschoben ist. */
+      let inBewegung = false
+
       const zeichnen = (verstrichen: number) => {
         ctx.clearRect(0, 0, breite, hoehe)
         const gr = Math.max(1.2, skala * 0.5)
+        inBewegung = false
 
         for (const p of punkte) {
           const t = Math.min(1, Math.max(0, (verstrichen - p.ab) / ANKUNFT))
@@ -160,6 +178,36 @@ export function ParticleMark({ className }: { className?: string }) {
             const s = verstrichen / 1000
             x += Math.sin(s * 0.55 + p.takt) * p.weite
             y += Math.cos(s * 0.42 + p.takt * 1.7) * p.weite * 0.7
+          }
+
+          /*
+           * Ausweichen vor dem Zeiger. Berechnet wird ein Zielversatz, der mit
+           * dem Abstand abnimmt; der tatsaechliche Versatz laeuft ihm nur
+           * traege hinterher. Dadurch weichen die Punkte weich aus und finden
+           * ebenso weich zurueck, statt zu springen.
+           */
+          let zielX = 0
+          let zielY = 0
+          if (t === 1) {
+            const dx = p.zx - zeigerX
+            const dy = p.zy - zeigerY
+            const quadrat = dx * dx + dy * dy
+            if (quadrat < RADIUS * RADIUS) {
+              const abstand = Math.sqrt(quadrat) || 0.0001
+              const staerke = (1 - abstand / RADIUS) ** 2 * KRAFT
+              zielX = (dx / abstand) * staerke
+              zielY = (dy / abstand) * staerke
+            }
+          }
+          p.ox += (zielX - p.ox) * TRAEGHEIT
+          p.oy += (zielY - p.oy) * TRAEGHEIT
+          if (p.ox > 0.02 || p.ox < -0.02 || p.oy > 0.02 || p.oy < -0.02) {
+            inBewegung = true
+            x += p.ox
+            y += p.oy
+          } else {
+            p.ox = 0
+            p.oy = 0
           }
 
           ctx.globalAlpha = e * (p.gold ? 1 : 0.86)
@@ -189,14 +237,44 @@ export function ParticleMark({ className }: { className?: string }) {
       let laeuft = false
       let letztes = 0
 
+      /*
+       * Zeigerposition, zunaechst in Fensterkoordinaten. Das Canvas selbst
+       * nimmt keine Ereignisse an — es liegt hinter dem Text und ist fuer
+       * Klicks durchlaessig —, deshalb hoert das Fenster zu. Umgerechnet wird
+       * erst im Bild, hoechstens einmal pro Bild: eine Umrechnung im
+       * Ereignis waere eine Layout-Abfrage bei jeder Mausbewegung.
+       */
+      let klientX = -99999
+      let klientY = -99999
+
+      const beiZeiger = (e: PointerEvent) => {
+        klientX = e.clientX
+        klientY = e.clientY
+      }
+      const zeigerWeg = () => {
+        klientX = -99999
+        klientY = -99999
+      }
+
       const schritt = (jetzt: number) => {
         if (start === 0) start = jetzt
         const verstrichen = jetzt - start
 
-        // Waehrend des Anflugs jedes Bild, danach nur noch dreissig pro
-        // Sekunde: das Schwingen betraegt ein bis zwei Pixel, dort faellt die
-        // halbe Bildrate nicht auf — der Rechenaufwand halbiert sich aber.
-        if (verstrichen <= ANKUNFT + STREUUNG || jetzt - letztes >= 32) {
+        if (klientX > -99998) {
+          const box = canvas.getBoundingClientRect()
+          zeigerX = (klientX - box.left) / skala
+          zeigerY = (klientY - box.top - versatzY) / skala
+        } else {
+          zeigerX = -9999
+          zeigerY = -9999
+        }
+
+        // Volle Bildrate waehrend des Anflugs und solange Punkte dem Zeiger
+        // ausweichen; im Ruhezustand reichen dreissig Bilder pro Sekunde. Das
+        // Schwingen betraegt dort ein bis zwei Pixel, die halbe Bildrate faellt
+        // nicht auf — der Rechenaufwand halbiert sich aber.
+        const fluessig = verstrichen <= ANKUNFT + STREUUNG || inBewegung
+        if (fluessig || jetzt - letztes >= 32) {
           letztes = jetzt
           zeichnen(verstrichen)
         }
@@ -231,11 +309,20 @@ export function ParticleMark({ className }: { className?: string }) {
       document.addEventListener('visibilitychange', beiSichtbarkeit)
       window.addEventListener('resize', beiGroesse)
 
+      // Nur bei echter Maus: auf Touch gibt es keinen Zeiger zum Ausweichen.
+      const mitZeiger = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+      if (mitZeiger) {
+        window.addEventListener('pointermove', beiZeiger, { passive: true })
+        document.addEventListener('pointerleave', zeigerWeg)
+      }
+
       abraeumen = () => {
         anhalten()
         beobachter.disconnect()
         document.removeEventListener('visibilitychange', beiSichtbarkeit)
         window.removeEventListener('resize', beiGroesse)
+        window.removeEventListener('pointermove', beiZeiger)
+        document.removeEventListener('pointerleave', zeigerWeg)
       }
     }
 

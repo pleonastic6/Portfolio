@@ -47,7 +47,30 @@ const notbremse = new Promise<void>((resolve) => {
 })
 const schriften = document.fonts ? document.fonts.ready.then(() => undefined) : Promise.resolve()
 
-void Promise.race([schriften, notbremse]).then(() => {
+/*
+ * Der Startsequenz in index.html melden, dass React steht — erst danach zaehlt
+ * sie zu Ende und raeumt sich weg. Die Bildanforderung sorgt dafuer, dass die
+ * Meldung nach dem ersten gezeichneten Bild rausgeht, nicht davor.
+ */
+requestAnimationFrame(() => {
+  window.dispatchEvent(new Event('addd:mounted'))
+})
+
+/*
+ * Und umgekehrt: der Hero wartet, bis die Sequenz weg ist. Ohne das liefe sein
+ * Aufbau hinter der noch sichtbaren Flaeche ab.
+ * Die zweite Notbremse ist grosszuegiger als die erste — falls das Skript in
+ * index.html gar nicht laeuft, startet der Hero trotzdem.
+ */
+const sequenz = window.__addd?.fertig ?? Promise.resolve()
+const notbremseLang = new Promise<void>((resolve) => {
+  window.setTimeout(resolve, 6500)
+})
+
+void Promise.race([
+  Promise.all([Promise.race([schriften, notbremse]), sequenz]).then(() => undefined),
+  notbremseLang,
+]).then(() => {
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       document.documentElement.classList.add('is-ready')

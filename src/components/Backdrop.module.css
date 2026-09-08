@@ -18,28 +18,23 @@
 }
 
 /*
- * Die Musterflaeche ragt nach rechts und unten um eine Kachel ueber das Bild
- * hinaus. Genau um diese eine Kachel verschiebt sie sich und faengt danach
- * wieder von vorn an — die Bewegung laeuft endlos, ohne dass je eine Kante
- * sichtbar wird. Verschoben wird per transform, das uebernimmt die Grafikkarte;
- * background-position waere ein Neuzeichnen der ganzen Flaeche pro Bild.
+ * Die Musterflaeche steht still. Sie hat frueher unmerklich langsam gedriftet;
+ * das sah gut aus, war aber die einzige dauerhaft laufende Animation auf einer
+ * bildschirmfuellenden, festsitzenden Flaeche — die Grafikkarte musste den
+ * ganzen Hintergrund in jedem einzelnen Bild neu zusammensetzen, solange die
+ * Seite offen war. Geblieben ist das einmalige Aufblenden beim Laden.
  *
+ * Kein will-change mehr: ohne laufende Animation gibt es nichts vorzubereiten.
  * Die Grunddeckkraft sitzt hier statt am Rahmen — siehe oben.
  */
 .pattern {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: calc(var(--tile) * -1);
-  bottom: calc(var(--tile) * -1);
+  inset: 0;
   background-image: url('../assets/pattern-baroque.svg');
   background-size: var(--tile) var(--tile);
   background-position: center top;
   opacity: var(--pattern-opacity);
-  will-change: transform;
-  animation:
-    patternIn 2600ms var(--ease) both,
-    drift 150s linear infinite;
+  animation: patternIn 2600ms var(--ease) both;
 }
 
 /*
@@ -82,16 +77,6 @@
   }
 }
 
-@keyframes drift {
-  from {
-    /* translate3d statt translate: erzwingt eine eigene Ebene auf der GPU */
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(calc(var(--tile) * -1), calc(var(--tile) * -1), 0);
-  }
-}
-
 @media (max-width: 48rem) {
   .backdrop {
     --tile: calc(var(--pattern-size) * 0.7);
@@ -99,14 +84,13 @@
 }
 
 /*
- * Ohne Bewegung steht die Flaeche einfach still. Die globale Regel in base.css
- * kuerzt Animationen auf 0.01ms — eine Endlosschleife wuerde dadurch auf ihrem
- * Endzustand einrasten, deshalb hier ausdruecklich abschalten.
+ * Ohne Bewegungswunsch faellt auch das Aufblenden weg — die Flaeche ist von
+ * Anfang an einfach da. Ausdruecklich, weil die globale Regel in base.css
+ * Animationen nur auf 0.01ms kuerzt und die Startsperre sie bis dahin anhaelt.
  */
 @media (prefers-reduced-motion: reduce) {
   .pattern {
     animation: none;
-    transform: none;
     opacity: var(--pattern-opacity);
   }
 }

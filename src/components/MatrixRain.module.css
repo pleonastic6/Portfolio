@@ -10,7 +10,12 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.3;
+  /*
+   * Nicht hoeher: bei dreissig Prozent kann ein helles Zeichen direkt hinter
+   * einer blassen Textzeile stehen, und deren Kontrast faellt dort unter den
+   * Grenzwert. Nachgerechnet, nicht geschaetzt.
+   */
+  opacity: 0.22;
 }
 
 /*
@@ -28,10 +33,17 @@
   background: linear-gradient(180deg, rgb(5 8 7 / 0.72) 0%, rgb(5 8 7 / 0) 42%);
 }
 
-/* Auf schmalen Bildschirmen laeuft gar nichts — siehe MatrixRain.tsx. */
+/*
+ * Auf schmalen Bildschirmen faellt der Regen hinter jede Textzeile statt in
+ * freie Flaechen. Deshalb deutlich blasser — und der Schleier oben reicht
+ * weiter herunter, weil dort Schlagzeile und Einleitung stehen.
+ */
 @media (max-width: 48rem) {
-  .rain,
+  .rain {
+    opacity: 0.17;
+  }
+
   .veil {
-    display: none;
+    background: linear-gradient(180deg, rgb(5 8 7 / 0.78) 0%, rgb(5 8 7 / 0.35) 46%, rgb(5 8 7 / 0) 72%);
   }
 }

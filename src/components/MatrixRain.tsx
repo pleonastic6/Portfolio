@@ -13,6 +13,11 @@ import styles from './MatrixRain.module.css'
  *    erledigt der Browser beim Hochziehen.
  * 3. Nichts laeuft, solange der Tab im Hintergrund ist.
  *
+ * Auf Telefonen gelten eigene Werte: weiter auseinanderstehende Spalten und
+ * ein langsamerer Takt. Die Flaeche ist dort nur ein Viertel so gross wie auf
+ * einem Desktopfenster — Rechenlast ist also nicht das Problem, sondern dass
+ * der Regen hinter dem Text liegt statt daneben.
+ *
  * Die Spur entsteht nicht dadurch, dass alte Zeichen gemerkt werden, sondern
  * indem pro Bild ein fast durchsichtiges Schwarz ueber die ganze Flaeche
  * gelegt wird: was laenger liegt, verblasst von selbst.
@@ -33,14 +38,28 @@ const TAKT = 90
  * Nebenbei werden die Zeichen dadurch groesser und besser lesbar.
  */
 const SKALIERUNG = 0.6
+
 /**
- * Unterhalb dieser Breite entfaellt der Regen ganz. Auf einem Telefon faellt
- * er hinter jede Textzeile statt in freie Flaechen, war deshalb schon auf
- * sechzehn Prozent Deckkraft heruntergesetzt — und kostete trotzdem voll.
- * Genau die Geraete mit der wenigsten Rechenleistung haetten am meisten
- * bezahlt und am wenigsten gesehen.
+ * Unterhalb dieser Breite gelten eigene Werte. Auf einem Telefon faellt der
+ * Regen hinter jede Textzeile statt in freie Flaechen — er muss also duenner
+ * und ruhiger sein. Die Rechenlast ist dort dagegen kein Argument: die Flaeche
+ * betraegt nur rund ein Viertel der eines Desktopfensters.
  */
-const AB_BREITE = '(min-width: 48.0625rem)'
+const SCHMAL = '(max-width: 48rem)'
+/** Weiter auseinander: weniger Spalten, ruhigeres Bild. */
+const SPALTE_SCHMAL = 20
+/** Langsamer — spart Akku und draengt sich weniger auf. */
+const TAKT_SCHMAL = 120
+
+/**
+ * Sehr knapp ausgestattete Geraete bekommen gar nichts. navigator.deviceMemory
+ * meldet den Arbeitsspeicher in Gigabyte; wo die Angabe fehlt, wird nicht
+ * geraten, sondern gezeichnet.
+ */
+function zuSchwach() {
+  const speicher = (navigator as Navigator & { deviceMemory?: number }).deviceMemory
+  return typeof speicher === 'number' && speicher <= 1
+}
 
 type Spalte = {
   /** Zeile, in der der Kopf gerade steht */
@@ -58,9 +77,12 @@ export function MatrixRain() {
     const ctx = canvas.getContext('2d', { alpha: true })
     if (!ctx) return
 
-    if (!window.matchMedia(AB_BREITE).matches) return
+    if (zuSchwach()) return
 
     const ruhig = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const schmal = window.matchMedia(SCHMAL).matches
+    const spalte = schmal ? SPALTE_SCHMAL : SPALTE
+    const takt = schmal ? TAKT_SCHMAL : TAKT
 
     let breite = 0
     let hoehe = 0
@@ -71,13 +93,13 @@ export function MatrixRain() {
       hoehe = Math.floor(window.innerHeight * SKALIERUNG)
       canvas.width = breite
       canvas.height = hoehe
-      ctx.font = `${SPALTE}px 'Space Mono', ui-monospace, monospace`
+      ctx.font = `${spalte}px 'Space Mono', ui-monospace, monospace`
       ctx.textBaseline = 'top'
 
-      const anzahl = Math.ceil(breite / SPALTE)
+      const anzahl = Math.ceil(breite / spalte)
       spalten = Array.from({ length: anzahl }, () => ({
         // Verteilt starten, sonst faellt beim Laden eine geschlossene Wand.
-        y: Math.random() * (hoehe / SPALTE) * -1,
+        y: Math.random() * (hoehe / spalte) * -1,
         tempo: 0.45 + Math.random() * 0.85,
       }))
     }
@@ -89,11 +111,11 @@ export function MatrixRain() {
       ctx.clearRect(0, 0, breite, hoehe)
       ctx.fillStyle = '#7fe3a6'
       for (let i = 0; i < spalten.length; i += 1) {
-        const zeilen = Math.floor(hoehe / SPALTE)
+        const zeilen = Math.floor(hoehe / spalte)
         for (let z = 0; z < zeilen; z += 1) {
           if (Math.random() > 0.08) continue
           ctx.globalAlpha = 0.25 + Math.random() * 0.35
-          ctx.fillText(zufallszeichen(), i * SPALTE, z * SPALTE)
+          ctx.fillText(zufallszeichen(), i * spalte, z * spalte)
         }
       }
       ctx.globalAlpha = 1
@@ -117,7 +139,7 @@ export function MatrixRain() {
 
     const schritt = (jetzt: number) => {
       bild = requestAnimationFrame(schritt)
-      if (jetzt - letztes < TAKT) return
+      if (jetzt - letztes < takt) return
       letztes = jetzt
 
       // Die ganze Flaeche leicht abdunkeln: das laesst aeltere Zeichen
@@ -125,26 +147,26 @@ export function MatrixRain() {
       ctx.fillStyle = 'rgba(5, 8, 7, 0.18)'
       ctx.fillRect(0, 0, breite, hoehe)
 
-      const zeilen = hoehe / SPALTE
+      const zeilen = hoehe / spalte
       for (let i = 0; i < spalten.length; i += 1) {
         const s = spalten[i]
         s.y += s.tempo
 
         if (s.y < 0) continue
 
-        const y = Math.floor(s.y) * SPALTE
+        const y = Math.floor(s.y) * spalte
         // Der Kopf leuchtet hell, direkt darunter liegt ein mittlerer Ton —
         // zusammen ergibt das den Eindruck eines fallenden Strahls.
         ctx.fillStyle = '#d9ffe7'
-        ctx.fillText(zufallszeichen(), i * SPALTE, y)
+        ctx.fillText(zufallszeichen(), i * spalte, y)
         if (s.y > 1) {
           ctx.fillStyle = '#5fbd87'
-          ctx.fillText(zufallszeichen(), i * SPALTE, y - SPALTE)
+          ctx.fillText(zufallszeichen(), i * spalte, y - spalte)
         }
 
         // Am unteren Rand mit zufaelliger Verzoegerung neu oben ansetzen,
         // damit die Spalten nicht im Gleichschritt laufen.
-        if (s.y * SPALTE > hoehe && Math.random() > 0.975) {
+        if (s.y * spalte > hoehe && Math.random() > 0.975) {
           s.y = -Math.random() * zeilen * 0.5
           s.tempo = 0.45 + Math.random() * 0.85
         }

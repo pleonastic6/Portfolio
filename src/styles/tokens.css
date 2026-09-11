@@ -209,7 +209,10 @@
 
   --c-text: #c8ffd9;
   --c-text-muted: #7fe3a6;
-  --c-text-faint: #63b98a;
+  /* Etwas heller als urspruenglich: der Zeichenregen liegt dahinter, und die
+     blasseste Farbe muss auch dann ueber 4.5:1 bleiben, wenn zufaellig ein
+     helles Zeichen direkt hinter der Zeile steht. */
+  --c-text-faint: #72c797;
   --c-text-invert: #050807;
 
   --c-line: rgb(126 227 166 / 0.2);

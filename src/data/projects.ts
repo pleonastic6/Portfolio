@@ -5,6 +5,18 @@ import nyc1600 from '../assets/projects/nyc-buildings-1600.webp'
 import portfolioFallback from '../assets/projects/portfolio-2026-fallback.jpg'
 import portfolio800 from '../assets/projects/portfolio-2026-800.webp'
 import portfolio1600 from '../assets/projects/portfolio-2026-1600.webp'
+import screenDesignFallback from '../assets/projects/screen-design-fallback.jpg'
+import screenDesign800 from '../assets/projects/screen-design-800.webp'
+import screenDesign1600 from '../assets/projects/screen-design-1600.webp'
+import bartabFallback from '../assets/projects/bartab-fallback.jpg'
+import bartab800 from '../assets/projects/bartab-800.webp'
+import bartab1600 from '../assets/projects/bartab-1600.webp'
+import wayToBillionFallback from '../assets/projects/way-to-billion-fallback.jpg'
+import wayToBillion800 from '../assets/projects/way-to-billion-800.webp'
+import wayToBillion1600 from '../assets/projects/way-to-billion-1600.webp'
+import ambergFallback from '../assets/projects/amberg-fallback.jpg'
+import amberg800 from '../assets/projects/amberg-800.webp'
+import amberg1600 from '../assets/projects/amberg-1600.webp'
 
 const nycBuildings: Picture = {
   fallback: nycFallback,
@@ -21,6 +33,47 @@ const portfolioShot: Picture = {
   sources: [
     { src: portfolio800, width: 800 },
     { src: portfolio1600, width: 1600 },
+  ],
+  width: 1600,
+  height: 900,
+}
+
+
+const screenDesignShot: Picture = {
+  fallback: screenDesignFallback,
+  sources: [
+    { src: screenDesign800, width: 800 },
+    { src: screenDesign1600, width: 1600 },
+  ],
+  width: 1600,
+  height: 900,
+}
+
+const bartabShot: Picture = {
+  fallback: bartabFallback,
+  sources: [
+    { src: bartab800, width: 800 },
+    { src: bartab1600, width: 1600 },
+  ],
+  width: 1600,
+  height: 900,
+}
+
+const wayToBillionShot: Picture = {
+  fallback: wayToBillionFallback,
+  sources: [
+    { src: wayToBillion800, width: 800 },
+    { src: wayToBillion1600, width: 1600 },
+  ],
+  width: 1600,
+  height: 900,
+}
+
+const ambergShot: Picture = {
+  fallback: ambergFallback,
+  sources: [
+    { src: amberg800, width: 800 },
+    { src: amberg1600, width: 1600 },
   ],
   width: 1600,
   height: 900,
@@ -87,6 +140,11 @@ export const projects: Project[] = [
     },
     year: '2026',
     technologies: ['HTML', 'CSS', 'UX Research', 'Prototyping'],
+    image: screenDesignShot,
+    imageAlt: {
+      de: 'App-Prototyp für Share-A-Scooter Amberg mit Karte, Scooter-Markern und Bedienflächen.',
+      en: 'App prototype for Share-A-Scooter Amberg with map, scooter markers and controls.',
+    },
     url: 'https://pleonastic6.github.io/Screen_Design/',
     github: 'https://github.com/pleonastic6/Screen_Design',
   },
@@ -101,6 +159,11 @@ export const projects: Project[] = [
     },
     year: '2026',
     technologies: ['Kotlin', 'Jetpack Compose', 'Room', 'Material 3'],
+    image: bartabShot,
+    imageAlt: {
+      de: 'Tablet-Oberfläche von BarTab mit großen Produktbuttons, Warenkorb und Kassensumme.',
+      en: 'Tablet interface for BarTab with large product buttons, cart and checkout total.',
+    },
     github: 'https://github.com/pleonastic6/BarTab',
   },
   {
@@ -114,6 +177,11 @@ export const projects: Project[] = [
     },
     year: '2026',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Prisma'],
+    image: wayToBillionShot,
+    imageAlt: {
+      de: 'Dashboard von Way to Billion mit Repo-Übersicht, Markdown-Tracking und Projektlog.',
+      en: 'Way to Billion dashboard with repo overview, markdown tracking and project log.',
+    },
     github: 'https://github.com/pleonastic6/Way_to_billion',
   },
   {
@@ -127,6 +195,11 @@ export const projects: Project[] = [
     },
     year: '2026',
     technologies: ['Three.js', 'OpenStreetMap', 'Python', 'GeoJSON'],
+    image: ambergShot,
+    imageAlt: {
+      de: 'Dunkle Startansicht der Amberg-Gebäudevisualisierung mit Titelkarte und UI-Panels.',
+      en: 'Dark opening view of the Amberg building visualisation with title card and UI panels.',
+    },
     github: 'https://github.com/pleonastic6/Informationsvisualisierung_Amberg',
   },
   {

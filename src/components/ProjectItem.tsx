@@ -27,7 +27,7 @@ export function ProjectItem({ project, index, total }: ProjectItemProps) {
           className={styles.image}
           picture={project.image}
           alt={project.imageAlt ? pick(project.imageAlt) : project.title}
-          sizes="(max-width: 62rem) 100vw, 62vw"
+          sizes="(max-width: 40rem) calc(100vw - 2rem), (max-width: 62rem) 100vw, 58rem"
         />
       ) : (
         <div className={styles.placeholder} role="img" aria-label={project.title}>

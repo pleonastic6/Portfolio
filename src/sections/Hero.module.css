@@ -400,3 +400,39 @@
   background: var(--c-accent);
   border-color: transparent;
 }
+
+/* ---- Aurum Labyrinth: mehr Praesenz ------------------------------------
+ * Die Schlagzeile bekommt einen Goldverlauf, als waere sie mit Blattgold
+ * gedruckt. Die Farbwerte sind so gewaehlt, dass auch die hellste Stelle des
+ * Verlaufs noch ueber dem Grenzwert von 3:1 fuer Grossgrade liegt.
+ *
+ * Der Umweg ueber @supports ist noetig: wo background-clip nicht greift, waere
+ * der Text mit color: transparent unsichtbar. Dann bleibt es bei Tinte.
+ */
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  /*
+   * Der Verlauf sitzt auf der einzelnen Zeile, nicht auf der Ueberschrift:
+   * die Zeilen liegen hinter einer Maske und werden verschoben, dadurch
+   * zeichnet der Browser sie eigenstaendig — ein am Elternteil beschnittener
+   * Hintergrund kommt dort nicht mehr an, die Schrift waere schlicht weg.
+   */
+  :global(:root[data-theme='aurum-labyrinth']) .lineInner {
+    background: linear-gradient(
+      100deg,
+      #5e4110 0%,
+      #9c7529 26%,
+      #6b4a14 52%,
+      #9c7529 78%,
+      #5e4110 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Der Kicker wird zur Marginalie: gedreht an den Rand gestellt. */
+:global(:root[data-theme='aurum-labyrinth']) .kicker {
+  color: var(--c-accent);
+  font-weight: 700;
+}

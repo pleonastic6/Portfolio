@@ -1,0 +1,37 @@
+/*
+ * Liegt hinter dem gesamten Inhalt und faengt keine Klicks ab.
+ * Die Deckkraft ist bewusst niedrig: der Regen soll zu ahnen sein, nicht mit
+ * dem Text um Aufmerksamkeit ringen.
+ */
+.rain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/*
+ * Oben abgeblendet, weil dort die Schlagzeile steht. Bewusst ein eigener
+ * Schleier in der Hintergrundfarbe statt einer Maske auf der Flaeche selbst:
+ * eine Maske muesste der Browser bei jedem einzelnen Bild neu ueber die
+ * bewegte Flaeche legen — der Schleier wird einmal gezeichnet und danach nur
+ * noch angezeigt.
+ */
+.veil {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgb(5 8 7 / 0.72) 0%, rgb(5 8 7 / 0) 42%);
+}
+
+/* Auf schmalen Bildschirmen laeuft gar nichts — siehe MatrixRain.tsx. */
+@media (max-width: 48rem) {
+  .rain,
+  .veil {
+    display: none;
+  }
+}

@@ -356,3 +356,20 @@ ol {
   );
   background-color: transparent;
 }
+
+/* ---- Aurum Labyrinth: Maeanderleiste am Rand ---------------------------
+ * Senkrechtes Band in der Aussenspalte. Es sitzt vollstaendig im Bundsteg und
+ * beruehrt den Inhalt nicht — anders als der frueher hier stehende Rahmen, der
+ * ueber der Navigation lag. Unterhalb von 64rem wird der Steg zu schmal, dann
+ * entfaellt es.
+ */
+@media (min-width: 64rem) {
+  :root[data-theme='aurum-labyrinth'] body::after {
+    content: '';
+    z-index: 0;
+    inset: 0 auto 0 0;
+    width: 15px;
+    background: var(--meander-senkrecht) repeat-y left top;
+    opacity: 0.3;
+  }
+}

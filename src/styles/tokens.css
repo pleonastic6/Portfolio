@@ -184,6 +184,11 @@
      aussahen. */
   --meander: url("data:image/svg+xml,%3Csvg width='34' height='15' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23171310' stroke-width='1.4'%3E%3Cpath d='M0 14h34'/%3E%3Cpath d='M5 14V4h19v6H11'/%3E%3C/g%3E%3C/svg%3E");
 
+  /* Dieselbe Figur um 90 Grad gedreht, fuer die Leiste in der Aussenspalte.
+     Die waagerechte Kachel senkrecht zu wiederholen wuerde nur ihren linken
+     Rand zeigen — die Figur muss wirklich gedreht gezeichnet sein. */
+  --meander-senkrecht: url("data:image/svg+xml,%3Csvg width='15' height='34' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23171310' stroke-width='1.4'%3E%3Cpath d='M1 0v34'/%3E%3Cpath d='M1 5h10v19H5V11'/%3E%3C/g%3E%3C/svg%3E");
+
   --radius-media: 0;
   --radius-sm: 0;
   --hairline: 1px;

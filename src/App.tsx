@@ -1,11 +1,12 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
 import { site } from './data/site'
 import { I18nProvider, useI18n } from './i18n'
-import { ThemeProvider } from './theme'
+import { ThemeProvider, useTheme } from './theme'
 import { Cursor } from './components/Cursor'
 import { Footer } from './components/Footer'
 import { Frame } from './components/Frame'
 import { Backdrop } from './components/Backdrop'
+import { MatrixRain } from './components/MatrixRain'
 import { Navigation } from './components/Navigation'
 import { Hero } from './sections/Hero'
 import { Work } from './sections/Work'
@@ -24,6 +25,7 @@ import { useHashRoute } from './hooks/useHashRoute'
 
 function Page() {
   const { t } = useI18n()
+  const { theme } = useTheme()
   const [ready, setReady] = useState(false)
   const route = useHashRoute()
 
@@ -67,6 +69,9 @@ function Page() {
 
       {site.customCursor && <Cursor />}
       <Backdrop />
+      {/* Zeichenregen nur im Terminal-Theme; der key erzwingt einen Neustart,
+          falls zwischendurch ein anderes Theme aktiv war. */}
+      {theme.id === 'terminal-phosphor' && <MatrixRain key={theme.id} />}
       <Frame />
       <Navigation />
 

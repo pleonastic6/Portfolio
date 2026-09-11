@@ -395,3 +395,30 @@
     box-shadow: 0 0 0 4px var(--c-bg), 0 0 34px rgb(126 227 166 / 0.18);
   }
 }
+
+/* ---- Aurum Labyrinth: mehr Praesenz ------------------------------------
+ * Die laufende Nummer wird zur Ziffer im Grossgrad — so bekommt jede
+ * Projektzeile einen Anker, wie eine Kapitelnummer im Buch. Das Jahr bleibt
+ * klein auf derselben Grundlinie.
+ */
+:global(:root[data-theme='aurum-labyrinth']) .counter {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--c-accent);
+  line-height: 1;
+}
+
+/*
+ * Beim Hover wird der Projekttitel zur Kontur. @supports, weil ohne
+ * text-stroke nur die durchsichtige Farbe uebrig bliebe — der Titel waere weg.
+ */
+@supports (-webkit-text-stroke: 1px black) {
+  @media (hover: hover) {
+    :global(:root[data-theme='aurum-labyrinth']) .item:hover .titleLink {
+      -webkit-text-stroke: 1px var(--c-text);
+      color: transparent;
+    }
+  }
+}

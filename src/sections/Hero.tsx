@@ -1,6 +1,8 @@
 import type { CSSProperties } from 'react'
 import { site } from '../data/site'
 import { useI18n } from '../i18n'
+import { useTheme } from '../theme'
+import { ParticleMark } from '../components/ParticleMark'
 import styles from './Hero.module.css'
 
 /**
@@ -9,9 +11,12 @@ import styles from './Hero.module.css'
  */
 export function Hero() {
   const { t, pick } = useI18n()
+  const { theme } = useTheme()
 
   return (
     <section id="top" className={styles.hero} aria-labelledby="hero-title">
+      {/* Punktwolke nur im dunklen Theme: auf hellem Grund traegt sie nicht. */}
+      {theme.id === 'noir-et-or' && <ParticleMark />}
       <div className={`shell ${styles.inner}`}>
         <div className={styles.top}>
           <p className={`label ${styles.kicker}`} style={{ '--d': '80ms' } as CSSProperties}>

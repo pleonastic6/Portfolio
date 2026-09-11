@@ -314,6 +314,13 @@
   }
 }
 
+/* ---- Theme: Aurum Labyrinth -------------------------------------------
+ * Die Projektbilder sind ueberwiegend dunkle Oberflaechen. Auf Pergament
+ * brauchen sie eine Fassung, sonst schweben sie: feine Tintenlinie, ein
+ * Hauch Schlagschatten wie bei einer aufgelegten Tafel. Der frueher harte
+ * Versatzschatten in Gold hat sie dagegen wie Aufkleber wirken lassen.
+ */
+
 :global(:root[data-theme='aurum-labyrinth']) .item {
   padding-top: var(--space-6);
   border-top-color: var(--c-line-strong);
@@ -321,23 +328,23 @@
 }
 
 :global(:root[data-theme='aurum-labyrinth']) .media {
-  border: 3px solid var(--c-text);
+  border: var(--hairline) solid var(--c-line-strong);
   background: var(--c-bg-inset);
-  box-shadow: 7px 7px 0 var(--c-accent);
+  box-shadow: 0 0.75rem 2rem rgb(23 19 16 / 0.1);
 }
 
+/* Der Glanzschleier stammt aus dem dunklen Theme und wuerde hier aufhellen. */
 :global(:root[data-theme='aurum-labyrinth']) .media::before {
-  opacity: 0.22;
-  background:
-    linear-gradient(90deg, rgb(32 16 6 / 0.24) 2px, transparent 2px),
-    linear-gradient(0deg, rgb(32 16 6 / 0.18) 2px, transparent 2px);
-  background-size: 28px 28px;
-  mix-blend-mode: multiply;
+  content: none;
 }
 
-:global(:root[data-theme='aurum-labyrinth']) .link {
-  padding: 0.65rem 0.8rem;
-  color: var(--c-text);
-  border: 2px solid var(--c-text);
-  background: rgb(255 232 111 / 0.25);
+:global(:root[data-theme='aurum-labyrinth']) .counter {
+  font-family: var(--font-tech);
+}
+
+@media (hover: hover) {
+  :global(:root[data-theme='aurum-labyrinth']) .item:hover .media {
+    border-color: var(--c-accent);
+    box-shadow: 0 1rem 2.5rem rgb(23 19 16 / 0.16);
+  }
 }

@@ -17,7 +17,7 @@ export const THEMES: SiteTheme[] = [
   {
     id: 'aurum-labyrinth',
     name: 'Aurum Labyrinth',
-    description: 'Goldene Verpackungsanmutung mit geometrischem Meander-Rahmen.',
+    description: 'Helles Pergament, tiefe Tinte, Gold als Akzent — Mäander als Druckornament.',
   },
 ]
 

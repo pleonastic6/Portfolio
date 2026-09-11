@@ -263,52 +263,53 @@
   }
 }
 
-:global(:root[data-theme='aurum-labyrinth']) .coords {
-  border-color: rgb(32 16 6 / 0.48);
-  border-radius: 0;
-  background: rgb(255 232 111 / 0.28);
-  box-shadow: 3px 3px 0 rgb(156 79 34 / 0.38);
-  transform: none;
-}
+/* ---- Theme: Aurum Labyrinth ------------------------------------------- */
 
-:global(:root[data-theme='aurum-labyrinth']) .kicker {
-  color: var(--c-brown-red);
-  transform: none;
-}
-
+/* Kein Schlagschatten mehr unter der Schlagzeile — auf Papier wirkt er
+   schmutzig. Versalien bekommen stattdessen Luft ueber die Laufweite. */
 :global(:root[data-theme='aurum-labyrinth']) .headline {
-  max-width: 12.5ch;
-  font-size: clamp(2.45rem, 7.2vw, 6.5rem);
+  max-width: 16ch;
   text-transform: uppercase;
-  letter-spacing: -0.015em;
+  text-shadow: none;
   text-wrap: balance;
-  text-shadow: 3px 3px 0 rgb(255 230 97 / 0.65);
 }
 
 :global(:root[data-theme='aurum-labyrinth']) .lineInner {
   white-space: normal;
 }
 
+:global(:root[data-theme='aurum-labyrinth']) .kicker {
+  color: var(--c-accent);
+  transform: none;
+}
+
+/* Die Plakette wird zur schlichten Beschriftung mit Tintenlinie. */
+:global(:root[data-theme='aurum-labyrinth']) .coords {
+  border-color: var(--c-line-strong);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Maeanderband statt des Strichcodes, der hier vorher stand. */
 :global(:root[data-theme='aurum-labyrinth']) .rule {
-  height: 1.2rem;
-  background:
-    repeating-linear-gradient(90deg, var(--c-text) 0 0.45rem, transparent 0.45rem 0.85rem, var(--c-text) 0.85rem 1.2rem, transparent 1.2rem 1.7rem),
-    linear-gradient(var(--c-line-strong), var(--c-line-strong));
-  background-size: auto, 100% 2px;
-  background-position: center, 0 50%;
-  background-repeat: repeat-x, no-repeat;
+  height: 15px;
+  background: var(--meander) repeat-x left bottom;
+  opacity: 0.4;
 }
 
 :global(:root[data-theme='aurum-labyrinth']) .cta {
-  padding: 0.9rem 1.15rem;
-  color: var(--c-text-invert);
-  background: var(--c-text);
-  border: 2px solid var(--c-text);
-  box-shadow: 4px 4px 0 var(--c-accent);
+  padding: 0;
+  color: var(--c-text);
+  background: transparent;
+  border: 0;
+  border-bottom: var(--hairline) solid var(--c-line-strong);
+  box-shadow: none;
 }
 
 :global(:root[data-theme='aurum-labyrinth']) .cta:hover {
-  color: var(--c-text);
-  background: var(--c-bg-inset);
-  border-color: var(--c-text);
+  color: var(--c-accent);
+  border-bottom-color: var(--c-accent);
+  background: transparent;
 }

@@ -262,23 +262,19 @@
   }
 }
 
-:global(:root[data-theme='aurum-labyrinth']) .nav[data-scrolled='true'] {
-  background: rgb(240 185 15 / 0.88);
-  border-bottom-color: rgb(32 16 6 / 0.4);
-}
+/* ---- Theme: Aurum Labyrinth ------------------------------------------- */
 
-@supports (backdrop-filter: blur(1px)) {
-  :global(:root[data-theme='aurum-labyrinth']) .nav[data-scrolled='true'] {
-    background: rgb(240 185 15 / 0.72);
-    backdrop-filter: blur(12px) saturate(140%);
-  }
+:global(:root[data-theme='aurum-labyrinth']) .nav[data-scrolled='true'] {
+  background: rgb(242 237 225 / 0.92);
+  border-bottom-color: var(--c-line-strong);
+  backdrop-filter: blur(10px);
 }
 
 :global(:root[data-theme='aurum-labyrinth']) .logo {
   color: var(--c-text);
-  filter: drop-shadow(2px 2px 0 rgb(255 231 133 / 0.75));
+  filter: none;
 }
 
 :global(:root[data-theme='aurum-labyrinth']) .overlay {
-  background: linear-gradient(135deg, #ffd92d 0%, #e9ad0c 100%);
+  background: var(--c-bg);
 }

@@ -1,0 +1,48 @@
+.button {
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
+  gap: 0.55em;
+  font-family: var(--font-tech);
+  font-size: var(--fs-label);
+  letter-spacing: var(--ls-label);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  transition:
+    color var(--dur-fast) var(--ease),
+    opacity var(--dur-fast) var(--ease);
+}
+
+.button:hover {
+  color: var(--c-text);
+}
+
+.label {
+  color: var(--c-text-faint);
+}
+
+.name {
+  color: var(--c-text);
+}
+
+@media (max-width: 72rem) {
+  .label {
+    display: none;
+  }
+
+  .button {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 56rem) {
+  .button:not(.lg) {
+    display: none;
+  }
+}
+
+.lg {
+  font-size: 0.875rem;
+  letter-spacing: 0.14em;
+}

@@ -29,6 +29,9 @@ export type Translation = {
     available: string
     unavailable: string
     language: string
+    design: string
+    designSwitch: string
+    designCurrent: string
     skip: string
     home: string
   }

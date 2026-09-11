@@ -3,6 +3,7 @@ import { navItems, site } from '../data/site'
 import { useI18n } from '../i18n'
 import { useScrolled } from '../hooks/useScrolled'
 import { useActiveSection } from '../hooks/useActiveSection'
+import { DesignSwitcher } from './DesignSwitcher'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { StatusDot } from './StatusDot'
 import { Wordmark } from './Wordmark'
@@ -61,6 +62,7 @@ export function Navigation() {
 
           <div className={styles.actions}>
             <StatusDot className={styles.status} />
+            <DesignSwitcher />
             <LanguageSwitcher />
             <button
               type="button"
@@ -97,6 +99,7 @@ export function Navigation() {
 
           <div className={styles.overlayFoot}>
             <StatusDot />
+            <DesignSwitcher size="lg" />
             <LanguageSwitcher size="lg" />
           </div>
         </nav>

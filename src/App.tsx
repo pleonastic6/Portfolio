@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useState } from 'react'
 import { site } from './data/site'
 import { I18nProvider, useI18n } from './i18n'
+import { ThemeProvider } from './theme'
 import { Cursor } from './components/Cursor'
 import { Footer } from './components/Footer'
 import { Frame } from './components/Frame'
@@ -86,8 +87,10 @@ function Page() {
 
 export default function App() {
   return (
-    <I18nProvider>
-      <Page />
-    </I18nProvider>
+    <ThemeProvider>
+      <I18nProvider>
+        <Page />
+      </I18nProvider>
+    </ThemeProvider>
   )
 }

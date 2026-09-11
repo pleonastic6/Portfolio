@@ -36,8 +36,8 @@ const RASTER = 1.9
 const PRO_FELD = 3
 const ANKUNFT = 1500
 const STREUUNG = 900
-/** Unterhalb dieser Breite blendet das Stylesheet die Flaeche aus. */
-const AB_BREITE = '(min-width: 64.0625rem)'
+/** Die Punktmarke laeuft jetzt auch auf Mobile; CSS positioniert sie je Viewport. */
+const AB_BREITE = '(min-width: 0px)'
 /** Wirkradius des Zeigers, im Koordinatenraum der Marke (Breite 141). */
 const RADIUS = 24
 /** Wie weit ein Punkt direkt unter dem Zeiger hoechstens ausweicht. */

@@ -21,13 +21,25 @@
   }
 }
 
-/*
- * Unter dieser Breite bleibt neben der Schlagzeile kein freies Feld mehr.
- * Dann lieber nichts als etwas, das hinter dem Text klebt.
- */
 @media (max-width: 64rem) {
   .canvas {
-    display: none;
+    left: 50%;
+    right: auto;
+    top: clamp(10.5rem, 32svh, 17rem);
+    z-index: 0;
+    width: min(84vw, 22rem);
+    height: min(24vw, 6.25rem);
+    transform: translateX(-50%);
+    opacity: 0;
+    mix-blend-mode: screen;
+  }
+}
+
+@media (max-width: 30rem) {
+  .canvas {
+    top: clamp(9rem, 30svh, 14rem);
+    width: min(88vw, 19rem);
+    height: min(25vw, 5.35rem);
   }
 }
 

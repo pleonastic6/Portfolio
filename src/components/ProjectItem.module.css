@@ -348,3 +348,50 @@
     box-shadow: 0 1rem 2.5rem rgb(23 19 16 / 0.16);
   }
 }
+
+/* ---- Theme: Terminal --------------------------------------------------
+ * Die Projektbilder bleiben in ihren eigenen Farben — sie einzufaerben wuerde
+ * genau den Fehler wiederholen, den das gelbe Theme gemacht hat. Stattdessen
+ * bekommen sie die Fassung eines Bildschirms: duenner Phosphorrahmen, Ecken
+ * markiert, darueber dieselbe Zeilenstruktur wie die Seite.
+ */
+
+:global(:root[data-theme='terminal-phosphor']) .item {
+  border-top-color: var(--c-line-strong);
+  transform: none;
+}
+
+:global(:root[data-theme='terminal-phosphor']) .media {
+  border: var(--hairline) solid var(--c-line-strong);
+  background: var(--c-bg-inset);
+  box-shadow: 0 0 0 4px var(--c-bg), 0 0 26px rgb(126 227 166 / 0.09);
+}
+
+:global(:root[data-theme='terminal-phosphor']) .media::before {
+  opacity: 1;
+  mix-blend-mode: normal;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 0.22) 0px,
+      rgb(0 0 0 / 0.22) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+}
+
+:global(:root[data-theme='terminal-phosphor']) .counter {
+  color: var(--c-accent);
+}
+
+:global(:root[data-theme='terminal-phosphor']) .link::before {
+  content: '> ';
+  color: var(--c-text-faint);
+}
+
+@media (hover: hover) {
+  :global(:root[data-theme='terminal-phosphor']) .item:hover .media {
+    border-color: var(--c-text-muted);
+    box-shadow: 0 0 0 4px var(--c-bg), 0 0 34px rgb(126 227 166 / 0.18);
+  }
+}

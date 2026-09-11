@@ -286,3 +286,73 @@ ol {
   background: var(--c-accent);
   color: var(--c-text-invert);
 }
+
+/* ---- Theme: Terminal -------------------------------------------------
+ * Zwei feststehende Ebenen ueber der Seite: das Zeichenraster eines
+ * Textbildschirms und die Zeilenstruktur einer Bildroehre. Beide sind
+ * unbewegt und werden deshalb genau einmal gezeichnet — eine dauerhaft
+ * animierte Flaeche in Bildschirmgroesse kostet in jedem Bild Rechenzeit
+ * und war frueher auf dieser Seite der Grund fuers Ruckeln.
+ */
+
+:root[data-theme='terminal-phosphor'] body {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(126 227 166 / 0.07), transparent 55%),
+    var(--c-bg);
+}
+
+/* Zeilenstruktur: jede zweite Zeile minimal dunkler. */
+:root[data-theme='terminal-phosphor'] body::before {
+  z-index: 10000;
+  opacity: 1;
+  mix-blend-mode: normal;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgb(0 0 0 / 0.28) 0px,
+    rgb(0 0 0 / 0.28) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  background-size: auto;
+}
+
+/* Zeichenraster, sehr schwach — man sieht es eher, als dass man es liest. */
+:root[data-theme='terminal-phosphor'] body::after {
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, rgb(126 227 166 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(126 227 166 / 0.03) 1px, transparent 1px);
+  background-size: var(--zellraster);
+}
+
+/* Der Nachleuchteffekt bleibt den Ueberschriften vorbehalten: als Schatten auf
+   jedem Absatz waere er teuer und wuerde den Text ausfransen. */
+:root[data-theme='terminal-phosphor'] h1,
+:root[data-theme='terminal-phosphor'] h2 {
+  text-shadow: 0 0 14px rgb(126 227 166 / 0.45);
+}
+
+:root[data-theme='terminal-phosphor'] h1,
+:root[data-theme='terminal-phosphor'] h2,
+:root[data-theme='terminal-phosphor'] h3,
+:root[data-theme='terminal-phosphor'] h4 {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Markierter Text sieht aus wie in einem Terminal: Farben tauschen. */
+:root[data-theme='terminal-phosphor'] ::selection {
+  background: var(--c-text-muted);
+  color: var(--c-bg);
+}
+
+/* Waagerechte Linien als gestrichelte Fuehrung mit Kreuz an den Enden. */
+:root[data-theme='terminal-phosphor'] .rule {
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--c-line-strong) 0 6px,
+    transparent 6px 12px
+  );
+  background-color: transparent;
+}

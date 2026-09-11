@@ -15,8 +15,10 @@ export function Hero() {
 
   return (
     <section id="top" className={styles.hero} aria-labelledby="hero-title">
-      {/* Punktwolke nur im dunklen Theme: auf hellem Grund traegt sie nicht. */}
-      {theme.id === 'noir-et-or' && <ParticleMark />}
+      {/* Punktwolke in beiden dunklen Themes; auf Pergament traegt sie nicht.
+          Der key erzwingt beim Themewechsel einen Neuaufbau — die Farben
+          werden einmal beim Start aus den CSS-Variablen gelesen. */}
+      {theme.id !== 'aurum-labyrinth' && <ParticleMark key={theme.id} />}
       <div className={`shell ${styles.inner}`}>
         <div className={styles.top}>
           <p className={`label ${styles.kicker}`} style={{ '--d': '80ms' } as CSSProperties}>

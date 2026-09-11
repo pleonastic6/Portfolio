@@ -67,3 +67,22 @@
 :global(:root[data-theme='aurum-labyrinth']) .name {
   color: var(--c-text);
 }
+
+/* ---- Theme: Terminal -------------------------------------------------- */
+
+:global(:root[data-theme='terminal-phosphor']) .button {
+  padding: 0.5rem 0.75rem;
+  color: var(--c-text);
+  background: transparent;
+  border: var(--hairline) solid var(--c-line-strong);
+  box-shadow: none;
+}
+
+:global(:root[data-theme='terminal-phosphor']) .button:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+
+:global(:root[data-theme='terminal-phosphor']) .name {
+  color: var(--c-accent);
+}

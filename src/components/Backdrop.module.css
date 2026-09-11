@@ -22,3 +22,8 @@
 :global(:root[data-theme='aurum-labyrinth']) .backdrop {
   display: none;
 }
+
+/* Das Barockmuster gehoert zum dunklen Theme; hier traegt das Zeichenraster. */
+:global(:root[data-theme='terminal-phosphor']) .backdrop {
+  display: none;
+}

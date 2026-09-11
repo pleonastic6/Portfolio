@@ -191,3 +191,61 @@
   --section-space: clamp(5rem, 11vw, 9rem);
 }
 
+
+/* ---- Theme: Terminal -------------------------------------------------
+ * Phosphorgruen auf Schwarz, durchgehend Monospace. Der Bernstein bleibt als
+ * Akzent — auf echten Terminals war die zweite Phosphorfarbe genau dafuer da.
+ * Alle Textfarben liegen bei mindestens 6.9:1 auf dem Grund.
+ */
+:root[data-theme='terminal-phosphor'] {
+  --c-bg: #050807;
+  --c-bg-raised: #080d0a;
+  --c-bg-inset: #0a100c;
+
+  --c-text: #c8ffd9;
+  --c-text-muted: #7fe3a6;
+  --c-text-faint: #63b98a;
+  --c-text-invert: #050807;
+
+  --c-line: rgb(126 227 166 / 0.2);
+  --c-line-soft: rgb(126 227 166 / 0.11);
+  --c-line-strong: rgb(126 227 166 / 0.42);
+
+  --c-accent: #ffb454;
+  --c-accent-dim: rgb(255 180 84 / 0.18);
+  --c-accent-glass: rgb(126 227 166 / 0.07);
+  --c-brown-red: #ffb454;
+
+  /* Alles dieselbe Schrift — das ist der ganze Witz. Silkscreen bleibt den
+     Ziffern vorbehalten, wie im dunklen Theme. */
+  --font-sans: 'Space Mono', 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-body: 'Space Mono', 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-tech: 'Space Mono', 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-dot: 'Silkscreen', 'Space Mono', ui-monospace, monospace;
+
+  /* Monospace baut breiter als eine Serifenschrift — die Grade muessen runter,
+     sonst passen drei Woerter nicht mehr in eine Zeile. */
+  --fs-display: clamp(1.9rem, 4.6vw, 4.2rem);
+  --fs-statement: clamp(1.5rem, 3.4vw, 2.8rem);
+  --fs-h2: clamp(1.4rem, 2.9vw, 2.3rem);
+  --fs-h3: clamp(1.1rem, 1.9vw, 1.5rem);
+  --fs-body: clamp(0.9rem, 0.95vw, 1rem);
+
+  --lh-display: 1.18;
+  --lh-tight: 1.25;
+  --lh-body: 1.72;
+
+  --ls-display: -0.01em;
+  --ls-tight: 0;
+  --ls-label: 0.14em;
+  --ls-meta: 0.1em;
+
+  --radius-media: 0;
+  --radius-sm: 0;
+  --hairline: 1px;
+  --pattern-opacity: 0;
+  --section-space: clamp(4.5rem, 10vw, 8rem);
+
+  /* Zeichenraster im Hintergrund: die Zellen eines Textbildschirms. */
+  --zellraster: 9px 18px;
+}

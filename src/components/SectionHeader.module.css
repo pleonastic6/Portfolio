@@ -64,3 +64,22 @@
   background: var(--meander) repeat-x left bottom;
   opacity: 0.4;
 }
+
+/* ---- Theme: Terminal -------------------------------------------------- */
+
+/* Die Abschnittsnummer traegt im Terminal den Akzentton — mehr Signal braucht
+   es hier nicht; die Eingabeaufforderung stand als Zeichen davor und ist bei
+   elf Pixeln zu Matsch geworden. */
+:global(:root[data-theme='terminal-phosphor']) .index {
+  color: var(--c-accent);
+}
+
+:global(:root[data-theme='terminal-phosphor']) .rule {
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--c-line-strong) 0 6px,
+    transparent 6px 12px
+  );
+  opacity: 1;
+}

@@ -160,6 +160,16 @@ export function ParticleMark({ className }: { className?: string }) {
       /** Bleibt wahr, solange noch ein Punkt aus seiner Ruhelage verschoben ist. */
       let inBewegung = false
 
+      /*
+       * Farben aus dem Theme statt fest verdrahtet: im Terminal-Theme ist das
+       * Gold ein Bernstein und das Weiss ein Phosphorgruen. Einmal pro Aufbau
+       * gelesen — getComputedStyle in der Zeichenschleife waere eine
+       * Layout-Abfrage pro Bild.
+       */
+      const stil = getComputedStyle(document.documentElement)
+      const farbeAkzent = stil.getPropertyValue('--c-accent').trim() || '#c9aa6a'
+      const farbeText = stil.getPropertyValue('--c-text').trim() || '#f4efe4'
+
       const zeichnen = (verstrichen: number) => {
         ctx.clearRect(0, 0, breite, hoehe)
         const gr = Math.max(1.2, skala * 0.5)
@@ -211,7 +221,7 @@ export function ParticleMark({ className }: { className?: string }) {
           }
 
           ctx.globalAlpha = e * (p.gold ? 1 : 0.86)
-          ctx.fillStyle = p.gold ? '#c9aa6a' : '#f4efe4'
+          ctx.fillStyle = p.gold ? farbeAkzent : farbeText
           ctx.fillRect(x * skala, versatzY + y * skala, gr, gr)
         }
         ctx.globalAlpha = 1

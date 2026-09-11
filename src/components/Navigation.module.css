@@ -278,3 +278,49 @@
 :global(:root[data-theme='aurum-labyrinth']) .overlay {
   background: var(--c-bg);
 }
+
+/* ---- Theme: Terminal -------------------------------------------------- */
+
+/* Menuepunkte in eckigen Klammern — die Auszeichnung, mit der Textoberflaechen
+   seit jeher anzeigen, was anklickbar ist. */
+:global(:root[data-theme='terminal-phosphor']) .link::before {
+  content: '[';
+  color: var(--c-text-faint);
+}
+
+/*
+ * ::after traegt im Grundzustand den Unterstrich fuer den aktiven Punkt.
+ * Hier wird daraus die schliessende Klammer — die Positionsangaben muessen
+ * dafuer alle zurueckgesetzt werden, sonst bliebe sie absolut gesetzt und
+ * unsichtbar. Den aktiven Punkt zeigen stattdessen die farbigen Klammern.
+ */
+:global(:root[data-theme='terminal-phosphor']) .link::after {
+  content: ']';
+  position: static;
+  width: auto;
+  height: auto;
+  background: none;
+  transform: none;
+  transition: color var(--dur-fast) var(--ease);
+  color: var(--c-text-faint);
+}
+
+:global(:root[data-theme='terminal-phosphor']) .link[aria-current='true']::before,
+:global(:root[data-theme='terminal-phosphor']) .link[aria-current='true']::after {
+  color: var(--c-accent);
+}
+
+:global(:root[data-theme='terminal-phosphor']) .nav[data-scrolled='true'] {
+  background: rgb(5 8 7 / 0.92);
+  border-bottom-color: var(--c-line-strong);
+  backdrop-filter: blur(8px);
+}
+
+:global(:root[data-theme='terminal-phosphor']) .logo {
+  color: var(--c-text);
+  filter: drop-shadow(0 0 8px rgb(126 227 166 / 0.5));
+}
+
+:global(:root[data-theme='terminal-phosphor']) .overlay {
+  background: var(--c-bg);
+}

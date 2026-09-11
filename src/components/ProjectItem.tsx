@@ -1,7 +1,5 @@
 import type { Project } from '../data/projects'
 import { useI18n } from '../i18n'
-import { useTheme } from '../theme'
-import { RisoHalftone } from './RisoHalftone'
 import { Picture } from './Picture'
 import { Reveal } from './Reveal'
 import styles from './ProjectItem.module.css'
@@ -18,7 +16,6 @@ type ProjectItemProps = {
  */
 export function ProjectItem({ project, index, total }: ProjectItemProps) {
   const { t, pick } = useI18n()
-  const { theme } = useTheme()
   const href = project.url ?? project.github
   const number = String(index + 1).padStart(3, '0')
   const counter = `${number} / ${String(total).padStart(3, '0')}`
@@ -26,22 +23,12 @@ export function ProjectItem({ project, index, total }: ProjectItemProps) {
   const media = (
     <div className={styles.media}>
       {project.image ? (
-        <>
-          <Picture
-            className={styles.image}
-            picture={project.image}
-            alt={project.imageAlt ? pick(project.imageAlt) : project.title}
-            sizes="(max-width: 62rem) 100vw, 62vw"
-          />
-          {/* Im Risodruck legt sich die Rasterung ueber das Bild. Klappt sie
-              nicht, bleibt das normale Bild darunter stehen. */}
-          {theme.id === 'riso-print' && (
-            <RisoHalftone
-              picture={project.image}
-              alt={project.imageAlt ? pick(project.imageAlt) : project.title}
-            />
-          )}
-        </>
+        <Picture
+          className={styles.image}
+          picture={project.image}
+          alt={project.imageAlt ? pick(project.imageAlt) : project.title}
+          sizes="(max-width: 62rem) 100vw, 62vw"
+        />
       ) : (
         <div className={styles.placeholder} role="img" aria-label={project.title}>
           <span className={styles.crosshair} aria-hidden="true" />

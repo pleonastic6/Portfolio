@@ -33,7 +33,7 @@
 .coords {
   color: var(--c-text-faint);
   padding: 0.45rem 0.65rem;
-  border: var(--hairline) solid var(--c-line);
+  border: var(--hairline) solid rgb(244 239 228 / 0.09);
   border-radius: 999px 999px 999px 0.45rem;
   transform: rotate(0.45deg);
 }
@@ -56,30 +56,18 @@
   letter-spacing: var(--ls-display);
   text-transform: none;
   text-wrap: nowrap;
-  text-shadow: 0 1px 0 rgb(255 255 255 / 0.44);
 }
 
 .line {
   display: block;
-}
-
-/* Jedes Wort bekommt seine eigene Maske. Der Innenabstand ist noetig, sonst
-   schneidet overflow die Unterlaengen von g, y und p ab. */
-.word {
-  display: inline-block;
   overflow: hidden;
-  vertical-align: bottom;
-  padding-bottom: 0.07em;
+  padding-bottom: 0.1em;
 }
 
-.word:not(:last-child) {
-  margin-right: 0.26em;
-}
-
-.wordInner {
-  display: inline-block;
+.lineInner {
+  display: block;
   white-space: nowrap;
-  transform: translateY(110%);
+  transform: translateY(105%);
   animation: rise var(--dur-reveal) var(--ease) both;
   animation-delay: var(--d, 0ms);
 }
@@ -195,6 +183,7 @@
 
   .headline {
     max-width: none;
+    line-height: 0.94;
     text-wrap: pretty;
   }
 
@@ -222,7 +211,11 @@
   }
 
   .headline {
-    line-height: 0.92;
+    line-height: 0.98;
+  }
+
+  .lineInner {
+    white-space: normal;
   }
 
   .rule {
@@ -234,7 +227,7 @@
 
 @keyframes rise {
   from {
-    transform: translateY(110%);
+    transform: translateY(105%);
   }
   to {
     transform: translateY(0);

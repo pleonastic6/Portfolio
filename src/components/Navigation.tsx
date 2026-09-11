@@ -4,7 +4,6 @@ import { useI18n } from '../i18n'
 import { useScrolled } from '../hooks/useScrolled'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { LanguageSwitcher } from './LanguageSwitcher'
-import { ScrambleText } from './ScrambleText'
 import { StatusDot } from './StatusDot'
 import { Wordmark } from './Wordmark'
 import styles from './Navigation.module.css'
@@ -49,15 +48,14 @@ export function Navigation() {
 
           <nav className={styles.links} aria-label={t.nav.work}>
             {navItems.map((item) => (
-              <ScrambleText
-                as="a"
+              <a
                 key={item.id}
                 href={item.href}
                 className={styles.link}
                 aria-current={active === item.id ? 'true' : undefined}
               >
                 {t.nav[item.id]}
-              </ScrambleText>
+              </a>
             ))}
           </nav>
 

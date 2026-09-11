@@ -1,6 +1,5 @@
 import type { Project } from '../data/projects'
 import { useI18n } from '../i18n'
-import { usePointerParallax } from '../hooks/usePointerParallax'
 import { Picture } from './Picture'
 import { Reveal } from './Reveal'
 import styles from './ProjectItem.module.css'
@@ -20,29 +19,22 @@ export function ProjectItem({ project, index, total }: ProjectItemProps) {
   const href = project.url ?? project.github
   const number = String(index + 1).padStart(3, '0')
   const counter = `${number} / ${String(total).padStart(3, '0')}`
-  // Bild und Lichtpunkt folgen dem Zeiger — siehe ProjectItem.module.css.
-  const mediaRef = usePointerParallax<HTMLDivElement>()
 
   const media = (
-    <div className={styles.media} ref={mediaRef}>
-      {/* Eigene Ebene fuer die Scroll-Verschiebung. Das Bild darunter behaelt
-          seine Transformation fuer Hover und Zeiger — zwei Bewegungen auf
-          einem Element wuerden sich gegenseitig ueberschreiben. */}
-      <div className={styles.mediaLayer}>
-        {project.image ? (
-          <Picture
-            className={styles.image}
-            picture={project.image}
-            alt={project.imageAlt ? pick(project.imageAlt) : project.title}
-            sizes="(max-width: 62rem) 100vw, 62vw"
-          />
-        ) : (
-          <div className={styles.placeholder} role="img" aria-label={project.title}>
-            <span className={styles.crosshair} aria-hidden="true" />
-            <span className={`meta ${styles.placeholderLabel}`}>{t.work.placeholderNote}</span>
-          </div>
-        )}
-      </div>
+    <div className={styles.media}>
+      {project.image ? (
+        <Picture
+          className={styles.image}
+          picture={project.image}
+          alt={project.imageAlt ? pick(project.imageAlt) : project.title}
+          sizes="(max-width: 62rem) 100vw, 62vw"
+        />
+      ) : (
+        <div className={styles.placeholder} role="img" aria-label={project.title}>
+          <span className={styles.crosshair} aria-hidden="true" />
+          <span className={`meta ${styles.placeholderLabel}`}>{t.work.placeholderNote}</span>
+        </div>
+      )}
     </div>
   )
 

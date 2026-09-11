@@ -1,25 +1,39 @@
 /**
- * ADDD-Wortmarke als Inline-SVG.
+ * ADDD-Marke als Inline-SVG.
  *
- * Bewusst keine Bilddatei: nur inline erben die drei D die Textfarbe
- * (currentColor) und reagieren damit auf Hover und Fokus. Das A steht als
- * einziger Buchstabe im Akzentton — ein fester Punkt in der Marke.
+ * Verwendet den gewählten Quadrant-Golden-A-Entwurf: vier Felder für
+ * Artur, David, David und Dominik; das A trägt den warmen Akzent.
  */
 export function Wordmark({ className }: { className?: string }) {
   return (
     <svg
       className={className}
-      viewBox="0 0 141 38"
+      viewBox="0 0 64 64"
       role="img"
       aria-label="ADDD"
       focusable="false"
     >
-      <path fill="var(--c-accent)" fillRule="evenodd" d="M15.0 8 L30.0 38.0 L22.75 38.0 L19.875 32.0 L10.125 32.0 L7.25 38.0 L0 38.0 Z M12.625 26.875 L17.375 26.875 L15.0 21.25 Z" />
-      <g fill="currentColor">
-        <path fillRule="evenodd" d="M37 8 L49.5 8 A15.0 15.0 0 0 1 49.5 38.0 L37 38.0 Z M43.75 14.75 L43.75 31.25 L49.0 31.25 A8.25 8.25 0 0 0 49.0 14.75 Z" />
-        <path fillRule="evenodd" d="M74 8 L86.5 8 A15.0 15.0 0 0 1 86.5 38.0 L74 38.0 Z M80.75 14.75 L80.75 31.25 L86.0 31.25 A8.25 8.25 0 0 0 86.0 14.75 Z" />
-        <path fillRule="evenodd" d="M111 8 L123.5 8 A15.0 15.0 0 0 1 123.5 38.0 L111 38.0 Z M117.75 14.75 L117.75 31.25 L123.0 31.25 A8.25 8.25 0 0 0 123.0 14.75 Z" />
-      </g>
+      <rect width="64" height="64" fill="transparent" />
+      <path
+        fill="var(--c-accent)"
+        fillRule="evenodd"
+        d="M18 6 30 30h-5.8l-2.3-4.8h-7.8L11.8 30H6L18 6Zm-1.9 15.1h3.8L18 16.6l-1.9 4.5Z"
+      />
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M34 6h10a12 12 0 0 1 0 24H34V6Zm5.4 5.4v13.2h4.2a6.6 6.6 0 0 0 0-13.2h-4.2Z"
+      />
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M6 34h10a12 12 0 0 1 0 24H6V34Zm5.4 5.4v13.2h4.2a6.6 6.6 0 0 0 0-13.2h-4.2Z"
+      />
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="M34 34h10a12 12 0 0 1 0 24H34V34Zm5.4 5.4v13.2h4.2a6.6 6.6 0 0 0 0-13.2h-4.2Z"
+      />
     </svg>
   )
 }

@@ -84,6 +84,10 @@ export function Navigation() {
         aria-label={t.nav.menu}
       >
         <nav className={`shell ${styles.overlayInner}`}>
+          <a className={styles.overlayBrand} href="#top" onClick={() => setMenuOpen(false)} aria-label={site.name}>
+            <Wordmark className={styles.overlayLogo} />
+          </a>
+
           <ul className={styles.overlayList}>
             {navItems.map((item, index) => (
               <li key={item.id} className={styles.overlayItem}>

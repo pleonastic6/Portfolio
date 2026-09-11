@@ -160,12 +160,30 @@
     display: none;
   }
 
+  .brand {
+    gap: 0;
+    padding: 0.42rem 0.5rem;
+    border: var(--hairline) solid var(--c-line-soft);
+    border-radius: 999px;
+    background: rgb(8 8 8 / 0.36);
+  }
+
   .logo {
-    width: 5.4rem;
+    width: clamp(5.8rem, 24vw, 6.8rem);
   }
 
   .brandMark {
     display: none;
+  }
+}
+
+@media (max-width: 23rem) {
+  .brand {
+    padding-inline: 0.42rem;
+  }
+
+  .logo {
+    width: 5.25rem;
   }
 }
 
@@ -275,6 +293,13 @@
   filter: none;
 }
 
+@media (max-width: 56rem) {
+  :global(:root[data-theme='aurum-labyrinth']) .brand {
+    background: rgb(242 237 225 / 0.58);
+    border-color: var(--c-line-strong);
+  }
+}
+
 :global(:root[data-theme='aurum-labyrinth']) .overlay {
   background: var(--c-bg);
 }
@@ -321,6 +346,14 @@
   filter: drop-shadow(0 0 8px rgb(126 227 166 / 0.5));
 }
 
+@media (max-width: 56rem) {
+  :global(:root[data-theme='terminal-phosphor']) .brand {
+    background: rgb(5 8 7 / 0.5);
+    border-color: var(--c-line-strong);
+    box-shadow: inset 0 0 0 var(--hairline) rgb(126 227 166 / 0.12);
+  }
+}
+
 :global(:root[data-theme='terminal-phosphor']) .overlay {
   background: var(--c-bg);
 }
@@ -336,6 +369,14 @@
 :global(:root[data-theme='riso-print']) .logo {
   color: var(--c-text);
   filter: none;
+}
+
+@media (max-width: 56rem) {
+  :global(:root[data-theme='riso-print']) .brand {
+    background: var(--c-bg-inset);
+    border: 2px solid var(--c-text);
+    box-shadow: 3px 3px 0 var(--riso-pink);
+  }
 }
 
 /* Der aktive Punkt wird mit Pink unterlegt, wie mit dem Textmarker. */

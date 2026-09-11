@@ -6,6 +6,8 @@ import '@fontsource-variable/newsreader/wght.css'
 import '@fontsource/space-mono/latin-400.css'
 import '@fontsource/space-mono/latin-700.css'
 import '@fontsource/silkscreen/latin-400.css'
+import '@fontsource/cinzel/latin-700.css'
+import '@fontsource/cormorant-sc/latin-600.css'
 
 // Editoriale Newsreader-Serif + technische Mono/Dot-Akzente,
 // aber ohne Google-Fonts-CDN oder proprietären Font-Rip.

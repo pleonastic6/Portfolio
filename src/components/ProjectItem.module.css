@@ -313,3 +313,31 @@
     gap: var(--space-4);
   }
 }
+
+:global(:root[data-theme='aurum-labyrinth']) .item {
+  padding-top: var(--space-6);
+  border-top-color: var(--c-line-strong);
+  transform: none;
+}
+
+:global(:root[data-theme='aurum-labyrinth']) .media {
+  border: 3px solid var(--c-text);
+  background: var(--c-bg-inset);
+  box-shadow: 7px 7px 0 var(--c-accent);
+}
+
+:global(:root[data-theme='aurum-labyrinth']) .media::before {
+  opacity: 0.22;
+  background:
+    linear-gradient(90deg, rgb(32 16 6 / 0.24) 2px, transparent 2px),
+    linear-gradient(0deg, rgb(32 16 6 / 0.18) 2px, transparent 2px);
+  background-size: 28px 28px;
+  mix-blend-mode: multiply;
+}
+
+:global(:root[data-theme='aurum-labyrinth']) .link {
+  padding: 0.65rem 0.8rem;
+  color: var(--c-text);
+  border: 2px solid var(--c-text);
+  background: rgb(255 232 111 / 0.25);
+}

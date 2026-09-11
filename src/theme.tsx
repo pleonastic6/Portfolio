@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 
-export type ThemeId = 'noir-et-or'
+export type ThemeId = 'noir-et-or' | 'aurum-labyrinth'
 
 export type SiteTheme = {
   id: ThemeId
@@ -13,6 +13,11 @@ export const THEMES: SiteTheme[] = [
     id: 'noir-et-or',
     name: 'Noir et Or',
     description: 'Dunkle editorial Basis mit warmem Goldakzent.',
+  },
+  {
+    id: 'aurum-labyrinth',
+    name: 'Aurum Labyrinth',
+    description: 'Goldene Verpackungsanmutung mit geometrischem Meander-Rahmen.',
   },
 ]
 

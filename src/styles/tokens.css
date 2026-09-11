@@ -129,3 +129,49 @@
     --space-8: 3.25rem;
   }
 }
+
+:root[data-theme='aurum-labyrinth'] {
+  --c-bg: #f0b90f;
+  --c-bg-raised: #ffd844;
+  --c-bg-inset: #ffe785;
+
+  --c-text: #201006;
+  --c-text-muted: #59330f;
+  --c-text-faint: #885819;
+  --c-text-invert: #ffe36b;
+
+  --c-line: rgb(32 16 6 / 0.32);
+  --c-line-soft: rgb(32 16 6 / 0.18);
+  --c-line-strong: rgb(32 16 6 / 0.58);
+
+  --c-accent: #9c4f22;
+  --c-accent-dim: rgb(156 79 34 / 0.2);
+  --c-accent-glass: rgb(255 232 136 / 0.54);
+  --c-brown-red: #5d250e;
+
+  --font-sans: 'Cinzel', 'Cormorant SC', Georgia, serif;
+  --font-body: 'Cormorant SC', 'Cinzel', Georgia, serif;
+  --font-tech: 'Space Mono', 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-dot: 'Cinzel', 'Cormorant SC', Georgia, serif;
+
+  --fs-display: clamp(3rem, 8.4vw, 8rem);
+  --fs-statement: clamp(2.4rem, 6.6vw, 5.4rem);
+  --fs-h2: clamp(2rem, 4.8vw, 3.75rem);
+  --fs-h3: clamp(1.45rem, 2.8vw, 2.35rem);
+  --fs-body: clamp(1rem, 1.08vw, 1.125rem);
+
+  --lh-display: 0.9;
+  --lh-tight: 1;
+  --lh-body: 1.52;
+
+  --ls-display: -0.01em;
+  --ls-tight: 0.035em;
+  --ls-label: 0.18em;
+  --ls-meta: 0.12em;
+
+  --radius-media: 0;
+  --radius-sm: 0;
+  --hairline: 2px;
+  --pattern-opacity: 0;
+  --section-space: clamp(5rem, 11vw, 9rem);
+}

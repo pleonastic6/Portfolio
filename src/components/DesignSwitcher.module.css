@@ -46,3 +46,16 @@
   font-size: 0.875rem;
   letter-spacing: 0.14em;
 }
+
+:global(:root[data-theme='aurum-labyrinth']) .button {
+  padding: 0.55rem 0.8rem;
+  color: var(--c-text);
+  background: rgb(255 232 111 / 0.32);
+  border: 2px solid rgb(32 16 6 / 0.56);
+  box-shadow: 3px 3px 0 rgb(156 79 34 / 0.58);
+}
+
+:global(:root[data-theme='aurum-labyrinth']) .label,
+:global(:root[data-theme='aurum-labyrinth']) .name {
+  color: var(--c-text);
+}

@@ -76,7 +76,7 @@
   border: var(--hairline) solid var(--c-line-soft);
   border-radius: var(--radius-media);
   background: var(--c-bg-inset);
-  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 0.18);
+  box-shadow: 0 1.5rem 4rem rgb(111 37 15 / 0.12);
 }
 
 .media::before {
@@ -88,8 +88,8 @@
   opacity: 0.55;
   background:
     radial-gradient(circle at 22% 18%, rgb(201 170 106 / 0.12), transparent 28%),
-    linear-gradient(120deg, transparent 0 62%, rgb(244 239 228 / 0.045) 63%, transparent 72%);
-  mix-blend-mode: screen;
+    linear-gradient(120deg, transparent 0 62%, rgb(255 255 255 / 0.38) 63%, transparent 72%);
+  mix-blend-mode: multiply;
 }
 
 .mediaLink .media {
@@ -224,7 +224,7 @@
 @media (hover: hover) {
   .item:hover .media {
     border-color: rgb(201 170 106 / 0.28);
-    box-shadow: 0 2rem 5rem rgb(0 0 0 / 0.28);
+    box-shadow: 0 2rem 5rem rgb(111 37 15 / 0.18);
   }
 
   .item:hover .image {

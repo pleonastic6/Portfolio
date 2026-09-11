@@ -7,22 +7,24 @@
 
 :root {
   /* ---- Farbe -------------------------------------------------------- */
-  --c-bg: #080807;
-  --c-bg-raised: #0b0a09;
-  --c-bg-inset: #0f0e0c;
+  --c-bg: #f8f1e3;
+  --c-bg-raised: #fffaf0;
+  --c-bg-inset: #eadfca;
 
-  --c-text: #f4efe4;
-  --c-text-muted: #9b9488;
-  --c-text-faint: #807a70;
-  --c-text-invert: #080808;
+  --c-text: #2a1f0e;
+  --c-text-muted: #66563d;
+  --c-text-faint: #7a6a50;
+  --c-text-invert: #fff7e8;
 
-  --c-line: rgb(244 239 228 / 0.11);
-  --c-line-soft: rgb(244 239 228 / 0.065);
-  --c-line-strong: rgb(244 239 228 / 0.24);
+  --c-line: rgb(42 31 14 / 0.14);
+  --c-line-soft: rgb(42 31 14 / 0.075);
+  --c-line-strong: rgb(42 31 14 / 0.34);
 
   /* einziger Akzent - sparsam einsetzen (Status, Fokus) */
-  --c-accent: #c9aa6a;
-  --c-accent-dim: rgb(201 170 106 / 0.18);
+  --c-accent: #b47409;
+  --c-accent-dim: rgb(224 151 18 / 0.20);
+  --c-accent-glass: rgb(245 168 21 / 0.36);
+  --c-brown-red: #6f250f;
 
   /* ---- Typografie --------------------------------------------------- */
   --font-sans: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
@@ -93,8 +95,8 @@
   --dur-reveal: 1100ms;
 
   /* Hintergrundornament — 0 blendet es komplett aus */
-  --pattern-opacity: 0.42;
-  --pattern-size: 340px;
+  --pattern-opacity: 0.16;
+  --pattern-size: 220px;
 
   --z-cursor: 900;
   --z-nav: 700;

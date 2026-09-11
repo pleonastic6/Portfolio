@@ -9,6 +9,8 @@ import { Navigation } from './components/Navigation'
 import { Hero } from './sections/Hero'
 import { Work } from './sections/Work'
 import { About } from './sections/About'
+import { WhatWeBuild } from './sections/WhatWeBuild'
+import { Team } from './sections/Team'
 import { Skills } from './sections/Skills'
 import { Contact } from './sections/Contact'
 import { Legal } from './pages/Legal'
@@ -65,6 +67,8 @@ function Page() {
         <Hero />
         <Work />
         <About />
+        <WhatWeBuild />
+        <Team />
         <Skills />
         <Contact />
       </main>

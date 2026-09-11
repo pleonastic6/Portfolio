@@ -3,13 +3,14 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url('../assets/pattern-baroque.svg');
+  background-image: url('../assets/pattern-meander.svg');
   background-size: var(--pattern-size) var(--pattern-size);
   background-position: center top;
   opacity: var(--pattern-opacity);
+  mix-blend-mode: multiply;
   /* Zu den Raendern hin etwas praesenter, hinter dem Text zurueckhaltender */
-  mask-image: radial-gradient(120% 80% at 50% 38%, rgb(0 0 0 / 0.26) 0%, rgb(0 0 0 / 1) 78%);
-  -webkit-mask-image: radial-gradient(120% 80% at 50% 38%, rgb(0 0 0 / 0.26) 0%, rgb(0 0 0 / 1) 78%);
+  mask-image: radial-gradient(120% 82% at 50% 36%, rgb(0 0 0 / 0.08) 0%, rgb(0 0 0 / 0.5) 56%, rgb(0 0 0 / 1) 100%);
+  -webkit-mask-image: radial-gradient(120% 82% at 50% 36%, rgb(0 0 0 / 0.08) 0%, rgb(0 0 0 / 0.5) 56%, rgb(0 0 0 / 1) 100%);
 }
 
 @media (max-width: 48rem) {

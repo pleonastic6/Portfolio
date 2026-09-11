@@ -20,6 +20,8 @@ export type Translation = {
   nav: {
     work: string
     about: string
+    build: string
+    team: string
     skills: string
     contact: string
     menu: string
@@ -66,6 +68,25 @@ export type Translation = {
       studies: string
       status: string
     }
+  }
+  build: {
+    index: string
+    title: string
+    lead: string
+    items: {
+      title: string
+      text: string
+    }[]
+  }
+  team: {
+    index: string
+    title: string
+    lead: string
+    members: {
+      name: string
+      role: string
+      text: string
+    }[]
   }
   skills: {
     index: string

@@ -33,7 +33,7 @@
 .coords {
   color: var(--c-text-faint);
   padding: 0.45rem 0.65rem;
-  border: var(--hairline) solid rgb(244 239 228 / 0.09);
+  border: var(--hairline) solid var(--c-line);
   border-radius: 999px 999px 999px 0.45rem;
   transform: rotate(0.45deg);
 }
@@ -56,6 +56,7 @@
   letter-spacing: var(--ls-display);
   text-transform: none;
   text-wrap: nowrap;
+  text-shadow: 0 1px 0 rgb(255 255 255 / 0.44);
 }
 
 .line {

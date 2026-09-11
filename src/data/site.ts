@@ -37,11 +37,13 @@ export const socials: SocialLink[] = [
   },
 ]
 
-export type NavId = 'work' | 'about' | 'skills' | 'contact'
+export type NavId = 'work' | 'about' | 'build' | 'team' | 'skills' | 'contact'
 
 export const navItems: { id: NavId; href: string }[] = [
   { id: 'work', href: '#work' },
   { id: 'about', href: '#about' },
+  { id: 'build', href: '#build' },
+  { id: 'team', href: '#team' },
   { id: 'skills', href: '#skills' },
   { id: 'contact', href: '#contact' },
 ]

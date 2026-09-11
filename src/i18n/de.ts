@@ -10,6 +10,8 @@ export const de: Translation = {
   nav: {
     work: 'Projekte',
     about: 'Über uns',
+    build: 'Was wir bauen',
+    team: 'Team',
     skills: 'Skills',
     contact: 'Kontakt',
     menu: 'Menü',
@@ -61,13 +63,47 @@ export const de: Translation = {
       status: 'Offen für erste Zusammenarbeit',
     },
   },
-  skills: {
+  build: {
     index: '03',
+    title: 'Was wir bauen',
+    lead: 'Noch keine starre Agentur-Schublade. Eher ein gemeinsames Feld für Projekte, die technisch sauber und visuell eigenständig sein sollen.',
+    items: [
+      {
+        title: 'Webinterfaces',
+        text: 'Portfolios, Landingpages und kleine Apps, die nicht nach Baukasten riechen und trotzdem wartbar bleiben.',
+      },
+      {
+        title: 'Tools & Automatisierung',
+        text: 'Interne Helfer, Skripte und Workflows, die Wiederholung rausnehmen und Entwicklern Zeit zurückgeben.',
+      },
+      {
+        title: 'Datenvisualisierung',
+        text: 'Aus Rohdaten werden Karten, Szenen und Interfaces, die Muster sichtbar machen statt nur Tabellen zu zeigen.',
+      },
+      {
+        title: 'Experimente',
+        text: 'Prototypen, Spielereien und technische Studien — klein genug zum Testen, ernst genug zum Lernen.',
+      },
+    ],
+  },
+  team: {
+    index: '04',
+    title: 'Team',
+    lead: 'ADDD steht für Artur, David, David und Dominik. Vier Entwickler, noch ohne großes Agentur-Theater — aber mit genug Energie, um Dinge wirklich zu bauen.',
+    members: [
+      { name: 'Artur', role: 'Frontend / Daten / Gestaltung', text: 'Bringt Interfaces, Datenvisualisierung und den Blick fürs System zusammen.' },
+      { name: 'David', role: 'Entwicklung', text: 'Teil des Kollektivs. Schwerpunkt wird ergänzt, sobald wir ihn sauber benennen können.' },
+      { name: 'David', role: 'Entwicklung', text: 'Teil des Kollektivs. Nicht als Platzhalter gemeint — nur ehrlich noch nicht festgezurrt.' },
+      { name: 'Dominik', role: 'Entwicklung', text: 'Teil des Kollektivs. Fokus folgt, wenn aus Projekten echte Verantwortlichkeiten werden.' },
+    ],
+  },
+  skills: {
+    index: '05',
     title: 'Skills & Technologien',
     lead: 'Womit wir arbeiten — aus vier Entwicklern gewachsen, gewählt für das, was es ermöglicht.',
   },
   contact: {
-    index: '04',
+    index: '06',
     title: 'Kontakt',
     statement: ['Etwas gemeinsam', 'bauen?'],
     lead: 'ADDD ist jung und die Richtung noch offen. Wir sprechen gern über Projekte, Zusammenarbeit und Aufgaben, die uns interessieren. Bis es eine gemeinsame Adresse gibt, läuft Kontakt vorläufig über die unten stehende Mail.',

@@ -10,6 +10,8 @@ export const en: Translation = {
   nav: {
     work: 'Work',
     about: 'About',
+    build: 'What we build',
+    team: 'Team',
     skills: 'Skills',
     contact: 'Contact',
     menu: 'Menu',
@@ -60,13 +62,47 @@ export const en: Translation = {
       status: 'Open to early collaborations',
     },
   },
-  skills: {
+  build: {
     index: '03',
+    title: 'What we build',
+    lead: 'Not a fixed agency box yet. More like a shared field for projects that should be technically clean and visually specific.',
+    items: [
+      {
+        title: 'Web interfaces',
+        text: 'Portfolios, landing pages and small apps that avoid template fatigue while staying maintainable.',
+      },
+      {
+        title: 'Tools & automation',
+        text: 'Internal helpers, scripts and workflows that remove repetition and give developers time back.',
+      },
+      {
+        title: 'Data visualization',
+        text: 'Raw data becomes maps, scenes and interfaces that reveal patterns instead of just showing tables.',
+      },
+      {
+        title: 'Experiments',
+        text: 'Prototypes, playful studies and technical tests — small enough to try, serious enough to learn from.',
+      },
+    ],
+  },
+  team: {
+    index: '04',
+    title: 'Team',
+    lead: 'ADDD stands for Artur, David, David and Dominik. Four developers, no inflated agency theatre yet — but enough energy to actually build things.',
+    members: [
+      { name: 'Artur', role: 'Frontend / data / design', text: 'Connects interfaces, data visualization and a system-minded view of design.' },
+      { name: 'David', role: 'Development', text: 'Part of the collective. A sharper focus will be added once we can name it honestly.' },
+      { name: 'David', role: 'Development', text: 'Part of the collective. Not filler — just not overdefined before real projects shape the role.' },
+      { name: 'Dominik', role: 'Development', text: 'Part of the collective. Focus follows when project responsibility becomes concrete.' },
+    ],
+  },
+  skills: {
+    index: '05',
     title: 'Skills & technology',
     lead: 'What we work with — built up across four developers, chosen for what it makes possible.',
   },
   contact: {
-    index: '04',
+    index: '06',
     title: 'Contact',
     statement: ['Something worth', 'building together?'],
     lead: 'ADDD is early and our direction is still open. We are happy to talk about projects, collaborations and work that interests us. Until there is a shared address, contact temporarily goes through the email below.',

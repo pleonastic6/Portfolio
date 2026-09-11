@@ -14,13 +14,13 @@
 
 .nav[data-scrolled='true'] {
   /* deckend genug für Browser ohne backdrop-filter */
-  background: rgb(255 250 240 / 0.92);
+  background: rgb(8 8 7 / 0.92);
   border-bottom-color: var(--c-line-soft);
 }
 
 @supports (backdrop-filter: blur(1px)) {
   .nav[data-scrolled='true'] {
-    background: rgb(255 250 240 / 0.72);
+    background: rgb(8 8 7 / 0.72);
     backdrop-filter: blur(18px) saturate(145%);
   }
 }

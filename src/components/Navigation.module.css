@@ -55,8 +55,8 @@
 
 .logo {
   display: block;
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 6.9rem;
+  height: auto;
   color: var(--c-text);
   transition: color var(--dur-fast) var(--ease);
 }
@@ -161,7 +161,7 @@
   }
 
   .logo {
-    width: 4.2rem;
+    width: 5.4rem;
   }
 
   .brandMark {

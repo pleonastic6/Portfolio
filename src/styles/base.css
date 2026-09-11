@@ -373,3 +373,86 @@ ol {
     opacity: 0.3;
   }
 }
+
+/* ---- Theme: Riso Print ------------------------------------------------
+ * Papier mit Korn, darueber ein feines Punktraster — dasselbe Prinzip, mit dem
+ * auch die Bilder gedruckt werden, nur sehr schwach. Beide Ebenen stehen
+ * still und werden deshalb genau einmal gezeichnet.
+ */
+
+:root[data-theme='riso-print'] body {
+  background:
+    radial-gradient(ellipse at 14% 6%, rgb(255 255 250 / 0.8), transparent 46%),
+    radial-gradient(ellipse at 86% 88%, rgb(255 72 176 / 0.07), transparent 48%),
+    var(--c-bg);
+}
+
+/* Papierkorn, aufmultipliziert. */
+:root[data-theme='riso-print'] body::before {
+  z-index: 10000;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+  background-size: 190px 190px;
+}
+
+/* Rasterpunkte in Pink, so schwach, dass man sie eher spuert als sieht. */
+:root[data-theme='riso-print'] body::after {
+  z-index: 0;
+  background-image: radial-gradient(rgb(255 72 176 / 0.5) 0.9px, transparent 1px);
+  background-size: 7px 7px;
+  opacity: 0.16;
+}
+
+:root[data-theme='riso-print'] h1,
+:root[data-theme='riso-print'] h2,
+:root[data-theme='riso-print'] h3,
+:root[data-theme='riso-print'] h4 {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+:root[data-theme='riso-print'] ::selection {
+  background: var(--riso-pink);
+  color: var(--c-text);
+}
+
+/*
+ * Passermarken in den Ecken des Satzspiegels — das Kreuz, an dem der Drucker
+ * die beiden Farbgaenge ausrichtet. Rein dekorativ, komplett unbewegt.
+ */
+:root[data-theme='riso-print'] .page::before,
+:root[data-theme='riso-print'] .page::after {
+  content: '';
+  position: fixed;
+  z-index: 3;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--riso-blau), var(--riso-blau)),
+    linear-gradient(var(--riso-pink), var(--riso-pink));
+  background-size:
+    100% 1px,
+    1px 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.75;
+}
+
+:root[data-theme='riso-print'] .page::before {
+  top: calc(var(--nav-height) + 0.9rem);
+  left: 0.9rem;
+}
+
+:root[data-theme='riso-print'] .page::after {
+  right: 0.9rem;
+  bottom: 0.9rem;
+}
+
+@media (max-width: 48rem) {
+  :root[data-theme='riso-print'] .page::before,
+  :root[data-theme='riso-print'] .page::after {
+    display: none;
+  }
+}

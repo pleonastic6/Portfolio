@@ -92,3 +92,13 @@
   box-shadow: none;
   transform: none;
 }
+
+/* ---- Theme: Riso Print ------------------------------------------------- */
+
+:global(:root[data-theme='riso-print']) .card {
+  padding: var(--space-5);
+  border: 2px solid var(--c-text);
+  background: var(--c-bg-raised);
+  box-shadow: 5px 5px 0 var(--riso-blau);
+  transform: none;
+}

@@ -436,3 +436,64 @@
   color: var(--c-accent);
   font-weight: 700;
 }
+
+/* ---- Theme: Riso Print ------------------------------------------------
+ * Der Fehldruck als Gestaltungsmittel: hinter der Schlagzeile liegen zwei
+ * versetzte Kopien in Pink und Blau. Umgesetzt als Textschatten, nicht als
+ * doppeltes Markup — so bleibt die Schrift einmal im Dokument und damit
+ * einmal fuer Vorlesewerkzeuge und Suchmaschinen.
+ */
+:global(:root[data-theme='riso-print']) .headline {
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+:global(:root[data-theme='riso-print']) .lineInner {
+  white-space: normal;
+  color: var(--c-text);
+  /* Knapp gehalten: ein echter Fehldruck verschiebt sich um ein, zwei
+     Millimeter. Groesser gesetzt liest sich das als 3D-Schatten, nicht als
+     zweiter Druckgang. */
+  text-shadow:
+    0.032em -0.026em 0 var(--riso-pink),
+    -0.03em 0.024em 0 var(--riso-blau);
+}
+
+:global(:root[data-theme='riso-print']) .kicker {
+  color: var(--c-accent);
+  transform: none;
+}
+
+/* Die Plakette wird zum Aufkleber: Vollflaeche in Pink, leicht schief. */
+:global(:root[data-theme='riso-print']) .coords {
+  border: 0;
+  border-radius: 0;
+  background: var(--riso-pink);
+  color: var(--c-text);
+  box-shadow: none;
+  transform: rotate(-1.1deg);
+  padding: 0.5rem 0.8rem;
+}
+
+/* Trennlinie als Rasterstreifen — dasselbe Punktmuster wie bei den Bildern. */
+:global(:root[data-theme='riso-print']) .rule {
+  height: 10px;
+  background-image: radial-gradient(var(--riso-blau) 1.6px, transparent 1.8px);
+  background-size: 10px 10px;
+  background-position: center;
+  opacity: 0.8;
+}
+
+:global(:root[data-theme='riso-print']) .cta {
+  padding: 0.6rem 1rem;
+  color: var(--c-text);
+  background: var(--riso-pink);
+  border: 0;
+  box-shadow: 4px 4px 0 var(--riso-blau);
+}
+
+:global(:root[data-theme='riso-print']) .cta:hover {
+  background: var(--riso-blau);
+  color: var(--c-text-invert);
+  box-shadow: 4px 4px 0 var(--riso-pink);
+}

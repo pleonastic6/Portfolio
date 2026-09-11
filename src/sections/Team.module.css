@@ -83,3 +83,12 @@
   background: var(--c-bg-inset);
   box-shadow: none;
 }
+
+/* ---- Theme: Riso Print ------------------------------------------------- */
+
+:global(:root[data-theme='riso-print']) .member {
+  padding: var(--space-5);
+  border: 2px solid var(--c-text);
+  background: var(--c-bg-raised);
+  box-shadow: 5px 5px 0 var(--riso-pink);
+}

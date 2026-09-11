@@ -257,3 +257,61 @@
   /* Zeichenraster im Hintergrund: die Zellen eines Textbildschirms. */
   --zellraster: 9px 18px;
 }
+
+/* ---- Theme: Riso Print ------------------------------------------------
+ * Zwei Druckfarben auf Naturpapier. Das Fluo-Pink ist die echte Riso-Tinte
+ * (#ff48b0) und erreicht auf Papier nur 2.7:1 — im Druck ist das genauso, die
+ * Farbe ist zum Leuchten da, nicht zum Lesen. Sie bleibt deshalb Grafik und
+ * Raster vorbehalten; fuer Text steht ein tieferes Magenta bereit.
+ * Gelesen wird im Ueberdruckton, dem Violett, das entsteht, wo beide Farben
+ * uebereinanderliegen.
+ */
+:root[data-theme='riso-print'] {
+  --c-bg: #f2efe6;
+  --c-bg-raised: #f8f6ee;
+  --c-bg-inset: #e6e1d2;
+
+  --c-text: #1f1147;
+  --c-text-muted: #3a2a6b;
+  --c-text-faint: #655499;
+  --c-text-invert: #f8f6ee;
+
+  --c-line: rgb(31 17 71 / 0.2);
+  --c-line-soft: rgb(31 17 71 / 0.1);
+  --c-line-strong: rgb(31 17 71 / 0.38);
+
+  --c-accent: #cc0f7d;
+  --c-accent-dim: rgb(204 15 125 / 0.16);
+  --c-accent-glass: rgb(255 72 176 / 0.1);
+  --c-brown-red: #cc0f7d;
+
+  /* Die beiden Tinten, unverfaelscht — nur fuer Flaechen, Raster und Versatz. */
+  --riso-pink: #ff48b0;
+  --riso-blau: #0078bf;
+
+  --font-sans: 'Newsreader Variable', Newsreader, Georgia, serif;
+  --font-body: 'Newsreader Variable', Newsreader, Georgia, serif;
+  --font-tech: 'Space Mono', 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-dot: 'Silkscreen', 'Space Mono', ui-monospace, monospace;
+
+  --fs-display: clamp(2.6rem, 7.4vw, 6.8rem);
+  --fs-statement: clamp(2rem, 5vw, 4rem);
+  --fs-h2: clamp(1.8rem, 4vw, 3rem);
+  --fs-h3: clamp(1.3rem, 2.3vw, 1.9rem);
+  --fs-body: clamp(1rem, 1.05vw, 1.1rem);
+
+  --lh-display: 0.98;
+  --lh-tight: 1.08;
+  --lh-body: 1.6;
+
+  --ls-display: -0.015em;
+  --ls-tight: -0.005em;
+  --ls-label: 0.14em;
+  --ls-meta: 0.1em;
+
+  --radius-media: 0;
+  --radius-sm: 0;
+  --hairline: 1px;
+  --pattern-opacity: 0;
+  --section-space: clamp(4.5rem, 10vw, 8rem);
+}

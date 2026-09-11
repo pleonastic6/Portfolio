@@ -86,3 +86,21 @@
 :global(:root[data-theme='terminal-phosphor']) .name {
   color: var(--c-accent);
 }
+
+/* ---- Theme: Riso Print ------------------------------------------------- */
+
+:global(:root[data-theme='riso-print']) .button {
+  padding: 0.5rem 0.75rem;
+  color: var(--c-text);
+  background: transparent;
+  border: 2px solid var(--c-text);
+  box-shadow: 3px 3px 0 var(--riso-pink);
+}
+
+:global(:root[data-theme='riso-print']) .button:hover {
+  box-shadow: 3px 3px 0 var(--riso-blau);
+}
+
+:global(:root[data-theme='riso-print']) .name {
+  color: var(--c-accent);
+}

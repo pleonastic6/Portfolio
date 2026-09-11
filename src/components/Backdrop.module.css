@@ -27,3 +27,8 @@
 :global(:root[data-theme='terminal-phosphor']) .backdrop {
   display: none;
 }
+
+/* Das Rasterpunktmuster liegt hier auf der Seite selbst (base.css). */
+:global(:root[data-theme='riso-print']) .backdrop {
+  display: none;
+}

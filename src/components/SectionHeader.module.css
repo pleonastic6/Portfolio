@@ -83,3 +83,17 @@
   );
   opacity: 1;
 }
+
+/* ---- Theme: Riso Print ------------------------------------------------- */
+
+:global(:root[data-theme='riso-print']) .rule {
+  height: 10px;
+  background-image: radial-gradient(var(--riso-blau) 1.6px, transparent 1.8px);
+  background-size: 10px 10px;
+  background-position: center;
+  opacity: 0.75;
+}
+
+:global(:root[data-theme='riso-print']) .index {
+  color: var(--c-accent);
+}

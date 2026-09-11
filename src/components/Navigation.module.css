@@ -324,3 +324,31 @@
 :global(:root[data-theme='terminal-phosphor']) .overlay {
   background: var(--c-bg);
 }
+
+/* ---- Theme: Riso Print ------------------------------------------------- */
+
+:global(:root[data-theme='riso-print']) .nav[data-scrolled='true'] {
+  background: rgb(242 239 230 / 0.93);
+  border-bottom-color: var(--c-line-strong);
+  backdrop-filter: blur(8px);
+}
+
+:global(:root[data-theme='riso-print']) .logo {
+  color: var(--c-text);
+  filter: none;
+}
+
+/* Der aktive Punkt wird mit Pink unterlegt, wie mit dem Textmarker. */
+:global(:root[data-theme='riso-print']) .link[aria-current='true'] {
+  color: var(--c-text);
+  background: var(--riso-pink);
+  box-shadow: 0 0 0 3px var(--riso-pink);
+}
+
+:global(:root[data-theme='riso-print']) .link::after {
+  background: var(--c-accent);
+}
+
+:global(:root[data-theme='riso-print']) .overlay {
+  background: var(--c-bg);
+}

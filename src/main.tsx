@@ -26,3 +26,56 @@ createRoot(container).render(
     <App />
   </StrictMode>,
 )
+
+/*
+ * Startsignal fuer den Aufbau des Hero.
+ *
+ * Ohne dieses Signal beginnt die Animation in dem Moment, in dem React die
+ * Elemente einsetzt. Der Browser ist dann aber noch mit dem Auswerten des
+ * Skripts und dem Bereitstellen der Schriften beschaeftigt und zeichnet das
+ * erste Bild deutlich spaeter. Zu sehen bekommt man deshalb nicht den Aufbau,
+ * sondern seine zweite Haelfte: der Text steht ploetzlich halb da.
+ *
+ * Die Sperre in base.css haelt die Animationen bis hierher an. Freigegeben
+ * wird, sobald die Schriften stehen und der Browser tatsaechlich ein Bild
+ * gezeichnet hat — dafuer die zwei ineinander verschachtelten
+ * Bildanforderungen. Die 1200 ms sind die Notbremse, falls document.fonts
+ * nie fertig meldet.
+ */
+const notbremse = new Promise<void>((resolve) => {
+  window.setTimeout(resolve, 1200)
+})
+const schriften = document.fonts ? document.fonts.ready.then(() => undefined) : Promise.resolve()
+
+/*
+ * Der Startsequenz in index.html melden, dass React steht — erst danach zaehlt
+ * sie zu Ende und raeumt sich weg. Die Bildanforderung sorgt dafuer, dass die
+ * Meldung nach dem ersten gezeichneten Bild rausgeht, nicht davor.
+ */
+requestAnimationFrame(() => {
+  window.dispatchEvent(new Event('addd:mounted'))
+})
+
+/*
+ * Und umgekehrt: der Hero wartet, bis die Sequenz weg ist. Ohne das liefe sein
+ * Aufbau hinter der noch sichtbaren Flaeche ab.
+ * Die zweite Notbremse ist grosszuegiger als die erste — falls das Skript in
+ * index.html gar nicht laeuft, startet der Hero trotzdem.
+ */
+const sequenz = window.__addd?.fertig ?? Promise.resolve()
+const notbremseLang = new Promise<void>((resolve) => {
+  window.setTimeout(resolve, 6500)
+})
+
+void Promise.race([
+  Promise.all([Promise.race([schriften, notbremse]), sequenz]).then(() => undefined),
+  notbremseLang,
+]).then(() => {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.documentElement.classList.add('is-ready')
+      // Fuer alles, was nicht ueber CSS gesteuert wird — etwa die Punktmarke.
+      window.dispatchEvent(new Event('addd:ready'))
+    })
+  })
+})

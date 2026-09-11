@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { Suspense, lazy, useEffect, useState } from 'react'
 import { site } from './data/site'
 import { I18nProvider, useI18n } from './i18n'
 import { Cursor } from './components/Cursor'
@@ -13,8 +13,12 @@ import { WhatWeBuild } from './sections/WhatWeBuild'
 import { Team } from './sections/Team'
 import { Skills } from './sections/Skills'
 import { Contact } from './sections/Contact'
-import { Legal } from './pages/Legal'
-import { CaseStudy } from './pages/CaseStudy'
+// Unterseiten erst laden, wenn sie aufgerufen werden — sie gehoeren nicht
+// in das Bundle, das ueber die Startseite entscheidet.
+const Legal = lazy(() => import('./pages/Legal').then((m) => ({ default: m.Legal })))
+const CaseStudy = lazy(() =>
+  import('./pages/CaseStudy').then((m) => ({ default: m.CaseStudy })),
+)
 import { useHashRoute } from './hooks/useHashRoute'
 
 function Page() {
@@ -46,7 +50,9 @@ function Page() {
         {site.customCursor && <Cursor />}
         <Backdrop />
         <Frame />
-        {route.name === 'case' ? <CaseStudy slug={route.slug} /> : <Legal kind={route.name} />}
+        <Suspense fallback={<div className={'shell'} style={{ minHeight: '60svh' }} />}>
+          {route.name === 'case' ? <CaseStudy slug={route.slug} /> : <Legal kind={route.name} />}
+        </Suspense>
         <Footer />
       </div>
     )

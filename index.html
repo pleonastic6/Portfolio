@@ -1,5 +1,10 @@
 <!doctype html>
-<html lang="de">
+<!--
+  Hintergrundfarbe direkt am Element: das allererste Bild zeichnet der Browser,
+  bevor er ein Stylesheet gelesen hat — ohne diese Angabe blitzt kurz eine
+  weisse Seite auf, bevor das Dunkel kommt.
+-->
+<html lang="de" style="background: #080807; color-scheme: dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -43,9 +48,180 @@
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <meta name="theme-color" content="#080808" />
     <meta name="color-scheme" content="dark" />
+
+    <!--
+      Stile der Startsequenz stehen hier und nicht im Stylesheet der Anwendung:
+      sie muessen wirken, bevor irgendetwas geladen ist. Aus demselben Grund
+      steht hier ausschliesslich die Schreibmaschinenschrift des Systems und
+      nicht Space Mono: die ist zu diesem Zeitpunkt noch nicht geladen, und ein
+      Wechsel mitten in der Sequenz waere als Sprung zu sehen.
+    -->
+    <style>
+      #intro {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.15rem;
+        background: #080807;
+        color: #f4efe4;
+        font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+        transition:
+          opacity 540ms cubic-bezier(0.16, 1, 0.3, 1),
+          transform 540ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      #intro[data-done='true'] {
+        opacity: 0;
+        transform: translateY(-1.2%);
+        pointer-events: none;
+      }
+
+      #intro-count {
+        font-size: clamp(3.5rem, 13vw, 9rem);
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        /* Ziffern gleich breit, sonst zappelt der Zaehler beim Hochlaufen */
+        font-variant-numeric: tabular-nums;
+        color: #f4efe4;
+      }
+
+      #intro-name {
+        font-size: 0.75rem;
+        letter-spacing: 0.42em;
+        text-indent: 0.42em;
+        color: #9b9488;
+      }
+
+      #intro-name b {
+        font-weight: 400;
+        color: #c9aa6a;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #intro {
+          transition-duration: 1ms;
+        }
+      }
+    </style>
   </head>
   <body>
+    <!--
+      Startsequenz. Sie steht bewusst als fertiges Markup in der Seite und wird
+      nicht von der Anwendung erzeugt: so ist sie nach wenigen hundert
+      Millisekunden da, waehrend die Anwendung selbst noch startet. Genau die
+      Wartezeit soll sie fuellen.
+    -->
+    <div id="intro" aria-hidden="true">
+      <div id="intro-count">000</div>
+      <div id="intro-name"><b>A</b>DDD</div>
+    </div>
+
     <div id="root"></div>
+
+    <script>
+      (function () {
+        var overlay = document.getElementById('intro')
+        var zaehler = document.getElementById('intro-count')
+
+        // Ein Versprechen, auf das main.tsx wartet, bevor es den Aufbau des
+        // Hero freigibt — sonst liefe der hinter der noch sichtbaren Flaeche ab.
+        var fertigMelden
+        window.__addd = { fertig: new Promise(function (res) { fertigMelden = res }) }
+
+        // Nur einmal pro Sitzung. Beim zweiten Aufruf im selben Tab waere die
+        // Sequenz nur noch im Weg.
+        var schonGesehen = false
+        try {
+          schonGesehen = sessionStorage.getItem('addd:intro') === '1'
+          sessionStorage.setItem('addd:intro', '1')
+        } catch (e) {
+          /* Privater Modus: dann eben jedes Mal. */
+        }
+
+        if (schonGesehen || !overlay || !zaehler) {
+          if (overlay) overlay.remove()
+          fertigMelden()
+          return
+        }
+
+        var beenden = function () {
+          if (!overlay.isConnected) return
+          overlay.dataset.done = 'true'
+          window.setTimeout(function () {
+            overlay.remove()
+            fertigMelden()
+          }, 560)
+        }
+
+        // Notausstieg: sollte irgendetwas haengen, verschwindet die Flaeche
+        // trotzdem. Sie darf unter keinen Umstaenden die Seite verdecken.
+        var notausstieg = window.setTimeout(beenden, 6000)
+
+        var ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        var start = performance.now()
+        var wert = 0
+        var ziel = 94
+        var bereit = false
+
+        // Solange die Anwendung nicht steht, kriecht der Zaehler gegen 94.
+        // Danach wird der Rest zuegig abgeraeumt.
+        var faktor = 0.075
+        window.addEventListener('addd:mounted', function () {
+          bereit = true
+          ziel = 100
+          faktor = 0.26
+        })
+
+        if (ruhig) {
+          // Ohne Bewegungswunsch kein Hochzaehlen — nur der Endstand, kurz.
+          zaehler.textContent = '100'
+          window.addEventListener('addd:mounted', function () {
+            window.clearTimeout(notausstieg)
+            beenden()
+          })
+          return
+        }
+
+        var gezeigt = -1
+        var letzteAusgabe = 0
+
+        var schritt = function (jetzt) {
+          // Asymptotisch: der Zaehler laeuft zuegig los, kriecht gegen Ende und
+          // springt erst auf 100, wenn die Anwendung wirklich steht.
+          wert += (ziel - wert) * faktor
+
+          /*
+           * Geschrieben wird hoechstens alle 55 ms und nur bei echter
+           * Aenderung. Bei jedem Bild zu schreiben hiess: eine grosse
+           * Textflaeche neu setzen und zeichnen, waehrend der Browser
+           * gleichzeitig die Anwendung startet — genau in dem Moment, in dem
+           * er am wenigsten Luft hat.
+           */
+          var stand = Math.min(100, Math.round(wert))
+          if (stand !== gezeigt && jetzt - letzteAusgabe >= 55) {
+            gezeigt = stand
+            letzteAusgabe = jetzt
+            zaehler.textContent = String(stand).padStart(3, '0')
+          }
+
+          var langGenug = jetzt - start > 600
+          if (bereit && langGenug && wert > 98.6) {
+            zaehler.textContent = '100'
+            window.clearTimeout(notausstieg)
+            beenden()
+            return
+          }
+          requestAnimationFrame(schritt)
+        }
+        requestAnimationFrame(schritt)
+      })()
+    </script>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

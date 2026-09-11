@@ -1,20 +1,96 @@
+/*
+ * Der Rahmen ist bewusst vollstaendig durchsichtig: keine Deckkraft, keine
+ * Maske, kein Mischmodus. Beides zwingt den Browser dazu, alles darin bei
+ * jedem Bild in einen Zwischenspeicher zu zeichnen und erst danach anzuzeigen —
+ * bei einer bildschirmfuellenden Flaeche mit laufender Bewegung ist das der
+ * teuerste Posten ueberhaupt und war der Grund fuer das Ruckeln.
+ * So bekommt jede Ebene darin ihre eigene Flaeche auf der Grafikkarte und wird
+ * nur noch verschoben.
+ */
 .backdrop {
   position: fixed;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
   pointer-events: none;
-  background-image: url('../assets/pattern-meander.svg');
-  background-size: var(--pattern-size) var(--pattern-size);
+
+  --tile: var(--pattern-size);
+}
+
+/*
+ * Die Musterflaeche steht still. Sie hat frueher unmerklich langsam gedriftet;
+ * das sah gut aus, war aber die einzige dauerhaft laufende Animation auf einer
+ * bildschirmfuellenden, festsitzenden Flaeche — die Grafikkarte musste den
+ * ganzen Hintergrund in jedem einzelnen Bild neu zusammensetzen, solange die
+ * Seite offen war. Geblieben ist das einmalige Aufblenden beim Laden.
+ *
+ * Kein will-change mehr: ohne laufende Animation gibt es nichts vorzubereiten.
+ * Die Grunddeckkraft sitzt hier statt am Rahmen — siehe oben.
+ */
+.pattern {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/pattern-baroque.svg');
+  background-size: var(--tile) var(--tile);
   background-position: center top;
   opacity: var(--pattern-opacity);
-  mix-blend-mode: multiply;
-  /* Zu den Raendern hin etwas praesenter, hinter dem Text zurueckhaltender */
-  mask-image: radial-gradient(120% 82% at 50% 36%, rgb(0 0 0 / 0.08) 0%, rgb(0 0 0 / 0.5) 56%, rgb(0 0 0 / 1) 100%);
-  -webkit-mask-image: radial-gradient(120% 82% at 50% 36%, rgb(0 0 0 / 0.08) 0%, rgb(0 0 0 / 0.5) 56%, rgb(0 0 0 / 1) 100%);
+  animation: patternIn 2600ms var(--ease) both;
+}
+
+/*
+ * Warmer Lichtschein ueber dem Muster, der die Goldpunkte in einer Ecke
+ * anhebt. Bewusst unbewegt: eine zweite, dauerhaft animierte Flaeche in
+ * Bildschirmgroesse kostet die Grafikkarte in jedem Bild Arbeit, ohne dass
+ * das Atmen bei dieser Deckkraft ueberhaupt auffiel. Die Bewegung im
+ * Hintergrund liefert das Muster.
+ */
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    46% 42% at 62% 28%,
+    rgb(214 184 122 / 0.08) 0%,
+    rgb(201 170 106 / 0.03) 42%,
+    transparent 72%
+  );
+}
+
+/*
+ * Zu den Raendern hin ist das Muster praesenter, hinter dem Text nimmt es sich
+ * zurueck. Frueher war das eine Maske am Rahmen. Derselbe Eindruck entsteht mit
+ * einem Schleier in der Hintergrundfarbe — nur wird der einmal gezeichnet und
+ * danach bloss noch angezeigt. Die Deckkraft ist die Gegenzahl der alten
+ * Maskenwerte (0.74 = 1 − 0.26).
+ */
+.veil {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 80% at 50% 38%, rgb(8 8 7 / 0.74) 0%, rgb(8 8 7 / 0) 78%);
+}
+
+@keyframes patternIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: var(--pattern-opacity);
+  }
 }
 
 @media (max-width: 48rem) {
   .backdrop {
-    background-size: calc(var(--pattern-size) * 0.7) calc(var(--pattern-size) * 0.7);
+    --tile: calc(var(--pattern-size) * 0.7);
+  }
+}
+
+/*
+ * Ohne Bewegungswunsch faellt auch das Aufblenden weg — die Flaeche ist von
+ * Anfang an einfach da. Ausdruecklich, weil die globale Regel in base.css
+ * Animationen nur auf 0.01ms kuerzt und die Startsperre sie bis dahin anhaelt.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .pattern {
+    animation: none;
+    opacity: var(--pattern-opacity);
   }
 }

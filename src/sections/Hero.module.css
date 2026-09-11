@@ -61,14 +61,25 @@
 
 .line {
   display: block;
-  overflow: hidden;
-  padding-bottom: 0.1em;
 }
 
-.lineInner {
-  display: block;
+/* Jedes Wort bekommt seine eigene Maske. Der Innenabstand ist noetig, sonst
+   schneidet overflow die Unterlaengen von g, y und p ab. */
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.07em;
+}
+
+.word:not(:last-child) {
+  margin-right: 0.26em;
+}
+
+.wordInner {
+  display: inline-block;
   white-space: nowrap;
-  transform: translateY(105%);
+  transform: translateY(110%);
   animation: rise var(--dur-reveal) var(--ease) both;
   animation-delay: var(--d, 0ms);
 }
@@ -184,7 +195,6 @@
 
   .headline {
     max-width: none;
-    line-height: 0.94;
     text-wrap: pretty;
   }
 
@@ -212,11 +222,7 @@
   }
 
   .headline {
-    line-height: 0.98;
-  }
-
-  .lineInner {
-    white-space: normal;
+    line-height: 0.92;
   }
 
   .rule {
@@ -228,7 +234,7 @@
 
 @keyframes rise {
   from {
-    transform: translateY(105%);
+    transform: translateY(110%);
   }
   to {
     transform: translateY(0);

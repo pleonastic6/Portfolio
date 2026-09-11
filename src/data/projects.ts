@@ -1,6 +1,30 @@
-import type { Localized } from './site'
-import nycBuildings from '../assets/projects/nyc-buildings.jpg'
-import portfolioShot from '../assets/projects/portfolio-2026.jpg'
+import type { Localized, Picture } from './site'
+import nycFallback from '../assets/projects/nyc-buildings-fallback.jpg'
+import nyc800 from '../assets/projects/nyc-buildings-800.webp'
+import nyc1600 from '../assets/projects/nyc-buildings-1600.webp'
+import portfolioFallback from '../assets/projects/portfolio-2026-fallback.jpg'
+import portfolio800 from '../assets/projects/portfolio-2026-800.webp'
+import portfolio1600 from '../assets/projects/portfolio-2026-1600.webp'
+
+const nycBuildings: Picture = {
+  fallback: nycFallback,
+  sources: [
+    { src: nyc800, width: 800 },
+    { src: nyc1600, width: 1600 },
+  ],
+  width: 1600,
+  height: 900,
+}
+
+const portfolioShot: Picture = {
+  fallback: portfolioFallback,
+  sources: [
+    { src: portfolio800, width: 800 },
+    { src: portfolio1600, width: 1600 },
+  ],
+  width: 1600,
+  height: 900,
+}
 
 /**
  * Projektinhalte.
@@ -20,7 +44,7 @@ export type Project = {
   description: Localized
   year: string
   technologies: string[]
-  image?: string
+  image?: Picture
   imageAlt?: Localized
   url?: string
   github?: string

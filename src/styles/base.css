@@ -62,6 +62,10 @@ body::after {
     linear-gradient(90deg, transparent 0 68%, rgb(255 255 255 / 0.28) 78%, transparent 100%);
 }
 
+picture {
+  display: contents;
+}
+
 img,
 picture,
 svg,
@@ -200,8 +204,28 @@ ol {
   transform: translateY(0);
 }
 
+/* ---- Startsperre fuer den Aufbau ------------------------------------- */
+
+/*
+ * Alles mit data-intro steht still, bis main.tsx die Klasse is-ready setzt —
+ * also bis die Anwendung steht, die Schriften da sind und der Browser ein
+ * erstes Bild gezeichnet hat. Sonst laeuft der Aufbau waehrend der Ladezeit
+ * los und man sieht nur noch sein Ende.
+ */
+html:not(.is-ready) [data-intro],
+html:not(.is-ready) [data-intro] * {
+  animation-play-state: paused;
+}
+
 /* ---- Scroll-Reveal --------------------------------------------------- */
 
+/*
+ * Kein will-change: die Angabe haette jedes dieser Elemente dauerhaft auf eine
+ * eigene Flaeche der Grafikkarte gelegt — bei siebzehn Stueck, darunter
+ * bildschirmgrosse Projektzeilen, geht das in hunderte Megabyte Texturspeicher.
+ * Der Browser legt die Flaeche fuer die Dauer des Uebergangs von selbst an und
+ * raeumt sie danach wieder ab; genau das ist hier richtig.
+ */
 [data-reveal] {
   opacity: 0;
   transform: translateY(1.5rem);
@@ -209,12 +233,53 @@ ol {
     opacity var(--dur-reveal) var(--ease),
     transform var(--dur-reveal) var(--ease);
   transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
 }
 
 [data-reveal='visible'] {
   opacity: 1;
   transform: none;
+}
+
+/*
+ * Wo der Browser Scroll-Timelines beherrscht (Chrome, Edge), haengt die
+ * Einblendung direkt am Scrollstand statt an einer Schwelle: der Inhalt zieht
+ * waehrend des Scrollens herein und laeuft rueckwaerts wieder hinaus. Das ist
+ * ruhiger als das Umspringen und kostet nichts — die Animation laeuft ohne
+ * JavaScript im Compositor.
+ *
+ * Der Beobachter aus Reveal.tsx bleibt aktiv und traegt Safari und Firefox;
+ * dort greift schlicht dieser Block nicht.
+ */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      animation: revealScroll linear both;
+      animation-timeline: view();
+      /*
+       * Der Bereich ist bewusst in Pixeln angegeben, nicht in Prozent:
+       * Prozentwerte beziehen sich auf die Hoehe des Elements, eine hohe
+       * Projektzeile waere dann erst nach mehreren hundert Pixeln Scrollweg
+       * vollstaendig da. So blendet jedes Element ueber dieselben 340 px ein,
+       * gleich wie gross es ist.
+       */
+      animation-range: cover calc(40px + var(--reveal-offset, 0px)) cover
+        calc(380px + var(--reveal-offset, 0px));
+    }
+  }
+
+  @keyframes revealScroll {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
 /* ---- Reduced Motion --------------------------------------------------- */
@@ -229,6 +294,10 @@ ol {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    /* Die Startsperre darf hier nicht greifen: mit 0.01ms Dauer wuerde eine
+       pausierte Animation auf ihrem Anfangsbild stehen bleiben — der Hero
+       waere unsichtbar, bis das Startsignal kommt. */
+    animation-play-state: running !important;
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
   }

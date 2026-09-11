@@ -223,17 +223,6 @@
   padding-bottom: var(--space-8);
 }
 
-.overlayBrand {
-  display: none;
-}
-
-.overlayLogo {
-  display: block;
-  width: min(72vw, 15rem);
-  height: auto;
-  color: var(--c-text);
-}
-
 .overlayList {
   display: flex;
   flex-direction: column;
@@ -277,19 +266,8 @@
   }
 
   .overlayInner {
-    justify-content: flex-start;
-    gap: var(--space-7);
     padding-top: calc(var(--nav-height) + var(--space-6));
     padding-bottom: var(--space-6);
-  }
-
-  .overlayBrand {
-    display: inline-flex;
-    width: fit-content;
-    padding: 0.65rem 0.75rem;
-    border: var(--hairline) solid var(--c-line-soft);
-    border-radius: 999px;
-    background: rgb(8 8 8 / 0.42);
   }
 
   .overlayItem a {
@@ -298,7 +276,6 @@
   }
 
   .overlayFoot {
-    margin-top: auto;
     padding-top: var(--space-5);
   }
 }
@@ -318,11 +295,6 @@
 
 @media (max-width: 56rem) {
   :global(:root[data-theme='aurum-labyrinth']) .brand {
-    background: rgb(242 237 225 / 0.58);
-    border-color: var(--c-line-strong);
-  }
-
-  :global(:root[data-theme='aurum-labyrinth']) .overlayBrand {
     background: rgb(242 237 225 / 0.58);
     border-color: var(--c-line-strong);
   }
@@ -380,12 +352,6 @@
     border-color: var(--c-line-strong);
     box-shadow: inset 0 0 0 var(--hairline) rgb(126 227 166 / 0.12);
   }
-
-  :global(:root[data-theme='terminal-phosphor']) .overlayBrand {
-    background: rgb(5 8 7 / 0.5);
-    border-color: var(--c-line-strong);
-    box-shadow: inset 0 0 0 var(--hairline) rgb(126 227 166 / 0.12);
-  }
 }
 
 :global(:root[data-theme='terminal-phosphor']) .overlay {
@@ -407,12 +373,6 @@
 
 @media (max-width: 56rem) {
   :global(:root[data-theme='riso-print']) .brand {
-    background: var(--c-bg-inset);
-    border: 2px solid var(--c-text);
-    box-shadow: 3px 3px 0 var(--riso-pink);
-  }
-
-  :global(:root[data-theme='riso-print']) .overlayBrand {
     background: var(--c-bg-inset);
     border: 2px solid var(--c-text);
     box-shadow: 3px 3px 0 var(--riso-pink);

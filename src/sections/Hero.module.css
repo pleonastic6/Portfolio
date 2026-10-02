@@ -980,3 +980,162 @@
     width: calc(100% - 2rem);
   }
 }
+
+/* Collective OS v3: kein Bild/Panel neben dem oberen Schriftzug.
+   Die Referenz bleibt als technische Oberfläche im Hintergrund, damit der Hero
+   wieder wie ein klares Keyvisual statt wie zwei konkurrierende Layouts wirkt. */
+:global(:root[data-theme='collective-os']) .hero {
+  min-height: 106svh;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+:global(:root[data-theme='collective-os']) .hero::before,
+:global(:root[data-theme='collective-os']) .hero::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+
+:global(:root[data-theme='collective-os']) .hero::before {
+  inset: calc(var(--nav-height) + 1.15rem) var(--space-6) var(--space-6);
+  opacity: 0.62;
+  background:
+    linear-gradient(90deg, transparent 0 6%, rgb(214 169 82 / 0.52) 6% 6.25%, transparent 6.25% 100%),
+    linear-gradient(90deg, transparent 0 77%, rgb(241 234 219 / 0.18) 77% 77.12%, transparent 77.12% 100%),
+    linear-gradient(0deg, transparent 0 24%, rgb(241 234 219 / 0.16) 24% 24.12%, transparent 24.12% 100%),
+    linear-gradient(0deg, transparent 0 68%, rgb(255 75 50 / 0.25) 68% 68.18%, transparent 68.18% 100%),
+    repeating-linear-gradient(90deg, rgb(241 234 219 / 0.08) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(0deg, rgb(241 234 219 / 0.06) 0 1px, transparent 1px 72px);
+  mask-image: linear-gradient(90deg, #000 0 74%, transparent 100%);
+}
+
+:global(:root[data-theme='collective-os']) .hero::after {
+  right: clamp(1rem, 4vw, 4rem);
+  top: 31%;
+  width: clamp(10rem, 20vw, 17rem);
+  height: clamp(10rem, 20vw, 17rem);
+  border: var(--hairline) solid rgb(241 234 219 / 0.16);
+  background:
+    radial-gradient(circle at 50% 50%, transparent 0 33%, rgb(214 169 82 / 0.24) 33.5% 34.5%, transparent 35% 100%),
+    linear-gradient(45deg, transparent 0 49%, rgb(255 75 50 / 0.36) 49.5% 50.5%, transparent 51% 100%),
+    linear-gradient(-45deg, transparent 0 49%, rgb(241 234 219 / 0.12) 49.5% 50.5%, transparent 51% 100%);
+  opacity: 0.55;
+  transform: rotate(0.8deg);
+}
+
+:global(:root[data-theme='collective-os']) .inner {
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(3rem, 7vw, 6rem);
+  max-width: min(94rem, calc(100vw - var(--space-6) * 2));
+}
+
+:global(:root[data-theme='collective-os']) .top {
+  position: relative;
+  padding-bottom: 0.75rem;
+  border-bottom: var(--hairline) solid var(--c-line);
+}
+
+:global(:root[data-theme='collective-os']) .top::after {
+  content: 'ADDD_OS // 05 // SOURCE: REFERENCE_LOCKED';
+  position: absolute;
+  right: 0;
+  bottom: -1.6rem;
+  font-family: var(--font-tech);
+  font-size: clamp(0.62rem, 1vw, 0.74rem);
+  letter-spacing: 0.11em;
+  color: var(--c-text-faint);
+}
+
+:global(:root[data-theme='collective-os']) .headline {
+  position: relative;
+  max-width: 13.5ch;
+  margin-block: clamp(3.5rem, 10vh, 7rem) clamp(2rem, 6vh, 4rem);
+  font-size: clamp(5.2rem, 11.5vw, 13.75rem);
+  line-height: 0.82;
+  letter-spacing: -0.085em;
+  isolation: isolate;
+}
+
+:global(:root[data-theme='collective-os']) .headline::before {
+  content: '';
+  position: absolute;
+  left: 0.03em;
+  top: -1.55rem;
+  z-index: -1;
+  width: clamp(5rem, 12vw, 9rem);
+  height: 0.42rem;
+  border-top: var(--hairline) solid var(--c-brown-red);
+  border-left: var(--hairline) solid var(--c-brown-red);
+  background: linear-gradient(90deg, var(--c-brown-red) 0 1.9rem, transparent 1.9rem 2.4rem, rgb(255 75 50 / 0.22) 2.4rem 100%);
+}
+
+:global(:root[data-theme='collective-os']) .headline::after {
+  content: '';
+  position: absolute;
+  right: -0.16em;
+  bottom: 0.1em;
+  z-index: -1;
+  width: 0.34em;
+  height: 0.34em;
+  border: 2px solid var(--c-brown-red);
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 0.14em rgb(255 75 50 / 0.08),
+    0 0 0 0.28em rgb(255 75 50 / 0.04);
+}
+
+:global(:root[data-theme='collective-os']) .line {
+  overflow: visible;
+}
+
+:global(:root[data-theme='collective-os']) .lineInner {
+  text-shadow: 0 0 44px rgb(214 169 82 / 0.08);
+}
+
+:global(:root[data-theme='collective-os']) .line:nth-child(1) .lineInner,
+:global(:root[data-theme='collective-os']) .line:nth-child(3) .lineInner {
+  transform-origin: left center;
+}
+
+:global(:root[data-theme='collective-os']) .bottom {
+  position: relative;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  border: var(--hairline) solid var(--c-line);
+  background: rgb(7 7 6 / 0.5);
+  backdrop-filter: blur(8px);
+}
+
+:global(:root[data-theme='collective-os']) .bottom::before {
+  content: 'BUILD QUEUE: UI / DATA / OPS / QA';
+  position: absolute;
+  left: 1rem;
+  top: -0.7rem;
+  padding-inline: 0.45rem;
+  background: var(--c-bg);
+  color: var(--c-accent);
+  font-family: var(--font-tech);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+}
+
+:global(:root[data-theme='collective-os']) .lead {
+  max-width: 52ch;
+}
+
+@media (max-width: 62rem) {
+  :global(:root[data-theme='collective-os']) .hero::after {
+    opacity: 0.24;
+    right: -2rem;
+  }
+
+  :global(:root[data-theme='collective-os']) .top::after {
+    display: none;
+  }
+
+  :global(:root[data-theme='collective-os']) .headline {
+    max-width: 11ch;
+    font-size: clamp(4.4rem, 17vw, 8rem);
+  }
+}

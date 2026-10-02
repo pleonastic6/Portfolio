@@ -540,6 +540,14 @@
   transform: none;
 }
 
+:global(:root[data-theme='collective-os']) .coords {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  transform: none;
+  color: var(--c-text-faint);
+}
+
 :global(:root[data-theme='collective-os']) .kicker::before {
   content: '';
   display: inline-block;
@@ -565,15 +573,17 @@
 }
 
 :global(:root[data-theme='collective-os']) .cta {
-  padding: 0.7rem 1rem;
-  color: var(--c-bg);
-  background: var(--c-accent);
-  border: var(--hairline) solid var(--c-accent);
+  padding: 0;
+  color: var(--c-text);
+  background: transparent;
+  border: 0;
+  border-bottom: var(--hairline) solid var(--c-line-strong);
 }
 
 :global(:root[data-theme='collective-os']) .cta:hover {
-  color: var(--c-accent);
+  color: var(--c-brown-red);
   background: transparent;
+  border-bottom-color: var(--c-brown-red);
 }
 
 .osPanel { display: none; }
@@ -981,11 +991,11 @@
   }
 }
 
-/* Collective OS v3: kein Bild/Panel neben dem oberen Schriftzug.
-   Die Referenz bleibt als technische Oberfläche im Hintergrund, damit der Hero
-   wieder wie ein klares Keyvisual statt wie zwei konkurrierende Layouts wirkt. */
+/* Collective OS v4: Heron-nahe Architektur-Seite.
+   Feiner, weniger klobig: ein ruhiger Sheet-Rahmen, eine dezente Zeichnung oben
+   und eine kompaktere Headline statt schwerem Dashboard-Look. */
 :global(:root[data-theme='collective-os']) .hero {
-  min-height: 106svh;
+  min-height: 96svh;
   overflow: hidden;
   cursor: crosshair;
 }
@@ -998,38 +1008,45 @@
 }
 
 :global(:root[data-theme='collective-os']) .hero::before {
-  inset: calc(var(--nav-height) + 0.4rem) var(--space-5) var(--space-5);
-  opacity: 0.92;
-  border: var(--hairline) solid rgb(36 36 36 / 0.18);
+  inset: calc(var(--nav-height) + 0.25rem) var(--space-5) var(--space-5);
+  opacity: 0.84;
+  border: var(--hairline) solid rgb(36 36 36 / 0.16);
   background:
-    linear-gradient(90deg, transparent 0 5.4%, var(--c-brown-red) 5.4% 5.55%, transparent 5.55% 100%),
-    linear-gradient(90deg, transparent 0 77%, rgb(36 36 36 / 0.16) 77% 77.12%, transparent 77.12% 100%),
-    linear-gradient(0deg, transparent 0 24%, rgb(36 36 36 / 0.12) 24% 24.12%, transparent 24.12% 100%),
-    linear-gradient(0deg, transparent 0 68%, rgb(255 59 34 / 0.2) 68% 68.18%, transparent 68.18% 100%),
-    repeating-linear-gradient(90deg, rgb(36 36 36 / 0.055) 0 1px, transparent 1px 72px),
-    repeating-linear-gradient(0deg, rgb(36 36 36 / 0.05) 0 1px, transparent 1px 72px);
-  mask-image: linear-gradient(90deg, #000 0 82%, transparent 100%);
+    linear-gradient(90deg, transparent 0 5.4%, var(--c-brown-red) 5.4% 5.48%, transparent 5.48% 100%),
+    linear-gradient(90deg, transparent 0 76.6%, rgb(36 36 36 / 0.12) 76.6% 76.7%, transparent 76.7% 100%),
+    linear-gradient(0deg, transparent 0 23.5%, rgb(36 36 36 / 0.095) 23.5% 23.6%, transparent 23.6% 100%),
+    linear-gradient(0deg, transparent 0 68%, rgb(255 59 34 / 0.13) 68% 68.11%, transparent 68.11% 100%),
+    repeating-linear-gradient(90deg, rgb(36 36 36 / 0.04) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(0deg, rgb(36 36 36 / 0.035) 0 1px, transparent 1px 72px);
+  mask-image: linear-gradient(90deg, #000 0 88%, transparent 100%);
 }
 
 :global(:root[data-theme='collective-os']) .hero::after {
-  right: clamp(1rem, 4vw, 4rem);
-  top: 30%;
-  width: clamp(9rem, 18vw, 15rem);
-  height: clamp(9rem, 18vw, 15rem);
-  border: var(--hairline) solid rgb(36 36 36 / 0.16);
+  left: 50%;
+  top: calc(var(--nav-height) + 2.05rem);
+  width: clamp(20rem, 44vw, 40rem);
+  height: clamp(7.5rem, 14vw, 12rem);
+  border: 0;
+  opacity: 0.58;
+  transform: translateX(-50%);
   background:
-    radial-gradient(circle at 50% 50%, transparent 0 33%, rgb(36 36 36 / 0.13) 33.5% 34.5%, transparent 35% 100%),
-    linear-gradient(45deg, transparent 0 49%, rgb(255 59 34 / 0.32) 49.5% 50.5%, transparent 51% 100%),
-    linear-gradient(-45deg, transparent 0 49%, rgb(36 36 36 / 0.1) 49.5% 50.5%, transparent 51% 100%);
-  opacity: 0.62;
-  transform: rotate(0.8deg);
+    linear-gradient(rgb(36 36 36 / 0.7), rgb(36 36 36 / 0.7)) 0 100% / 100% 1px no-repeat,
+    linear-gradient(rgb(36 36 36 / 0.55), rgb(36 36 36 / 0.55)) 8% 72% / 84% 1px no-repeat,
+    linear-gradient(rgb(36 36 36 / 0.55), rgb(36 36 36 / 0.55)) 18% 44% / 64% 1px no-repeat,
+    linear-gradient(90deg, rgb(36 36 36 / 0.62), rgb(36 36 36 / 0.62)) 12% 35% / 1px 65% no-repeat,
+    linear-gradient(90deg, rgb(36 36 36 / 0.62), rgb(36 36 36 / 0.62)) 31% 18% / 1px 82% no-repeat,
+    linear-gradient(90deg, rgb(36 36 36 / 0.62), rgb(36 36 36 / 0.62)) 50% 10% / 1px 90% no-repeat,
+    linear-gradient(90deg, rgb(36 36 36 / 0.62), rgb(36 36 36 / 0.62)) 69% 18% / 1px 82% no-repeat,
+    linear-gradient(90deg, rgb(36 36 36 / 0.62), rgb(36 36 36 / 0.62)) 88% 35% / 1px 65% no-repeat,
+    linear-gradient(135deg, transparent 0 48%, rgb(255 59 34 / 0.32) 49% 51%, transparent 52% 100%) 11% 34% / 78% 55% no-repeat,
+    repeating-linear-gradient(90deg, rgb(36 36 36 / 0.14) 0 1px, transparent 1px 14px) 16% 50% / 68% 25% no-repeat;
 }
 
 :global(:root[data-theme='collective-os']) .inner {
   display: flex;
   justify-content: space-between;
-  gap: clamp(3rem, 7vw, 6rem);
-  max-width: min(94rem, calc(100vw - var(--space-6) * 2));
+  gap: clamp(2rem, 5vw, 4.5rem);
+  max-width: min(88rem, calc(100vw - var(--space-6) * 2));
 }
 
 :global(:root[data-theme='collective-os']) .top {
@@ -1051,11 +1068,12 @@
 
 :global(:root[data-theme='collective-os']) .headline {
   position: relative;
-  max-width: 16ch;
-  margin-block: clamp(3rem, 8vh, 5.75rem) clamp(1.6rem, 5vh, 3rem);
-  font-size: clamp(4.5rem, 9.6vw, 11.5rem);
-  line-height: 0.84;
-  letter-spacing: -0.09em;
+  max-width: 20ch;
+  margin-block: clamp(8.4rem, 19vh, 13rem) clamp(1.15rem, 3.5vh, 2.2rem);
+  font-size: clamp(3.2rem, 5.95vw, 7.25rem);
+  font-weight: 780;
+  line-height: 0.92;
+  letter-spacing: -0.07em;
   text-transform: uppercase;
   isolation: isolate;
 }
@@ -1063,29 +1081,29 @@
 :global(:root[data-theme='collective-os']) .headline::before {
   content: '';
   position: absolute;
-  left: 0.03em;
-  top: -1.55rem;
+  left: 0.02em;
+  top: -1.1rem;
   z-index: -1;
-  width: clamp(5rem, 12vw, 9rem);
-  height: 0.42rem;
+  width: clamp(4.2rem, 9vw, 7rem);
+  height: 0.28rem;
   border-top: var(--hairline) solid var(--c-brown-red);
   border-left: var(--hairline) solid var(--c-brown-red);
-  background: linear-gradient(90deg, var(--c-brown-red) 0 1.9rem, transparent 1.9rem 2.4rem, rgb(255 75 50 / 0.22) 2.4rem 100%);
+  background: linear-gradient(90deg, var(--c-brown-red) 0 1.4rem, transparent 1.4rem 1.85rem, rgb(255 59 34 / 0.14) 1.85rem 100%);
 }
 
 :global(:root[data-theme='collective-os']) .headline::after {
   content: '';
   position: absolute;
-  right: -0.16em;
-  bottom: 0.1em;
+  right: -0.08em;
+  bottom: 0.08em;
   z-index: -1;
-  width: 0.34em;
-  height: 0.34em;
-  border: 2px solid var(--c-brown-red);
+  width: 0.24em;
+  height: 0.24em;
+  border: 1px solid var(--c-brown-red);
   border-radius: 999px;
   box-shadow:
-    0 0 0 0.14em rgb(255 75 50 / 0.08),
-    0 0 0 0.28em rgb(255 75 50 / 0.04);
+    0 0 0 0.1em rgb(255 59 34 / 0.055),
+    0 0 0 0.2em rgb(255 59 34 / 0.025);
 }
 
 :global(:root[data-theme='collective-os']) .line {
@@ -1093,7 +1111,7 @@
 }
 
 :global(:root[data-theme='collective-os']) .lineInner {
-  text-shadow: 0 0 44px rgb(214 169 82 / 0.08);
+  text-shadow: none;
 }
 
 :global(:root[data-theme='collective-os']) .line:nth-child(1) .lineInner,
@@ -1103,23 +1121,26 @@
 
 :global(:root[data-theme='collective-os']) .bottom {
   position: relative;
-  padding: clamp(0.9rem, 1.8vw, 1.25rem);
-  border: var(--hairline) solid var(--c-line-strong);
-  background: rgb(251 250 244 / 0.68);
-  backdrop-filter: blur(4px);
+  padding: clamp(0.75rem, 1.5vw, 1rem) 0 0;
+  border-top: var(--hairline) solid var(--c-line-strong);
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0;
+  background: transparent;
+  backdrop-filter: none;
 }
 
 :global(:root[data-theme='collective-os']) .bottom::before {
   content: 'BUILD QUEUE: UI / DATA / OPS / QA';
   position: absolute;
-  left: 1rem;
-  top: -0.7rem;
-  padding-inline: 0.45rem;
+  left: 0;
+  top: -0.58rem;
+  padding-inline: 0.35rem;
   background: var(--c-bg);
   color: var(--c-brown-red);
   font-family: var(--font-tech);
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
+  font-size: 0.54rem;
+  letter-spacing: 0.1em;
 }
 
 :global(:root[data-theme='collective-os']) .lead {
@@ -1137,7 +1158,8 @@
   }
 
   :global(:root[data-theme='collective-os']) .headline {
-    max-width: 11ch;
-    font-size: clamp(4.4rem, 17vw, 8rem);
+    max-width: 12.5ch;
+    margin-top: clamp(5.5rem, 16vh, 8rem);
+    font-size: clamp(3.25rem, 14vw, 6.5rem);
   }
 }

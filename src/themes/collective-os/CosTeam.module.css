@@ -1,0 +1,234 @@
+.team {
+  position: relative;
+  border-top: var(--cos-line) solid var(--cos-border);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: calc(var(--cos-u) * 4);
+  padding: calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 6.6);
+}
+
+.headLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: calc(var(--cos-u) * 83.4);
+}
+
+.label {
+  margin-bottom: calc(var(--cos-u) * 1.6);
+}
+
+.headRight {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--cos-u) * 1.6);
+  max-width: calc(var(--cos-u) * 39.6);
+}
+
+.main {
+  position: relative;
+  padding: calc(var(--cos-u) * 6.4) calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 9.6);
+  border-top: var(--cos-line) solid var(--cos-border);
+}
+
+.divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: var(--cos-line);
+  background: var(--cos-border);
+}
+
+.topLine {
+  position: absolute;
+  top: calc(var(--cos-line) * -1);
+  left: calc(var(--cos-u) * 3.2);
+  right: calc(var(--cos-u) * 3.2);
+  height: calc(var(--cos-u) * 0.2);
+  background: var(--cos-brand);
+  transform-origin: left;
+}
+
+.list {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: calc(var(--cos-u) * 22);
+  column-gap: calc(var(--cos-u) * 6.4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  grid-row: span 2;
+}
+
+.item:nth-child(odd) {
+  grid-column: 2;
+}
+
+.item:nth-child(even) {
+  grid-column: 1;
+}
+
+.item:nth-child(1) {
+  grid-row: 1 / span 2;
+}
+
+.item:nth-child(2) {
+  grid-row: 2 / span 2;
+}
+
+.item:nth-child(3) {
+  grid-row: 3 / span 2;
+}
+
+.item:nth-child(4) {
+  grid-row: 4 / span 2;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - calc(var(--cos-u) * 3.2));
+  max-width: calc(var(--cos-u) * 64);
+  margin-left: auto;
+  margin-right: auto;
+  padding: calc(var(--cos-u) * 2.4);
+  overflow: hidden;
+  color: #fff;
+  background-color: var(--cos-ink);
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.06) 1px, transparent 1px);
+  background-size: calc(var(--cos-u) * 6.4) calc(var(--cos-u) * 6.4);
+  background-position: center;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(var(--cos-u) * 0.4);
+  background: var(--cos-brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s var(--cos-ease);
+}
+
+.card:hover::after {
+  transform: scaleX(1);
+}
+
+.cardTop {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardNum {
+  font-family: var(--font-tech);
+  font-size: calc(var(--cos-u) * 1.4);
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.72);
+}
+
+.cardSq {
+  width: calc(var(--cos-u) * 0.8);
+  height: calc(var(--cos-u) * 0.8);
+  background: var(--cos-brand);
+}
+
+.letter {
+  position: absolute;
+  right: calc(var(--cos-u) * 2.4);
+  top: 50%;
+  width: 42%;
+  max-width: calc(var(--cos-u) * 22);
+  height: auto;
+  transform: translateY(-50%);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.letter path {
+  fill: transparent;
+  stroke: rgb(255 255 255 / 0.3);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transition:
+    stroke 0.5s,
+    fill 0.5s;
+}
+
+.card:hover .letter path {
+  stroke: var(--cos-brand);
+  fill: rgb(250 54 0 / 0.12);
+}
+
+.cardBody {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--cos-u) * 0.8);
+  max-width: calc(var(--cos-u) * 38);
+}
+
+.name {
+  color: #fff;
+}
+
+.role {
+  color: var(--cos-brand);
+}
+
+.text {
+  color: rgb(255 255 255 / 0.72);
+}
+
+@media (max-width: 767px) {
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 4);
+  }
+
+  .main {
+    padding: calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 4.8);
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .list {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    row-gap: calc(var(--cos-u) * 1.6);
+  }
+
+  .item,
+  .item:nth-child(n) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .card {
+    height: auto;
+    min-height: calc(var(--cos-u) * 32);
+    gap: calc(var(--cos-u) * 6);
+  }
+}

@@ -1,0 +1,74 @@
+.page {
+  position: relative;
+}
+
+/*
+ * Fester Blattrahmen: ein Papierrand rundum, der den durchlaufenden Inhalt
+ * abdeckt, und innen eine Haarlinie. Kopfzeile und Inhalt liegen darin.
+ */
+.frame {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  border: var(--cos-inset) solid var(--cos-paper);
+}
+
+.frameInner {
+  position: absolute;
+  inset: 0;
+  border: var(--cos-line) solid var(--cos-border);
+}
+
+.corner {
+  position: absolute;
+  width: calc(var(--cos-u) * 1);
+  height: calc(var(--cos-u) * 1);
+  color: var(--cos-surface);
+}
+
+.corner::before,
+.corner::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+}
+
+.corner::before {
+  left: calc(50% - var(--cos-line) / 2);
+  width: var(--cos-line);
+  height: 100%;
+}
+
+.corner::after {
+  top: calc(50% - var(--cos-line) / 2);
+  height: var(--cos-line);
+  width: 100%;
+}
+
+.cTL {
+  top: calc(var(--cos-u) * 0.6);
+  left: calc(var(--cos-u) * 0.6);
+  visibility: hidden;
+}
+
+.cTR {
+  top: calc(var(--cos-u) * 0.6);
+  right: calc(var(--cos-u) * 0.6);
+  visibility: hidden;
+}
+
+.cBL {
+  bottom: calc(var(--cos-u) * 0.6);
+  left: calc(var(--cos-u) * 0.6);
+}
+
+.cBR {
+  bottom: calc(var(--cos-u) * 0.6);
+  right: calc(var(--cos-u) * 0.6);
+}
+
+.main {
+  position: relative;
+  padding-inline: var(--cos-inset);
+}

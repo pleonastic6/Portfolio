@@ -1,0 +1,259 @@
+.skills {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: var(--cos-line) solid var(--cos-border);
+}
+
+.side {
+  padding: calc(var(--cos-u) * 3.2);
+  border-right: var(--cos-line) solid var(--cos-border);
+}
+
+.sticky {
+  position: sticky;
+  top: calc(var(--cos-header) + var(--cos-inset) + calc(var(--cos-u) * 3.2));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.label {
+  margin-bottom: calc(var(--cos-u) * 1.6);
+}
+
+.lead {
+  max-width: calc(var(--cos-u) * 39.6);
+  margin-top: calc(var(--cos-u) * 3.2);
+}
+
+.list {
+  margin: 0;
+  padding: calc(var(--cos-u) * 3.2) 0 calc(var(--cos-u) * 9.6);
+  list-style: none;
+}
+
+.item {
+  position: relative;
+}
+
+.itemHeading {
+  margin: 0;
+  font: inherit;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.trigger {
+  display: grid;
+  grid-template-columns: calc(var(--cos-u) * 6.4) minmax(0, 1fr) minmax(0, 1fr) calc(var(--cos-u) * 2.4);
+  align-items: center;
+  gap: calc(var(--cos-u) * 1.6);
+  width: 100%;
+  padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 3.2);
+  text-align: left;
+  cursor: pointer;
+}
+
+.num {
+  color: var(--cos-disable);
+  transition: color 0.4s;
+}
+
+.item:hover .num,
+.item[data-open='true'] .num {
+  color: var(--cos-brand);
+}
+
+.title {
+  transition: transform 0.4s var(--cos-ease);
+}
+
+.item:hover .title {
+  transform: translateX(calc(var(--cos-u) * 1));
+}
+
+.note {
+  color: var(--cos-ink-72);
+}
+
+.ic {
+  position: relative;
+  justify-self: end;
+  width: calc(var(--cos-u) * 1.6);
+  height: calc(var(--cos-u) * 1.6);
+  color: var(--cos-surface);
+  transition: color 0.3s;
+}
+
+.item:hover .ic {
+  color: var(--cos-ink);
+}
+
+.icH,
+.icV {
+  position: absolute;
+  background: currentColor;
+  transition: transform 0.4s ease;
+}
+
+.icH {
+  top: calc(50% - var(--cos-line) / 2);
+  left: 0;
+  width: 100%;
+  height: var(--cos-line);
+}
+
+.icV {
+  left: calc(50% - var(--cos-line) / 2);
+  top: 0;
+  height: 100%;
+  width: var(--cos-line);
+}
+
+.item[data-open='true'] .icV {
+  transform: scale(0);
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--cos-ease);
+}
+
+.item[data-open='true'] .panel {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 calc(var(--cos-u) * 3.2) 0 calc(calc(var(--cos-u) * 3.2) + calc(var(--cos-u) * 6.4) + calc(var(--cos-u) * 1.6));
+  visibility: hidden;
+  transition: visibility 0s linear 0.5s;
+}
+
+.item[data-open='true'] .panelInner {
+  visibility: visible;
+  transition: visibility 0s;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--cos-u) * 0.8);
+  margin: 0;
+  padding: 0 0 calc(var(--cos-u) * 1.6);
+  list-style: none;
+}
+
+.chip {
+  padding: calc(var(--cos-u) * 0.8) calc(var(--cos-u) * 1.2);
+  border: var(--cos-line) solid var(--cos-border);
+  font-family: var(--font-tech);
+  font-size: calc(var(--cos-u) * 1.4);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--cos-ink);
+  background: var(--cos-paper);
+  transition:
+    border-color 0.3s,
+    color 0.3s;
+}
+
+.chip:hover {
+  border-color: var(--cos-brand);
+  color: var(--cos-brand);
+}
+
+.count {
+  padding-bottom: calc(var(--cos-u) * 2.4);
+  color: var(--cos-surface);
+}
+
+.line {
+  position: absolute;
+  left: calc(var(--cos-u) * 3.2);
+  right: calc(var(--cos-u) * 3.2);
+  bottom: 0;
+}
+
+.item:first-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: calc(var(--cos-u) * 3.2);
+  right: calc(var(--cos-u) * 3.2);
+  height: var(--cos-line);
+  background-image: linear-gradient(
+    to right,
+    var(--cos-border) 0 6.25%,
+    transparent 6.25% 25%,
+    var(--cos-border) 25% 87.5%,
+    transparent 87.5% 100%
+  );
+  background-size: calc(var(--cos-u) * 1.6) 100%;
+}
+
+.lineHover {
+  position: absolute;
+  left: calc(var(--cos-u) * 3.2);
+  right: calc(var(--cos-u) * 3.2);
+  bottom: 0;
+  z-index: 2;
+  height: var(--cos-line);
+  background-image: linear-gradient(
+    to right,
+    var(--cos-ink) 0 6.25%,
+    transparent 6.25% 25%,
+    var(--cos-ink) 25% 87.5%,
+    transparent 87.5% 100%
+  );
+  background-size: calc(var(--cos-u) * 1.6) 100%;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.item:hover .lineHover {
+  opacity: 1;
+}
+
+@media (max-width: 991px) {
+  .skills {
+    grid-template-columns: 1fr;
+  }
+
+  .side {
+    border-right: 0;
+  }
+
+  .sticky {
+    position: static;
+  }
+}
+
+@media (max-width: 767px) {
+  .side {
+    padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6);
+  }
+
+  .trigger {
+    grid-template-columns: calc(var(--cos-u) * 4) minmax(0, 1fr) calc(var(--cos-u) * 2.4);
+    padding: calc(var(--cos-u) * 2) calc(var(--cos-u) * 1.6);
+  }
+
+  .note {
+    display: none;
+  }
+
+  .panelInner {
+    padding: 0 calc(var(--cos-u) * 1.6);
+  }
+
+  .line,
+  .lineHover,
+  .item:first-child::before {
+    left: calc(var(--cos-u) * 1.6);
+    right: calc(var(--cos-u) * 1.6);
+  }
+}

@@ -61,6 +61,20 @@
       nicht Space Mono: die ist zu diesem Zeitpunkt noch nicht geladen, und ein
       Wechsel mitten in der Sequenz waere als Sprung zu sehen.
     -->
+    <!--
+      Design 05 (Collective OS) ist hell. Das gewaehlte Design schon vor dem
+      ersten Bild setzen, sonst blitzt der dunkle Grund und die dunkle
+      Startsequenz auf.
+    -->
+    <script>
+      try {
+        if (localStorage.getItem('addd-theme') === 'collective-os') {
+          document.documentElement.dataset.theme = 'collective-os'
+          document.documentElement.style.background = '#f5f5ee'
+          document.documentElement.style.colorScheme = 'light'
+        }
+      } catch (e) {}
+    </script>
     <style>
       #intro {
         position: fixed;
@@ -105,6 +119,34 @@
       #intro-name b {
         font-weight: 400;
         color: #c9aa6a;
+      }
+
+      html[data-theme='collective-os'] #intro {
+        background: #f5f5ee;
+        color: #282828;
+        box-shadow:
+          inset 0 0 0 8px #f5f5ee,
+          inset 0 0 0 9px #b3b3af;
+      }
+
+      html[data-theme='collective-os'] #intro-count {
+        color: #fa3600;
+        font-size: clamp(2.5rem, 8vw, 6rem);
+        letter-spacing: -0.04em;
+      }
+
+      html[data-theme='collective-os'] #intro-count::after {
+        content: '%';
+        font-size: 0.4em;
+        vertical-align: super;
+      }
+
+      html[data-theme='collective-os'] #intro-name {
+        color: #72726f;
+      }
+
+      html[data-theme='collective-os'] #intro-name b {
+        color: #fa3600;
       }
 
       @media (prefers-reduced-motion: reduce) {

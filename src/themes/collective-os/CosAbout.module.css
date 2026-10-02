@@ -1,0 +1,183 @@
+.about {
+  position: relative;
+  border-top: var(--cos-line) solid var(--cos-border);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: calc(var(--cos-u) * 3.2);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--cos-u) * 4.8);
+  padding: calc(var(--cos-u) * 9.6) calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 12);
+}
+
+.statement {
+  max-width: calc(var(--cos-u) * 124);
+  text-align: center;
+  line-height: 1.04;
+}
+
+.btnWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: var(--cos-line) solid var(--cos-border);
+}
+
+.bio {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--cos-u) * 3.2);
+  padding: calc(var(--cos-u) * 3.2);
+  border-right: var(--cos-line) solid var(--cos-border);
+}
+
+.bioText {
+  max-width: calc(var(--cos-u) * 40);
+}
+
+.facts {
+  margin: 0;
+}
+
+.fact {
+  display: grid;
+  grid-template-columns: calc(var(--cos-u) * 20) 1fr;
+  gap: calc(var(--cos-u) * 2);
+  align-items: baseline;
+  padding: calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 3.2);
+  border-bottom: var(--cos-line) solid var(--cos-border);
+}
+
+.fact:last-child {
+  border-bottom: 0;
+}
+
+.fact dd {
+  margin: 0;
+}
+
+.strip {
+  display: flex;
+  align-items: stretch;
+  border-top: var(--cos-line) solid var(--cos-border);
+  border-bottom: var(--cos-line) solid var(--cos-border);
+}
+
+.stripLabel {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  width: calc(var(--cos-u) * 17.1);
+  padding: calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 3.2);
+  border-right: var(--cos-line) solid var(--cos-border);
+  color: var(--cos-ink);
+}
+
+.marquee {
+  display: flex;
+  flex: 1 1 auto;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.track {
+  display: flex;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: marquee 38s linear infinite;
+}
+
+.marquee:hover .track {
+  animation-play-state: paused;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--cos-u) * 1);
+  padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 3.2);
+  border-right: var(--cos-line) solid var(--cos-border);
+  font-size: calc(var(--cos-u) * 2.4);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--cos-ink);
+}
+
+.chipDot {
+  width: calc(var(--cos-u) * 0.6);
+  height: calc(var(--cos-u) * 0.6);
+  background: var(--cos-border);
+}
+
+.chip:nth-child(4n + 1) .chipDot {
+  background: var(--cos-brand);
+}
+
+.note {
+  padding: calc(var(--cos-u) * 1.2) calc(var(--cos-u) * 3.2);
+  color: var(--cos-surface);
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 991px) {
+  .detail {
+    grid-template-columns: 1fr;
+  }
+
+  .bio {
+    border-right: 0;
+    border-bottom: var(--cos-line) solid var(--cos-border);
+  }
+}
+
+@media (max-width: 767px) {
+  .head,
+  .note {
+    padding-inline: calc(var(--cos-u) * 1.6);
+  }
+
+  .main {
+    padding: calc(var(--cos-u) * 6.4) calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 8);
+  }
+
+  .bio {
+    grid-template-columns: 1fr;
+    padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6);
+  }
+
+  .fact {
+    grid-template-columns: 1fr;
+    gap: calc(var(--cos-u) * 0.4);
+    padding: calc(var(--cos-u) * 1.6);
+  }
+
+  .stripLabel {
+    width: auto;
+    padding: calc(var(--cos-u) * 1.6);
+  }
+
+  .chip {
+    padding: calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 2.4);
+  }
+}

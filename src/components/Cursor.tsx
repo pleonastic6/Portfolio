@@ -1,11 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { useMediaQuery } from '../hooks/useMediaQuery'
-import { useTheme } from '../theme'
 import styles from './Cursor.module.css'
 
 /**
  * Feiner Cursor-Layer für Desktop: Standardthemen bekommen einen ruhigen Ring,
- * Collective OS schaltet denselben Layer zu einem CAD-Fadenkreuz mit Koordinaten.
+ * Collective OS einen kleinen orangefarbenen Punkt.
  * Nur auf Geräten mit präzisem Zeiger, nie bei prefers-reduced-motion.
  */
 export function Cursor() {
@@ -15,10 +14,9 @@ export function Cursor() {
   const yRef = useRef<HTMLDivElement>(null)
   const txRef = useRef<HTMLDivElement>(null)
   const tyRef = useRef<HTMLDivElement>(null)
-  const { theme } = useTheme()
   const finePointer = useMediaQuery('(pointer: fine)')
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
-  const enabled = !reducedMotion && (finePointer || theme.id === 'collective-os')
+  const enabled = !reducedMotion && finePointer
 
   useEffect(() => {
     if (!enabled || !ringRef.current || !layerRef.current) return

@@ -119,6 +119,22 @@ export type Translation = {
     imprint: LegalBlock[]
     privacy: LegalBlock[]
   }
+  /** Zusaetzliche Beschriftungen, die nur Design 05 (Collective OS) zeigt. */
+  cos: {
+    inspectTitle: string
+    inspectText: string
+    hoverHint: string
+    buildKeywords: [string, string, string, string]
+    stackLabel: string
+    learnMore: string
+    scrollHint: string
+    teamHeadline: string
+    contactButton: string
+    copyEmail: string
+    indexLabel: string
+    legalLabel: string
+    sheet: string
+  }
   footer: {
     built: string
     rights: string

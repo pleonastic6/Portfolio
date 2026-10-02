@@ -40,86 +40,22 @@
   display: none;
 }
 
-/* Collective OS übernimmt den Cursor aus der Plover-Vorgabe:
-   Fadenkreuz über den ganzen Viewport, eckige Auswahlbox, Koordinatenlabels. */
-:global(:root[data-theme='collective-os']) .cursor {
-  color: var(--c-text);
-  mix-blend-mode: normal;
-}
-
+/* Collective OS: kleiner orangefarbener Punkt, der dem Zeiger nachlaeuft.
+   Das Fadenkreuz mit Koordinaten zeichnet die Hero-Flaeche selbst. */
 :global(:root[data-theme='collective-os']) .ring {
-  width: 38px;
-  height: 38px;
-  border-radius: 0;
-  border-color: rgb(36 36 36 / 0.72);
-  background:
-    linear-gradient(currentColor, currentColor) 0 0 / 9px 1px no-repeat,
-    linear-gradient(currentColor, currentColor) 0 0 / 1px 9px no-repeat,
-    linear-gradient(currentColor, currentColor) 100% 0 / 9px 1px no-repeat,
-    linear-gradient(currentColor, currentColor) 100% 0 / 1px 9px no-repeat,
-    linear-gradient(currentColor, currentColor) 0 100% / 9px 1px no-repeat,
-    linear-gradient(currentColor, currentColor) 0 100% / 1px 9px no-repeat,
-    linear-gradient(currentColor, currentColor) 100% 100% / 9px 1px no-repeat,
-    linear-gradient(currentColor, currentColor) 100% 100% / 1px 9px no-repeat;
+  width: max(5px, calc(var(--cos-u) * 0.6));
+  height: max(5px, calc(var(--cos-u) * 0.6));
+  border: 0;
+  border-radius: 50%;
+  background: var(--cos-brand);
+  transition:
+    width 0.4s var(--cos-ease),
+    height 0.4s var(--cos-ease),
+    opacity 0.4s;
 }
 
 :global(:root[data-theme='collective-os']) .cursor[data-hover='true'] .ring {
-  width: 58px;
-  height: 58px;
-  border-color: var(--c-accent);
-}
-
-:global(:root[data-theme='collective-os']) .ring::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 5px;
-  height: 5px;
-  background: currentColor;
-  transform: translate(-50%, -50%);
-}
-
-:global(:root[data-theme='collective-os']) .xLine,
-:global(:root[data-theme='collective-os']) .yLine {
-  display: block;
-  position: fixed;
-  background: rgb(36 36 36 / 0.2);
-}
-
-:global(:root[data-theme='collective-os']) .xLine {
-  left: 0;
-  right: 0;
-  top: var(--cursor-y, -100px);
-  height: 1px;
-}
-
-:global(:root[data-theme='collective-os']) .yLine {
-  top: 0;
-  bottom: 0;
-  left: var(--cursor-x, -100px);
-  width: 1px;
-}
-
-:global(:root[data-theme='collective-os']) .xLabel,
-:global(:root[data-theme='collective-os']) .yLabel {
-  display: block;
-  position: fixed;
-  font-family: var(--font-tech);
-  font-size: 0.66rem;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgb(36 36 36 / 0.62);
-  white-space: nowrap;
-}
-
-:global(:root[data-theme='collective-os']) .xLabel {
-  left: calc(var(--cursor-x, -100px) + 8px);
-  top: calc(var(--nav-height) + 0.65rem);
-}
-
-:global(:root[data-theme='collective-os']) .yLabel {
-  left: 0.7rem;
-  top: calc(var(--cursor-y, -100px) - 0.42rem);
+  width: max(14px, calc(var(--cos-u) * 1.8));
+  height: max(14px, calc(var(--cos-u) * 1.8));
+  opacity: 0.35;
 }

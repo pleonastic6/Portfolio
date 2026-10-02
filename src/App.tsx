@@ -15,6 +15,7 @@ import { WhatWeBuild } from './sections/WhatWeBuild'
 import { Team } from './sections/Team'
 import { Skills } from './sections/Skills'
 import { Contact } from './sections/Contact'
+import { CosPage } from './themes/collective-os/CosPage'
 // Unterseiten erst laden, wenn sie aufgerufen werden — sie gehoeren nicht
 // in das Bundle, das ueber die Startseite entscheidet.
 const Legal = lazy(() => import('./pages/Legal').then((m) => ({ default: m.Legal })))
@@ -57,6 +58,17 @@ function Page() {
           {route.name === 'case' ? <CaseStudy slug={route.slug} /> : <Legal kind={route.name} />}
         </Suspense>
         <Footer />
+      </div>
+    )
+  }
+
+  // Design 05 hat ein eigenes Layout (Blattrahmen, Zellenraster) und teilt
+  // mit den anderen Designs nur Inhalte und Cursor.
+  if (theme.id === 'collective-os') {
+    return (
+      <div className="page" data-ready={ready}>
+        {site.customCursor && <Cursor />}
+        <CosPage />
       </div>
     )
   }

@@ -1,0 +1,439 @@
+/*
+ * Gemeinsame Bausteine fuer Design 05: Schriftgrade, Buttons, Passermarken,
+ * Zeilenmasken. Alle Masse in --cos-u (siehe tokens.css).
+ */
+
+/* ---- Schriftgrade --------------------------------------------------- */
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin: 0;
+  color: var(--cos-ink);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.h1 {
+  font-size: calc(var(--cos-u) * 5.6);
+  font-weight: 700;
+}
+
+.h2 {
+  font-size: calc(var(--cos-u) * 4.8);
+}
+
+.h3 {
+  font-size: calc(var(--cos-u) * 4);
+}
+
+.h4 {
+  font-size: calc(var(--cos-u) * 3.2);
+}
+
+.h5 {
+  font-size: calc(var(--cos-u) * 2.8);
+}
+
+.h6 {
+  font-size: calc(var(--cos-u) * 2.4);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.txt16 {
+  margin: 0;
+  font-size: calc(var(--cos-u) * 1.6);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--cos-ink-72);
+  font-weight: 500;
+}
+
+.txt14 {
+  margin: 0;
+  font-size: calc(var(--cos-u) * 1.4);
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--cos-ink-72);
+  font-weight: 500;
+}
+
+.mono {
+  margin: 0;
+  font-family: var(--font-tech);
+  font-size: calc(var(--cos-u) * 1.4);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--cos-ink-72);
+}
+
+.mono12 {
+  composes: mono;
+  font-size: calc(var(--cos-u) * 1.2);
+  line-height: 1.3;
+}
+
+.mono10 {
+  composes: mono;
+  font-size: calc(var(--cos-u) * 1);
+  line-height: 1.3;
+}
+
+.muted {
+  color: var(--cos-disable);
+}
+
+.ink {
+  color: var(--cos-ink);
+}
+
+.brand {
+  color: var(--cos-brand);
+}
+
+/* ---- Button ---------------------------------------------------------
+ * Fuellung faehrt von unten ein, die Beschriftung rollt eine Zeile weiter,
+ * der Pfeil schiebt sich seitlich nach. Alles reine CSS-Transitions.
+ */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  overflow: hidden;
+  isolation: isolate;
+  font-family: var(--font-tech);
+  font-size: calc(var(--cos-u) * 1.4);
+  font-weight: 500;
+  line-height: 1.4;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    color 0.3s var(--cos-ease-btn),
+    border-color 0.3s;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--fill, var(--cos-ink));
+  transform: translateY(102%);
+  transition: transform 0.5s var(--cos-ease);
+}
+
+.btn:hover::after,
+.btn:focus-visible::after {
+  transform: translateY(0);
+}
+
+.btnLabel {
+  display: grid;
+  overflow: hidden;
+  margin: calc(var(--cos-u) * 1.4) calc(var(--cos-u) * 1.6);
+}
+
+.btnLabel > span {
+  grid-area: 1 / 1;
+  transition: transform 0.48s var(--cos-ease-btn);
+}
+
+.btnLabel > span:last-child {
+  transform: translateY(100%);
+}
+
+.btn:hover .btnLabel > span:first-child,
+.btn:focus-visible .btnLabel > span:first-child {
+  transform: translateY(-100%);
+}
+
+.btn:hover .btnLabel > span:last-child,
+.btn:focus-visible .btnLabel > span:last-child {
+  transform: translateY(0);
+}
+
+.btnIcon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: calc(var(--cos-u) * 1.25);
+}
+
+/* gepunktete Trennung zwischen Text und Pfeil */
+.btnIcon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: var(--cos-line);
+  height: calc(100% - calc(var(--cos-u) * 1));
+  transform: translateY(-50%);
+  background:
+    linear-gradient(currentColor 0 0) top center / var(--cos-line) calc(var(--cos-u) * 0.6) no-repeat,
+    linear-gradient(currentColor 0 0) center 28% / var(--cos-line) var(--cos-line) no-repeat,
+    linear-gradient(currentColor 0 0) center / var(--cos-line) calc(var(--cos-u) * 0.6) no-repeat,
+    linear-gradient(currentColor 0 0) center 72% / var(--cos-line) var(--cos-line) no-repeat,
+    linear-gradient(currentColor 0 0) bottom center / var(--cos-line) calc(var(--cos-u) * 0.6) no-repeat;
+  opacity: 0.7;
+}
+
+.btnIconInner {
+  display: grid;
+  overflow: hidden;
+  width: calc(var(--cos-u) * 2);
+  height: calc(var(--cos-u) * 2);
+}
+
+.btnIcon svg {
+  grid-area: 1 / 1;
+  width: calc(var(--cos-u) * 2);
+  height: calc(var(--cos-u) * 2);
+  transition: transform 0.48s var(--cos-ease-btn);
+}
+
+.btnIcon svg:last-child {
+  transform: translateX(-120%);
+}
+
+.btn:hover .btnIcon svg:first-child,
+.btn:focus-visible .btnIcon svg:first-child {
+  transform: translateX(120%);
+}
+
+.btn:hover .btnIcon svg:last-child,
+.btn:focus-visible .btnIcon svg:last-child {
+  transform: translateX(0);
+}
+
+/* Signalorange, weisse Schrift; Hover fuellt mit Graphit */
+.brandBtn {
+  background: var(--cos-brand);
+  color: #fff;
+  --fill: var(--cos-ink);
+}
+
+/* Haarlinie, Graphit; Hover fuellt orange */
+.outlineBtn {
+  border: var(--cos-line) solid var(--cos-border);
+  color: var(--cos-ink);
+  --fill: var(--cos-brand);
+}
+
+.outlineBtn:hover,
+.outlineBtn:focus-visible {
+  color: #fff;
+  border-color: var(--cos-brand);
+}
+
+/* Zelle mit Text oben links, Pfeil unten rechts (Header, Hero) */
+.cellBtn {
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(var(--cos-u) * 1.2) calc(var(--cos-u) * 0.4) calc(var(--cos-u) * 0.4) calc(var(--cos-u) * 1.2);
+  color: var(--cos-brand);
+  --fill: var(--cos-brand);
+}
+
+.cellBtn:hover,
+.cellBtn:focus-visible {
+  color: #fff;
+}
+
+.cellBtn .btnLabel {
+  margin: 0;
+  align-self: flex-start;
+}
+
+.cellBtn .btnIcon {
+  align-self: flex-end;
+}
+
+.cellBtn .btnIcon {
+  padding: calc(var(--cos-u) * 0.4);
+}
+
+.cellBtn .btnIcon::before {
+  display: none;
+}
+
+/* ---- Passermarken ------------------------------------------------------ */
+
+.plus {
+  position: absolute;
+  z-index: 3;
+  width: calc(var(--cos-u) * 1);
+  height: calc(var(--cos-u) * 1);
+  color: var(--plus-color, var(--cos-brand));
+  pointer-events: none;
+}
+
+.plus::before,
+.plus::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+}
+
+.plus::before {
+  left: calc(50% - calc(var(--cos-u) * 0.1));
+  width: calc(var(--cos-u) * 0.2);
+  height: 100%;
+}
+
+.plus::after {
+  top: calc(50% - calc(var(--cos-u) * 0.1));
+  width: 100%;
+  height: calc(var(--cos-u) * 0.2);
+}
+
+.tl {
+  top: calc(calc(var(--cos-u) * -0.5));
+  left: calc(calc(var(--cos-u) * -0.5));
+}
+
+.tr {
+  top: calc(calc(var(--cos-u) * -0.5));
+  right: calc(calc(var(--cos-u) * -0.5));
+}
+
+.bl {
+  bottom: calc(calc(var(--cos-u) * -0.5));
+  left: calc(calc(var(--cos-u) * -0.5));
+}
+
+.br {
+  bottom: calc(calc(var(--cos-u) * -0.5));
+  right: calc(calc(var(--cos-u) * -0.5));
+}
+
+.plusThin::before {
+  left: calc(50% - var(--cos-line) / 2);
+  width: var(--cos-line);
+}
+
+.plusThin::after {
+  top: calc(50% - var(--cos-line) / 2);
+  height: var(--cos-line);
+}
+
+/* ---- Zeilenmaske -------------------------------------------------------
+ * Woerter laufen einzeln aus einer Maske hoch, sobald der Block im Bild ist.
+ */
+
+.split {
+  display: block;
+}
+
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.wordInner {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform 0.9s var(--cos-ease);
+  transition-delay: calc(var(--i, 0) * 45ms + var(--d, 0ms));
+}
+
+.split[data-in='true'] .wordInner {
+  transform: none;
+}
+
+/* ---- Einblenden ---------------------------------------------------------- */
+
+.fade {
+  opacity: 0;
+  transform: translateY(calc(var(--cos-u) * 1.6));
+  transition:
+    opacity 0.9s var(--cos-ease),
+    transform 0.9s var(--cos-ease);
+  transition-delay: var(--d, 0ms);
+}
+
+.fade[data-in='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* gestrichelte Linien: 1-3-10-3 wie auf einem Bauplan */
+.dashX {
+  height: var(--cos-line);
+  background-image: linear-gradient(
+    to right,
+    var(--cos-border) 0 6.25%,
+    transparent 6.25% 25%,
+    var(--cos-border) 25% 87.5%,
+    transparent 87.5% 100%
+  );
+  background-size: calc(var(--cos-u) * 1.6) 100%;
+  background-repeat: repeat-x;
+}
+
+.dashY {
+  width: var(--cos-line);
+  background-image: linear-gradient(
+    to bottom,
+    var(--cos-border) 0 6.25%,
+    transparent 6.25% 25%,
+    var(--cos-border) 25% 87.5%,
+    transparent 87.5% 100%
+  );
+  background-size: 100% calc(var(--cos-u) * 1.6);
+  background-repeat: repeat-y;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordInner,
+  .fade {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.line {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .h1 {
+    font-size: calc(var(--cos-u) * 4.2);
+  }
+
+  .h2 {
+    font-size: calc(var(--cos-u) * 3.8);
+  }
+
+  .h3 {
+    font-size: calc(var(--cos-u) * 3);
+  }
+
+  .h4 {
+    font-size: calc(var(--cos-u) * 2.8);
+  }
+
+  .h5 {
+    font-size: calc(var(--cos-u) * 2.4);
+  }
+
+  .h6 {
+    font-size: calc(var(--cos-u) * 2.2);
+  }
+}

@@ -457,43 +457,61 @@ ol {
   }
 }
 
-/* ---- Theme: Collective OS --------------------------------------------- */
+/* ---- Theme: Collective OS ---------------------------------------------
+ * Papier statt Flaeche: heller Grund mit feinem, aufmultipliziertem Korn.
+ * Kein Raster im Hintergrund — die Linien zeichnet das Layout selbst.
+ */
+:root[data-theme='collective-os'] {
+  background-color: var(--cos-paper);
+  color-scheme: light;
+  scroll-padding-top: calc(var(--cos-header) + var(--cos-inset) * 2);
+}
+
 :root[data-theme='collective-os'] body {
-  background:
-    radial-gradient(circle at 18% 12%, rgb(255 59 34 / 0.035), transparent 28rem),
-    linear-gradient(180deg, #f8f6ef, var(--c-bg) 42%, #eeebdf);
+  background: var(--cos-paper);
+  color: var(--cos-ink-72);
+  font-weight: 500;
+  font-kerning: none;
+  letter-spacing: -0.02em;
 }
 
 :root[data-theme='collective-os'] body::before {
   z-index: 10000;
-  opacity: 0.16;
+  opacity: 0.55;
   mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
-  background-size: 190px 190px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.45 0 0 0 0 0.42 0 0 0 0.22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
 }
 
 :root[data-theme='collective-os'] body::after {
-  z-index: 0;
-  background-image:
-    linear-gradient(to right, rgb(36 36 36 / 0.055) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(36 36 36 / 0.045) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.72;
+  content: none;
 }
 
-:root[data-theme='collective-os'] h1,
-:root[data-theme='collective-os'] h2,
-:root[data-theme='collective-os'] h3,
-:root[data-theme='collective-os'] h4 {
-  font-weight: 700;
+/* :where() haelt die Spezifitaet bei 0 — Komponenten duerfen ueberschreiben. */
+:where(:root[data-theme='collective-os']) h1,
+:where(:root[data-theme='collective-os']) h2,
+:where(:root[data-theme='collective-os']) h3,
+:where(:root[data-theme='collective-os']) h4 {
+  color: var(--cos-ink);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1;
 }
 
-:root[data-theme='collective-os'] .rule {
-  background:
-    linear-gradient(90deg, transparent 0 3%, var(--c-accent) 3% 8%, var(--c-line) 8% 58%, transparent 58% 61%, var(--c-line) 61% 100%);
+:root[data-theme='collective-os'] .label,
+:root[data-theme='collective-os'] .meta {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+:root[data-theme='collective-os'] :focus-visible {
+  outline: max(1px, calc(var(--cos-u) * 0.2)) solid var(--cos-brand);
+  outline-offset: 2px;
 }
 
 :root[data-theme='collective-os'] ::selection {
-  background: var(--c-accent);
-  color: var(--c-bg);
+  background: #e15c46;
+  color: #fff;
 }

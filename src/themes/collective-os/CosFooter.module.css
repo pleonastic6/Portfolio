@@ -1,0 +1,204 @@
+.footer {
+  position: relative;
+  margin-bottom: var(--cos-inset);
+  border-top: var(--cos-line) solid var(--cos-border);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 1.5fr 1.5fr 1.5fr 4.5fr;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--cos-u) * 0.8);
+  min-width: 0;
+  padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6);
+  border-right: var(--cos-line) solid var(--cos-border);
+  border-bottom: var(--cos-line) solid var(--cos-border);
+}
+
+.tagline,
+.status {
+  padding-left: calc(var(--cos-u) * 3.2);
+}
+
+.taglineText {
+  max-width: 12em;
+}
+
+.colLabel {
+  margin-bottom: calc(var(--cos-u) * 0.8);
+  color: var(--cos-gray);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--cos-u) * 0.6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  width: fit-content;
+  font-size: calc(var(--cos-u) * 1.6);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--cos-ink);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% var(--cos-line);
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  transition:
+    background-size 0.6s ease,
+    color 0.3s;
+}
+
+.link:hover {
+  color: var(--cos-brand);
+  background-size: 100% var(--cos-line);
+  background-position: 0 100%;
+}
+
+.mark {
+  grid-row: span 2;
+  align-items: center;
+  justify-content: center;
+  border-right: 0;
+  padding: calc(var(--cos-u) * 4.8);
+}
+
+.markSvg {
+  width: 100%;
+  max-width: calc(var(--cos-u) * 36);
+  height: auto;
+  color: var(--cos-ink);
+}
+
+.status p {
+  font-family: var(--font-tech);
+  font-size: calc(var(--cos-u) * 1.2);
+  letter-spacing: 0;
+}
+
+/* ---- Kontur-Wortmarke ----------------------------------------------------- */
+
+.big {
+  position: relative;
+  padding: calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 2.4);
+  border-bottom: var(--cos-line) solid var(--cos-border);
+}
+
+.bigSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.bigSvg path {
+  fill: transparent;
+  stroke: var(--cos-ink);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transition:
+    fill 0.5s var(--cos-ease),
+    stroke 0.5s var(--cos-ease);
+}
+
+.bigSvg .bigA:hover {
+  fill: var(--cos-brand);
+  stroke: var(--cos-brand);
+}
+
+.bigSvg .bigD:hover {
+  fill: var(--cos-ink);
+}
+
+/* ---- Rechtszeile ---------------------------------------------------------- */
+
+.policy {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.copy {
+  display: flex;
+  align-items: center;
+  padding: calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 3.2);
+  color: var(--cos-ink-72);
+}
+
+.policyLinks {
+  display: flex;
+}
+
+.policyLink {
+  display: flex;
+  align-items: center;
+  padding: calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 2.4);
+  border-left: var(--cos-line) solid var(--cos-border);
+  color: var(--cos-ink);
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+}
+
+a.policyLink:hover {
+  background: var(--cos-ink);
+  color: #fff;
+}
+
+@media (max-width: 991px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .tagline {
+    grid-column: 1 / -1;
+  }
+
+  .mark {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cell,
+  .tagline {
+    padding: calc(var(--cos-u) * 2) calc(var(--cos-u) * 1.6);
+  }
+
+  .big {
+    padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 1.6);
+  }
+
+  .policy {
+    flex-direction: column;
+  }
+
+  .copy {
+    padding: calc(var(--cos-u) * 1.6);
+  }
+
+  .policyLinks {
+    border-top: var(--cos-line) solid var(--cos-border);
+  }
+
+  .policyLink:first-child {
+    border-left: 0;
+  }
+}
+
+.mail {
+  overflow-wrap: anywhere;
+}

@@ -106,17 +106,33 @@
 }
 
 :global(:root[data-theme='collective-os']) .button {
-  padding: 0.5rem 0.75rem;
-  color: var(--c-text);
-  background: rgb(251 250 244 / 0.7);
-  border: var(--hairline) solid var(--c-line-strong);
+  gap: 0.6em;
+  padding: 0;
+  font-family: var(--font-tech);
+  font-size: calc(var(--cos-u) * 1.4);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--cos-ink-72);
+  background: none;
+  border: 0;
 }
 
 :global(:root[data-theme='collective-os']) .button:hover {
-  border-color: var(--c-brown-red);
-  color: var(--c-brown-red);
+  color: var(--cos-brand);
+}
+
+:global(:root[data-theme='collective-os']) .label {
+  color: var(--cos-disable);
 }
 
 :global(:root[data-theme='collective-os']) .name {
-  color: var(--c-text);
+  color: var(--cos-ink);
+}
+
+:global(:root[data-theme='collective-os']) .button:hover .name {
+  color: var(--cos-brand);
+}
+
+:global(:root[data-theme='collective-os']) .lg {
+  font-size: calc(var(--cos-u) * 1.6);
 }

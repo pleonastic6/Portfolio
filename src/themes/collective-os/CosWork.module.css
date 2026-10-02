@@ -1,0 +1,288 @@
+.work {
+  position: relative;
+  border-top: var(--cos-line) solid var(--cos-border);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: calc(var(--cos-u) * 4);
+  padding: calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 6.6);
+}
+
+.headLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.label {
+  margin-bottom: calc(var(--cos-u) * 1.6);
+}
+
+.headRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: calc(var(--cos-u) * 0.4);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 3fr 6fr 3fr;
+  border-top: var(--cos-line) solid var(--cos-border);
+}
+
+/* ---- links ---------------------------------------------------------------- */
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: calc(var(--cos-u) * 3.2);
+  padding: calc(var(--cos-u) * 3.2);
+  border-right: var(--cos-line) solid var(--cos-border);
+}
+
+.num {
+  margin-bottom: calc(var(--cos-u) * 1.6);
+  color: var(--cos-disable);
+  transition: color 0.4s;
+}
+
+.row:hover .num {
+  color: var(--cos-brand);
+}
+
+.title {
+  margin-bottom: calc(var(--cos-u) * 1.2);
+}
+
+.titleLink {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% var(--cos-line);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.6s var(--cos-ease);
+}
+
+.titleLink:hover {
+  background-size: 100% var(--cos-line);
+}
+
+.discipline {
+  color: var(--cos-surface);
+}
+
+.year {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding-top: calc(var(--cos-u) * 1.2);
+  border-top: var(--cos-line) solid var(--cos-border);
+}
+
+.year dd {
+  margin: 0;
+}
+
+/* ---- Mitte: Abbildung -------------------------------------------------------- */
+
+.center {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--cos-u) * 1.2);
+  padding: calc(var(--cos-u) * 4.8) calc(var(--cos-u) * 4.8) calc(var(--cos-u) * 2.4);
+  background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='.32' stroke='%23B3B3AF' stroke-width='.5'%3E%3Cpath d='M.25 7v49M63.75 7v49M56 63.75H8M56 .25H8'/%3E%3C/g%3E%3Cg opacity='.32' fill='%23B3B3AF'%3E%3Crect width='1' height='1'/%3E%3Crect x='63' width='1' height='1'/%3E%3Crect y='63' width='1' height='1'/%3E%3Crect x='63' y='63' width='1' height='1'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: calc(var(--cos-u) * 6.4) calc(var(--cos-u) * 6.4);
+  background-position: center;
+  border-right: var(--cos-line) solid var(--cos-border);
+}
+
+.frame {
+  position: relative;
+  border: var(--cos-line) solid var(--cos-border);
+  background: var(--cos-paper);
+  padding: calc(var(--cos-u) * 0.8);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.06) brightness(1.04);
+  mix-blend-mode: multiply;
+  transition: filter 0.8s var(--cos-ease);
+}
+
+.row:hover .image {
+  filter: none;
+}
+
+.placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  background: var(--cos-paper-2);
+}
+
+.caption {
+  display: flex;
+  justify-content: space-between;
+  gap: calc(var(--cos-u) * 1.6);
+  color: var(--cos-surface);
+}
+
+/* ---- rechts ----------------------------------------------------------------- */
+
+.right {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.desc {
+  padding: calc(var(--cos-u) * 3.2);
+}
+
+.specs {
+  margin: 0;
+  margin-top: auto;
+}
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--cos-u) * 0.8);
+  padding: calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 3.2);
+  border-top: var(--cos-line) solid var(--cos-border);
+}
+
+.spec dd {
+  margin: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--cos-u) * 0.6);
+}
+
+.tag {
+  padding: calc(var(--cos-u) * 0.3) calc(var(--cos-u) * 0.8);
+  border: var(--cos-line) solid var(--cos-border);
+  font-family: var(--font-tech);
+  font-size: calc(var(--cos-u) * 1.1);
+  font-weight: 500;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--cos-ink-72);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  border-top: var(--cos-line) solid var(--cos-border);
+}
+
+.action {
+  justify-content: space-between;
+  width: 100%;
+  border-width: 0;
+}
+
+.action + .action {
+  border-top: var(--cos-line) solid var(--cos-border);
+}
+
+@media (max-width: 1199px) {
+  .row {
+    grid-template-columns: 4fr 8fr;
+  }
+
+  .right {
+    grid-column: 1 / -1;
+    border-top: var(--cos-line) solid var(--cos-border);
+  }
+
+  .center {
+    border-right: 0;
+  }
+
+  .specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .spec + .spec {
+    border-left: var(--cos-line) solid var(--cos-border);
+  }
+
+  .actions {
+    flex-direction: row;
+  }
+
+  .action + .action {
+    border-top: 0;
+    border-left: var(--cos-line) solid var(--cos-border);
+  }
+}
+
+@media (max-width: 767px) {
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 4);
+  }
+
+  .headRight {
+    align-items: flex-start;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .left {
+    border-right: 0;
+    border-bottom: var(--cos-line) solid var(--cos-border);
+    padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6);
+  }
+
+  .center {
+    padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 1.6);
+  }
+
+  .desc {
+    padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6);
+  }
+
+  .specs {
+    grid-template-columns: 1fr;
+  }
+
+  .spec {
+    padding: calc(var(--cos-u) * 1.6);
+  }
+
+  .spec + .spec {
+    border-left: 0;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .action + .action {
+    border-left: 0;
+    border-top: var(--cos-line) solid var(--cos-border);
+  }
+
+  .image {
+    filter: none;
+  }
+}

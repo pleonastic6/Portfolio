@@ -7,6 +7,9 @@ import '@fontsource/space-mono/latin-400.css'
 import '@fontsource/space-mono/latin-700.css'
 import '@fontsource/silkscreen/latin-400.css'
 import '@fontsource/cinzel/latin-700.css'
+// Design 05 (Collective OS): Grotesk + Mono, lokal ausgeliefert wie alle anderen.
+import '@fontsource-variable/inter-tight/wght.css'
+import '@fontsource/geist-mono/latin-500.css'
 
 // Editoriale Newsreader-Serif + technische Mono/Dot-Akzente,
 // aber ohne Google-Fonts-CDN oder proprietären Font-Rip.

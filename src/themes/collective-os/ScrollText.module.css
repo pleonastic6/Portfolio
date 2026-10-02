@@ -1,0 +1,14 @@
+.text {
+  --p: 0;
+  margin: 0;
+}
+
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.char {
+  --mix: clamp(0%, calc((var(--p) - var(--i)) * 100%), 100%);
+  color: color-mix(in srgb, var(--cos-ink) var(--mix), var(--cos-border));
+}

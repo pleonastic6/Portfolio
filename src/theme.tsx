@@ -32,7 +32,7 @@ export const THEMES: SiteTheme[] = [
   {
     id: 'collective-os',
     name: 'Collective OS',
-    description: 'Dunkles Developer-Control-Room-Design mit CAD-Raster, HUD und System-Map.',
+    description: 'Technisches Zeichenblatt: Papiergrund, Haarlinien-Raster, Signalorange, axonometrisches Modell.',
   },
 ]
 
@@ -64,6 +64,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme.id
+    // Die Inline-Farben aus index.html gelten nur fuers erste Bild — danach
+    // uebernimmt das Stylesheet, sonst bleibt beim Wechsel der alte Grund stehen.
+    document.documentElement.style.removeProperty('background')
+    document.documentElement.style.removeProperty('color-scheme')
     window.localStorage.setItem(STORAGE_KEY, theme.id)
   }, [theme.id])
 

@@ -1,5 +1,95 @@
 .page {
   position: relative;
+  isolation: isolate;
+}
+
+.particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+}
+
+.particle {
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  width: calc(var(--s) * 1px);
+  height: calc(var(--s) * 1px);
+  background: var(--cos-brand);
+  opacity: var(--o);
+  transform: translate3d(0, 0, 0) rotate(0deg);
+  animation: particleDrift 12s var(--cos-ease) infinite alternate;
+  animation-delay: var(--d);
+  box-shadow:
+    0 0 calc(var(--s) * 2px) rgb(166 216 92 / 0.18),
+    0 0 calc(var(--s) * 6px) rgb(166 216 92 / 0.08);
+}
+
+.particle::before,
+.particle::after {
+  content: '';
+  position: absolute;
+  background: var(--cos-brand);
+  opacity: 0.55;
+}
+
+.particle::before {
+  left: 50%;
+  top: calc(50% - var(--cos-line) / 2);
+  width: calc(var(--s) * 8px);
+  height: var(--cos-line);
+  transform: translateX(calc(var(--s) * 1.6px));
+}
+
+.particle::after {
+  left: calc(50% - var(--cos-line) / 2);
+  top: 50%;
+  width: var(--cos-line);
+  height: calc(var(--s) * 5px);
+  transform: translateY(calc(var(--s) * 1.2px));
+}
+
+.particle:nth-child(3n) {
+  background: transparent;
+  border: var(--cos-line) solid var(--cos-brand);
+}
+
+.particle:nth-child(4n) {
+  width: calc(var(--s) * 2px);
+  height: var(--cos-line);
+}
+
+.particle:nth-child(5n)::before,
+.particle:nth-child(5n)::after {
+  display: none;
+}
+
+.particle:nth-child(7n) {
+  filter: blur(0.3px);
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes particleDrift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(var(--dx), var(--dy), 0) rotate(90deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particle {
+    animation: none;
+  }
 }
 
 /*

@@ -108,15 +108,15 @@
 :global(:root[data-theme='collective-os']) .button {
   padding: 0.5rem 0.75rem;
   color: var(--c-text);
-  background: rgb(10 9 7 / 0.62);
+  background: rgb(251 250 244 / 0.7);
   border: var(--hairline) solid var(--c-line-strong);
 }
 
 :global(:root[data-theme='collective-os']) .button:hover {
-  border-color: var(--c-accent);
-  color: var(--c-accent);
+  border-color: var(--c-brown-red);
+  color: var(--c-brown-red);
 }
 
 :global(:root[data-theme='collective-os']) .name {
-  color: var(--c-accent);
+  color: var(--c-text);
 }

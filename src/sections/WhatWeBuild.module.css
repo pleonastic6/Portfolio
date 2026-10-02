@@ -104,12 +104,12 @@
 }
 
 :global(:root[data-theme='collective-os']) .card {
-  min-height: 16rem;
+  min-height: 15rem;
   padding: var(--space-5);
-  border: var(--hairline) solid var(--c-line);
+  border: var(--hairline) solid var(--c-line-strong);
   background:
-    radial-gradient(circle at 85% 12%, var(--c-accent-glass), transparent 42%),
-    rgb(241 234 219 / 0.035);
+    radial-gradient(circle at 85% 12%, rgb(255 59 34 / 0.045), transparent 42%),
+    var(--c-bg-raised);
   transform: none;
 }
 

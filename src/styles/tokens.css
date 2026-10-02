@@ -317,52 +317,52 @@
 }
 
 /* ---- Theme: Collective OS ---------------------------------------------
- * Design 05: dunkler Developer-Control-Room aus dem Plover-Nachbau adaptiert:
- * CAD-Raster, HUD-Linien, Gold/Redline-Akzente und ein technischerer Sans-Fokus.
+ * Design 05, now lighter: Heron-like architectural sheet, black linework,
+ * red inspection marks, technical grid/cursor. Still ADDD, not a Heron copy.
  */
 :root[data-theme='collective-os'] {
-  --c-bg: #070706;
-  --c-bg-raised: #100e0b;
-  --c-bg-inset: #15120e;
+  --c-bg: #f3f1e8;
+  --c-bg-raised: #fbfaf4;
+  --c-bg-inset: #e8e5d9;
 
-  --c-text: #f1eadb;
-  --c-text-muted: #b4a993;
-  --c-text-faint: #7f745f;
-  --c-text-invert: #080706;
+  --c-text: #242424;
+  --c-text-muted: #4d4c47;
+  --c-text-faint: #858178;
+  --c-text-invert: #f8f6ee;
 
-  --c-line: rgb(241 234 219 / 0.14);
-  --c-line-soft: rgb(241 234 219 / 0.085);
-  --c-line-strong: rgb(214 169 82 / 0.34);
+  --c-line: rgb(36 36 36 / 0.18);
+  --c-line-soft: rgb(36 36 36 / 0.09);
+  --c-line-strong: rgb(36 36 36 / 0.42);
 
-  --c-accent: #d6a952;
-  --c-accent-dim: rgb(214 169 82 / 0.18);
-  --c-accent-glass: rgb(214 169 82 / 0.12);
-  --c-brown-red: #ff4b32;
-  --c-os-cyan: #61d6ff;
-  --c-os-green: #84d982;
+  --c-accent: #242424;
+  --c-accent-dim: rgb(36 36 36 / 0.12);
+  --c-accent-glass: rgb(36 36 36 / 0.055);
+  --c-brown-red: #ff3b22;
+  --c-os-cyan: #2b5f75;
+  --c-os-green: #2f6e41;
 
   --font-sans: Inter, 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-body: 'Newsreader Variable', Newsreader, Georgia, serif;
+  --font-body: Inter, 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-tech: 'Space Mono', 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-  --font-dot: 'Silkscreen', 'Space Mono', ui-monospace, monospace;
+  --font-dot: 'Space Mono', 'IBM Plex Mono', ui-monospace, monospace;
 
-  --fs-display: clamp(2.9rem, 7.8vw, 7.9rem);
-  --fs-statement: clamp(2.2rem, 5.5vw, 4.7rem);
-  --fs-h2: clamp(1.95rem, 4.4vw, 3.45rem);
-  --fs-h3: clamp(1.35rem, 2.5vw, 2.05rem);
+  --fs-display: clamp(3rem, 8vw, 8.8rem);
+  --fs-statement: clamp(2.1rem, 5.2vw, 4.5rem);
+  --fs-h2: clamp(1.85rem, 4.1vw, 3.25rem);
+  --fs-h3: clamp(1.25rem, 2.25vw, 1.85rem);
   --fs-body: clamp(0.98rem, 1.05vw, 1.08rem);
 
-  --lh-display: 0.88;
-  --lh-tight: 1.02;
-  --lh-body: 1.62;
-  --ls-display: -0.055em;
-  --ls-tight: -0.025em;
-  --ls-label: 0.14em;
+  --lh-display: 0.9;
+  --lh-tight: 1.03;
+  --lh-body: 1.55;
+  --ls-display: -0.075em;
+  --ls-tight: -0.03em;
+  --ls-label: 0.12em;
   --ls-meta: 0.08em;
 
   --radius-media: 0;
   --radius-sm: 0;
   --hairline: 1px;
   --pattern-opacity: 0;
-  --section-space: clamp(5rem, 11vw, 9rem);
+  --section-space: clamp(4.25rem, 9vw, 7.5rem);
 }

@@ -354,10 +354,16 @@
 }
 
 /* ---- Theme: Collective OS --------------------------------------------- */
+:global(:root[data-theme='collective-os']) .nav {
+  background: rgb(248 246 239 / 0.78);
+  border-bottom-color: var(--c-line-soft);
+  backdrop-filter: blur(8px);
+}
+
 :global(:root[data-theme='collective-os']) .nav[data-scrolled='true'] {
-  background: rgb(7 7 6 / 0.82);
+  background: rgb(248 246 239 / 0.94);
   border-bottom-color: var(--c-line-strong);
-  backdrop-filter: blur(16px) saturate(120%);
+  backdrop-filter: blur(10px);
 }
 
 :global(:root[data-theme='collective-os']) .logo {
@@ -366,11 +372,11 @@
 
 :global(:root[data-theme='collective-os']) .link[aria-current='true'],
 :global(:root[data-theme='collective-os']) .link:hover {
-  color: var(--c-accent);
+  color: var(--c-brown-red);
 }
 
 :global(:root[data-theme='collective-os']) .link::after {
-  background: var(--c-accent);
+  background: var(--c-brown-red);
 }
 
 :global(:root[data-theme='collective-os']) .overlay {

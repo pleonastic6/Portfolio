@@ -530,13 +530,13 @@
 :global(:root[data-theme='collective-os']) .lineInner { white-space: normal; }
 
 :global(:root[data-theme='collective-os']) .line:nth-child(2) .lineInner {
-  color: transparent;
-  -webkit-text-stroke: 1px var(--c-accent);
-  text-shadow: 0 0 32px rgb(214 169 82 / 0.18);
+  color: var(--c-text);
+  -webkit-text-stroke: 0;
+  text-shadow: none;
 }
 
 :global(:root[data-theme='collective-os']) .kicker {
-  color: var(--c-accent);
+  color: var(--c-brown-red);
   transform: none;
 }
 
@@ -998,29 +998,30 @@
 }
 
 :global(:root[data-theme='collective-os']) .hero::before {
-  inset: calc(var(--nav-height) + 1.15rem) var(--space-6) var(--space-6);
-  opacity: 0.62;
+  inset: calc(var(--nav-height) + 0.4rem) var(--space-5) var(--space-5);
+  opacity: 0.92;
+  border: var(--hairline) solid rgb(36 36 36 / 0.18);
   background:
-    linear-gradient(90deg, transparent 0 6%, rgb(214 169 82 / 0.52) 6% 6.25%, transparent 6.25% 100%),
-    linear-gradient(90deg, transparent 0 77%, rgb(241 234 219 / 0.18) 77% 77.12%, transparent 77.12% 100%),
-    linear-gradient(0deg, transparent 0 24%, rgb(241 234 219 / 0.16) 24% 24.12%, transparent 24.12% 100%),
-    linear-gradient(0deg, transparent 0 68%, rgb(255 75 50 / 0.25) 68% 68.18%, transparent 68.18% 100%),
-    repeating-linear-gradient(90deg, rgb(241 234 219 / 0.08) 0 1px, transparent 1px 72px),
-    repeating-linear-gradient(0deg, rgb(241 234 219 / 0.06) 0 1px, transparent 1px 72px);
-  mask-image: linear-gradient(90deg, #000 0 74%, transparent 100%);
+    linear-gradient(90deg, transparent 0 5.4%, var(--c-brown-red) 5.4% 5.55%, transparent 5.55% 100%),
+    linear-gradient(90deg, transparent 0 77%, rgb(36 36 36 / 0.16) 77% 77.12%, transparent 77.12% 100%),
+    linear-gradient(0deg, transparent 0 24%, rgb(36 36 36 / 0.12) 24% 24.12%, transparent 24.12% 100%),
+    linear-gradient(0deg, transparent 0 68%, rgb(255 59 34 / 0.2) 68% 68.18%, transparent 68.18% 100%),
+    repeating-linear-gradient(90deg, rgb(36 36 36 / 0.055) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(0deg, rgb(36 36 36 / 0.05) 0 1px, transparent 1px 72px);
+  mask-image: linear-gradient(90deg, #000 0 82%, transparent 100%);
 }
 
 :global(:root[data-theme='collective-os']) .hero::after {
   right: clamp(1rem, 4vw, 4rem);
-  top: 31%;
-  width: clamp(10rem, 20vw, 17rem);
-  height: clamp(10rem, 20vw, 17rem);
-  border: var(--hairline) solid rgb(241 234 219 / 0.16);
+  top: 30%;
+  width: clamp(9rem, 18vw, 15rem);
+  height: clamp(9rem, 18vw, 15rem);
+  border: var(--hairline) solid rgb(36 36 36 / 0.16);
   background:
-    radial-gradient(circle at 50% 50%, transparent 0 33%, rgb(214 169 82 / 0.24) 33.5% 34.5%, transparent 35% 100%),
-    linear-gradient(45deg, transparent 0 49%, rgb(255 75 50 / 0.36) 49.5% 50.5%, transparent 51% 100%),
-    linear-gradient(-45deg, transparent 0 49%, rgb(241 234 219 / 0.12) 49.5% 50.5%, transparent 51% 100%);
-  opacity: 0.55;
+    radial-gradient(circle at 50% 50%, transparent 0 33%, rgb(36 36 36 / 0.13) 33.5% 34.5%, transparent 35% 100%),
+    linear-gradient(45deg, transparent 0 49%, rgb(255 59 34 / 0.32) 49.5% 50.5%, transparent 51% 100%),
+    linear-gradient(-45deg, transparent 0 49%, rgb(36 36 36 / 0.1) 49.5% 50.5%, transparent 51% 100%);
+  opacity: 0.62;
   transform: rotate(0.8deg);
 }
 
@@ -1050,11 +1051,12 @@
 
 :global(:root[data-theme='collective-os']) .headline {
   position: relative;
-  max-width: 13.5ch;
-  margin-block: clamp(3.5rem, 10vh, 7rem) clamp(2rem, 6vh, 4rem);
-  font-size: clamp(5.2rem, 11.5vw, 13.75rem);
-  line-height: 0.82;
-  letter-spacing: -0.085em;
+  max-width: 16ch;
+  margin-block: clamp(3rem, 8vh, 5.75rem) clamp(1.6rem, 5vh, 3rem);
+  font-size: clamp(4.5rem, 9.6vw, 11.5rem);
+  line-height: 0.84;
+  letter-spacing: -0.09em;
+  text-transform: uppercase;
   isolation: isolate;
 }
 
@@ -1101,10 +1103,10 @@
 
 :global(:root[data-theme='collective-os']) .bottom {
   position: relative;
-  padding: clamp(1rem, 2vw, 1.4rem);
-  border: var(--hairline) solid var(--c-line);
-  background: rgb(7 7 6 / 0.5);
-  backdrop-filter: blur(8px);
+  padding: clamp(0.9rem, 1.8vw, 1.25rem);
+  border: var(--hairline) solid var(--c-line-strong);
+  background: rgb(251 250 244 / 0.68);
+  backdrop-filter: blur(4px);
 }
 
 :global(:root[data-theme='collective-os']) .bottom::before {
@@ -1114,7 +1116,7 @@
   top: -0.7rem;
   padding-inline: 0.45rem;
   background: var(--c-bg);
-  color: var(--c-accent);
+  color: var(--c-brown-red);
   font-family: var(--font-tech);
   font-size: 0.62rem;
   letter-spacing: 0.12em;

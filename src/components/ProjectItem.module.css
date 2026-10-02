@@ -443,27 +443,27 @@
 }
 
 :global(:root[data-theme='collective-os']) .media {
-  border-color: var(--c-line);
+  border-color: var(--c-line-strong);
   border-radius: 0;
   background:
-    linear-gradient(var(--c-line) 1px, transparent 1px) 0 0 / 28px 28px,
-    linear-gradient(90deg, var(--c-line) 1px, transparent 1px) 0 0 / 28px 28px,
-    var(--c-bg-inset);
-  box-shadow: 0 2rem 5rem rgb(0 0 0 / 0.28);
+    linear-gradient(var(--c-line-soft) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, var(--c-line-soft) 1px, transparent 1px) 0 0 / 28px 28px,
+    var(--c-bg-raised);
+  box-shadow: 0 1rem 2.2rem rgb(36 36 36 / 0.08);
 }
 
 :global(:root[data-theme='collective-os']) .media::before {
-  opacity: 0.72;
-  mix-blend-mode: screen;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
   background:
-    linear-gradient(120deg, transparent 0 62%, rgb(214 169 82 / 0.12) 63%, transparent 72%),
-    radial-gradient(circle at 22% 18%, rgb(97 214 255 / 0.12), transparent 28%);
+    linear-gradient(120deg, transparent 0 62%, rgb(255 59 34 / 0.055) 63%, transparent 72%),
+    radial-gradient(circle at 22% 18%, rgb(36 36 36 / 0.06), transparent 28%);
 }
 
 :global(:root[data-theme='collective-os']) .placeholder {
   background-image:
-    radial-gradient(circle at 32% 28%, rgb(214 169 82 / 0.16), transparent 24%),
-    radial-gradient(circle at 72% 68%, rgb(255 75 50 / 0.11), transparent 28%),
+    radial-gradient(circle at 32% 28%, rgb(36 36 36 / 0.08), transparent 24%),
+    radial-gradient(circle at 72% 68%, rgb(255 59 34 / 0.08), transparent 28%),
     linear-gradient(to right, var(--c-line-soft) var(--hairline), transparent var(--hairline)),
     linear-gradient(to bottom, var(--c-line-soft) var(--hairline), transparent var(--hairline));
 }
@@ -474,7 +474,7 @@
 
 @media (hover: hover) {
   :global(:root[data-theme='collective-os']) .item:hover .media {
-    border-color: var(--c-accent);
-    box-shadow: 0 2rem 5rem rgb(214 169 82 / 0.12);
+    border-color: var(--c-brown-red);
+    box-shadow: 0 1.25rem 2.5rem rgb(36 36 36 / 0.12);
   }
 }

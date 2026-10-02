@@ -94,10 +94,10 @@
 }
 
 :global(:root[data-theme='collective-os']) .member {
-  min-height: 17rem;
+  min-height: 16rem;
   padding: var(--space-5);
-  border: var(--hairline) solid var(--c-line);
-  background: rgb(241 234 219 / 0.035);
+  border: var(--hairline) solid var(--c-line-strong);
+  background: var(--c-bg-raised);
 }
 
 :global(:root[data-theme='collective-os']) .number,

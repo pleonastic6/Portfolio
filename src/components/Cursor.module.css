@@ -44,14 +44,14 @@
    Fadenkreuz über den ganzen Viewport, eckige Auswahlbox, Koordinatenlabels. */
 :global(:root[data-theme='collective-os']) .cursor {
   color: var(--c-text);
-  mix-blend-mode: difference;
+  mix-blend-mode: normal;
 }
 
 :global(:root[data-theme='collective-os']) .ring {
   width: 38px;
   height: 38px;
   border-radius: 0;
-  border-color: rgb(241 234 219 / 0.9);
+  border-color: rgb(36 36 36 / 0.72);
   background:
     linear-gradient(currentColor, currentColor) 0 0 / 9px 1px no-repeat,
     linear-gradient(currentColor, currentColor) 0 0 / 1px 9px no-repeat,
@@ -84,7 +84,7 @@
 :global(:root[data-theme='collective-os']) .yLine {
   display: block;
   position: fixed;
-  background: rgb(241 234 219 / 0.26);
+  background: rgb(36 36 36 / 0.2);
 }
 
 :global(:root[data-theme='collective-os']) .xLine {
@@ -110,7 +110,7 @@
   line-height: 1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgb(241 234 219 / 0.75);
+  color: rgb(36 36 36 / 0.62);
   white-space: nowrap;
 }
 

@@ -104,3 +104,19 @@
 :global(:root[data-theme='riso-print']) .name {
   color: var(--c-accent);
 }
+
+:global(:root[data-theme='collective-os']) .button {
+  padding: 0.5rem 0.75rem;
+  color: var(--c-text);
+  background: rgb(10 9 7 / 0.62);
+  border: var(--hairline) solid var(--c-line-strong);
+}
+
+:global(:root[data-theme='collective-os']) .button:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+
+:global(:root[data-theme='collective-os']) .name {
+  color: var(--c-accent);
+}

@@ -352,3 +352,27 @@
 :global(:root[data-theme='riso-print']) .overlay {
   background: var(--c-bg);
 }
+
+/* ---- Theme: Collective OS --------------------------------------------- */
+:global(:root[data-theme='collective-os']) .nav[data-scrolled='true'] {
+  background: rgb(7 7 6 / 0.82);
+  border-bottom-color: var(--c-line-strong);
+  backdrop-filter: blur(16px) saturate(120%);
+}
+
+:global(:root[data-theme='collective-os']) .logo {
+  color: var(--c-text);
+}
+
+:global(:root[data-theme='collective-os']) .link[aria-current='true'],
+:global(:root[data-theme='collective-os']) .link:hover {
+  color: var(--c-accent);
+}
+
+:global(:root[data-theme='collective-os']) .link::after {
+  background: var(--c-accent);
+}
+
+:global(:root[data-theme='collective-os']) .overlay {
+  background: var(--c-bg);
+}

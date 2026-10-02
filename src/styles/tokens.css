@@ -315,3 +315,54 @@
   --pattern-opacity: 0;
   --section-space: clamp(4.5rem, 10vw, 8rem);
 }
+
+/* ---- Theme: Collective OS ---------------------------------------------
+ * Design 05: dunkler Developer-Control-Room aus dem Plover-Nachbau adaptiert:
+ * CAD-Raster, HUD-Linien, Gold/Redline-Akzente und ein technischerer Sans-Fokus.
+ */
+:root[data-theme='collective-os'] {
+  --c-bg: #070706;
+  --c-bg-raised: #100e0b;
+  --c-bg-inset: #15120e;
+
+  --c-text: #f1eadb;
+  --c-text-muted: #b4a993;
+  --c-text-faint: #7f745f;
+  --c-text-invert: #080706;
+
+  --c-line: rgb(241 234 219 / 0.14);
+  --c-line-soft: rgb(241 234 219 / 0.085);
+  --c-line-strong: rgb(214 169 82 / 0.34);
+
+  --c-accent: #d6a952;
+  --c-accent-dim: rgb(214 169 82 / 0.18);
+  --c-accent-glass: rgb(214 169 82 / 0.12);
+  --c-brown-red: #ff4b32;
+  --c-os-cyan: #61d6ff;
+  --c-os-green: #84d982;
+
+  --font-sans: Inter, 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Newsreader Variable', Newsreader, Georgia, serif;
+  --font-tech: 'Space Mono', 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-dot: 'Silkscreen', 'Space Mono', ui-monospace, monospace;
+
+  --fs-display: clamp(2.9rem, 7.8vw, 7.9rem);
+  --fs-statement: clamp(2.2rem, 5.5vw, 4.7rem);
+  --fs-h2: clamp(1.95rem, 4.4vw, 3.45rem);
+  --fs-h3: clamp(1.35rem, 2.5vw, 2.05rem);
+  --fs-body: clamp(0.98rem, 1.05vw, 1.08rem);
+
+  --lh-display: 0.88;
+  --lh-tight: 1.02;
+  --lh-body: 1.62;
+  --ls-display: -0.055em;
+  --ls-tight: -0.025em;
+  --ls-label: 0.14em;
+  --ls-meta: 0.08em;
+
+  --radius-media: 0;
+  --radius-sm: 0;
+  --hairline: 1px;
+  --pattern-opacity: 0;
+  --section-space: clamp(5rem, 11vw, 9rem);
+}

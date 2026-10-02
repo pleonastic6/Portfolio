@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 
-export type ThemeId = 'noir-et-or' | 'aurum-labyrinth' | 'terminal-phosphor' | 'riso-print'
+export type ThemeId = 'noir-et-or' | 'aurum-labyrinth' | 'terminal-phosphor' | 'riso-print' | 'collective-os'
 
 export type SiteTheme = {
   id: ThemeId
@@ -28,6 +28,11 @@ export const THEMES: SiteTheme[] = [
     id: 'aurum-labyrinth',
     name: 'Aurum Labyrinth',
     description: 'Helles Pergament, tiefe Tinte, Gold als Akzent — Mäander als Druckornament.',
+  },
+  {
+    id: 'collective-os',
+    name: 'Collective OS',
+    description: 'Dunkles Developer-Control-Room-Design mit CAD-Raster, HUD und System-Map.',
   },
 ]
 

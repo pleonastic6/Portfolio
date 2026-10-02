@@ -44,6 +44,53 @@ export function Hero() {
           ))}
         </h1>
 
+        {theme.id === 'collective-os' && (
+          <aside className={styles.osPanel} aria-label="ADDD Collective OS status map">
+            <div className={styles.osBar}>
+              <span className={styles.osDots} aria-hidden="true">
+                <i />
+                <i />
+                <i />
+              </span>
+              <span className="meta">ADDD/OPS-MAP · LIVE</span>
+            </div>
+            <div className={styles.osCanvas}>
+              <i className={styles.osScan} aria-hidden="true" />
+              <span className={`${styles.osCable} ${styles.osCableOne}`} />
+              <span className={`${styles.osCable} ${styles.osCableTwo}`} />
+              <span className={`${styles.osCable} ${styles.osCableThree}`} />
+              <span className={`${styles.osCable} ${styles.osCableFour}`} />
+              <div className={`${styles.osNode} ${styles.osCore}`}>
+                <b>ADDD CORE</b>
+                <span>idea → architecture → prototype → launch</span>
+              </div>
+              <div className={`${styles.osNode} ${styles.osNodeOne}`}>
+                <b>ARTUR</b>
+                <span>frontend · product · chaos into UI</span>
+              </div>
+              <div className={`${styles.osNode} ${styles.osNodeTwo}`}>
+                <b>DAVID</b>
+                <span>backend · data · infra logic</span>
+              </div>
+              <div className={`${styles.osNode} ${styles.osNodeThree}`}>
+                <b>DAVID</b>
+                <span>systems · tooling · automation</span>
+              </div>
+              <div className={`${styles.osNode} ${styles.osNodeFour}`}>
+                <b>DOMINIK</b>
+                <span>quality · docs · delivery</span>
+              </div>
+              <div className={styles.osHud}>
+                <span>SYS.LOG</span>
+                <strong>✓</strong> input: messy idea
+                <strong>✓</strong> build: interactive prototype
+                <strong>↯</strong> accent: noir / gold / redline / CAD grid
+                <strong>→</strong> review: ready for brutal feedback
+              </div>
+            </div>
+          </aside>
+        )}
+
         <div className={styles.bottom}>
           <div className={styles.rule} style={{ '--d': '620ms' } as CSSProperties} />
 

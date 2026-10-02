@@ -92,3 +92,29 @@
   background: var(--c-bg-raised);
   box-shadow: 5px 5px 0 var(--riso-pink);
 }
+
+:global(:root[data-theme='collective-os']) .member {
+  min-height: 17rem;
+  padding: var(--space-5);
+  border: var(--hairline) solid var(--c-line);
+  background: rgb(241 234 219 / 0.035);
+}
+
+:global(:root[data-theme='collective-os']) .number,
+:global(:root[data-theme='collective-os']) .role {
+  color: var(--c-accent);
+}
+
+@media (hover: hover) {
+  :global(:root[data-theme='collective-os']) .member:hover {
+    border-color: var(--c-accent);
+    background: var(--c-accent);
+    color: var(--c-bg);
+  }
+
+  :global(:root[data-theme='collective-os']) .member:hover .number,
+  :global(:root[data-theme='collective-os']) .member:hover .role,
+  :global(:root[data-theme='collective-os']) .member:hover .text {
+    color: var(--c-bg);
+  }
+}

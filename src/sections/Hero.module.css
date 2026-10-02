@@ -717,3 +717,266 @@
   .osNode span { font-size: 0.58rem; }
   .osHud { font-size: 0.6rem; }
 }
+
+/* Collective OS v2: closer to the supplied Plover/CAD reference. */
+.osTabActive,
+.osTab,
+.osZoom,
+.osTool,
+.osCoords,
+.osHint {
+  font-family: var(--font-tech);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.osTabActive,
+.osTab {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  padding-inline: 0.75rem;
+  border-left: var(--hairline) solid var(--c-line);
+  white-space: nowrap;
+}
+
+.osTabActive {
+  color: var(--c-bg);
+  background: var(--c-accent);
+  border-left-color: var(--c-accent);
+}
+
+.osTab {
+  color: var(--c-text-faint);
+}
+
+.osSpacer {
+  flex: 1;
+}
+
+.osTool {
+  width: 1.65rem;
+  height: 1.45rem;
+  display: inline-grid;
+  place-items: center;
+  border: var(--hairline) solid var(--c-line-strong);
+  color: var(--c-text-muted);
+}
+
+.osTool:hover {
+  color: var(--c-accent);
+  border-color: var(--c-accent);
+}
+
+.osZoom {
+  min-width: 2.75rem;
+  text-align: center;
+  color: var(--c-text-muted);
+}
+
+:global(:root[data-theme='collective-os']) .osPanel {
+  background: var(--c-bg-inset);
+}
+
+:global(:root[data-theme='collective-os']) .osCanvas {
+  overflow: hidden;
+  cursor: crosshair;
+  background:
+    linear-gradient(var(--c-line-soft) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, var(--c-line-soft) 1px, transparent 1px) 0 0 / 28px 28px,
+    radial-gradient(circle at 60% 42%, rgb(214 169 82 / 0.09), transparent 28rem),
+    #0a0907;
+}
+
+.osPlan {
+  position: absolute;
+  inset: 3.2rem 1.1rem 2.9rem;
+  width: calc(100% - 2.2rem);
+  height: calc(100% - 6.1rem);
+  color: var(--c-text);
+}
+
+.osPlan * {
+  vector-effect: non-scaling-stroke;
+}
+
+.osPlanGrid {
+  fill: none;
+  stroke: rgb(241 234 219 / 0.18);
+  stroke-width: 1;
+  stroke-dasharray: 8 7 2 7;
+}
+
+.osPlanGrid text {
+  fill: var(--c-text-muted);
+  stroke: none;
+  font-family: var(--font-tech);
+  font-size: 16px;
+  text-anchor: middle;
+}
+
+.osWalls {
+  fill: none;
+  stroke: rgb(241 234 219 / 0.72);
+  stroke-width: 10;
+  stroke-linejoin: bevel;
+}
+
+.osWalls .osHatch {
+  fill: url('#addd-hatch');
+  stroke: rgb(241 234 219 / 0.38);
+  stroke-width: 1.5;
+  opacity: 0.35;
+}
+
+.osPlan pattern path {
+  stroke: rgb(241 234 219 / 0.34);
+  stroke-width: 1;
+}
+
+.osDoors {
+  fill: none;
+  stroke: rgb(214 169 82 / 0.9);
+  stroke-width: 2;
+  stroke-dasharray: 8 5;
+}
+
+.osRooms text {
+  fill: var(--c-text-muted);
+  font-family: var(--font-tech);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-anchor: middle;
+}
+
+.osRooms text:nth-child(even) {
+  fill: var(--c-text-faint);
+  font-size: 12px;
+}
+
+.osRedlines {
+  fill: rgb(255 75 50 / 0.06);
+  stroke: var(--c-brown-red);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.osMarker {
+  position: absolute;
+  z-index: 2;
+  width: 1.9rem;
+  height: 1.9rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid var(--c-bg-inset);
+  background: var(--c-brown-red);
+  color: #fff;
+  font-family: var(--font-tech);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 0 0 1px var(--c-brown-red), 0 0 22px rgb(255 75 50 / 0.24);
+}
+
+.osMarker::after {
+  content: '';
+  position: absolute;
+  inset: -0.55rem;
+  border-radius: inherit;
+  border: 1px solid var(--c-brown-red);
+  animation: osPing 2.25s ease-out infinite;
+}
+
+.osMarkerOne { left: 37%; top: 47%; }
+.osMarkerTwo { right: 25%; top: 44%; }
+.osMarkerThree { left: 20%; bottom: 27%; }
+.osMarkerFour { right: 9%; top: 23%; }
+
+.osHud {
+  top: 1rem;
+  right: 1rem;
+  bottom: auto;
+  left: auto;
+  width: min(18.5rem, calc(100% - 2rem));
+  grid-template-columns: 2.2rem minmax(0, 1fr) auto;
+  background: rgb(7 7 6 / 0.76);
+  backdrop-filter: blur(10px);
+}
+
+.osHud span:first-child {
+  grid-column: 1 / 3;
+  border-bottom: var(--hairline) solid var(--c-line);
+  padding-bottom: 0.45rem;
+  margin-bottom: 0.25rem;
+}
+
+.osHud span:nth-child(2) {
+  grid-column: 3;
+  text-align: right;
+  color: var(--c-os-green);
+  border-bottom: var(--hairline) solid var(--c-line);
+  padding-bottom: 0.45rem;
+  margin-bottom: 0.25rem;
+}
+
+.osHud em {
+  overflow: hidden;
+  font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.osHud b {
+  color: var(--c-text-faint);
+  font-weight: 600;
+}
+
+.osHud b:nth-of-type(4) {
+  color: var(--c-brown-red);
+}
+
+.osCoords {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.9rem;
+  z-index: 2;
+  padding: 0.4rem 0.55rem;
+  color: var(--c-bg);
+  background: var(--c-text);
+}
+
+.osHint {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  color: var(--c-text-faint);
+}
+
+@keyframes osPing {
+  from { opacity: 1; transform: scale(0.65); }
+  to { opacity: 0; transform: scale(1.65); }
+}
+
+@media (max-width: 44rem) {
+  .osTab,
+  .osSpacer,
+  .osZoom,
+  .osTool,
+  .osBar > .meta {
+    display: none;
+  }
+
+  .osPlan {
+    inset: 3rem 0.5rem 2.8rem;
+    width: calc(100% - 1rem);
+  }
+
+  .osHud {
+    font-size: 0.56rem;
+    width: calc(100% - 2rem);
+  }
+}

@@ -45,48 +45,72 @@ export function Hero() {
         </h1>
 
         {theme.id === 'collective-os' && (
-          <aside className={styles.osPanel} aria-label="ADDD Collective OS status map">
+          <aside className={styles.osPanel} aria-label="ADDD Collective OS CAD viewport">
             <div className={styles.osBar}>
               <span className={styles.osDots} aria-hidden="true">
                 <i />
                 <i />
                 <i />
               </span>
-              <span className="meta">ADDD/OPS-MAP · LIVE</span>
+              <span className={styles.osTabActive}>ADDD_OS · LEVEL 01</span>
+              <span className={styles.osTab}>PROCESS MAP</span>
+              <span className={styles.osTab}>TEAM NODES</span>
+              <span className={styles.osSpacer} />
+              <span className="meta">Scale 1:100</span>
+              <button type="button" className={styles.osTool} aria-label="Zoom out">−</button>
+              <span className={styles.osZoom}>120%</span>
+              <button type="button" className={styles.osTool} aria-label="Zoom in">+</button>
             </div>
-            <div className={styles.osCanvas}>
+            <div className={styles.osCanvas} data-cursor="hover">
               <i className={styles.osScan} aria-hidden="true" />
-              <span className={`${styles.osCable} ${styles.osCableOne}`} />
-              <span className={`${styles.osCable} ${styles.osCableTwo}`} />
-              <span className={`${styles.osCable} ${styles.osCableThree}`} />
-              <span className={`${styles.osCable} ${styles.osCableFour}`} />
-              <div className={`${styles.osNode} ${styles.osCore}`}>
-                <b>ADDD CORE</b>
-                <span>idea → architecture → prototype → launch</span>
-              </div>
-              <div className={`${styles.osNode} ${styles.osNodeOne}`}>
-                <b>ARTUR</b>
-                <span>frontend · product · chaos into UI</span>
-              </div>
-              <div className={`${styles.osNode} ${styles.osNodeTwo}`}>
-                <b>DAVID</b>
-                <span>backend · data · infra logic</span>
-              </div>
-              <div className={`${styles.osNode} ${styles.osNodeThree}`}>
-                <b>DAVID</b>
-                <span>systems · tooling · automation</span>
-              </div>
-              <div className={`${styles.osNode} ${styles.osNodeFour}`}>
-                <b>DOMINIK</b>
-                <span>quality · docs · delivery</span>
-              </div>
+              <svg className={styles.osPlan} viewBox="0 0 920 620" role="img" aria-label="CAD-artige ADDD Systemkarte">
+                <defs>
+                  <pattern id="addd-hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                    <path d="M0 0h9" />
+                  </pattern>
+                </defs>
+                <g className={styles.osPlanGrid}>
+                  <path d="M110 70v480M300 70v480M520 70v480M810 70v480M70 120h790M70 305h790M70 510h790" />
+                  <circle cx="110" cy="42" r="18" /><text x="110" y="47">A</text>
+                  <circle cx="300" cy="42" r="18" /><text x="300" y="47">D</text>
+                  <circle cx="520" cy="42" r="18" /><text x="520" y="47">D</text>
+                  <circle cx="810" cy="42" r="18" /><text x="810" y="47">D</text>
+                </g>
+                <g className={styles.osWalls}>
+                  <path d="M90 95H835V535H90z" />
+                  <path d="M90 290h745M275 95v195M505 95v195M690 95v440M275 290v245M505 290v245" />
+                  <path d="M90 95H835V535H90z" className={styles.osHatch} />
+                </g>
+                <g className={styles.osDoors}>
+                  <path d="M260 290a54 54 0 0 1 54 54M490 290a54 54 0 0 1 54 54M690 230a54 54 0 0 0-54 54M505 455a54 54 0 0 1 54 54" />
+                </g>
+                <g className={styles.osRooms}>
+                  <text x="178" y="198">ARTUR / UI</text><text x="178" y="224">PRODUCT + FRONTEND</text>
+                  <text x="390" y="198">DAVID / DATA</text><text x="390" y="224">BACKEND + MODELS</text>
+                  <text x="738" y="198">DAVID / OPS</text><text x="738" y="224">TOOLS + SYSTEMS</text>
+                  <text x="180" y="415">DOMINIK / QA</text><text x="180" y="441">STRUCTURE + DELIVERY</text>
+                  <text x="594" y="415">CORE CORRIDOR</text><text x="594" y="441">IDEA → BUILD → SHIP</text>
+                </g>
+                <g className={styles.osRedlines}>
+                  <path d="M342 296c25-28 75-28 100 0 28 31 18 80-28 96-41 14-85-16-82-58" />
+                  <path d="M632 286c24-20 66-18 86 8 22 29 8 70-28 82-39 13-76-13-76-51" />
+                  <path d="M178 350c21-18 56-17 75 6 20 24 7 62-25 72-33 10-64-10-66-43" />
+                </g>
+              </svg>
+              <button type="button" className={`${styles.osMarker} ${styles.osMarkerOne}`}>01</button>
+              <button type="button" className={`${styles.osMarker} ${styles.osMarkerTwo}`}>02</button>
+              <button type="button" className={`${styles.osMarker} ${styles.osMarkerThree}`}>03</button>
+              <button type="button" className={`${styles.osMarker} ${styles.osMarkerFour}`}>04</button>
               <div className={styles.osHud}>
-                <span>SYS.LOG</span>
-                <strong>✓</strong> input: messy idea
-                <strong>✓</strong> build: interactive prototype
-                <strong>↯</strong> accent: noir / gold / redline / CAD grid
-                <strong>→</strong> review: ready for brutal feedback
+                <span>ADDD AGENT</span><span>WATCHING</span>
+                <strong>001</strong><em>READ COLLECTIVE BRIEF</em><b>OK</b>
+                <strong>002</strong><em>INDEX PROJECT SLOTS</em><b>OK</b>
+                <strong>003</strong><em>MAP FOUR BUILDERS</em><b>OK</b>
+                <strong>004</strong><em>FLAG GENERIC AGENCY SLOP</em><b>4</b>
+                <strong>005</strong><em>BUILD DARK SYSTEM VIEW</em><b>LIVE</b>
               </div>
+              <div className={styles.osCoords}>X:0412PX&nbsp;&nbsp;Y:0206PX</div>
+              <div className={styles.osHint}>Click / drag / inspect</div>
             </div>
           </aside>
         )}

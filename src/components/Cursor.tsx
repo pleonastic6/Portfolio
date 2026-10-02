@@ -1,23 +1,34 @@
 import { useEffect, useRef } from 'react'
 import { useMediaQuery } from '../hooks/useMediaQuery'
+import { useTheme } from '../theme'
 import styles from './Cursor.module.css'
 
 /**
- * Feiner Ring, der dem Zeiger mit leichter Verzögerung folgt.
+ * Feiner Cursor-Layer für Desktop: Standardthemen bekommen einen ruhigen Ring,
+ * Collective OS schaltet denselben Layer zu einem CAD-Fadenkreuz mit Koordinaten.
  * Nur auf Geräten mit präzisem Zeiger, nie bei prefers-reduced-motion.
- * Der System-Cursor bleibt sichtbar — der Ring ergänzt ihn nur.
  */
 export function Cursor() {
+  const layerRef = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
+  const xRef = useRef<HTMLDivElement>(null)
+  const yRef = useRef<HTMLDivElement>(null)
+  const txRef = useRef<HTMLDivElement>(null)
+  const tyRef = useRef<HTMLDivElement>(null)
+  const { theme } = useTheme()
   const finePointer = useMediaQuery('(pointer: fine)')
   const reducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
-  const enabled = finePointer && !reducedMotion
+  const enabled = !reducedMotion && (finePointer || theme.id === 'collective-os')
 
   useEffect(() => {
-    if (!enabled || !ringRef.current) return
-    // Eigene Konstante: innerhalb der Schleifenfunktion weiss TypeScript sonst
-    // nicht mehr, dass die Pruefung oben schon stattgefunden hat.
+    if (!enabled || !ringRef.current || !layerRef.current) return
+
+    const layer = layerRef.current
     const ring = ringRef.current
+    const xLine = xRef.current
+    const yLine = yRef.current
+    const xLabel = txRef.current
+    const yLabel = tyRef.current
 
     let pointerX = window.innerWidth / 2
     let pointerY = window.innerHeight / 2
@@ -32,29 +43,32 @@ export function Cursor() {
       if (frame === 0) frame = requestAnimationFrame(tick)
     }
 
+    const updateHud = () => {
+      xLine?.style.setProperty('--cursor-y', `${pointerY}px`)
+      yLine?.style.setProperty('--cursor-x', `${pointerX}px`)
+      xLabel?.style.setProperty('--cursor-x', `${pointerX}px`)
+      yLabel?.style.setProperty('--cursor-y', `${pointerY}px`)
+      if (xLabel) xLabel.textContent = `X ${String(Math.round(pointerX)).padStart(4, '0')}`
+      if (yLabel) yLabel.textContent = `Y ${String(Math.round(pointerY + window.scrollY)).padStart(5, '0')}`
+    }
+
     const onMove = (event: PointerEvent) => {
       pointerX = event.clientX
       pointerY = event.clientY
+      updateHud()
 
       if (!visible) {
         visible = true
-        ring.dataset.visible = 'true'
+        layer.dataset.visible = 'true'
       }
 
-      /*
-       * Die Suche nach dem umgebenden Link lief frueher bei jeder Mausbewegung
-       * — also bis zu hundertmal pro Sekunde ein Gang durch den DOM, gefolgt
-       * von einem Attributschreiben, das eine Stilneuberechnung ausloeste.
-       * Beides passiert jetzt nur noch, wenn der Zeiger ueber einem anderen
-       * Element steht und sich das Ergebnis wirklich aendert.
-       */
       const ziel = event.target as Element | null
       if (ziel !== letztesZiel) {
         letztesZiel = ziel
         const drueber = !!ziel?.closest('a, button, [data-cursor="hover"]')
         if (drueber !== ueberLink) {
           ueberLink = drueber
-          ring.dataset.hover = drueber ? 'true' : 'false'
+          layer.dataset.hover = drueber ? 'true' : 'false'
         }
       }
 
@@ -64,20 +78,14 @@ export function Cursor() {
     const onLeave = () => {
       visible = false
       letztesZiel = null
-      ring.dataset.visible = 'false'
+      layer.dataset.visible = 'false'
     }
 
     function tick() {
-      // Lerp: je kleiner der Faktor, desto weicher das Nachziehen
       ringX += (pointerX - ringX) * 0.18
       ringY += (pointerY - ringY) * 0.18
       ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`
 
-      /*
-       * Am Ziel angekommen haelt die Schleife an. Vorher lief sie dauerhaft
-       * weiter und schrieb bei jedem Bild dieselbe Transformation — die Seite
-       * kam damit nie zur Ruhe, auch wenn niemand die Maus bewegte.
-       */
       if (Math.abs(pointerX - ringX) < 0.2 && Math.abs(pointerY - ringY) < 0.2) {
         ringX = pointerX
         ringY = pointerY
@@ -100,5 +108,13 @@ export function Cursor() {
 
   if (!enabled) return null
 
-  return <div ref={ringRef} className={styles.ring} data-visible="false" aria-hidden="true" />
+  return (
+    <div ref={layerRef} className={styles.cursor} data-visible="false" data-hover="false" aria-hidden="true">
+      <div ref={xRef} className={styles.xLine} />
+      <div ref={yRef} className={styles.yLine} />
+      <div ref={txRef} className={styles.xLabel} />
+      <div ref={tyRef} className={styles.yLabel} />
+      <div ref={ringRef} className={styles.ring} />
+    </div>
+  )
 }

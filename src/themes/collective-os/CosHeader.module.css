@@ -301,8 +301,25 @@
 }
 
 @media (max-width: 1599px) {
-  .status > * {
-    visibility: hidden;
+  .status {
+    display: none;
+  }
+
+  .item {
+    width: calc(var(--cos-u) * 15.2);
+  }
+}
+
+@media (max-width: 1180px) {
+  .switch,
+  .lang,
+  .menu,
+  .cta {
+    display: none;
+  }
+
+  .menuBtn {
+    display: flex;
   }
 }
 

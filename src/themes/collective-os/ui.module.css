@@ -16,7 +16,7 @@
   font-family: var(--font-sans);
   font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1;
+  line-height: 1.08;
   text-transform: uppercase;
   text-wrap: balance;
 }
@@ -143,7 +143,9 @@
 .btnLabel {
   display: grid;
   overflow: hidden;
-  margin: calc(var(--cos-u) * 1.4) calc(var(--cos-u) * 1.6);
+  margin: calc(var(--cos-u) * 1.25) calc(var(--cos-u) * 1.6);
+  line-height: 1.45;
+  padding-block: 0.06em;
 }
 
 .btnLabel > span {
@@ -342,8 +344,10 @@
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
-  padding-bottom: 0.08em;
-  margin-bottom: -0.08em;
+  padding-top: 0.04em;
+  padding-bottom: 0.18em;
+  margin-top: -0.04em;
+  margin-bottom: -0.18em;
 }
 
 .wordInner {

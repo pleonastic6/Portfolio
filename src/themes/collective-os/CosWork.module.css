@@ -57,6 +57,8 @@
 
 .title {
   margin-bottom: calc(var(--cos-u) * 1.2);
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 .titleLink {

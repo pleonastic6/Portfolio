@@ -36,7 +36,8 @@
 .xLine,
 .yLine,
 .xLabel,
-.yLabel {
+.yLabel,
+.trail {
   display: none;
 }
 
@@ -58,4 +59,23 @@
   width: max(14px, calc(var(--cos-u) * 1.8));
   height: max(14px, calc(var(--cos-u) * 1.8));
   opacity: 0.35;
+}
+
+:global(:root[data-theme='collective-os']) .trail {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: max(3px, calc(var(--cos-u) * 0.44));
+  height: max(3px, calc(var(--cos-u) * 0.44));
+  border-radius: 999px;
+  background: var(--cos-brand);
+  opacity: calc(0.26 - var(--i) * 0.026);
+  transform: translate3d(-200vw, -200vh, 0);
+  filter: blur(calc(var(--i) * 0.12px));
+  will-change: transform;
+}
+
+:global(:root[data-theme='collective-os']) .cursor[data-hover='true'] .trail {
+  opacity: calc(0.16 - var(--i) * 0.015);
 }

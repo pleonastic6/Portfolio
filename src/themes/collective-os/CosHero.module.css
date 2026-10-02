@@ -224,8 +224,8 @@
 
 .coord {
   position: absolute;
-  left: calc(var(--px, 50%) + calc(var(--cos-u) * 0.8));
-  top: calc(var(--py, 50%) - calc(var(--cos-u) * 2.2));
+  left: clamp(calc(var(--cos-u) * 1.2), calc(var(--px, 50%) + calc(var(--cos-u) * 0.8)), calc(100% - calc(var(--cos-u) * 22)));
+  top: clamp(calc(var(--cos-u) * 1.2), calc(var(--py, 50%) - calc(var(--cos-u) * 2.2)), calc(100% - calc(var(--cos-u) * 3.2)));
   display: flex;
   gap: calc(var(--cos-u) * 1.2);
   font-family: var(--font-tech);
@@ -245,8 +245,8 @@
 
 .interact {
   position: absolute;
-  left: calc(var(--px, 50%) + calc(var(--cos-u) * 1.6));
-  top: calc(var(--py, 50%) + calc(var(--cos-u) * 1.6));
+  left: clamp(calc(var(--cos-u) * 1.2), calc(var(--px, 50%) + calc(var(--cos-u) * 1.6)), calc(100% - calc(var(--cos-u) * 17.4)));
+  top: clamp(calc(var(--cos-u) * 4.2), calc(var(--py, 50%) + calc(var(--cos-u) * 1.6)), calc(100% - calc(var(--cos-u) * 7.2)));
   width: calc(var(--cos-u) * 15.6);
   background: var(--cos-ink);
   color: #fff;
@@ -380,7 +380,7 @@
 
 .discover {
   flex: 0 0 auto;
-  width: calc(var(--cos-u) * 17.1);
+  width: min(calc(var(--cos-u) * 24), 38vw);
   border-left: var(--cos-line) solid var(--cos-border);
 }
 

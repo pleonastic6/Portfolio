@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import type { CSSProperties } from 'react'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import styles from './Cursor.module.css'
 
@@ -10,6 +11,7 @@ import styles from './Cursor.module.css'
 export function Cursor() {
   const layerRef = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
+  const trailRefs = useRef<HTMLSpanElement[]>([])
   const xRef = useRef<HTMLDivElement>(null)
   const yRef = useRef<HTMLDivElement>(null)
   const txRef = useRef<HTMLDivElement>(null)
@@ -27,11 +29,13 @@ export function Cursor() {
     const yLine = yRef.current
     const xLabel = txRef.current
     const yLabel = tyRef.current
+    const trailEls = trailRefs.current.filter(Boolean)
 
     let pointerX = window.innerWidth / 2
     let pointerY = window.innerHeight / 2
     let ringX = pointerX
     let ringY = pointerY
+    const trail = trailEls.map(() => ({ x: pointerX, y: pointerY }))
     let frame = 0
     let visible = false
     let letztesZiel: Element | null = null
@@ -84,7 +88,18 @@ export function Cursor() {
       ringY += (pointerY - ringY) * 0.18
       ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`
 
-      if (Math.abs(pointerX - ringX) < 0.2 && Math.abs(pointerY - ringY) < 0.2) {
+      let tailSettled = true
+      trail.forEach((point, index) => {
+        const target = index === 0 ? { x: ringX, y: ringY } : trail[index - 1]
+        const ease = 0.18 - Math.min(index, 5) * 0.018
+        point.x += (target.x - point.x) * ease
+        point.y += (target.y - point.y) * ease
+        const el = trailEls[index]
+        if (el) el.style.transform = `translate3d(${point.x}px, ${point.y}px, 0) translate(-50%, -50%)`
+        if (Math.abs(target.x - point.x) > 0.35 || Math.abs(target.y - point.y) > 0.35) tailSettled = false
+      })
+
+      if (Math.abs(pointerX - ringX) < 0.2 && Math.abs(pointerY - ringY) < 0.2 && tailSettled) {
         ringX = pointerX
         ringY = pointerY
         ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`
@@ -112,6 +127,16 @@ export function Cursor() {
       <div ref={yRef} className={styles.yLine} />
       <div ref={txRef} className={styles.xLabel} />
       <div ref={tyRef} className={styles.yLabel} />
+      {Array.from({ length: 7 }, (_, index) => (
+        <span
+          key={index}
+          ref={(element) => {
+            if (element) trailRefs.current[index] = element
+          }}
+          className={styles.trail}
+          style={{ '--i': index } as CSSProperties}
+        />
+      ))}
       <div ref={ringRef} className={styles.ring} />
     </div>
   )

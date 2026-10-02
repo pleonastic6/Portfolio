@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { navItems, site, socials } from '../../data/site'
 import { projects } from '../../data/projects'
 import { useI18n } from '../../i18n'
@@ -116,6 +117,21 @@ export function CosFooter() {
             <path key={index} d={d} fillRule="evenodd" className={index === 0 ? styles.bigA : styles.bigD} />
           ))}
         </svg>
+        <div className={styles.letterHotspots} aria-hidden="true">
+          {['A', 'D', 'D', 'D'].map((letter, letterIndex) => (
+            <span key={`${letter}-${letterIndex}`} className={styles.letterHit} data-letter={letter}>
+              <span className={styles.letterGlyph}>{letter}</span>
+              <span className={styles.pixelField}>
+                {Array.from({ length: 36 }, (_, pixelIndex) => (
+                  <span
+                    key={pixelIndex}
+                    style={{ '--x': pixelIndex % 6, '--y': Math.floor(pixelIndex / 6) } as CSSProperties}
+                  />
+                ))}
+              </span>
+            </span>
+          ))}
+        </div>
       </div>
 
       <div className={styles.policy}>

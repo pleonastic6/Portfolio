@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type CSSProperties } from 'react'
 import { navItems, site } from '../../data/site'
 import { useI18n } from '../../i18n'
 import { useActiveSection } from '../../hooks/useActiveSection'
@@ -90,7 +90,15 @@ export function CosHeader() {
               className={styles.item}
               aria-current={active === item.id ? 'true' : undefined}
             >
-              <span className={styles.itemText}>{t.nav[item.id]}</span>
+              <span className={styles.itemText}>
+                <span>{t.nav[item.id]}</span>
+                <span aria-hidden="true">{t.nav[item.id]}</span>
+              </span>
+              <span className={styles.pixelRail} aria-hidden="true">
+                {Array.from({ length: 10 }, (_, index) => (
+                  <span key={index} style={{ '--p': index } as CSSProperties} />
+                ))}
+              </span>
               <span className={`${styles.itemIc} ${styles.icTop}`} aria-hidden="true" />
               <span className={`${styles.itemIc} ${styles.icBot}`} aria-hidden="true" />
             </a>

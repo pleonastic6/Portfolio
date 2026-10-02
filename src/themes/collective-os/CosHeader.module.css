@@ -142,6 +142,69 @@
 
 .itemText {
   position: relative;
+  display: grid;
+  overflow: hidden;
+  line-height: 1.35;
+  padding-block: 0.08em;
+}
+
+.itemText > span {
+  grid-area: 1 / 1;
+  transition: transform 0.48s var(--cos-ease-btn);
+}
+
+.itemText > span:last-child {
+  color: #fff;
+  transform: translateY(115%);
+}
+
+.item:hover .itemText > span:first-child,
+.item:focus-visible .itemText > span:first-child {
+  transform: translateY(-115%);
+}
+
+.item:hover .itemText > span:last-child,
+.item:focus-visible .itemText > span:last-child {
+  transform: translateY(0);
+}
+
+.pixelRail {
+  position: absolute;
+  left: calc(var(--cos-u) * 1.1);
+  right: calc(var(--cos-u) * 1.1);
+  bottom: calc(var(--cos-u) * 0.7);
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: calc(var(--cos-u) * 0.35);
+  pointer-events: none;
+}
+
+.pixelRail span {
+  height: calc(var(--cos-u) * 0.34);
+  background: currentColor;
+  opacity: 0;
+  transform: translateY(calc(var(--cos-u) * 1.2));
+  transition:
+    opacity 0.18s linear,
+    transform 0.42s var(--cos-ease);
+  transition-delay: calc(var(--p) * 22ms);
+}
+
+.item:hover .pixelRail span,
+.item:focus-visible .pixelRail span {
+  opacity: 0.95;
+  transform: translateY(0);
+}
+
+.item:hover .pixelRail span:nth-child(3n),
+.item:focus-visible .pixelRail span:nth-child(3n) {
+  opacity: 0.45;
+  transform: translateY(calc(var(--cos-u) * -0.35));
+}
+
+.item:hover .pixelRail span:nth-child(4n + 1),
+.item:focus-visible .pixelRail span:nth-child(4n + 1) {
+  background: var(--cos-brand);
 }
 
 .itemIc {

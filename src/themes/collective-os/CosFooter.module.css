@@ -119,6 +119,85 @@
   fill: var(--cos-ink);
 }
 
+.letterHotspots {
+  position: absolute;
+  inset: calc(var(--cos-u) * 3.2);
+  display: grid;
+  grid-template-columns: 1.15fr repeat(3, 1fr);
+  gap: calc(var(--cos-u) * 0.6);
+  pointer-events: none;
+}
+
+.letterHit {
+  position: relative;
+  min-width: 0;
+  pointer-events: auto;
+  cursor: crosshair;
+}
+
+.letterGlyph {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-sans);
+  font-size: clamp(5rem, 18vw, 18rem);
+  font-weight: 700;
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: var(--cos-line) rgb(34 34 32 / 0.12);
+  opacity: 0;
+  transform: translateY(calc(var(--cos-u) * 1.6));
+  transition:
+    opacity 0.32s var(--cos-ease),
+    transform 0.5s var(--cos-ease),
+    -webkit-text-stroke-color 0.3s;
+}
+
+.pixelField {
+  position: absolute;
+  inset: 3% 4% 7%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: calc(var(--cos-u) * 0.55);
+}
+
+.pixelField span {
+  background: var(--cos-ink);
+  opacity: 0;
+  transform: translateY(calc(var(--cos-u) * 1.2)) scale(0.72);
+  transition:
+    opacity 0.18s linear,
+    transform 0.48s var(--cos-ease),
+    background-color 0.22s;
+  transition-delay: calc((var(--x) + var(--y)) * 28ms);
+}
+
+.letterHit:hover .letterGlyph,
+.letterHit:focus-visible .letterGlyph {
+  opacity: 1;
+  transform: translateY(0);
+  -webkit-text-stroke-color: rgb(34 34 32 / 0.22);
+}
+
+.letterHit:hover .pixelField span,
+.letterHit:focus-visible .pixelField span {
+  opacity: 0.24;
+  transform: translateY(0) scale(1);
+}
+
+.letterHit:hover .pixelField span:nth-child(5n + 1),
+.letterHit:focus-visible .pixelField span:nth-child(5n + 1) {
+  background: var(--cos-brand);
+  opacity: 0.68;
+}
+
+.letterHit:hover .pixelField span:nth-child(7n),
+.letterHit:focus-visible .pixelField span:nth-child(7n) {
+  opacity: 0;
+}
+
 /* ---- Rechtszeile ---------------------------------------------------------- */
 
 .policy {
@@ -180,6 +259,15 @@ a.policyLink:hover {
 
   .big {
     padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 1.6);
+  }
+
+  .letterHotspots {
+    inset: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 1.6);
+    gap: calc(var(--cos-u) * 0.35);
+  }
+
+  .pixelField {
+    gap: calc(var(--cos-u) * 0.28);
   }
 
   .policy {

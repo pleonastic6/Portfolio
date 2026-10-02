@@ -117,21 +117,31 @@ export function CosFooter() {
             <path key={index} d={d} fillRule="evenodd" className={index === 0 ? styles.bigA : styles.bigD} />
           ))}
         </svg>
-        <div className={styles.letterHotspots} aria-hidden="true">
-          {['A', 'D', 'D', 'D'].map((letter, letterIndex) => (
-            <span key={`${letter}-${letterIndex}`} className={styles.letterHit} data-letter={letter}>
-              <span className={styles.letterGlyph}>{letter}</span>
-              <span className={styles.pixelField}>
-                {Array.from({ length: 36 }, (_, pixelIndex) => (
-                  <span
-                    key={pixelIndex}
-                    style={{ '--x': pixelIndex % 6, '--y': Math.floor(pixelIndex / 6) } as CSSProperties}
-                  />
-                ))}
-              </span>
-            </span>
-          ))}
-        </div>
+        <svg className={styles.bigPixels} viewBox="-2 6 145 34" aria-hidden="true" focusable="false">
+          <defs>
+            <clipPath id="addd-pixel-word" clipPathUnits="userSpaceOnUse">
+              {LETTERS.map((d, index) => (
+                <path key={index} d={d} fillRule="evenodd" />
+              ))}
+            </clipPath>
+          </defs>
+          <g clipPath="url(#addd-pixel-word)">
+            {Array.from({ length: 116 }, (_, index) => {
+              const col = index % 29
+              const row = Math.floor(index / 29)
+              return (
+                <rect
+                  key={index}
+                  x={-2 + col * 5.1}
+                  y={6 + row * 8.5}
+                  width="4.2"
+                  height="7.2"
+                  style={{ '--x': col, '--y': row } as CSSProperties}
+                />
+              )
+            })}
+          </g>
+        </svg>
       </div>
 
       <div className={styles.policy}>

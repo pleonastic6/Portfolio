@@ -95,8 +95,8 @@ export function CosHeader() {
                 <span aria-hidden="true">{t.nav[item.id]}</span>
               </span>
               <span className={styles.pixelRail} aria-hidden="true">
-                {Array.from({ length: 10 }, (_, index) => (
-                  <span key={index} style={{ '--p': index } as CSSProperties} />
+                {Array.from({ length: 28 }, (_, index) => (
+                  <span key={index} style={{ '--p': index, '--c': index % 7, '--r': Math.floor(index / 7) } as CSSProperties} />
                 ))}
               </span>
               <span className={`${styles.itemIc} ${styles.icTop}`} aria-hidden="true" />

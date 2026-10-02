@@ -170,41 +170,46 @@
 
 .pixelRail {
   position: absolute;
-  left: calc(var(--cos-u) * 1.1);
-  right: calc(var(--cos-u) * 1.1);
-  bottom: calc(var(--cos-u) * 0.7);
+  inset: calc(var(--cos-u) * 0.45);
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: calc(var(--cos-u) * 0.35);
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: calc(var(--cos-u) * 0.28);
   pointer-events: none;
+  z-index: -1;
 }
 
 .pixelRail span {
-  height: calc(var(--cos-u) * 0.34);
-  background: currentColor;
+  background: var(--cos-ink);
   opacity: 0;
-  transform: translateY(calc(var(--cos-u) * 1.2));
+  transform: translateY(calc(var(--cos-u) * 1.4)) scale(0.72);
+  transform-origin: center;
   transition:
-    opacity 0.18s linear,
-    transform 0.42s var(--cos-ease);
-  transition-delay: calc(var(--p) * 22ms);
+    opacity 0.08s linear,
+    transform 0.38s var(--cos-ease),
+    background-color 0.14s linear;
+  transition-delay: calc((var(--c) * 20ms) + (var(--r) * 42ms));
 }
 
 .item:hover .pixelRail span,
 .item:focus-visible .pixelRail span {
-  opacity: 0.95;
-  transform: translateY(0);
+  opacity: 0.94;
+  transform: translateY(0) scale(1);
 }
 
-.item:hover .pixelRail span:nth-child(3n),
-.item:focus-visible .pixelRail span:nth-child(3n) {
-  opacity: 0.45;
-  transform: translateY(calc(var(--cos-u) * -0.35));
+.item:hover .pixelRail span:nth-child(5n),
+.item:focus-visible .pixelRail span:nth-child(5n) {
+  opacity: 0;
 }
 
 .item:hover .pixelRail span:nth-child(4n + 1),
 .item:focus-visible .pixelRail span:nth-child(4n + 1) {
   background: var(--cos-brand);
+}
+
+.item:hover .pixelRail span:nth-child(6n + 2),
+.item:focus-visible .pixelRail span:nth-child(6n + 2) {
+  transform: translateY(calc(var(--cos-u) * -0.25)) scale(1);
 }
 
 .itemIc {

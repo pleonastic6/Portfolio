@@ -98,9 +98,9 @@
   cursor: crosshair;
 }
 
-/* aktives Volumen: Signalorange, wie eine markierte Stelle im Plan */
+/* aktives Volumen: Lime-Akzent, wie eine markierte Stelle im Plan */
 .svg :global(.vol[data-active='true'] .faceTop) {
-  fill: #ff6a3d;
+  fill: #c9ef86;
 }
 
 .svg :global(.vol[data-active='true'] .faceRight) {

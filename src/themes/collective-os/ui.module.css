@@ -221,14 +221,19 @@
   transform: translateX(0);
 }
 
-/* Signalorange, weisse Schrift; Hover fuellt mit Graphit */
+/* Lime-Akzent, dunkle Schrift; Hover fuellt mit Graphit */
 .brandBtn {
   background: var(--cos-brand);
-  color: #fff;
+  color: var(--cos-ink);
   --fill: var(--cos-ink);
 }
 
-/* Haarlinie, Graphit; Hover fuellt orange */
+.brandBtn:hover,
+.brandBtn:focus-visible {
+  color: var(--cos-paper);
+}
+
+/* Haarlinie, Graphit; Hover fuellt Lime */
 .outlineBtn {
   border: var(--cos-line) solid var(--cos-border);
   color: var(--cos-ink);
@@ -237,7 +242,7 @@
 
 .outlineBtn:hover,
 .outlineBtn:focus-visible {
-  color: #fff;
+  color: var(--cos-ink);
   border-color: var(--cos-brand);
 }
 
@@ -252,7 +257,7 @@
 
 .cellBtn:hover,
 .cellBtn:focus-visible {
-  color: #fff;
+  color: var(--cos-ink);
 }
 
 .cellBtn .btnLabel {

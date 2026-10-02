@@ -130,8 +130,8 @@
   height: calc(var(--cos-u) * 1.6);
   padding: calc(var(--cos-u) * 0.8);
   overflow: hidden;
-  color: #fff;
-  background: rgb(250 54 0 / 0.86);
+  color: var(--cos-ink);
+  background: rgb(166 216 92 / 0.9);
   opacity: 0;
   transition:
     width 0.45s var(--cos-ease),

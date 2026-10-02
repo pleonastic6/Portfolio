@@ -175,7 +175,7 @@
 
 .card:hover .letter path {
   stroke: var(--cos-brand);
-  fill: rgb(250 54 0 / 0.12);
+  fill: rgb(166 216 92 / 0.14);
 }
 
 .cardBody {

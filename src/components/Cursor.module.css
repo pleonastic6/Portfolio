@@ -41,7 +41,7 @@
   display: none;
 }
 
-/* Collective OS: kleiner orangefarbener Punkt, der dem Zeiger nachlaeuft.
+/* Collective OS: kleiner Lime-Punkt, der dem Zeiger nachlaeuft.
    Das Fadenkreuz mit Koordinaten zeichnet die Hero-Flaeche selbst. */
 :global(:root[data-theme='collective-os']) .ring {
   width: max(5px, calc(var(--cos-u) * 0.6));

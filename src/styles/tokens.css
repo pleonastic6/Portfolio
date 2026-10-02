@@ -318,7 +318,7 @@
 
 /* ---- Theme: Collective OS ---------------------------------------------
  * Design 05 als technisches Zeichenblatt: Papiergrund, Graphitlinien,
- * Signalorange als einziger Akzent. Raster aus Zellen mit Haarlinien statt
+ * gedämpftes Lime als einziger Akzent. Raster aus Zellen mit Haarlinien statt
  * Karten. Die Seite hat ein eigenes Layout (src/themes/collective-os/),
  * die Werte hier gelten fuer alles, was sie mit den anderen Designs teilt.
  *
@@ -340,13 +340,13 @@
   --c-line-soft: rgb(179 179 175 / 0.55);
   --c-line-strong: #282828;
 
-  --c-accent: #fa3600;
-  --c-accent-dim: rgb(250 54 0 / 0.14);
-  --c-accent-glass: rgb(250 54 0 / 0.06);
-  --c-brown-red: #fa3600;
+  --c-accent: #a6d85c;
+  --c-accent-dim: rgb(166 216 92 / 0.18);
+  --c-accent-glass: rgb(166 216 92 / 0.08);
+  --c-brown-red: #a6d85c;
 
-  --cos-brand: #fa3600;
-  --cos-brand-deep: #d72201;
+  --cos-brand: #a6d85c;
+  --cos-brand-deep: #78a82d;
   --cos-ink: #282828;
   --cos-ink-72: rgb(40 40 40 / 0.72);
   --cos-gray: #626260;

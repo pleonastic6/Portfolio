@@ -57,20 +57,85 @@
   aspect-ratio: 940 / 560;
 }
 
-.heroAsset {
+.heroPlate {
   position: absolute;
-  inset: 0;
+  inset: 4% 4% 8% 24%;
   z-index: 1;
+  overflow: hidden;
+  border: var(--cos-line) solid rgb(15 17 15 / 0.18);
+  background:
+    linear-gradient(90deg, rgb(244 242 232 / 0.88), rgb(244 242 232 / 0.24) 48%, transparent),
+    var(--cos-paper-2);
   opacity: 0;
-  transform: translateY(calc(var(--cos-u) * 2));
+  transform: translateY(calc(var(--cos-u) * 1.4));
   transition:
     opacity 1s var(--cos-ease),
     transform 1s var(--cos-ease);
 }
 
-.stage[data-ready='true'] .heroAsset {
+.stage[data-ready='true'] .heroPlate {
   opacity: 1;
   transform: translateY(0);
+}
+
+.heroPlateGrid,
+.heroImageVeil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heroPlateGrid {
+  z-index: 3;
+  background-image:
+    linear-gradient(to right, rgb(15 17 15 / 0.08) var(--cos-line), transparent var(--cos-line)),
+    linear-gradient(to bottom, rgb(15 17 15 / 0.07) var(--cos-line), transparent var(--cos-line));
+  background-size: calc(var(--cos-u) * 5.2) calc(var(--cos-u) * 5.2);
+}
+
+.heroImage {
+  position: absolute;
+  z-index: 2;
+  right: -7%;
+  top: -11%;
+  width: min(78%, calc(var(--cos-u) * 74));
+  height: 125%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 54% 45%;
+  filter: saturate(0.68) contrast(1.08) brightness(1.04);
+  opacity: 0.86;
+  mix-blend-mode: multiply;
+}
+
+.heroImageVeil {
+  z-index: 4;
+  background:
+    linear-gradient(90deg, var(--cos-paper) 0 10%, rgb(244 242 232 / 0.78) 22%, transparent 48%),
+    linear-gradient(180deg, rgb(244 242 232 / 0.12), rgb(244 242 232 / 0.72));
+}
+
+.heroIndex,
+.heroCaption {
+  position: absolute;
+  z-index: 5;
+  left: calc(var(--cos-u) * 2);
+  font-family: var(--font-tech);
+  font-size: calc(var(--cos-u) * 1.1);
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.heroIndex {
+  bottom: calc(var(--cos-u) * 2);
+  color: var(--cos-brand-deep);
+}
+
+.heroCaption {
+  bottom: calc(var(--cos-u) * 4.2);
+  color: var(--cos-ink);
+  letter-spacing: 0.02em;
 }
 
 .model {

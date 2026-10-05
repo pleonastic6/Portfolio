@@ -29,8 +29,8 @@ export function CosTeam() {
       </div>
 
       <div className={styles.signalPlate}>
-        <CosVisualAsset kind="cables" index="NET / 04" caption="four-node signal map" className={styles.signalAsset} />
-        <CosVisualAsset kind="lamellae" index="MAT / 05" caption="black system material" className={styles.materialAsset} />
+        <CosVisualAsset kind="cables" index="NET / 04" caption="four-node signal map" className={styles.signalAsset} tone="quiet" />
+        <CosVisualAsset kind="lamellae" index="MAT / 05" caption="black system material" className={styles.materialAsset} tone="strip" />
       </div>
 
       <div className={styles.main}>

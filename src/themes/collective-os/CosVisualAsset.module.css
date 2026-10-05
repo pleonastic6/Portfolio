@@ -201,6 +201,43 @@
   text-overflow: ellipsis;
 }
 
+.asset[data-tone='strip'] .frame {
+  aspect-ratio: 21 / 7;
+}
+
+.asset[data-tone='quiet'] .frame {
+  aspect-ratio: 16 / 7;
+  background: transparent;
+}
+
+.asset[data-tone='quiet'] .image {
+  opacity: 0.72;
+  transform: scale(1.04);
+}
+
+.asset[data-tone='quiet'] .grid,
+.asset[data-tone='strip'] .grid {
+  opacity: 0.2;
+}
+
+.asset[data-tone='quiet'] .scan {
+  opacity: 0.16;
+}
+
+.asset[data-tone='quiet'] .marker {
+  opacity: 0.72;
+}
+
+.asset[data-tone='strip'] .label,
+.asset[data-tone='quiet'] .label {
+  max-width: calc(var(--cos-u) * 40);
+}
+
+.asset[data-tone='strip'] .caption,
+.asset[data-tone='quiet'] .caption {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .image,
   .scan,

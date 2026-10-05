@@ -37,9 +37,10 @@
 
 .signalPlate {
   display: grid;
-  grid-template-columns: 8fr 4fr;
+  grid-template-columns: 7fr 5fr;
+  align-items: end;
   gap: calc(var(--cos-u) * 2.4);
-  padding: 0 calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 3.2);
+  padding: 0 calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 2.4);
 }
 
 .signalAsset,

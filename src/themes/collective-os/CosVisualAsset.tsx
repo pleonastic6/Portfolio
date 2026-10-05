@@ -43,6 +43,7 @@ type CosVisualAssetProps = {
   caption?: string
   className?: string
   bleed?: boolean
+  tone?: 'card' | 'strip' | 'quiet'
 }
 
 const pixels = Array.from({ length: 18 })
@@ -51,11 +52,18 @@ const pixels = Array.from({ length: 18 })
  * Midjourney aesthetic images are treated as interface objects, not content screenshots:
  * framed, labelled, gridded and hover-masked so the theme owns the style.
  */
-export function CosVisualAsset({ kind, index, caption, className = '', bleed = false }: CosVisualAssetProps) {
+export function CosVisualAsset({
+  kind,
+  index,
+  caption,
+  className = '',
+  bleed = false,
+  tone = 'card',
+}: CosVisualAssetProps) {
   const asset = ASSETS[kind]
 
   return (
-    <figure className={`${styles.asset} ${className}`} data-bleed={bleed} data-kind={kind}>
+    <figure className={`${styles.asset} ${className}`} data-bleed={bleed} data-kind={kind} data-tone={tone}>
       <div className={styles.frame} data-cursor="hover">
         <img className={styles.image} src={asset.src} alt={asset.alt} loading="eager" decoding="async" />
         <span className={styles.grid} aria-hidden="true" />

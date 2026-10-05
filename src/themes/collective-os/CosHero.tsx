@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState, type CSSProperties, type PointerEvent } from 'react'
 import { useI18n } from '../../i18n'
+import collectiveMachine from '../../assets/design05/collective-machine.webp'
 import { MassingModel, VOLUMES, roofAnchor } from './MassingModel'
-import { CosVisualAsset } from './CosVisualAsset'
 import { Btn, Corners, Split, num, ui } from './ui'
 import { useReady } from './useReady'
 import styles from './CosHero.module.css'
@@ -69,12 +69,13 @@ export function CosHero() {
           </div>
 
           <div className={styles.stage} data-ready={ready}>
-            <CosVisualAsset
-              kind="machine"
-              index="SYS / 01"
-              caption="abstract lab object"
-              className={styles.heroAsset}
-            />
+            <div className={styles.heroPlate} aria-hidden="true">
+              <span className={styles.heroPlateGrid} />
+              <img className={styles.heroImage} src={collectiveMachine} alt="" decoding="async" />
+              <span className={styles.heroImageVeil} />
+              <span className={styles.heroIndex}>SYS / 01</span>
+              <span className={styles.heroCaption}>COLLECTIVE MACHINE</span>
+            </div>
             <MassingModel active={active} className={styles.model} />
 
             {VOLUMES.map((_, index) => {

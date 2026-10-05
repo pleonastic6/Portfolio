@@ -43,8 +43,8 @@ export function CosAbout() {
       </div>
 
       <div className={styles.visuals}>
-        <CosVisualAsset kind="paper" index="MAT / 02" caption="process sheet" className={styles.visualLarge} />
-        <CosVisualAsset kind="pixels" index="MAT / 03" caption="display texture" className={styles.visualSmall} />
+        <CosVisualAsset kind="paper" index="MAT / 02" caption="process sheet" className={styles.visualLarge} tone="quiet" />
+        <CosVisualAsset kind="pixels" index="MAT / 03" caption="display texture" className={styles.visualSmall} tone="strip" />
       </div>
 
       <div className={styles.detail}>

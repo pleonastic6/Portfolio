@@ -38,8 +38,9 @@
 .visuals {
   display: grid;
   grid-template-columns: 7fr 5fr;
+  align-items: end;
   gap: calc(var(--cos-u) * 2.4);
-  padding: calc(var(--cos-u) * 3.2);
+  padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 3.2);
   border-top: var(--cos-line) solid var(--cos-border);
   background:
     linear-gradient(to right, rgb(15 17 15 / 0.04) var(--cos-line), transparent var(--cos-line)),

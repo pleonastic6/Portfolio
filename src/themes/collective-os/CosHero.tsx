@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState, type CSSProperties, type PointerEvent } from 'react'
 import { useI18n } from '../../i18n'
 import { MassingModel, VOLUMES, roofAnchor } from './MassingModel'
+import { CosVisualAsset } from './CosVisualAsset'
 import { Btn, Corners, Split, num, ui } from './ui'
 import { useReady } from './useReady'
 import styles from './CosHero.module.css'
@@ -68,6 +69,12 @@ export function CosHero() {
           </div>
 
           <div className={styles.stage} data-ready={ready}>
+            <CosVisualAsset
+              kind="machine"
+              index="SYS / 01"
+              caption="abstract lab object"
+              className={styles.heroAsset}
+            />
             <MassingModel active={active} className={styles.model} />
 
             {VOLUMES.map((_, index) => {

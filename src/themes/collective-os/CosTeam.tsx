@@ -1,5 +1,6 @@
 import { useI18n } from '../../i18n'
 import { Fade, Split, num, ui } from './ui'
+import { CosVisualAsset } from './CosVisualAsset'
 import { LETTERS, LETTER_BOX } from './letters'
 import styles from './CosTeam.module.css'
 
@@ -25,6 +26,11 @@ export function CosTeam() {
           </Fade>
           <p className={`${ui.mono} ${ui.muted}`}>{t.cos.scrollHint}</p>
         </div>
+      </div>
+
+      <div className={styles.signalPlate}>
+        <CosVisualAsset kind="cables" index="NET / 04" caption="four-node signal map" className={styles.signalAsset} />
+        <CosVisualAsset kind="lamellae" index="MAT / 05" caption="black system material" className={styles.materialAsset} />
       </div>
 
       <div className={styles.main}>

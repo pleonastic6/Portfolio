@@ -35,6 +35,22 @@
   border-top: var(--cos-line) solid var(--cos-border);
 }
 
+.signalPlate {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  gap: calc(var(--cos-u) * 2.4);
+  padding: 0 calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 3.2);
+}
+
+.signalAsset,
+.materialAsset {
+  min-width: 0;
+}
+
+.materialAsset {
+  align-self: end;
+}
+
 .divider {
   position: absolute;
   top: 0;
@@ -208,6 +224,11 @@
 
   .main {
     padding: calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 4.8);
+  }
+
+  .signalPlate {
+    grid-template-columns: 1fr;
+    padding: 0 calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 2.4);
   }
 
   .divider {

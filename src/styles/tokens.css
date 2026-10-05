@@ -327,9 +327,9 @@
  * sind Vielfache davon — so skaliert das Blatt als Ganzes.
  */
 :root[data-theme='collective-os'] {
-  --c-bg: #f5f5ee;
-  --c-bg-raised: #fbfbf7;
-  --c-bg-inset: #ebebe4;
+  --c-bg: #f4f4f2;
+  --c-bg-raised: #fafafa;
+  --c-bg-inset: #e7e7e4;
 
   --c-text: #282828;
   --c-text-muted: #545452;
@@ -340,21 +340,21 @@
   --c-line-soft: rgb(179 179 175 / 0.55);
   --c-line-strong: #282828;
 
-  --c-accent: #a6d85c;
-  --c-accent-dim: rgb(166 216 92 / 0.18);
-  --c-accent-glass: rgb(166 216 92 / 0.08);
-  --c-brown-red: #a6d85c;
+  --c-accent: #e33d2f;
+  --c-accent-dim: rgb(227 61 47 / 0.16);
+  --c-accent-glass: rgb(227 61 47 / 0.08);
+  --c-brown-red: #e33d2f;
 
-  --cos-brand: #a6d85c;
-  --cos-brand-deep: #78a82d;
+  --cos-brand: #e33d2f;
+  --cos-brand-deep: #b92920;
   --cos-ink: #282828;
   --cos-ink-72: rgb(40 40 40 / 0.72);
   --cos-gray: #626260;
   --cos-surface: #72726f;
   --cos-disable: #b4b4b0;
-  --cos-border: #b3b3af;
-  --cos-paper: #f5f5ee;
-  --cos-paper-2: #f2f2f1;
+  --cos-border: #d0d0cc;
+  --cos-paper: #f4f4f2;
+  --cos-paper-2: #ededeb;
   --cos-line: max(1px, calc(var(--cos-u) * 0.1));
   --cos-ease: cubic-bezier(0.23, 1, 0.32, 1);
   --cos-ease-btn: cubic-bezier(0.625, 0.05, 0, 1);
@@ -362,11 +362,11 @@
   --cos-header: calc(var(--cos-u) * 6.4);
   --cos-inset: calc(var(--cos-u) * 0.8);
 
-  --font-sans: 'Inter Tight Variable', 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
   --font-body: 'Inter Tight Variable', 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
   --font-tech: 'Geist Mono', 'Space Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --font-mono: 'Geist Mono', 'Space Mono', ui-monospace, monospace;
-  --font-dot: 'Geist Mono', ui-monospace, monospace;
+  --font-dot: 'Silkscreen', 'Geist Mono', ui-monospace, monospace;
 
   --fs-display: calc(var(--cos-u) * 5.6);
   --fs-statement: calc(var(--cos-u) * 4);

@@ -14,20 +14,20 @@
   margin: 0;
   color: var(--cos-ink);
   font-family: var(--font-sans);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.08;
-  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: -0.052em;
+  line-height: 0.98;
+  text-transform: none;
   text-wrap: balance;
 }
 
 .h1 {
-  font-size: calc(var(--cos-u) * 5.6);
-  font-weight: 700;
+  font-size: clamp(3.25rem, 7.5vw, calc(var(--cos-u) * 11));
+  font-weight: 400;
 }
 
 .h2 {
-  font-size: calc(var(--cos-u) * 4.8);
+  font-size: clamp(2.75rem, 5.7vw, calc(var(--cos-u) * 8.2));
 }
 
 .h3 {
@@ -35,7 +35,10 @@
 }
 
 .h4 {
+  font-family: var(--font-body);
   font-size: calc(var(--cos-u) * 3.2);
+  font-weight: 700;
+  letter-spacing: -0.035em;
 }
 
 .h5 {
@@ -357,7 +360,7 @@
 
 .wordInner {
   display: inline-block;
-  transform: translateY(105%);
+  transform: none;
   transition: transform 0.9s var(--cos-ease);
   transition-delay: calc(var(--i, 0) * 45ms + var(--d, 0ms));
 }

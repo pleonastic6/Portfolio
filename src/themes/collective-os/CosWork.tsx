@@ -64,6 +64,7 @@ export function CosWork() {
                       className={styles.image}
                       picture={project.image}
                       alt={project.imageAlt ? pick(project.imageAlt) : project.title}
+                      loading="eager"
                       sizes="(max-width: 767px) 100vw, 50vw"
                     />
                   ) : (

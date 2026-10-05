@@ -36,7 +36,7 @@
 }
 
 .signalPlate {
-  display: grid;
+  display: none;
   grid-template-columns: 7fr 5fr;
   align-items: end;
   gap: calc(var(--cos-u) * 2.4);

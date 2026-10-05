@@ -9,8 +9,8 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  mix-blend-mode: multiply;
-  opacity: 0.9;
+  mix-blend-mode: normal;
+  opacity: 0.18;
 }
 
 .particle {
@@ -19,14 +19,12 @@
   top: calc(var(--y) * 1%);
   width: calc(var(--s) * 1px);
   height: calc(var(--s) * 1px);
-  background: var(--cos-brand);
+  background: var(--cos-ink);
   opacity: var(--o);
   transform: translate3d(0, 0, 0) rotate(0deg);
   animation: particleDrift 12s var(--cos-ease) infinite alternate;
   animation-delay: var(--d);
-  box-shadow:
-    0 0 calc(var(--s) * 2px) rgb(166 216 92 / 0.18),
-    0 0 calc(var(--s) * 6px) rgb(166 216 92 / 0.08);
+  box-shadow: none;
 }
 
 .particle::before,
@@ -101,6 +99,7 @@
   inset: 0;
   z-index: 70;
   pointer-events: none;
+  display: none;
   border: var(--cos-inset) solid var(--cos-paper);
 }
 
@@ -160,5 +159,5 @@
 
 .main {
   position: relative;
-  padding-inline: var(--cos-inset);
+  padding-inline: 0;
 }

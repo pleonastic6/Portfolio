@@ -7,8 +7,8 @@ import styles from './CosWork.module.css'
 /**
  * Projekte als Planzeilen: links Nummer und Titel, in der Mitte die
  * Abbildung auf Rasterpapier mit Passermarken, rechts Text, Daten und
- * Aktionen. Bilder liegen zunaechst graustufig im Papier und bekommen
- * erst beim Hover ihre Farbe zurueck.
+ * Aktionen. Projektbilder bleiben bewusst unverfremdet lesbar; die Theme-
+ * Sprache sitzt im Rahmen, Raster und den Labels drumherum.
  */
 export function CosWork() {
   const { t, pick } = useI18n()

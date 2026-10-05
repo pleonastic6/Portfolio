@@ -9,7 +9,7 @@
   overflow: hidden;
   aspect-ratio: 16 / 9;
   border: var(--cos-line) solid var(--cos-border);
-  background: var(--cos-ink);
+  background: var(--cos-paper-2);
   isolation: isolate;
 }
 

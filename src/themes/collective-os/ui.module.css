@@ -369,8 +369,8 @@
 /* ---- Einblenden ---------------------------------------------------------- */
 
 .fade {
-  opacity: 0;
-  transform: translateY(calc(var(--cos-u) * 1.6));
+  opacity: 1;
+  transform: none;
   transition:
     opacity 0.9s var(--cos-ease),
     transform 0.9s var(--cos-ease);

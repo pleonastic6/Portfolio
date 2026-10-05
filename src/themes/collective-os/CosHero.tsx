@@ -1,25 +1,20 @@
-import { useCallback, useRef, useState, type CSSProperties, type PointerEvent } from 'react'
+import { useCallback, useRef, useState, type PointerEvent } from 'react'
 import { useI18n } from '../../i18n'
 import collectiveMachine from '../../assets/design05/collective-machine.webp'
-import { MassingModel, VOLUMES, roofAnchor } from './MassingModel'
-import { Btn, Corners, Split, num, ui } from './ui'
+import { Btn, Corners, Split, ui } from './ui'
 import { useReady } from './useReady'
 import styles from './CosHero.module.css'
 
 /**
- * Einstieg wie ein Planblatt: oben die Zeichenflaeche mit dem Massenmodell,
- * unten eine Leiste mit Titel, Einleitung, Button und Arbeitsfeldern.
- *
- * Die Zeichnung reagiert auf den Zeiger: Fadenkreuz mit Koordinaten,
- * und jedes der vier Volumen nennt beim Ueberfahren, wer dahintersteht.
+ * Einstieg als Nothing-inspirierter Product-Hero: ein einziges zentrales
+ * Keyvisual auf dunklem Dot-Raster. Keine zweite Gebaeudezeichnung darueber,
+ * damit das Motiv nicht nach uebereinandergelegten Assets aussieht.
  */
 export function CosHero() {
   const { t } = useI18n()
   const ready = useReady()
   const panelRef = useRef<HTMLDivElement>(null)
   const cursorRef = useRef<HTMLDivElement>(null)
-  const [active, setActive] = useState<number | null>(null)
-  const [touched, setTouched] = useState(false)
   const [inside, setInside] = useState(false)
 
   const onMove = useCallback((event: PointerEvent<HTMLDivElement>) => {
@@ -36,18 +31,11 @@ export function CosHero() {
       label.dataset.y = String(Math.round(y)).padStart(4, '0')
     }
 
-    const vol = (event.target as Element | null)?.closest?.('.vol[data-index]')
-    const index = vol ? Number(vol.getAttribute('data-index')) : -1
-    setActive(index >= 0 ? index : null)
-    if (index >= 0) setTouched(true)
   }, [])
 
   const onLeave = useCallback(() => {
-    setActive(null)
     setInside(false)
   }, [])
-
-  const members = t.team.members
 
   return (
     <section id="top" className={styles.hero} aria-labelledby="hero-title">
@@ -56,7 +44,6 @@ export function CosHero() {
           ref={panelRef}
           className={styles.panel}
           data-inside={inside}
-          data-active={active !== null}
           onPointerMove={onMove}
           onPointerEnter={() => setInside(true)}
           onPointerLeave={onLeave}
@@ -76,30 +63,6 @@ export function CosHero() {
               <span className={styles.heroIndex}>SYS / 01</span>
               <span className={styles.heroCaption}>COLLECTIVE MACHINE</span>
             </div>
-            <MassingModel active={active} className={styles.model} />
-
-            {VOLUMES.map((_, index) => {
-              const anchor = roofAnchor(index)
-              const member = members[index]
-              return (
-                <div
-                  key={index}
-                  className={styles.deco}
-                  data-active={active === index}
-                  style={{ left: `${anchor.left}%`, top: `${anchor.top}%` } as CSSProperties}
-                  aria-hidden="true"
-                >
-                  <span className={styles.decoPlus} />
-                  <div className={styles.decoBox}>
-                    <span className={styles.decoNum}>{num(index)}</span>
-                    <span className={styles.decoCode}>
-                      {member?.name ?? ''} / {index === 0 ? 'A' : 'D'}
-                    </span>
-                    <span className={styles.decoText}>{member?.role}</span>
-                  </div>
-                </div>
-              )
-            })}
           </div>
 
           <div className={styles.cross} aria-hidden="true">
@@ -108,13 +71,11 @@ export function CosHero() {
             <div ref={cursorRef} className={styles.coord} data-x="0000" data-y="0000" />
             <div className={styles.interact}>
               <span className={styles.interactBlock} />
-              <span className={styles.interactTxt}>
-                {active !== null ? `${num(active)} ${members[active]?.name ?? ''}` : t.cos.hoverHint}
-              </span>
+              <span className={styles.interactTxt}>{t.cos.hoverHint}</span>
             </div>
           </div>
 
-          <div className={styles.intro} data-hide={touched} aria-hidden="true">
+          <div className={styles.intro} aria-hidden="true">
             <div className={styles.introHead}>
               <span className={styles.introTitle}>{t.cos.inspectTitle}</span>
               <span className={styles.introIc}>

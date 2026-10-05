@@ -8,7 +8,8 @@ export type SiteTheme = {
   description: string
 }
 
-export const THEMES: SiteTheme[] = [
+// Im Repo behalten, aber nicht mehr in der öffentlichen Rotation anzeigen.
+export const ARCHIVED_THEMES: SiteTheme[] = [
   {
     id: 'noir-et-or',
     name: 'Noir et Or',
@@ -29,10 +30,13 @@ export const THEMES: SiteTheme[] = [
     name: 'Aurum Labyrinth',
     description: 'Helles Pergament, tiefe Tinte, Gold als Akzent — Mäander als Druckornament.',
   },
+]
+
+export const THEMES: SiteTheme[] = [
   {
     id: 'collective-os',
     name: 'Collective OS',
-    description: 'Technisches Zeichenblatt: Papiergrund, Haarlinien-Raster, Signalorange, axonometrisches Modell.',
+    description: 'Nothing-inspirierte ADDD-Startseite: dunkler Product-Hero, helle Projektfläche, rote Systemakzente.',
   },
 ]
 
@@ -75,14 +79,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     () => ({
       theme,
       themes: THEMES,
-      setTheme: setThemeId,
-      nextTheme: () => {
-        setThemeId((current) => {
-          const index = THEMES.findIndex((candidate) => candidate.id === current)
-          const next = THEMES[(index + 1) % THEMES.length] ?? DEFAULT_THEME
-          return next.id
-        })
+      setTheme: (id) => {
+        setThemeId(isThemeId(id) ? id : DEFAULT_THEME.id)
       },
+      nextTheme: () => setThemeId(DEFAULT_THEME.id),
     }),
     [theme],
   )

@@ -2,7 +2,6 @@ import { useEffect, useState, type CSSProperties } from 'react'
 import { navItems, site } from '../../data/site'
 import { useI18n } from '../../i18n'
 import { useActiveSection } from '../../hooks/useActiveSection'
-import { DesignSwitcher } from '../../components/DesignSwitcher'
 import { LanguageSwitcher } from '../../components/LanguageSwitcher'
 import { StatusDot } from '../../components/StatusDot'
 import { Wordmark } from '../../components/Wordmark'
@@ -75,9 +74,6 @@ export function CosHeader() {
           <StatusDot />
         </div>
 
-        <div className={`${styles.cell} ${styles.switch}`}>
-          <DesignSwitcher />
-        </div>
         <div className={`${styles.cell} ${styles.lang}`}>
           <LanguageSwitcher />
         </div>
@@ -143,7 +139,6 @@ export function CosHeader() {
         </ul>
         <div className={styles.dropFoot}>
           <StatusDot />
-          <DesignSwitcher size="lg" />
           <LanguageSwitcher size="lg" />
         </div>
       </div>

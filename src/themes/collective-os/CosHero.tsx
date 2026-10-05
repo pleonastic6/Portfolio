@@ -1,13 +1,12 @@
 import { useI18n } from '../../i18n'
-import collectiveMachine from '../../assets/design05/collective-machine.webp'
+import blackLamellae from '../../assets/design05/black-lamellae.webp'
 import { Btn, Split, ui } from './ui'
 import { useReady } from './useReady'
 import styles from './CosHero.module.css'
 
 /**
- * Einstieg als Nothing-inspirierter Product-Hero: ein einziges zentrales
- * Keyvisual auf dunklem Dot-Raster. Keine zweite Gebaeudezeichnung und keine
- * Inspect-Hinweise mehr — die Hero soll wie ein fertiges Produkt wirken.
+ * Einstieg als Nothing-inspirierter Product-Hero: ein abstraktes Material-Makro
+ * statt Gebaeude/3D-Objekt. Das Bild ist nur Atmosphaere, keine zweite Story.
  */
 export function CosHero() {
   const { t } = useI18n()
@@ -20,10 +19,10 @@ export function CosHero() {
           <div className={styles.stage} data-ready={ready}>
             <div className={styles.heroPlate} aria-hidden="true">
               <span className={styles.heroPlateGrid} />
-              <img className={styles.heroImage} src={collectiveMachine} alt="" decoding="async" />
+              <img className={styles.heroImage} src={blackLamellae} alt="" decoding="async" />
               <span className={styles.heroImageVeil} />
               <span className={styles.heroIndex}>SYS / 01</span>
-              <span className={styles.heroCaption}>COLLECTIVE MACHINE</span>
+              <span className={styles.heroCaption}>MATERIAL INTERFACE</span>
             </div>
           </div>
         </div>

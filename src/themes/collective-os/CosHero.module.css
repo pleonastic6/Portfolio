@@ -29,28 +29,30 @@
   user-select: none;
   touch-action: pan-y;
   background:
-    radial-gradient(circle, rgb(255 255 255 / 0.22) 0 1px, transparent 1.4px) 0 0 / calc(var(--cos-u) * 7.8) calc(var(--cos-u) * 7.8),
-    radial-gradient(circle at 50% 42%, rgb(255 255 255 / 0.08), transparent 34%),
+    radial-gradient(circle, rgb(255 255 255 / 0.2) 0 1px, transparent 1.4px) 0 0 / calc(var(--cos-u) * 8.4) calc(var(--cos-u) * 8.4),
+    radial-gradient(circle at 72% 42%, rgb(255 255 255 / 0.1), transparent 32%),
     #050505;
 }
 
 .stage {
   position: relative;
   z-index: 2;
-  width: min(100%, calc(100cqh * 0.92));
-  max-width: calc(var(--cos-u) * 92);
-  aspect-ratio: 1 / 1;
+  width: min(64vw, calc(var(--cos-u) * 106));
+  max-width: none;
+  margin-left: auto;
+  margin-right: clamp(calc(var(--cos-u) * -4), -3vw, 0px);
+  aspect-ratio: 16 / 9;
 }
 
 .heroPlate {
   position: absolute;
-  inset: 5% 13% 3%;
+  inset: 0;
   z-index: 1;
   overflow: hidden;
-  border: 0;
+  border: var(--cos-line) solid rgb(255 255 255 / 0.14);
   background: transparent;
   opacity: 0;
-  transform: translateY(calc(var(--cos-u) * 1.4));
+  transform: translateY(calc(var(--cos-u) * 1.4)) scale(0.985);
   transition:
     opacity 1s var(--cos-ease),
     transform 1s var(--cos-ease);
@@ -58,7 +60,7 @@
 
 .stage[data-ready='true'] .heroPlate {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .heroPlateGrid,
@@ -74,7 +76,8 @@
     linear-gradient(to right, rgb(255 255 255 / 0.045) var(--cos-line), transparent var(--cos-line)),
     linear-gradient(to bottom, rgb(255 255 255 / 0.04) var(--cos-line), transparent var(--cos-line));
   background-size: calc(var(--cos-u) * 4.8) calc(var(--cos-u) * 4.8);
-  mask-image: radial-gradient(circle at 50% 46%, #000 0 56%, transparent 82%);
+  opacity: 0.5;
+  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
 }
 
 .heroImage {
@@ -82,23 +85,22 @@
   z-index: 2;
   left: 50%;
   top: 50%;
-  width: 86%;
-  height: 92%;
+  width: 100%;
+  height: 100%;
   max-width: none;
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.55) contrast(1.16) brightness(0.72);
-  opacity: 0.72;
-  mix-blend-mode: screen;
+  filter: saturate(0.78) contrast(1.1) brightness(0.78);
+  opacity: 0.86;
+  mix-blend-mode: normal;
   transform: translate(-50%, -50%);
-  mask-image: radial-gradient(circle at 50% 50%, #000 0 54%, transparent 76%);
 }
 
 .heroImageVeil {
   z-index: 4;
   background:
-    radial-gradient(circle at 50% 48%, transparent 0 42%, rgb(5 5 5 / 0.52) 72%, #050505 100%),
-    linear-gradient(180deg, #050505 0, transparent 24%, transparent 62%, #050505 100%);
+    linear-gradient(90deg, #050505 0 9%, rgb(5 5 5 / 0.18) 28%, transparent 48%),
+    linear-gradient(180deg, rgb(5 5 5 / 0.42) 0, transparent 34%, transparent 70%, rgb(5 5 5 / 0.7) 100%);
 }
 
 .heroIndex,
@@ -114,12 +116,12 @@
 }
 
 .heroIndex {
-  bottom: calc(var(--cos-u) * 3.1);
+  bottom: calc(var(--cos-u) * 2.2);
   color: var(--cos-brand);
 }
 
 .heroCaption {
-  bottom: calc(var(--cos-u) * 5.2);
+  bottom: calc(var(--cos-u) * 4.2);
   color: rgb(255 255 255 / 0.66);
   letter-spacing: 0.02em;
 }

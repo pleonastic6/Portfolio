@@ -15,7 +15,7 @@
   height: 100%;
 }
 
-/* ---- Zeichenflaeche ------------------------------------------------------ */
+/* ---- Full-bleed hero image --------------------------------------------- */
 
 .panel {
   position: relative;
@@ -23,106 +23,89 @@
   align-items: center;
   justify-content: center;
   min-height: 0;
-  padding: calc(var(--cos-u) * 7.2) calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 3.2);
+  padding: 0;
   overflow: hidden;
   container-type: size;
   user-select: none;
   touch-action: pan-y;
   background:
-    radial-gradient(circle, rgb(255 255 255 / 0.2) 0 1px, transparent 1.4px) 0 0 / calc(var(--cos-u) * 8.4) calc(var(--cos-u) * 8.4),
-    radial-gradient(circle at 72% 42%, rgb(255 255 255 / 0.1), transparent 32%),
+    radial-gradient(circle at 74% 38%, rgb(166 216 92 / 0.22), transparent 26%),
+    radial-gradient(circle at 24% 74%, rgb(166 216 92 / 0.08), transparent 32%),
     #050505;
 }
 
+/* Lime measurement grid: image fills the hero, system layer sits on top. */
 .panel::after {
   content: '';
   position: absolute;
-  inset: calc(var(--cos-u) * 8) auto auto clamp(calc(var(--cos-u) * 2.4), 5vw, calc(var(--cos-u) * 8));
-  z-index: 1;
-  width: min(34vw, calc(var(--cos-u) * 46));
-  height: calc(var(--cos-u) * 18);
-  border-left: var(--cos-line) solid rgb(255 255 255 / 0.18);
-  border-bottom: var(--cos-line) solid rgb(255 255 255 / 0.12);
-  opacity: 0.8;
+  inset: 0;
+  z-index: 3;
+  background:
+    linear-gradient(to right, rgb(166 216 92 / 0.12) var(--cos-line), transparent var(--cos-line)),
+    linear-gradient(to bottom, rgb(166 216 92 / 0.095) var(--cos-line), transparent var(--cos-line));
+  background-size: calc(var(--cos-u) * 7.2) calc(var(--cos-u) * 7.2);
+  mask-image: linear-gradient(90deg, rgb(0 0 0 / 0.72), rgb(0 0 0 / 0.22) 56%, transparent 92%);
+  opacity: 0.44;
   pointer-events: none;
 }
 
 .signalCard {
   position: absolute;
-  z-index: 4;
-  top: clamp(calc(var(--cos-u) * 9), 17vh, calc(var(--cos-u) * 18));
+  z-index: 5;
+  top: clamp(calc(var(--cos-u) * 8.2), 14vh, calc(var(--cos-u) * 14));
   left: clamp(calc(var(--cos-u) * 2.4), 6vw, calc(var(--cos-u) * 10));
-  width: min(31vw, calc(var(--cos-u) * 43));
-  padding: calc(var(--cos-u) * 1.6);
+  width: min(38vw, calc(var(--cos-u) * 52));
   color: #fff;
-  background: rgb(5 5 5 / 0.54);
-  border: var(--cos-line) solid rgb(255 255 255 / 0.16);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 6) rgb(0 0 0 / 0.26);
-}
-
-.signalCard::before,
-.signalCard::after {
-  content: '';
-  position: absolute;
-  width: calc(var(--cos-u) * 0.7);
-  height: calc(var(--cos-u) * 0.7);
-  background: var(--cos-brand);
-}
-
-.signalCard::before {
-  top: calc(var(--cos-u) * -0.35);
-  left: calc(var(--cos-u) * -0.35);
-}
-
-.signalCard::after {
-  right: calc(var(--cos-u) * -0.35);
-  bottom: calc(var(--cos-u) * -0.35);
 }
 
 .signalEyebrow {
-  margin: 0 0 calc(var(--cos-u) * 1.2);
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--cos-u) * 0.8);
+  margin: 0 0 calc(var(--cos-u) * 1.1);
+  padding: calc(var(--cos-u) * 0.55) calc(var(--cos-u) * 0.8);
+  background: var(--cos-brand);
   font-family: var(--font-tech);
   font-size: calc(var(--cos-u) * 1.05);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1;
   text-transform: uppercase;
-  color: var(--cos-brand);
+  color: #10120c;
 }
 
 .signalText {
-  max-width: 34ch;
+  max-width: 40ch;
   margin: 0;
-  font-size: clamp(0.95rem, 1vw, 1.1rem);
-  line-height: 1.35;
-  color: rgb(255 255 255 / 0.82);
+  font-size: clamp(1rem, 1.08vw, 1.18rem);
+  line-height: 1.32;
+  color: rgb(255 255 255 / 0.78);
+  text-shadow: 0 calc(var(--cos-u) * 0.2) calc(var(--cos-u) * 2) rgb(0 0 0 / 0.42);
 }
 
 .nodes {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--cos-line);
-  margin: calc(var(--cos-u) * 1.6) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--cos-u) * 0.7);
+  margin: calc(var(--cos-u) * 1.4) 0 0;
   padding: 0;
   list-style: none;
-  background: rgb(255 255 255 / 0.18);
-  border: var(--cos-line) solid rgb(255 255 255 / 0.18);
 }
 
 .nodes li {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
+  align-items: center;
   gap: calc(var(--cos-u) * 0.7);
-  min-width: 0;
-  padding: calc(var(--cos-u) * 0.85);
+  padding: calc(var(--cos-u) * 0.55) calc(var(--cos-u) * 0.75);
   overflow: hidden;
-  background: rgb(5 5 5 / 0.74);
+  background: rgb(5 5 5 / 0.42);
+  border: var(--cos-line) solid rgb(166 216 92 / 0.28);
+  backdrop-filter: blur(10px);
   font-family: var(--font-tech);
   font-size: calc(var(--cos-u) * 1.05);
   font-weight: 500;
   line-height: 1;
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.78);
+  color: rgb(255 255 255 / 0.76);
 }
 
 .nodes li span {
@@ -133,13 +116,13 @@
 }
 
 .stage {
-  position: relative;
-  z-index: 2;
-  width: min(64vw, calc(var(--cos-u) * 106));
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
   max-width: none;
-  margin-left: auto;
-  margin-right: clamp(calc(var(--cos-u) * -4), -3vw, 0px);
-  aspect-ratio: 16 / 9;
+  margin: 0;
 }
 
 .heroPlate {
@@ -147,18 +130,18 @@
   inset: 0;
   z-index: 1;
   overflow: hidden;
-  border: var(--cos-line) solid rgb(255 255 255 / 0.14);
+  border: 0;
   background: transparent;
   opacity: 0;
-  transform: translateY(calc(var(--cos-u) * 1.4)) scale(0.985);
+  transform: scale(1.025);
   transition:
-    opacity 1s var(--cos-ease),
-    transform 1s var(--cos-ease);
+    opacity 1.1s var(--cos-ease),
+    transform 1.4s var(--cos-ease);
 }
 
 .stage[data-ready='true'] .heroPlate {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: scale(1);
 }
 
 .heroPlateGrid,
@@ -171,34 +154,33 @@
 .heroPlateGrid {
   z-index: 3;
   background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.045) var(--cos-line), transparent var(--cos-line)),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.04) var(--cos-line), transparent var(--cos-line));
-  background-size: calc(var(--cos-u) * 4.8) calc(var(--cos-u) * 4.8);
-  opacity: 0.5;
-  mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+    linear-gradient(to right, rgb(166 216 92 / 0.08) var(--cos-line), transparent var(--cos-line)),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) var(--cos-line), transparent var(--cos-line));
+  background-size: calc(var(--cos-u) * 5.4) calc(var(--cos-u) * 5.4);
+  opacity: 0.62;
+  mask-image: linear-gradient(90deg, #000, rgb(0 0 0 / 0.72) 38%, transparent 100%);
 }
 
 .heroImage {
   position: absolute;
   z-index: 2;
-  left: 50%;
-  top: 50%;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   max-width: none;
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.78) contrast(1.1) brightness(0.78);
-  opacity: 0.86;
+  filter: saturate(0.86) contrast(1.16) brightness(0.72);
+  opacity: 1;
   mix-blend-mode: normal;
-  transform: translate(-50%, -50%);
 }
 
 .heroImageVeil {
   z-index: 4;
   background:
-    linear-gradient(90deg, #050505 0 14%, rgb(5 5 5 / 0.24) 34%, transparent 56%),
-    linear-gradient(180deg, rgb(5 5 5 / 0.42) 0, transparent 34%, transparent 70%, rgb(5 5 5 / 0.7) 100%);
+    linear-gradient(90deg, #050505 0 26%, rgb(5 5 5 / 0.58) 49%, rgb(5 5 5 / 0.16) 72%, rgb(5 5 5 / 0.52) 100%),
+    linear-gradient(180deg, rgb(5 5 5 / 0.58) 0, transparent 28%, transparent 62%, rgb(5 5 5 / 0.9) 100%);
 }
 
 .heroIndex,
@@ -224,17 +206,17 @@
   letter-spacing: 0.02em;
 }
 
-/* ---- Leiste ------------------------------------------------------------- */
+/* ---- Content bar ------------------------------------------------------- */
 
 .bar {
   position: absolute;
   z-index: 5;
   left: clamp(calc(var(--cos-u) * 2.4), 6vw, calc(var(--cos-u) * 10));
   right: clamp(calc(var(--cos-u) * 2.4), 6vw, calc(var(--cos-u) * 10));
-  bottom: clamp(calc(var(--cos-u) * 3.2), 7vh, calc(var(--cos-u) * 8));
+  bottom: clamp(calc(var(--cos-u) * 3.2), 6vh, calc(var(--cos-u) * 7));
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(calc(var(--cos-u) * 34), calc(var(--cos-u) * 54));
-  gap: calc(var(--cos-u) * 4);
+  grid-template-columns: minmax(0, 0.95fr) minmax(calc(var(--cos-u) * 31), calc(var(--cos-u) * 48));
+  gap: calc(var(--cos-u) * 3);
   align-items: end;
   background: transparent;
 }
@@ -247,21 +229,23 @@
 }
 
 .title {
-  max-width: 9.8em;
+  max-width: 8.9em;
   color: #fff;
-  text-shadow: 0 calc(var(--cos-u) * 0.4) calc(var(--cos-u) * 3) rgb(0 0 0 / 0.38);
+  text-shadow: 0 calc(var(--cos-u) * 0.4) calc(var(--cos-u) * 3) rgb(0 0 0 / 0.52);
 }
 
 .subWrap {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: calc(var(--cos-u) * 2.4);
+  padding: calc(var(--cos-u) * 1.6);
   color: #fff;
-  background: rgb(255 255 255 / 0.08);
-  border: var(--cos-line) solid rgb(255 255 255 / 0.18);
-  border-radius: calc(var(--cos-u) * 0.8);
-  backdrop-filter: blur(18px);
+  background: rgb(5 5 5 / 0.44);
+  border-left: calc(var(--cos-line) * 2) solid var(--cos-brand);
+  border-top: var(--cos-line) solid rgb(255 255 255 / 0.12);
+  border-right: var(--cos-line) solid rgb(255 255 255 / 0.12);
+  border-bottom: var(--cos-line) solid rgb(255 255 255 / 0.12);
+  backdrop-filter: blur(14px);
 }
 
 .subInner {
@@ -282,7 +266,9 @@
   flex: 0 0 auto;
   width: auto;
   min-width: calc(var(--cos-u) * 16);
-  border: var(--cos-line) solid rgb(255 255 255 / 0.2);
+  color: #11140d;
+  background: var(--cos-brand);
+  border: var(--cos-line) solid rgb(166 216 92 / 0.65);
 }
 
 @media (max-width: 767px) {
@@ -292,34 +278,29 @@
   }
 
   .panel {
-    height: 62svh;
+    height: 72svh;
     min-height: calc(var(--cos-u) * 34);
-    padding: calc(var(--cos-u) * 1.6);
   }
 
-  .panel::after,
   .signalCard {
     display: none;
   }
 
-
-  .inner {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
   .bar {
     grid-template-columns: minmax(0, 1fr);
+    left: calc(var(--cos-u) * 1.6);
+    right: calc(var(--cos-u) * 1.6);
+    bottom: calc(var(--cos-u) * 1.6);
   }
 
   .title {
     font-size: calc(var(--cos-u) * 4.2);
+    max-width: 9em;
   }
 
-
   .titleWrap {
-    padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6);
-    border-right: 0;
-    border-bottom: var(--cos-line) solid var(--cos-border);
+    padding: 0;
+    border: 0;
   }
 
   .subInner {
@@ -330,6 +311,6 @@
     width: 100%;
     min-height: calc(var(--cos-u) * 8);
     border-left: 0;
-    border-top: var(--cos-line) solid var(--cos-border);
+    border-top: var(--cos-line) solid rgb(166 216 92 / 0.34);
   }
 }

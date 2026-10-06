@@ -5,7 +5,7 @@ import styles from './Cursor.module.css'
 
 /**
  * Feiner Cursor-Layer für Desktop: Standardthemen bekommen einen ruhigen Ring,
- * Collective OS einen kleinen orangefarbenen Punkt.
+ * Collective OS einen kleinen limefarbenen Punkt.
  * Nur auf Geräten mit präzisem Zeiger, nie bei prefers-reduced-motion.
  */
 export function Cursor() {

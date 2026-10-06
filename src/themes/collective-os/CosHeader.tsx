@@ -13,7 +13,7 @@ const SECTION_IDS = navItems.map((item) => item.id)
 
 /**
  * Kopfzeile aus Zellen: Marke links, Menuepunkte als gleich breite Felder
- * mit Haarlinien, Kontakt als orange Zelle ganz rechts. Beim Runterscrollen
+ * mit Haarlinien, Kontakt als Lime-Zelle ganz rechts. Beim Runterscrollen
  * faehrt sie weg, beim Hochscrollen kommt sie zurueck.
  */
 export function CosHeader() {

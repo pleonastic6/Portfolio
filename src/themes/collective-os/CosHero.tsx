@@ -16,13 +16,26 @@ export function CosHero() {
     <section id="top" className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.inner}>
         <div className={styles.panel}>
+          <div className={styles.signalCard} aria-label={t.hero.signal}>
+            <p className={styles.signalEyebrow}>{t.hero.system}</p>
+            <p className={styles.signalText}>{t.hero.signal}</p>
+            <ul className={styles.nodes}>
+              {t.hero.nodes.map((node, index) => (
+                <li key={`${node}-${index}`}>
+                  <span aria-hidden="true" />
+                  {node}
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <div className={styles.stage} data-ready={ready}>
             <div className={styles.heroPlate} aria-hidden="true">
               <span className={styles.heroPlateGrid} />
               <img className={styles.heroImage} src={blackLamellae} alt="" decoding="async" />
               <span className={styles.heroImageVeil} />
-              <span className={styles.heroIndex}>SYS / 01</span>
-              <span className={styles.heroCaption}>MATERIAL INTERFACE</span>
+              <span className={styles.heroIndex}>ADDD / 04</span>
+              <span className={styles.heroCaption}>{t.hero.role}</span>
             </div>
           </div>
         </div>

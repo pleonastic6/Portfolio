@@ -42,6 +42,9 @@ export type Translation = {
     cta: string
     scroll: string
     role: string
+    system: string
+    signal: string
+    nodes: [string, string, string, string]
   }
   work: {
     index: string

@@ -34,6 +34,104 @@
     #050505;
 }
 
+.panel::after {
+  content: '';
+  position: absolute;
+  inset: calc(var(--cos-u) * 8) auto auto clamp(calc(var(--cos-u) * 2.4), 5vw, calc(var(--cos-u) * 8));
+  z-index: 1;
+  width: min(34vw, calc(var(--cos-u) * 46));
+  height: calc(var(--cos-u) * 18);
+  border-left: var(--cos-line) solid rgb(255 255 255 / 0.18);
+  border-bottom: var(--cos-line) solid rgb(255 255 255 / 0.12);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.signalCard {
+  position: absolute;
+  z-index: 4;
+  top: clamp(calc(var(--cos-u) * 9), 17vh, calc(var(--cos-u) * 18));
+  left: clamp(calc(var(--cos-u) * 2.4), 6vw, calc(var(--cos-u) * 10));
+  width: min(31vw, calc(var(--cos-u) * 43));
+  padding: calc(var(--cos-u) * 1.6);
+  color: #fff;
+  background: rgb(5 5 5 / 0.54);
+  border: var(--cos-line) solid rgb(255 255 255 / 0.16);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 6) rgb(0 0 0 / 0.26);
+}
+
+.signalCard::before,
+.signalCard::after {
+  content: '';
+  position: absolute;
+  width: calc(var(--cos-u) * 0.7);
+  height: calc(var(--cos-u) * 0.7);
+  background: var(--cos-brand);
+}
+
+.signalCard::before {
+  top: calc(var(--cos-u) * -0.35);
+  left: calc(var(--cos-u) * -0.35);
+}
+
+.signalCard::after {
+  right: calc(var(--cos-u) * -0.35);
+  bottom: calc(var(--cos-u) * -0.35);
+}
+
+.signalEyebrow {
+  margin: 0 0 calc(var(--cos-u) * 1.2);
+  font-family: var(--font-tech);
+  font-size: calc(var(--cos-u) * 1.05);
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--cos-brand);
+}
+
+.signalText {
+  max-width: 34ch;
+  margin: 0;
+  font-size: clamp(0.95rem, 1vw, 1.1rem);
+  line-height: 1.35;
+  color: rgb(255 255 255 / 0.82);
+}
+
+.nodes {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--cos-line);
+  margin: calc(var(--cos-u) * 1.6) 0 0;
+  padding: 0;
+  list-style: none;
+  background: rgb(255 255 255 / 0.18);
+  border: var(--cos-line) solid rgb(255 255 255 / 0.18);
+}
+
+.nodes li {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--cos-u) * 0.7);
+  min-width: 0;
+  padding: calc(var(--cos-u) * 0.85);
+  overflow: hidden;
+  background: rgb(5 5 5 / 0.74);
+  font-family: var(--font-tech);
+  font-size: calc(var(--cos-u) * 1.05);
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.78);
+}
+
+.nodes li span {
+  width: calc(var(--cos-u) * 0.55);
+  height: calc(var(--cos-u) * 0.55);
+  background: var(--cos-brand);
+  opacity: 0.92;
+}
+
 .stage {
   position: relative;
   z-index: 2;
@@ -99,7 +197,7 @@
 .heroImageVeil {
   z-index: 4;
   background:
-    linear-gradient(90deg, #050505 0 9%, rgb(5 5 5 / 0.18) 28%, transparent 48%),
+    linear-gradient(90deg, #050505 0 14%, rgb(5 5 5 / 0.24) 34%, transparent 56%),
     linear-gradient(180deg, rgb(5 5 5 / 0.42) 0, transparent 34%, transparent 70%, rgb(5 5 5 / 0.7) 100%);
 }
 
@@ -199,6 +297,11 @@
     padding: calc(var(--cos-u) * 1.6);
   }
 
+  .panel::after,
+  .signalCard {
+    display: none;
+  }
+
 
   .inner {
     grid-template-columns: minmax(0, 1fr);
@@ -220,7 +323,7 @@
   }
 
   .subInner {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .discover {

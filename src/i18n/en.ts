@@ -27,11 +27,14 @@ export const en: Translation = {
   },
   hero: {
     label: 'Collective',
-    headline: ['Four developers.', 'One collective.', 'Shared craft.'],
-    lead: 'ADDD is a developer collective by Artur, David, David and Dominik — young, open-ended and serious about building software well.',
+    headline: ['Four developers.', 'One system.', 'Careful software.'],
+    lead: 'ADDD is Artur, David, David and Dominik: a young developer collective for interfaces, tools and prototypes that stay technically clean and visually specific.',
     cta: 'See our work',
     scroll: 'Scroll',
     role: 'Software Development',
+    system: 'Collective OS / Amberg',
+    signal: 'Four people, one shared standard — still open in direction, clear in how we work.',
+    nodes: ['Artur', 'David', 'David', 'Dominik'],
   },
   work: {
     index: '01',

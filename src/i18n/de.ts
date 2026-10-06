@@ -30,11 +30,8 @@ export const de: Translation = {
     headline: ['Vier Entwickler.', 'Ein System.', 'Saubere Software.'],
     lead: 'ADDD ist Artur, David, David und Dominik: ein junges Entwicklerkollektiv für Interfaces, Tools und Prototypen, die technisch sauber und visuell eigenständig bleiben.',
     cta: 'Unsere Arbeit ansehen',
-    scroll: 'Scrollen',
-    role: 'Softwareentwicklung',
-    system: 'Collective OS / Amberg',
-    signal: 'Vier Leute, ein gemeinsamer Standard — noch offen in der Richtung, klar in der Arbeitsweise.',
-    nodes: ['Artur', 'David', 'David', 'Dominik'],
+    scroll: 'Weiterscrollen',
+    role: 'Interfaces · Tools · Experimente',
   },
   work: {
     index: '01',

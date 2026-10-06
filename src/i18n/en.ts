@@ -32,9 +32,6 @@ export const en: Translation = {
     cta: 'See our work',
     scroll: 'Scroll',
     role: 'Software Development',
-    system: 'Collective OS / Amberg',
-    signal: 'Four people, one shared standard — still open in direction, clear in how we work.',
-    nodes: ['Artur', 'David', 'David', 'Dominik'],
   },
   work: {
     index: '01',

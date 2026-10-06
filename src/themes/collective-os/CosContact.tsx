@@ -1,20 +1,16 @@
 import { useCallback, useEffect, useState } from 'react'
 import { site, socials } from '../../data/site'
 import { useI18n } from '../../i18n'
-import { useInView } from '../../hooks/useInView'
-import { MassingModel } from './MassingModel'
 import { Btn, Fade, Split, ui } from './ui'
 import styles from './CosContact.module.css'
 
 /**
  * Abschluss als Planausschnitt: drei Spalten mit gestrichelten Achsen und
- * Koordinaten an den Kreuzungspunkten, in der Mitte die Aufforderung,
- * darunter das Modell noch einmal — diesmal ohne Bemassung.
+ * Koordinaten an den Kreuzungspunkten, in der Mitte die Aufforderung.
  */
 export function CosContact() {
   const { t } = useI18n()
   const [copied, setCopied] = useState(false)
-  const deco = useInView<HTMLDivElement>(0.25)
 
   useEffect(() => {
     if (!copied) return
@@ -76,14 +72,6 @@ export function CosContact() {
             </a>
           ))}
         </div>
-      </div>
-
-      <div className={styles.decoRow}>
-        <div className={`${styles.cell} ${styles.left}`} />
-        <div ref={deco.ref} className={`${styles.cell} ${styles.center} ${styles.decoCenter}`}>
-          <MassingModel annotations={false} drawn={deco.inView} className={styles.model} />
-        </div>
-        <div className={`${styles.cell} ${styles.right}`} />
       </div>
     </section>
   )

@@ -1,9 +1,9 @@
 import type { CSSProperties } from 'react'
-import machine from '../../assets/design05/collective-machine.webp'
+import machine from '../../assets/design05/modular-blocks.webp'
 import paperGrid from '../../assets/design05/paper-grid.webp'
 import displayPixels from '../../assets/design05/display-pixels.webp'
-import blackLamellae from '../../assets/design05/black-lamellae.webp'
-import cableDiagram from '../../assets/design05/cable-diagram.webp'
+import blackLamellae from '../../assets/design05/organic-lamellae.webp'
+import cableDiagram from '../../assets/design05/signal-cubes.webp'
 import { Corners, ui } from './ui'
 import styles from './CosVisualAsset.module.css'
 
@@ -13,7 +13,7 @@ const ASSETS: Record<CosVisualAssetKind, { src: string; code: string; alt: strin
   machine: {
     src: machine,
     code: 'COLLECTIVE MACHINE',
-    alt: 'Abstract glass and black technical cube on an off-white studio surface',
+    alt: 'Abstract modular black blocks connected by thin metal lines on an off-white studio surface',
   },
   paper: {
     src: paperGrid,
@@ -27,13 +27,13 @@ const ASSETS: Record<CosVisualAssetKind, { src: string; code: string; alt: strin
   },
   lamellae: {
     src: blackLamellae,
-    code: 'BLACK MATERIAL',
-    alt: 'Macro photograph of black technical lamellae with small lime reflections',
+    code: 'ORGANIC MATERIAL',
+    alt: 'Abstract organic lamellae in graphite and off-white tones',
   },
   cables: {
     src: cableDiagram,
     code: 'SIGNAL MAP',
-    alt: 'Thin black cables arranged like a precise diagram with lime connector blocks',
+    alt: 'Black cables and lime connector blocks arranged like a precise signal diagram',
   },
 }
 

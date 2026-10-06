@@ -1,5 +1,5 @@
 import { useI18n } from '../../i18n'
-import blackLamellae from '../../assets/design05/black-lamellae.webp'
+import limeGlass from '../../assets/design05/lime-glass.webp'
 import { Btn, Split, ui } from './ui'
 import { useReady } from './useReady'
 import styles from './CosHero.module.css'
@@ -19,7 +19,7 @@ export function CosHero() {
           <div className={styles.stage} data-ready={ready}>
             <div className={styles.heroPlate} aria-hidden="true">
               <span className={styles.heroPlateGrid} />
-              <img className={styles.heroImage} src={blackLamellae} alt="" decoding="async" />
+              <img className={styles.heroImage} src={limeGlass} alt="" decoding="async" />
               <span className={styles.heroImageVeil} />
               <span className={styles.heroIndex}>ADDD / 04</span>
               <span className={styles.heroCaption}>{t.hero.role}</span>

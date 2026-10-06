@@ -3,6 +3,19 @@
   isolation: isolate;
 }
 
+.page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url('../../assets/design05/paper-fiber.webp');
+  background-size: 420px 420px;
+  background-repeat: repeat;
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+}
+
 .particles {
   position: fixed;
   inset: 0;

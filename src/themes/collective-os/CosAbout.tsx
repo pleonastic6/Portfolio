@@ -2,7 +2,6 @@ import { site } from '../../data/site'
 import { skillGroups } from '../../data/skills'
 import { useI18n } from '../../i18n'
 import { ScrollText } from './ScrollText'
-import { CosVisualAsset } from './CosVisualAsset'
 import { Btn, Fade, ui } from './ui'
 import styles from './CosAbout.module.css'
 
@@ -40,11 +39,6 @@ export function CosAbout() {
             {t.cos.learnMore}
           </Btn>
         </Fade>
-      </div>
-
-      <div className={styles.visuals}>
-        <CosVisualAsset kind="paper" index="MAT / 02" caption="process sheet" className={styles.visualLarge} tone="quiet" />
-        <CosVisualAsset kind="pixels" index="MAT / 03" caption="display texture" className={styles.visualSmall} tone="strip" />
       </div>
 
       <div className={styles.detail}>

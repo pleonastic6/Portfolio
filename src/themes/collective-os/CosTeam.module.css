@@ -1,6 +1,25 @@
 .team {
   position: relative;
+  overflow: hidden;
   border-top: var(--cos-line) solid var(--cos-border);
+}
+
+.team::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--cos-u) * 3.2);
+  right: calc(var(--cos-u) * 3.2);
+  z-index: -1;
+  width: min(42vw, calc(var(--cos-u) * 62));
+  aspect-ratio: 16 / 9;
+  background-image: url('../../assets/design05/signal-cubes.webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  filter: saturate(0.55) contrast(1.08) brightness(1.05);
+  mix-blend-mode: multiply;
+  mask-image: linear-gradient(90deg, transparent 0, #000 28%, #000 58%, transparent 100%);
+  pointer-events: none;
 }
 
 .head {
@@ -33,23 +52,6 @@
   position: relative;
   padding: calc(var(--cos-u) * 6.4) calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 9.6);
   border-top: var(--cos-line) solid var(--cos-border);
-}
-
-.signalPlate {
-  display: grid;
-  grid-template-columns: 7fr 5fr;
-  align-items: end;
-  gap: calc(var(--cos-u) * 2.4);
-  padding: 0 calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 2.4);
-}
-
-.signalAsset,
-.materialAsset {
-  min-width: 0;
-}
-
-.materialAsset {
-  align-self: end;
 }
 
 .divider {
@@ -227,9 +229,11 @@
     padding: calc(var(--cos-u) * 3.2) calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 4.8);
   }
 
-  .signalPlate {
-    grid-template-columns: 1fr;
-    padding: 0 calc(var(--cos-u) * 1.6) calc(var(--cos-u) * 2.4);
+  .team::before {
+    top: calc(var(--cos-u) * 8);
+    right: calc(var(--cos-u) * -12);
+    width: min(92vw, calc(var(--cos-u) * 70));
+    opacity: 0.11;
   }
 
   .divider {

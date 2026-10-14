@@ -327,42 +327,42 @@
  * sind Vielfache davon — so skaliert das Blatt als Ganzes.
  */
 :root[data-theme='collective-os'] {
-  --c-bg: #f4f4f2;
-  --c-bg-raised: #fafafa;
-  --c-bg-inset: #e7e7e4;
+  --c-bg: #f1f0e8;
+  --c-bg-raised: #f7f6ef;
+  --c-bg-inset: #e8e7de;
 
-  --c-text: #282828;
-  --c-text-muted: #545452;
-  --c-text-faint: #72726f;
-  --c-text-invert: #ffffff;
+  --c-text: #20211f;
+  --c-text-muted: #555650;
+  --c-text-faint: #74756f;
+  --c-text-invert: #f7f6ef;
 
-  --c-line: #b3b3af;
-  --c-line-soft: rgb(179 179 175 / 0.55);
-  --c-line-strong: #282828;
+  --c-line: #b9b9b1;
+  --c-line-soft: rgb(185 185 177 / 0.55);
+  --c-line-strong: #20211f;
 
-  --c-accent: #a6d85c;
-  --c-accent-dim: rgb(166 216 92 / 0.18);
-  --c-accent-glass: rgb(166 216 92 / 0.09);
-  --c-brown-red: #78a82d;
+  --c-accent: #ff3b16;
+  --c-accent-dim: rgb(255 59 22 / 0.16);
+  --c-accent-glass: rgb(255 59 22 / 0.08);
+  --c-brown-red: #c9270b;
 
-  --cos-brand: #a6d85c;
-  --cos-brand-deep: #78a82d;
-  --cos-ink: #282828;
-  --cos-ink-72: rgb(40 40 40 / 0.72);
-  --cos-gray: #626260;
-  --cos-surface: #72726f;
-  --cos-disable: #b4b4b0;
-  --cos-border: #d0d0cc;
-  --cos-paper: #f4f4f2;
-  --cos-paper-2: #ededeb;
+  --cos-brand: #ff3b16;
+  --cos-brand-deep: #c9270b;
+  --cos-ink: #20211f;
+  --cos-ink-72: rgb(32 33 31 / 0.72);
+  --cos-gray: #60615c;
+  --cos-surface: #74756f;
+  --cos-disable: #aaa9a1;
+  --cos-border: #c5c4bc;
+  --cos-paper: #f1f0e8;
+  --cos-paper-2: #e9e8df;
   --cos-line: max(1px, calc(var(--cos-u) * 0.1));
   --cos-ease: cubic-bezier(0.23, 1, 0.32, 1);
   --cos-ease-btn: cubic-bezier(0.625, 0.05, 0, 1);
   --cos-u: max(0.5787vw, 6.6px);
-  --cos-header: calc(var(--cos-u) * 6.4);
+  --cos-header: calc(var(--cos-u) * 7.2);
   --cos-inset: calc(var(--cos-u) * 0.8);
 
-  --font-sans: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter Tight Variable', 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Inter Tight Variable', 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
   --font-tech: 'Geist Mono', 'Space Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --font-mono: 'Geist Mono', 'Space Mono', ui-monospace, monospace;

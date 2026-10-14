@@ -35,8 +35,8 @@ export const ARCHIVED_THEMES: SiteTheme[] = [
 export const THEMES: SiteTheme[] = [
   {
     id: 'collective-os',
-    name: 'Collective OS',
-    description: 'Nothing-inspirierte ADDD-Startseite: bildfüllender Product-Hero, helle Projektfläche, Lime-Systemakzente.',
+    name: 'ADDD Systems',
+    description: 'Technisch-editorielles ADDD-Portfolio auf warmem Papier: präzises Raster, schwarze Typografie und rote Redlines.',
   },
 ]
 

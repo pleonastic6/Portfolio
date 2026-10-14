@@ -1,132 +1,43 @@
 .page {
   position: relative;
+  min-height: 100svh;
   isolation: isolate;
+  background: var(--cos-paper);
 }
 
 .page::before {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 80;
   pointer-events: none;
   background-image: url('../../assets/design05/paper-fiber.webp');
   background-size: 420px 420px;
   background-repeat: repeat;
-  opacity: 0.18;
+  opacity: 0.11;
   mix-blend-mode: multiply;
-}
-
-.particles {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-  mix-blend-mode: normal;
-  opacity: 0.18;
-}
-
-.particle {
-  position: absolute;
-  left: calc(var(--x) * 1%);
-  top: calc(var(--y) * 1%);
-  width: calc(var(--s) * 1px);
-  height: calc(var(--s) * 1px);
-  background: var(--cos-ink);
-  opacity: var(--o);
-  transform: translate3d(0, 0, 0) rotate(0deg);
-  animation: particleDrift 12s var(--cos-ease) infinite alternate;
-  animation-delay: var(--d);
-  box-shadow: none;
-}
-
-.particle::before,
-.particle::after {
-  content: '';
-  position: absolute;
-  background: var(--cos-brand);
-  opacity: 0.55;
-}
-
-.particle::before {
-  left: 50%;
-  top: calc(50% - var(--cos-line) / 2);
-  width: calc(var(--s) * 8px);
-  height: var(--cos-line);
-  transform: translateX(calc(var(--s) * 1.6px));
-}
-
-.particle::after {
-  left: calc(50% - var(--cos-line) / 2);
-  top: 50%;
-  width: var(--cos-line);
-  height: calc(var(--s) * 5px);
-  transform: translateY(calc(var(--s) * 1.2px));
-}
-
-.particle:nth-child(3n) {
-  background: transparent;
-  border: var(--cos-line) solid var(--cos-brand);
-}
-
-.particle:nth-child(4n) {
-  width: calc(var(--s) * 2px);
-  height: var(--cos-line);
-}
-
-.particle:nth-child(5n)::before,
-.particle:nth-child(5n)::after {
-  display: none;
-}
-
-.particle:nth-child(7n) {
-  filter: blur(0.3px);
 }
 
 .main {
   position: relative;
   z-index: 1;
+  margin-inline: var(--cos-inset);
+  border-inline: var(--cos-line) solid var(--cos-border);
 }
 
-@keyframes particleDrift {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  100% {
-    transform: translate3d(var(--dx), var(--dy), 0) rotate(90deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .particle {
-    animation: none;
-  }
-}
-
-/*
- * Fester Blattrahmen: ein Papierrand rundum, der den durchlaufenden Inhalt
- * abdeckt, und innen eine Haarlinie. Kopfzeile und Inhalt liegen darin.
- */
 .frame {
   position: fixed;
-  inset: 0;
+  inset: var(--cos-inset);
   z-index: 70;
   pointer-events: none;
-  display: none;
-  border: var(--cos-inset) solid var(--cos-paper);
-}
-
-.frameInner {
-  position: absolute;
-  inset: 0;
   border: var(--cos-line) solid var(--cos-border);
 }
 
 .corner {
   position: absolute;
-  width: calc(var(--cos-u) * 1);
-  height: calc(var(--cos-u) * 1);
-  color: var(--cos-surface);
+  width: calc(var(--cos-u) * 1.8);
+  height: calc(var(--cos-u) * 1.8);
+  color: var(--cos-ink);
 }
 
 .corner::before,
@@ -148,29 +59,16 @@
   width: 100%;
 }
 
-.cTL {
-  top: calc(var(--cos-u) * 0.6);
-  left: calc(var(--cos-u) * 0.6);
-  visibility: hidden;
-}
+.cTL { top: calc(var(--cos-u) * -0.9); left: calc(var(--cos-u) * -0.9); }
+.cTR { top: calc(var(--cos-u) * -0.9); right: calc(var(--cos-u) * -0.9); }
+.cBL { bottom: calc(var(--cos-u) * -0.9); left: calc(var(--cos-u) * -0.9); }
+.cBR { right: calc(var(--cos-u) * -0.9); bottom: calc(var(--cos-u) * -0.9); }
 
-.cTR {
-  top: calc(var(--cos-u) * 0.6);
-  right: calc(var(--cos-u) * 0.6);
-  visibility: hidden;
-}
-
-.cBL {
-  bottom: calc(var(--cos-u) * 0.6);
-  left: calc(var(--cos-u) * 0.6);
-}
-
-.cBR {
-  bottom: calc(var(--cos-u) * 0.6);
-  right: calc(var(--cos-u) * 0.6);
-}
-
-.main {
-  position: relative;
-  padding-inline: 0;
+@media (max-width: 767px) {
+  .page::before { opacity: 0.08; }
+  .frame { display: none; }
+  .main {
+    margin-inline: 0;
+    border-inline: 0;
+  }
 }

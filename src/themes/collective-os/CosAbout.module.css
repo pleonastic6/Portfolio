@@ -4,23 +4,6 @@
   border-top: var(--cos-line) solid var(--cos-border);
 }
 
-.about::before {
-  content: '';
-  position: absolute;
-  top: calc(var(--cos-u) * 8);
-  right: calc(var(--cos-u) * -8);
-  z-index: -1;
-  width: min(56vw, calc(var(--cos-u) * 82));
-  aspect-ratio: 16 / 9;
-  background-image: url('../../assets/design05/modular-blocks.webp');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.14;
-  filter: saturate(0.62) contrast(1.05) brightness(1.05);
-  mix-blend-mode: multiply;
-  mask-image: radial-gradient(ellipse at center, #000 0 36%, rgb(0 0 0 / 0.62) 54%, transparent 78%);
-  pointer-events: none;
-}
 
 .head {
   display: flex;
@@ -185,12 +168,6 @@
     padding: calc(var(--cos-u) * 2.4) calc(var(--cos-u) * 1.6);
   }
 
-  .about::before {
-    top: calc(var(--cos-u) * 12);
-    right: calc(var(--cos-u) * -16);
-    width: min(92vw, calc(var(--cos-u) * 80));
-    opacity: 0.1;
-  }
 
   .fact {
     grid-template-columns: 1fr;

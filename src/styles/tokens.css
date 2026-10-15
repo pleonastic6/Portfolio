@@ -361,6 +361,8 @@
   --cos-u: max(0.5787vw, 6.6px);
   --cos-header: calc(var(--cos-u) * 7.2);
   --cos-inset: calc(var(--cos-u) * 0.8);
+  --cos-gutter: clamp(1.25rem, 3vw, 3.5rem);
+  --cos-editorial-space: clamp(4rem, 8vw, 8rem);
 
   --font-sans: 'Inter Tight Variable', 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'Inter Tight Variable', 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;

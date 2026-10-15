@@ -2,6 +2,8 @@
   position: relative;
   min-height: 100svh;
   isolation: isolate;
+  /* Contain decorative corner marks without creating a scroll container. */
+  overflow-x: clip;
   background: var(--cos-paper);
 }
 
@@ -9,7 +11,7 @@
   content: '';
   position: fixed;
   inset: 0;
-  z-index: 80;
+  z-index: 0;
   pointer-events: none;
   background-image: url('../../assets/design05/paper-fiber.webp');
   background-size: 420px 420px;
